@@ -1,0 +1,17 @@
+/*
+	Alpha by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+*/
+
+/* Basic */
+
+	body, input, select, textarea {
+		font-size: 13pt;
+	}
+
+/* Banner */
+
+	#banner {
+		padding: 10em 0 18em 0;
+	}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.13.0">
+    <newestPodcasts>
+
+        <episode id="7390" parent="7389" isDir="false" title="Jonas Gahr Støre" album="NRK – Hallo P3" artist="Podcast"
+                 year="2015" coverArt="7389" size="41808585" contentType="audio/mpeg" suffix="mp3" duration="2619" bitRate="128"
+                 isVideo="false" created="2015-09-07T20:07:31.000Z" artistId="453" type="podcast" streamId="7410" channelId="17"
+                 description="Jonas Gahr Støre fra Arbeiderpartiet er med i dagens partilederutspørring i Hallo P3! Han svarer på det som lytterne lurer på, alt fra bomring i Bodø til flyktningkrisen. I tillegg til dette rapporterer Reporter Silje Ese fra den greske øya Kos der det nå er flere tusen flyktninger. Og så skal vi ta farvel med et svært utrydningstruet dyr."
+                 status="completed" publishDate="2015-09-07T15:29:00.000Z"/>
+
+        <episode id="7402" parent="7397" isDir="false" title="06.09.15 - Lunsjkake" album="NRK – Lunsjkake" artist="Podcast"
+                 year="2015" coverArt="7397" size="47540895" contentType="audio/mpeg" suffix="mp3" duration="2978" bitRate="128"
+                 isVideo="false" created="2015-09-07T20:07:31.000Z" artistId="453" type="podcast" streamId="7411" channelId="21"
+                 description="Hva har skjedd siden sist? / Gode spørsmål / Kommunevalg / Radioarkivet / Reportasje om Jens Nepebru, som har falt mellom to stoler etter kommunesammenslåing."
+                 status="completed" publishDate="2015-09-07T11:40:00.000Z"/>
+
+        <episode id="7385" parent="7395" isDir="false" title="04.09.2015 The Man From U.N.C.L.E. er stilistisk spionaction med retrofølelse." album="NRK – Filmpolitiet" artist="Podcast"
+                 year="2015" coverArt="7395" size="38560206" contentType="audio/mpeg" suffix="mp3" duration="2415" bitRate="128"
+                 isVideo="false" created="2015-09-07T20:06:53.000Z" artistId="453" type="podcast" streamId="7409" channelId="20"
+                 description="I dag anmeldes to premierefilmer. The Man From UNCLE er stilig spionaction med retrofølelse fra regissør Guy Ritchie. En natt i Berlin er et vågestykke av de sjeldne, filmet i én eneste tagning. Og Blu-ray og DVD-aktuelle Cobain: Montage of Heck er et brutalt intimt møte med mannen bak myten. Tre spill skal under lupen. Det nye Mad Max-spillet er post-apokalyptisk action for alle med sans for never og nitro. Trine 3: The Artifacts of Soul er underholdende hjernetrim i et vakkert spillunivers. Du får også førsteinntrykk av storspillet Metal Gear Solid 5: Phantom Pain Fra seriefronten anmeldes to av sommerens store overraskelser fra USA. UnREAL er smart, mørkt og morsomt om realitybransjens vemmelige kynisme. Mens Mr. Robot er en intens og velskrevet hackerthriller med en strålende Rami Malek i hovedrollen."
+                 status="completed" publishDate="2015-09-07T06:36:00.000Z"/>
+
+    </newestPodcasts>
+</subsonic-response>

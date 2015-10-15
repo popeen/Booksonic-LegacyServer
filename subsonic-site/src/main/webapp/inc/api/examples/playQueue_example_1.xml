@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.12.0">
+
+    <playQueue current="133" position="45000" username="admin" changed="2015-02-18T15:22:22.825Z" changedBy="android">
+        <entry id="132" parent="131" isDir="false" title="These Are Days" album="MTV Unplugged" artist="10,000 Maniacs" track="1" year="1993" genre="Soft Rock" coverArt="131" size="5872262" contentType="audio/mpeg" suffix="mp3" duration="293" bitRate="160" path="10,000 Maniacs/MTV Unplugged/01 - These Are Days.mp3" isVideo="false" created="2004-10-25T20:36:03.000Z" albumId="0" artistId="0" type="music"/>
+        <entry id="133" parent="131" isDir="false" title="Eat For Two" album="MTV Unplugged" artist="10,000 Maniacs" track="2" year="1993" genre="Soft Rock" coverArt="131" size="5253248" contentType="audio/mpeg" suffix="mp3" duration="262" bitRate="160" path="10,000 Maniacs/MTV Unplugged/02 - Eat For Two.mp3" isVideo="false" created="2004-10-25T20:36:06.000Z" albumId="0" artistId="0" type="music"/>
+        <entry id="134" parent="131" isDir="false" title="Candy Everybody Wants" album="MTV Unplugged" artist="10,000 Maniacs" track="3" year="1993" genre="Soft Rock" coverArt="131" size="3993728" contentType="audio/mpeg" suffix="mp3" duration="199" bitRate="160" path="10,000 Maniacs/MTV Unplugged/03 - Candy Everybody Wants.mp3" isVideo="false" created="2004-10-25T20:36:09.000Z" albumId="0" artistId="0" type="music"/>
+    </playQueue>
+
+</subsonic-response>

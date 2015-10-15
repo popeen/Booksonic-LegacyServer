@@ -1,0 +1,18 @@
+Dear $NAME,
+
+Many thanks for upgrading to Subsonic Premium!
+Please find your license key below.
+
+Email: $EMAIL
+License: $LICENSE
+
+To install the license key, click the "Get Subsonic Premium" link in the top right corner of the Subsonic web interface.
+
+More info here: http://subsonic.org/pages/getting-started.jsp#3
+
+This license is valid for personal, non-commercial of Subsonic. For commercial use, please contact us for licensing options.
+
+Thanks again for supporting the project!
+
+Best regards,
+The Subsonic team

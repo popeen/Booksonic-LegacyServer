@@ -1,0 +1,14 @@
+Dear $NAME,
+
+This is a friendly reminder that your Subsonic Premium subscription expires on $EXPIRES.
+
+We hope that you enjoy the service and that you choose to renew your subscription.
+
+Please visit http://premium.subsonic.org for more details and purchase options!
+
+Note: If you previously selected the automatic renewal option you will be charged automatically, and no action is required on your part.
+
+Best regards,
+The Subsonic team
+
+(This email is sent 14 and 7 days before the license expires)

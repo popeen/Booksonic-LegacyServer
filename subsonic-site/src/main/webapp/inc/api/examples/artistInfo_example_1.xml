@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.11.0">
+   <artistInfo>
+      <biography>Black Sabbath is an English &lt;a target='_blank' href=&quot;http://www.last.fm/tag/heavy%20metal&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>heavy metal&lt;/a> band that formed in 1968 in Birmingham, West Midlands, England, United Kingdom, originally comprising &lt;a target='_blank' href=&quot;http://www.last.fm/music/Ozzy+Osbourne&quot; class=&quot;bbcode_artist&quot;>Ozzy Osbourne&lt;/a> (vocals), &lt;a target='_blank' href=&quot;http://www.last.fm/music/Tony+Iommi&quot; class=&quot;bbcode_artist&quot;>Tony Iommi&lt;/a> (guitar), &lt;a target='_blank' href=&quot;http://www.last.fm/music/Geezer+Butler&quot; class=&quot;bbcode_artist&quot;>Geezer Butler&lt;/a> (bass), and &lt;a target='_blank' href=&quot;http://www.last.fm/music/Bill+Ward&quot; class=&quot;bbcode_artist&quot;>Bill Ward&lt;/a> (drums). In the early &lt;a target='_blank' href=&quot;http://www.last.fm/tag/70s&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>70s&lt;/a>, they were the first to pair heavily distorted, sonically dissonant &lt;a target='_blank' href=&quot;http://www.last.fm/tag/blues%20rock&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>blues rock&lt;/a> at slow speeds with lyrics about drugs, mental pain and abominations of war, thus giving birth to generations of metal bands that followed in their wake.          &lt;a target='_blank' href=&quot;http://www.last.fm/music/Black+Sabbath&quot;>Read more about Black Sabbath on Last.fm&lt;/a>.</biography>
+      <musicBrainzId>5182c1d9-c7d2-4dad-afa0-ccfeada921a8</musicBrainzId>
+      <lastFmUrl>http://www.last.fm/music/Black+Sabbath</lastFmUrl>
+      <smallImageUrl>http://userserve-ak.last.fm/serve/64/27904353.jpg</smallImageUrl>
+      <mediumImageUrl>http://userserve-ak.last.fm/serve/126/27904353.jpg</mediumImageUrl>
+      <largeImageUrl>http://userserve-ak.last.fm/serve/_/27904353/Black+Sabbath+sabbath+1970.jpg</largeImageUrl>
+      <similarArtist id="22" name="Accept"/>
+      <similarArtist id="101" name="Bruce Dickinson"/>
+      <similarArtist id="26" name="Aerosmith"/>
+   </artistInfo>
+</subsonic-response>

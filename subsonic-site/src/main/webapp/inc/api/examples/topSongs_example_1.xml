@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.13.0">
+    <topSongs>
+        <song id="1013" parent="1008" isDir="false" title="London Leatherboys" album="Balls To The Wall" artist="Accept" track="2" year="1984" genre="Metal" coverArt="1008" size="5706432" contentType="audio/mpeg" suffix="mp3" duration="237" bitRate="192" path="Accept/Balls To The Wall/Accept - London Leatherboys - 02.mp3" isVideo="false" created="2004-11-27T17:22:37.000Z" albumId="411" artistId="278" type="music"/>
+        <song id="1012" parent="1008" isDir="false" title="Head Over Heels" album="Balls To The Wall" artist="Accept" track="4" year="1984" genre="Metal" coverArt="1008" size="6219527" contentType="audio/mpeg" suffix="mp3" duration="259" bitRate="192" path="Accept/Balls To The Wall/Accept - Head Over Heels - 04.mp3" isVideo="false" created="2004-11-27T17:22:35.000Z" starred="2015-01-03T21:12:10.070Z" albumId="411" artistId="278" type="music"/>
+        <song id="1016" parent="1008" isDir="false" title="Love Child" album="Balls To The Wall" artist="Accept" track="6" year="1984" genre="Metal" coverArt="1008" size="5156143" contentType="audio/mpeg" suffix="mp3" duration="214" bitRate="192" path="Accept/Balls To The Wall/Accept - Love Child - 06.mp3" isVideo="false" created="2004-11-27T17:22:42.000Z" starred="2014-12-30T15:05:03.815Z" albumId="411" artistId="278" type="music"/>
+    </topSongs>
+</subsonic-response>

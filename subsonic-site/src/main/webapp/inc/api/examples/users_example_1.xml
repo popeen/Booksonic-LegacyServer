@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.12.0">
+    <users>
+        <user username="admin" scrobblingEnabled="true" adminRole="true" settingsRole="true" downloadRole="true"
+              uploadRole="true" playlistRole="true" coverArtRole="true" commentRole="true" podcastRole="true"
+              streamRole="true" jukeboxRole="true" shareRole="true">
+            <folder>1</folder>
+            <folder>2</folder>
+            <folder>3</folder>
+        </user>
+
+        <user username="john" email="johsn@dfsdf" scrobblingEnabled="false" adminRole="false" settingsRole="true"
+              downloadRole="false" uploadRole="false" playlistRole="true" coverArtRole="false" commentRole="false"
+              podcastRole="false" streamRole="true" jukeboxRole="false" shareRole="false">
+            <folder>1</folder>
+            <folder>2</folder>
+        </user>
+
+        <user username="sindre" email="sindre@activeobjects.no" scrobblingEnabled="false" adminRole="false"
+              settingsRole="true" downloadRole="false" uploadRole="false" playlistRole="true" coverArtRole="false"
+              commentRole="false" podcastRole="false" streamRole="true" jukeboxRole="false" shareRole="false">
+            <folder>1</folder>
+            <folder>3</folder>
+        </user>
+
+    </users>
+</subsonic-response>

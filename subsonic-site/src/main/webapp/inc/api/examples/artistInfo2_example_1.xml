@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.11.0">
+   <artistInfo2>
+      <biography>Black Sabbath is an English &lt;a target='_blank' href=&quot;http://www.last.fm/tag/heavy%20metal&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>heavy metal&lt;/a> band that formed in 1968 in Birmingham, West Midlands, England, United Kingdom, originally comprising &lt;a target='_blank' href=&quot;http://www.last.fm/music/Ozzy+Osbourne&quot; class=&quot;bbcode_artist&quot;>Ozzy Osbourne&lt;/a> (vocals), &lt;a target='_blank' href=&quot;http://www.last.fm/music/Tony+Iommi&quot; class=&quot;bbcode_artist&quot;>Tony Iommi&lt;/a> (guitar), &lt;a target='_blank' href=&quot;http://www.last.fm/music/Geezer+Butler&quot; class=&quot;bbcode_artist&quot;>Geezer Butler&lt;/a> (bass), and &lt;a target='_blank' href=&quot;http://www.last.fm/music/Bill+Ward&quot; class=&quot;bbcode_artist&quot;>Bill Ward&lt;/a> (drums). In the early &lt;a target='_blank' href=&quot;http://www.last.fm/tag/70s&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>70s&lt;/a>, they were the first to pair heavily distorted, sonically dissonant &lt;a target='_blank' href=&quot;http://www.last.fm/tag/blues%20rock&quot; class=&quot;bbcode_tag&quot; rel=&quot;tag&quot;>blues rock&lt;/a> at slow speeds with lyrics about drugs, mental pain and abominations of war, thus giving birth to generations of metal bands that followed in their wake.          &lt;a target='_blank' href=&quot;http://www.last.fm/music/Black+Sabbath&quot;>Read more about Black Sabbath on Last.fm&lt;/a>.</biography>
+      <musicBrainzId>5182c1d9-c7d2-4dad-afa0-ccfeada921a8</musicBrainzId>
+      <lastFmUrl>http://www.last.fm/music/Black+Sabbath</lastFmUrl>
+      <smallImageUrl>http://userserve-ak.last.fm/serve/64/27904353.jpg</smallImageUrl>
+      <mediumImageUrl>http://userserve-ak.last.fm/serve/126/27904353.jpg</mediumImageUrl>
+      <largeImageUrl>http://userserve-ak.last.fm/serve/_/27904353/Black+Sabbath+sabbath+1970.jpg</largeImageUrl>
+      <similarArtist id="279" name="AC/DC" coverArt="ar-279" albumCount="15"/>
+      <similarArtist id="278" name="Accept" coverArt="ar-278" albumCount="1"/>
+      <similarArtist id="433" name="Kiss" coverArt="ar-433" albumCount="1"/>
+      <similarArtist id="372" name="Bruce Dickinson" coverArt="ar-372" albumCount="2"/>
+      <similarArtist id="290" name="Alice in Chains" coverArt="ar-290" albumCount="3"/>
+      <similarArtist id="285" name="Aerosmith" coverArt="ar-285" albumCount="2"/>
+      <similarArtist id="396" name="The Doors" albumCount="1"/>
+      <similarArtist id="397" name="Guns N' Roses" albumCount="1"/>
+   </artistInfo2>
+</subsonic-response>
