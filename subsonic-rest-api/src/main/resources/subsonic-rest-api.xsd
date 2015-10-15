@@ -159,6 +159,8 @@
         <xs:attribute name="starred" type="xs:dateTime" use="optional"/>
         <xs:attribute name="year" type="xs:int" use="optional"/>     <!-- Added in 1.10.1 -->
         <xs:attribute name="genre" type="xs:string" use="optional"/> <!-- Added in 1.10.1 -->
+        <xs:attribute name="fullPath" type="xs:string" use="optional"/>     <!-- Added in Booksonic 1.0.0 -->
+        <xs:attribute name="description" type="xs:string" use="optional"/> <!-- Added in Booksonic 1.0.0 -->
     </xs:complexType>
 
     <xs:complexType name="AlbumWithSongsID3">
@@ -187,6 +189,7 @@
         <xs:attribute name="starred" type="xs:dateTime" use="optional"/> <!-- Added in 1.10.1 -->
         <xs:attribute name="userRating" type="sub:UserRating" use="optional"/>  <!-- Added in 1.13.0 -->
         <xs:attribute name="averageRating" type="sub:AverageRating" use="optional"/>  <!-- Added in 1.13.0 -->
+        <xs:attribute name="description" type="xs:string" use="optional"/>  <!-- Added in Booksonic 1.0.0 -->
     </xs:complexType>
 
     <xs:complexType name="Child">

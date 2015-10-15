@@ -18,7 +18,9 @@
  */
 package net.sourceforge.subsonic.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,6 +36,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
@@ -651,6 +655,58 @@ public class RESTController extends MultiActionController {
         res.setSong(createJaxbChild(player, song, username));
         jaxbWriter.writeResponse(request, response, res);
     }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public void getBookDirectory(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request = wrapRequest(request);
+        Player player = playerService.getPlayer(request, response);
+        String username = securityService.getCurrentUsername(request);
+
+        int id = getRequiredIntParameter(request, "id");
+        MediaFile dir = mediaFileService.getMediaFile(id);
+        if (dir == null) {
+            error(request, response, ErrorCode.NOT_FOUND, "Directory not found");
+            return;
+        }
+        if (!securityService.isFolderAccessAllowed(dir, username)) {
+            error(request, response, ErrorCode.NOT_AUTHORIZED, "Access denied");
+            return;
+        }
+
+        MediaFile parent = mediaFileService.getParentOf(dir);
+        Directory directory = new Directory();
+        directory.setId(String.valueOf(id));
+        try {
+            if (!mediaFileService.isRoot(parent)) {
+                directory.setParent(String.valueOf(parent.getId()));
+            }
+        } catch (SecurityException x) {
+            // Ignored.
+        }
+        directory.setName(dir.getName());
+        directory.setStarred(jaxbWriter.convertDate(mediaFileDao.getMediaFileStarredDate(id, username)));
+		
+		String desc = "noInfo";
+		try{
+			String fullPath = FilenameUtils.getFullPath(dir.getPath()+System.getProperty("file.separator")); 
+			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
+		} catch(Exception e){}
+		directory.setDescription(desc);
+
+        if (dir.isAlbum()) {
+            directory.setAverageRating(ratingService.getAverageRating(dir));
+            directory.setUserRating(ratingService.getRatingForUser(username, dir));
+        }
+
+        for (MediaFile child : mediaFileService.getChildrenOf(dir, true, true, true)) {
+            directory.getChild().add(createJaxbChild(player, child, username));
+        }
+
+        Response res = createResponse();
+        res.setDirectory(directory);
+        jaxbWriter.writeResponse(request, response, res);
+    }
+
 
     @SuppressWarnings("UnusedDeclaration")
     public void getMusicDirectory(HttpServletRequest request, HttpServletResponse response) throws Exception {
