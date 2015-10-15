@@ -12,6 +12,36 @@
         <artifactId>subsonic</artifactId>
         <version>5.3.beta2</version>
     </parent>
+<repositories>
+   
+    <repository>
+        <id>jetty-releases</id>
+        <name>Jetty Releases</name>
+        <url>https://oss.sonatype.org/content/repositories/jetty-releases</url>
+    </repository>
+  
+    <repository>
+        <id>spring-snapshots</id>
+        <name>Spring Snapshots</name>
+        <url>http://repo.spring.io/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+  
+  <repository>
+    <id>maven2</id>
+    <url>http://repo1.maven.org/maven2</url>
+  </repository>
+  
+    <repository>
+        <id>4thline.org-repo</id>
+        <url>http://4thline.org/m2</url>
+        <snapshots>
+            <enabled>true</enabled> 
+        </snapshots>
+    </repository>
+</repositories>
 
     <dependencies>
 

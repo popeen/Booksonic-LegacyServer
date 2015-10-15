@@ -1,1 +1,4 @@
 .svn
+/subsonic-main/target
+/subsonic-rest-api/target
+/subsonic-sonos-api/target
