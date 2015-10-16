@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,6 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -48,6 +50,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
+import org.json.JSONObject;
 
 import net.sourceforge.subsonic.Logger;
 import net.sourceforge.subsonic.dao.AvatarDao;
@@ -667,16 +670,34 @@ public class SettingsService {
         setProperty(KEY_LICENSE_DATE, value);
     }
 
-    public boolean isLicenseValid() {
-        return isLicenseValid(getLicenseEmail(), getLicenseCode()) && licenseValidated;
+    public boolean isLicenseValid() {		
+		return booksonicLicense(getLicenseEmail(), "");
     }
-
+	
     public boolean isLicenseValid(String email, String license) {
-        if (email == null || license == null) {
-            return false;
-        }
-        return license.equalsIgnoreCase(StringUtil.md5Hex(email.toLowerCase()));
+		return booksonicLicense(email, license);
     }
+	
+	public boolean booksonicLicense(String email, String license){
+		String input = "";
+		JSONObject json;
+		try {			
+			input = new Scanner(new URL("http://popeen.com/files/mobile/MY_APPS/PopeensDsub/license.php?email="+StringUtil.urlEncode(email)).openStream(), "UTF-8").useDelimiter("\\A").next();
+			json = new JSONObject(input);
+			if(json.getString("isValid").equals("true")){
+				return true;
+			}else{
+				if(license.equals("")){
+					return isLicenseValid(getLicenseEmail(), getLicenseCode()) && licenseValidated;
+				}else{
+					if (email == null || license == null) {
+						return false;
+					}
+					return license.equalsIgnoreCase(StringUtil.md5Hex(email.toLowerCase()));
+				}
+			}
+		} catch (Exception e) { return true; }
+	}
 
     public LicenseInfo getLicenseInfo() {
         Date trialExpires = getTrialExpires();
