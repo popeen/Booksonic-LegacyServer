@@ -42,6 +42,8 @@ public class Album {
     private Date lastScanned;
     private boolean present;
     private Integer folderId;
+    private String fullPath;
+    private String description;
 
     public Album() {
     }
@@ -193,5 +195,21 @@ public class Album {
 
     public Integer getFolderId() {
         return folderId;
+    }
+
+    public void setFullPath(String path) {
+        this.fullPath = path;
+    }
+
+    public String getFullPath() {
+        return this.fullPath;
+    }
+
+    public void setDescription(String desc) {
+        this.description = desc;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

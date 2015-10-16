@@ -571,6 +571,29 @@ public class RESTController extends MultiActionController {
         jaxbWriter.writeResponse(request, response, res);
     }
 
+    private <T extends AlbumID3> T createJaxbBook(T jaxbAlbum, Album album, String username) {
+        jaxbAlbum.setId(String.valueOf(album.getId()));
+        jaxbAlbum.setName(album.getName());
+        if (album.getArtist() != null) {
+            jaxbAlbum.setArtist(album.getArtist());
+            Artist artist = artistDao.getArtist(album.getArtist());
+            if (artist != null) {
+                jaxbAlbum.setArtistId(String.valueOf(artist.getId()));
+            }
+        }
+        if (album.getCoverArtPath() != null) {
+            jaxbAlbum.setCoverArt(CoverArtController.ALBUM_COVERART_PREFIX + album.getId());
+        }
+        jaxbAlbum.setSongCount(album.getSongCount());
+        jaxbAlbum.setDuration(album.getDurationSeconds());
+        jaxbAlbum.setCreated(jaxbWriter.convertDate(album.getCreated()));
+        jaxbAlbum.setStarred(jaxbWriter.convertDate(albumDao.getAlbumStarredDate(album.getId(), username)));
+        jaxbAlbum.setYear(album.getYear());
+        jaxbAlbum.setGenre(album.getGenre());
+        jaxbAlbum.setDescription(album.getDescription());
+        return jaxbAlbum;
+    }
+
     private <T extends AlbumID3> T createJaxbAlbum(T jaxbAlbum, Album album, String username) {
         jaxbAlbum.setId(String.valueOf(album.getId()));
         jaxbAlbum.setName(album.getName());
@@ -655,6 +678,37 @@ public class RESTController extends MultiActionController {
         res.setSong(createJaxbChild(player, song, username));
         jaxbWriter.writeResponse(request, response, res);
     }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public void getBook(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request = wrapRequest(request);
+        Player player = playerService.getPlayer(request, response);
+        String username = securityService.getCurrentUsername(request);
+
+        int id = getRequiredIntParameter(request, "id");
+        Album album = albumDao.getAlbum(id);
+        if (album == null) {
+            error(request, response, ErrorCode.NOT_FOUND, "Album not found.");
+            return;
+        }
+        
+        AlbumWithSongsID3 result = createJaxbAlbum(new AlbumWithSongsID3(), album, username);
+        for (MediaFile mediaFile : mediaFileDao.getSongsForAlbum(album.getArtist(), album.getName())) {
+            result.getSong().add(createJaxbChild(player, mediaFile, username));
+        }
+        
+        String desc = "noInfo";
+		try{
+			String fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); 
+			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
+		} catch(Exception e){}
+		
+        Response res = createResponse();
+        result.setDescription(desc);
+        res.setAlbum(result);
+        jaxbWriter.writeResponse(request, response, res);
+    }
+
 
     @SuppressWarnings("UnusedDeclaration")
     public void getBookDirectory(HttpServletRequest request, HttpServletResponse response) throws Exception {
