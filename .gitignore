@@ -2,3 +2,5 @@
 /subsonic-main/target
 /subsonic-rest-api/target
 /subsonic-sonos-api/target
+/subsonic-installer-windows/target
+/subsonic-booter/target

@@ -44,18 +44,18 @@ public class TrayController implements SubsonicListener {
     }
 
     public void showMessage() {
-        trayIcon.displayMessage("Subsonic", "Subsonic is now running. Click this balloon to get started.",
+        trayIcon.displayMessage("Booksonic", "Booksonic is now running. Click this balloon to get started.",
                 TrayIcon.MessageType.INFO);
     }
 
     private void createActions() {
-        openAction = new AbstractAction("Open Subsonic in Browser") {
+        openAction = new AbstractAction("Open Booksonic in Browser") {
             public void actionPerformed(ActionEvent e) {
                 subsonicAgent.openBrowser();
             }
         };
 
-        controlPanelAction = new AbstractAction("Subsonic Control Panel") {
+        controlPanelAction = new AbstractAction("Booksonic Control Panel") {
             public void actionPerformed(ActionEvent e) {
                 subsonicAgent.showStatusPanel();
             }
@@ -79,7 +79,7 @@ public class TrayController implements SubsonicListener {
         menu.addSeparator();
         menu.add(createMenuItem(hideAction));
 
-        trayIcon = new TrayIcon(stoppedImage, "Subsonic Music Streamer", menu);
+        trayIcon = new TrayIcon(stoppedImage, "Booksonic Audiobook Streamer", menu);
     }
 
     private Image createImage(String resourceName) {

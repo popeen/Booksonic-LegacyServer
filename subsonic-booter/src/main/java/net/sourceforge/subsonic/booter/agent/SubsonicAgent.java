@@ -123,7 +123,7 @@ public class SubsonicAgent {
                 builder.start();
                 System.exit(0);
             } catch (Exception x) {
-                JOptionPane.showMessageDialog(frame, "Failed to elevate Subsonic Control Panel. " + x, "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(frame, "Failed to elevate Booksonic Control Panel. " + x, "Error", JOptionPane.WARNING_MESSAGE);
                 x.printStackTrace();
             }
         }

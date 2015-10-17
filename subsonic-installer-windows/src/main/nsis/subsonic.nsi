@@ -6,7 +6,7 @@
 !insertmacro VersionCompare
 
 # The name of the installer
-Name "Subsonic"
+Name "Booksonic"
 
 # The default installation directory
 InstallDir $PROGRAMFILES\Subsonic
