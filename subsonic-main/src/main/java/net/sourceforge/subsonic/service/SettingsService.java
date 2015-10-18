@@ -671,33 +671,12 @@ public class SettingsService {
     }
 
     public boolean isLicenseValid() {		
-		return booksonicLicense(getLicenseEmail(), "");
+		return true;
     }
 	
     public boolean isLicenseValid(String email, String license) {
-		return booksonicLicense(email, license);
+		return true;
     }
-	
-	public boolean booksonicLicense(String email, String license){
-		String input = "";
-		JSONObject json;
-		try {			
-			input = new Scanner(new URL("http://popeen.com/files/mobile/MY_APPS/PopeensDsub/license.php?email="+StringUtil.urlEncode(email)).openStream(), "UTF-8").useDelimiter("\\A").next();
-			json = new JSONObject(input);
-			if(json.getString("isValid").equals("true")){
-				return true;
-			}else{
-				if(license.equals("")){
-					return isLicenseValid(getLicenseEmail(), getLicenseCode()) && licenseValidated;
-				}else{
-					if (email == null || license == null) {
-						return false;
-					}
-					return license.equalsIgnoreCase(StringUtil.md5Hex(email.toLowerCase()));
-				}
-			}
-		} catch (Exception e) { return true; }
-	}
 
     public LicenseInfo getLicenseInfo() {
         Date trialExpires = getTrialExpires();
@@ -1419,38 +1398,7 @@ public class SettingsService {
         return result.toArray(new String[result.size()]);
     }
 
-    private void validateLicense() {
-        String email = getLicenseEmail();
-        Date date = getLicenseDate();
-
-        if (email == null || date == null) {
-            licenseValidated = false;
-            return;
-        }
-
-        HttpClient client = new DefaultHttpClient();
-        HttpConnectionParams.setConnectionTimeout(client.getParams(), 120000);
-        HttpConnectionParams.setSoTimeout(client.getParams(), 120000);
-        HttpGet method = new HttpGet("http://subsonic.org/backend/validateLicense.view" + "?email=" + StringUtil.urlEncode(email) +
-                "&date=" + date.getTime() + "&version=" + versionService.getLocalVersion());
-        try {
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            String content = client.execute(method, responseHandler);
-            licenseValidated = content != null && !content.contains("false");
-            if (!licenseValidated) {
-                LOG.warn("License key is not valid.");
-            }
-            String[] lines = StringUtils.split(content);
-            if (lines.length > 1) {
-                licenseExpires = new Date(Long.parseLong(lines[1]));
-            }
-
-        } catch (Throwable x) {
-            LOG.warn("Failed to validate license.", x);
-        } finally {
-            client.getConnectionManager().shutdown();
-        }
-    }
+    private void validateLicense() { }
 
     public synchronized void scheduleLicenseValidation() {
         if (licenseValidationFuture != null) {

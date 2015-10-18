@@ -246,6 +246,11 @@ img {
     border-radius:2px;
 }
 
+.coverart div a img{
+	width:160px;
+	height:160px;
+}
+
 .coverart .caption1 {
     overflow:hidden;
     text-overflow:ellipsis;
