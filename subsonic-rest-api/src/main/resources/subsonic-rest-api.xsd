@@ -53,6 +53,7 @@
         </xs:choice>
         <xs:attribute name="status" type="sub:ResponseStatus" use="required"/>
         <xs:attribute name="version" type="sub:Version" use="required"/>
+        <xs:attribute name="booksonic" type="sub:Booksonic" use="required"/>
     </xs:complexType>
 
     <xs:simpleType name="ResponseStatus">
@@ -61,9 +62,15 @@
             <xs:enumeration value="failed"/>
         </xs:restriction>
     </xs:simpleType>
-
+    
     <xs:simpleType name="Version">
         <xs:restriction base="xs:string">
+            <xs:pattern value="\d+\.\d+\.\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Booksonic">
+       <xs:restriction base="xs:string">
             <xs:pattern value="\d+\.\d+\.\d+"/>
         </xs:restriction>
     </xs:simpleType>

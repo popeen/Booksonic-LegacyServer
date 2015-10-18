@@ -9,4 +9,4 @@
 <link rel="stylesheet" href="<c:url value="/${styleSheet}"/>" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic" type="text/css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,300italic,500italic,700,700italic,100,100italic" type="text/css"/>
-<title>Subsonic</title>
+<title>Booksonic</title>

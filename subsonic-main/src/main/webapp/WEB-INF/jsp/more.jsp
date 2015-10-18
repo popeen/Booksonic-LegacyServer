@@ -124,6 +124,13 @@
 
 <h2>
     <img src="<spring:theme code="androidImage"/>" alt=""/>
+    <span style="vertical-align: middle"><fmt:message key="more.booksonic.title"/></span>
+</h2>
+<fmt:message key="more.booksonic.text"/>
+
+
+<h2>
+    <img src="<spring:theme code="androidImage"/>" alt=""/>
     <span style="vertical-align: middle"><fmt:message key="more.apps.title"/></span>
 </h2>
 <fmt:message key="more.apps.text"/>
