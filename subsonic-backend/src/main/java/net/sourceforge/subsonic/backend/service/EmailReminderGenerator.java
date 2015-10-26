@@ -80,8 +80,8 @@ public class EmailReminderGenerator {
 
                     processPayments(emailSession, in7Days, in8Days);
                     processPayments(emailSession, in14Days, in15Days);
-                    processSubscriptions(emailSession, in7Days, in8Days);
-                    processSubscriptions(emailSession, in14Days, in15Days);
+//                    processSubscriptions(emailSession, in7Days, in8Days);
+//                    processSubscriptions(emailSession, in14Days, in15Days);
 
                     LOG.info("Completed email reminder generator.");
                 } catch (Throwable x) {

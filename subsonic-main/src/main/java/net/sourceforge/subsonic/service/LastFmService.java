@@ -306,7 +306,7 @@ public class LastFmService {
                 return null;
             }
 
-            String biography = processWikiText(info.getWikiText());
+            String biography = processWikiText(info.getWikiSummary());
             String redirectedArtistName = getRedirectedArtist(biography);
             return redirectedArtistName != null ? redirectedArtistName : artistName;
         } catch (Throwable x) {

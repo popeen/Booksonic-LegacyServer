@@ -25,11 +25,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 
 import de.umass.lastfm.cache.Cache;
+import de.umass.lastfm.cache.ExpirationPolicy;
 import de.umass.lastfm.cache.FileSystemCache;
 
 /**
@@ -44,9 +46,16 @@ public class LastFmCache extends Cache {
     private final File cacheDir;
     private final long ttl;
 
-    public LastFmCache(File cacheDir, long ttl) {
+    public LastFmCache(File cacheDir, final long ttl) {
         this.cacheDir = cacheDir;
         this.ttl = ttl;
+
+        setExpirationPolicy(new ExpirationPolicy() {
+            @Override
+            public long getExpirationTime(String method, Map<String, String> params) {
+                return ttl;
+            }
+        });
     }
 
     @Override

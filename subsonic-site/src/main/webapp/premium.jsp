@@ -77,7 +77,7 @@
                 <h5>$1 per month</h5>
 
                 <p>Select this option to automatically renew your Subsonic Premium subscription every year. It can be
-                    cancelled at any time.</p>
+                    <a href="faq.jsp">cancelled</a> at any time.</p>
 
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" name="subscriptionForm">
                     <input type="hidden" name="cmd" value="_s-xclick">

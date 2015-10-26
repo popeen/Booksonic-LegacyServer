@@ -57,7 +57,7 @@
     <p>Please follow the guide in the <a href="getting-started.jsp#3">Getting Started</a> documentation.</p>
 
     <h3>How do I cancel a recurring payment?</h3>
-    <p>Logon to your PayPal account, then select My Profile &gt; My Money &gt; My preapproved payments</p>
+    <p>Logon to your PayPal account, then select My Profile &gt; My Money &gt; My preapproved payments. Here you can cancel the recurring payment.</p>
 
     <h3>I can't access my Subsonic server from the internet or from my phone.</h3>
     <p>Please follow the guide in the <a href="getting-started.jsp#2">Getting Started</a> documentation.</p>

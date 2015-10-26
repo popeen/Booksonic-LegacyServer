@@ -16,6 +16,19 @@
 
 <section class="box">
 
+    <a name="5.3"><h3>Subsonic 5.3 - Oct 25, 2015</h3></a>
+    <ul>
+        <li><strong>New:</strong> Show sidebar by default. Remember state across sessions.</li>
+        <li><strong>New:</strong> Update Japanese translation, courtesy of Kenji Maekawa</li>
+        <li><strong>New:</strong> Update German translation, courtesy of deejay2302</li>
+        <li><strong>New:</strong> Added "Show all albums" overflow button.</li>
+        <li><strong>Bugfix:</strong> Fixed error with list of newest podcast episodes.</li>
+        <li><strong>Bugfix:</strong> Much faster artist bio.</li>
+        <li><strong>Bugfix:</strong> Display shorter artist bio.</li>
+        <li><strong>REST:</strong> Add method to get newest podcast episodes.</li>
+        <li><strong>REST:</strong> Improved performance of getArtists.</li>
+    </ul>
+
     <a name="5.3.beta2"><h3>Subsonic 5.3.beta2 - Aug 17, 2015</h3></a>
     <ul>
         <li><strong>Bugfix:</strong> Fixed performance issue when retrieving "top songs".</li>

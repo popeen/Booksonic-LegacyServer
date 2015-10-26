@@ -41,7 +41,7 @@ import java.util.Map;
 public class ArtistDao extends AbstractDao {
 
     private static final Logger LOG = Logger.getLogger(ArtistDao.class);
-    private static final String COLUMNS = "id, name, cover_art_path, album_count, last_scanned, present";
+    private static final String COLUMNS = "id, name, cover_art_path, album_count, last_scanned, present, folder_id";
 
     private final RowMapper rowMapper = new ArtistMapper();
 
@@ -70,8 +70,8 @@ public class ArtistDao extends AbstractDao {
             put("name", artistName);
             put("folders", MusicFolder.toIdList(musicFolders));
         }};
-        return namedQueryOne("select " + COLUMNS + " from artist where name = :name and exists " +
-                             "(select 1 from album where artist.name = album.artist and album.present and album.folder_id in (:folders))",
+
+        return namedQueryOne("select " + COLUMNS + " from artist where name = :name and folder_id in (:folders)",
                              rowMapper, args);
     }
 
@@ -95,15 +95,15 @@ public class ArtistDao extends AbstractDao {
                      "cover_art_path=?," +
                      "album_count=?," +
                      "last_scanned=?," +
-                     "present=? " +
+                     "present=?," +
+                     "folder_id=? " +
                      "where name=?";
 
-        int n = update(sql, artist.getCoverArtPath(), artist.getAlbumCount(), artist.getLastScanned(), artist.isPresent(), artist.getName());
+        int n = update(sql, artist.getCoverArtPath(), artist.getAlbumCount(), artist.getLastScanned(), artist.isPresent(), artist.getFolderId(), artist.getName());
 
         if (n == 0) {
-
             update("insert into artist (" + COLUMNS + ") values (" + questionMarks(COLUMNS) + ")", null,
-                   artist.getName(), artist.getCoverArtPath(), artist.getAlbumCount(), artist.getLastScanned(), artist.isPresent());
+                   artist.getName(), artist.getCoverArtPath(), artist.getAlbumCount(), artist.getLastScanned(), artist.isPresent(), artist.getFolderId());
         }
 
         int id = queryForInt("select id from artist where name=?", null, artist.getName());
@@ -128,8 +128,7 @@ public class ArtistDao extends AbstractDao {
             put("offset", offset);
         }};
 
-        return namedQuery("select " + COLUMNS + " from artist where present and exists " +
-                          "(select 1 from album where artist.name = album.artist and album.present and album.folder_id in (:folders))" +
+        return namedQuery("select " + COLUMNS + " from artist where present and folder_id in (:folders) " +
                           "order by name limit :count offset :offset", rowMapper, args);
     }
 
@@ -156,8 +155,8 @@ public class ArtistDao extends AbstractDao {
 
         return namedQuery("select " + prefix(COLUMNS, "artist") + " from starred_artist, artist " +
                           "where artist.id = starred_artist.artist_id and " +
-                          "artist.present and starred_artist.username = :username and exists " +
-                          "(select 1 from album where artist.name = album.artist and album.present and album.folder_id in (:folders))" +
+                          "artist.present and starred_artist.username = :username and " +
+                          "artist.folder_id in (:folders) " +
                           "order by starred_artist.created desc limit :count offset :offset",
                           rowMapper, args);
     }
@@ -207,7 +206,8 @@ public class ArtistDao extends AbstractDao {
                     rs.getString(3),
                     rs.getInt(4),
                     rs.getTimestamp(5),
-                    rs.getBoolean(6));
+                    rs.getBoolean(6),
+                    rs.getInt(7));
         }
     }
 }

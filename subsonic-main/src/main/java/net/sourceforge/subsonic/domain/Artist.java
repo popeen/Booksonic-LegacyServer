@@ -32,17 +32,19 @@ public class Artist {
     private int albumCount;
     private Date lastScanned;
     private boolean present;
+    private Integer folderId;
 
     public Artist() {
     }
 
-    public Artist(int id, String name, String coverArtPath, int albumCount, Date lastScanned, boolean present) {
+    public Artist(int id, String name, String coverArtPath, int albumCount, Date lastScanned, boolean present, Integer folderId) {
         this.id = id;
         this.name = name;
         this.coverArtPath = coverArtPath;
         this.albumCount = albumCount;
         this.lastScanned = lastScanned;
         this.present = present;
+        this.folderId = folderId;
     }
 
     public int getId() {
@@ -91,5 +93,13 @@ public class Artist {
 
     public void setPresent(boolean present) {
         this.present = present;
+    }
+
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
+    }
+
+    public Integer getFolderId() {
+        return folderId;
     }
 }

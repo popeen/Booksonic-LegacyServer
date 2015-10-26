@@ -342,6 +342,9 @@ public class MediaScannerService {
         }
         boolean firstEncounter = !lastScanned.equals(artist.getLastScanned());
 
+        if (firstEncounter) {
+            artist.setFolderId(musicFolder.getId());
+        }
         Integer n = albumCount.get(artist.getName());
         artist.setAlbumCount(n == null ? 0 : n);
 
