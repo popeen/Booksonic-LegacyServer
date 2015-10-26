@@ -591,6 +591,7 @@ public class RESTController extends MultiActionController {
         jaxbAlbum.setYear(album.getYear());
         jaxbAlbum.setGenre(album.getGenre());
         jaxbAlbum.setDescription(album.getDescription());
+        jaxbAlbum.setReader(album.getReader());
         return jaxbAlbum;
     }
 
@@ -698,13 +699,16 @@ public class RESTController extends MultiActionController {
         }
         
         String desc = "noInfo";
+        String reader = "";
 		try{
 			String fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); 
 			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
+			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); 
 		} catch(Exception e){}
 		
         Response res = createResponse();
         result.setDescription(desc);
+        result.setReader(reader);
         res.setAlbum(result);
         jaxbWriter.writeResponse(request, response, res);
     }
@@ -741,11 +745,14 @@ public class RESTController extends MultiActionController {
         directory.setStarred(jaxbWriter.convertDate(mediaFileDao.getMediaFileStarredDate(id, username)));
 		
 		String desc = "noInfo";
+		String reader = "";
 		try{
 			String fullPath = FilenameUtils.getFullPath(dir.getPath()+System.getProperty("file.separator")); 
 			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
+			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); 
 		} catch(Exception e){}
 		directory.setDescription(desc);
+		directory.setReader(reader);
 
         if (dir.isAlbum()) {
             directory.setAverageRating(ratingService.getAverageRating(dir));

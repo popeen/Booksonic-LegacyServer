@@ -44,6 +44,7 @@ public class Album {
     private Integer folderId;
     private String fullPath;
     private String description;
+    private String reader;
 
     public Album() {
     }
@@ -211,5 +212,13 @@ public class Album {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public void setReader(String reader) {
+        this.reader = reader;
+    }
+
+    public String getReader() {
+        return this.reader;
     }
 }
