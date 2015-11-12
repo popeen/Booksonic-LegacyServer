@@ -40,7 +40,7 @@
     <tr><td class="ruleTableHeader"><fmt:message key="help.license.title"/></td><td class="ruleTableCell">
         <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank"><img style="float:right;margin-left: 10px" alt="GPL 3.0" src="<c:url value="/icons/default_light/gpl.png"/>"></a>
         <fmt:message key="help.license.text"><fmt:param value="${model.brand}"/></fmt:message></td></tr>
-    <tr><td class="ruleTableHeader"><fmt:message key="help.homepage.title"/></td><td class="ruleTableCell"><a target="_blank" href="https://github.com/popeen/Popeens-Subsonic">github.com/popeen/Popeens-Subsonic</a></td></tr>
+    <tr><td class="ruleTableHeader"><fmt:message key="help.homepage.title"/></td><td class="ruleTableCell"><a target="_blank" href="https://booksonic.org">booksonic.org</a></td></tr>
 </table>
 
 <p></p>
