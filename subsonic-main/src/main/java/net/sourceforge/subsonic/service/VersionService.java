@@ -69,7 +69,7 @@ public class VersionService {
     /**
      * URL from which to fetch latest versions.
      */
-    private static final String VERSION_URL = "http://ptjwebben.se/booksonic/versions.php";
+    private static final String VERSION_URL = "http://booksonic.org/versions";
 
     public void init() {
         ServiceLocator.setVersionService(this);
