@@ -20,16 +20,16 @@
         <table>
         <tr>
             <td colspan="2" align="left" style="padding-bottom:10px">
-                <img src="<spring:theme code="logoImage"/>" alt="">
+                <img src="<spring:theme code="logoImageLight"/>" alt="">
             </td>
         </tr>
         <tr>
-            <td align="left" style="padding-right:10px"><fmt:message key="login.username"/></td>
+            <td align="left" style="padding-right:10px" class="light"><fmt:message key="login.username"/></td>
             <td align="left"><input type="text" id="j_username" name="j_username" style="width:12em" tabindex="1"></td>
         </tr>
 
         <tr>
-            <td align="left" style="padding-bottom:10px"><fmt:message key="login.password"/></td>
+            <td align="left" style="padding-bottom:10px" class="light"><fmt:message key="login.password"/></td>
             <td align="left" style="padding-bottom:10px"><input type="password" name="j_password" style="width:12em" tabindex="2"></td>
         </tr>
 
@@ -42,11 +42,11 @@
         </tr>
             <tr>
                 <td></td>
-                <td align="left" class="detail"><a href="recover.view"><fmt:message key="login.recover"/></a></td>
+                <td align="left" class="detail"><a href="recover.view" class="light"><fmt:message key="login.recover"/></a></td>
             </tr>
             
             <c:if test="${model.logout}">
-                <tr><td colspan="2" style="padding-top:10px"><b><fmt:message key="login.logout"/></b></td></tr>
+                <tr><td colspan="2" style="padding-top:10px" class="light"><b><fmt:message key="login.logout"/></b></td></tr>
             </c:if>
             <c:if test="${model.error}">
                 <tr><td colspan="2" style="padding-top:10px"><span class="warning"><fmt:message key="login.error"/></span></td></tr>

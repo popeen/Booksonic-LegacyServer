@@ -59,7 +59,7 @@
 <a name="top"></a>
 
 <div style="padding-bottom:1.5em">
-    <a href="help.view?" target="main"><img src="<spring:theme code="logoImage"/>" title="<fmt:message key="top.help"/>" alt=""></a>
+    <a href="help.view?" target="main"><img src="<spring:theme code="logoImageLight"/>" title="<fmt:message key="top.help"/>" alt=""></a>
 </div>
 
 <c:if test="${fn:length(model.musicFolders) > 1}">
@@ -119,7 +119,7 @@
     <c:forEach items="${model.radios}" var="radio">
         <p class="dense" style="padding-left: 2px">
             <a target="hidden" href="${radio.streamUrl}">
-                <img src="<spring:theme code="playImage"/>" alt="<fmt:message key="common.play"/>" title="<fmt:message key="common.play"/>"></a>
+                <img src="<spring:theme code="playImageLight"/>" alt="<fmt:message key="common.play"/>" title="<fmt:message key="common.play"/>"></a>
             <span style="vertical-align: middle">
                 <c:choose>
                 <c:when test="${empty radio.homepageUrl}">

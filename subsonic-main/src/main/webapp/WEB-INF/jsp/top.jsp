@@ -72,41 +72,41 @@
 <table style="margin:0;padding-top:5px">
     <tr>
         <td style="padding-right:4.5em;">
-            <img id="show-left-frame" src="<spring:theme code="viewAsListImage"/>" onclick="showLeftFrame()" alt="" style="display:${model.showSideBar ? 'none' : 'inline'};cursor:pointer">
-            <img id="hide-left-frame" src="<spring:theme code="viewAsListImage"/>" onclick="hideLeftFrame()" alt="" style="display:${model.showSideBar ? 'inline' : 'none'};cursor:pointer">
+            <img id="show-left-frame" src="<spring:theme code="viewAsListImageLight"/>" onclick="showLeftFrame()" alt="" style="display:${model.showSideBar ? 'none' : 'inline'};cursor:pointer">
+            <img id="hide-left-frame" src="<spring:theme code="viewAsListImageLight"/>" onclick="hideLeftFrame()" alt="" style="display:${model.showSideBar ? 'inline' : 'none'};cursor:pointer">
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="home.view?" target="main"><img src="<spring:theme code="homeImage"/>" title="${home}" alt="${home}"></a>
+            <a href="home.view?" target="main"><img src="<spring:theme code="homeImageLight"/>" title="${home}" alt="${home}"></a>
             <div class="topHeader"><a href="home.view?" target="main">${home}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="nowPlaying.view?" target="main"><img src="<spring:theme code="nowPlayingImage"/>" title="${nowPlaying}" alt="${nowPlaying}"></a>
+            <a href="nowPlaying.view?" target="main"><img src="<spring:theme code="nowPlayingImageLight"/>" title="${nowPlaying}" alt="${nowPlaying}"></a>
             <div class="topHeader"><a href="nowPlaying.view?" target="main">${nowPlaying}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="starred.view?" target="main"><img src="<spring:theme code="starredImage"/>" title="${starred}" alt="${starred}"></a>
+            <a href="starred.view?" target="main"><img src="<spring:theme code="starredImageLight"/>" title="${starred}" alt="${starred}"></a>
             <div class="topHeader"><a href="starred.view?" target="main">${starred}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="playlists.view?" target="main"><img src="<spring:theme code="playlistImage"/>" title="${playlists}" alt="${playlists}"></a>
+            <a href="playlists.view?" target="main"><img src="<spring:theme code="playlistImageLight"/>" title="${playlists}" alt="${playlists}"></a>
             <div class="topHeader"><a href="playlists.view?" target="main">${playlists}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="podcastChannels.view?" target="main"><img src="<spring:theme code="podcastLargeImage"/>" title="${podcast}" alt="${podcast}"></a>
+            <a href="podcastChannels.view?" target="main"><img src="<spring:theme code="podcastLargeImageLight"/>" title="${podcast}" alt="${podcast}"></a>
             <div class="topHeader"><a href="podcastChannels.view?" target="main">${podcast}</a></div>
         </td>
         <c:if test="${model.user.settingsRole}">
             <td style="min-width:4em;padding-right:2em;text-align: center">
-                <a href="settings.view?" target="main"><img src="<spring:theme code="settingsImage"/>" title="${settings}" alt="${settings}"></a>
+                <a href="settings.view?" target="main"><img src="<spring:theme code="settingsImageLight"/>" title="${settings}" alt="${settings}"></a>
                 <div class="topHeader"><a href="settings.view?" target="main">${settings}</a></div>
             </td>
         </c:if>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="more.view?" target="main"><img src="<spring:theme code="moreImage"/>" title="${more}" alt="${more}"></a>
+            <a href="more.view?" target="main"><img src="<spring:theme code="moreImageLight"/>" title="${more}" alt="${more}"></a>
             <div class="topHeader"><a href="more.view?" target="main">${more}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="help.view?" target="main"><img src="<spring:theme code="helpImage"/>" title="${help}" alt="${help}"></a>
+            <a href="help.view?" target="main"><img src="<spring:theme code="helpImageLight"/>" title="${help}" alt="${help}"></a>
             <div class="topHeader"><a href="help.view?" target="main">${help}</a></div>
         </td>
 
@@ -114,7 +114,7 @@
             <form method="post" action="search.view" target="main" name="searchForm">
                 <td><input type="text" name="query" id="query" size="28" placeholder="${search}" onclick="select();"
                            onkeyup="triggerInstantSearch();"></td>
-                <td><a href="javascript:document.searchForm.submit()"><img src="<spring:theme code="searchImage"/>" alt="${search}" title="${search}"></a></td>
+                <td><a href="javascript:document.searchForm.submit()"><img src="<spring:theme code="searchImageLight"/>" alt="${search}" title="${search}"></a></td>
             </form>
         </td>
 

@@ -167,7 +167,7 @@ public class Logger {
         try {
             getPrintWriter().println(entry);
         } catch (IOException x) {
-            System.err.println("Failed to write to subsonic.log. " + x);
+            System.err.println("Failed to write to booksonic.log. " + x);
         }
         entries.add(entry);
     }
@@ -181,7 +181,7 @@ public class Logger {
 
     public static File getLogFile() {
         File subsonicHome = SettingsService.getSubsonicHome();
-        return new File(subsonicHome, "subsonic.log");
+        return new File(subsonicHome, "booksonic.log");
     }
 
     /**

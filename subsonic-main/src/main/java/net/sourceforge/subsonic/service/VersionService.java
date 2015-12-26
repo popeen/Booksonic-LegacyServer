@@ -84,9 +84,9 @@ public class VersionService {
         if (localVersion == null) {
             try {
                 localVersion = new Version(readLineFromResource("/version.txt"));
-                LOG.info("Resolved local Subsonic version to: " + localVersion);
+                LOG.info("Resolved local Booksonic version to: " + localVersion);
             } catch (Exception x) {
-                LOG.warn("Failed to resolve local Subsonic version.", x);
+                LOG.warn("Failed to resolve local Booksonic version.", x);
             }
         }
         return localVersion;
@@ -126,7 +126,7 @@ public class VersionService {
                 String date = readLineFromResource("/build_date.txt");
                 localBuildDate = DATE_FORMAT.parse(date);
             } catch (Exception x) {
-                LOG.warn("Failed to resolve local Subsonic build date.", x);
+                LOG.warn("Failed to resolve local Booksonic build date.", x);
             }
         }
         return localBuildDate;
@@ -143,7 +143,7 @@ public class VersionService {
             try {
                 localBuildNumber = readLineFromResource("/build_number.txt");
             } catch (Exception x) {
-                LOG.warn("Failed to resolve local Subsonic build number.", x);
+                LOG.warn("Failed to resolve local Booksonic build number.", x);
             }
         }
         return localBuildNumber;
@@ -218,7 +218,7 @@ public class VersionService {
                 lastVersionFetched = now;
                 readLatestVersion();
             } catch (Exception x) {
-                LOG.warn("Failed to resolve latest Subsonic version.", x);
+                LOG.warn("Failed to resolve latest Booksonic version.", x);
             }
         }
     }
@@ -245,8 +245,8 @@ public class VersionService {
         }
 
         BufferedReader reader = new BufferedReader(new StringReader(content));
-        Pattern finalPattern = Pattern.compile("SUBSONIC_FULL_VERSION_BEGIN(.*)SUBSONIC_FULL_VERSION_END");
-        Pattern betaPattern = Pattern.compile("SUBSONIC_BETA_VERSION_BEGIN(.*)SUBSONIC_BETA_VERSION_END");
+        Pattern finalPattern = Pattern.compile("BOOKSONIC_FULL_VERSION_BEGIN(.*)BOOKSONIC_FULL_VERSION_END");
+        Pattern betaPattern = Pattern.compile("BOOKSONIC_BETA_VERSION_BEGIN(.*)BOOKSONIC_BETA_VERSION_END");
 
         try {
             String line = reader.readLine();
@@ -254,12 +254,12 @@ public class VersionService {
                 Matcher finalMatcher = finalPattern.matcher(line);
                 if (finalMatcher.find()) {
                     latestFinalVersion = new Version(finalMatcher.group(1));
-                    LOG.info("Resolved latest Subsonic final version to: " + latestFinalVersion);
+                    LOG.info("Resolved latest Booksonic final version to: " + latestFinalVersion);
                 }
                 Matcher betaMatcher = betaPattern.matcher(line);
                 if (betaMatcher.find()) {
                     latestBetaVersion = new Version(betaMatcher.group(1));
-                    LOG.info("Resolved latest Subsonic beta version to: " + latestBetaVersion);
+                    LOG.info("Resolved latest Booksonic beta version to: " + latestBetaVersion);
                 }
                 line = reader.readLine();
             }

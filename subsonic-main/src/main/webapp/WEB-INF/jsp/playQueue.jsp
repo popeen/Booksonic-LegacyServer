@@ -628,10 +628,10 @@
 
             <c:if test="${model.player.web}">
                 <td><span class="header">
-                    <img src="<spring:theme code="backImage"/>" alt="" onclick="onPrevious()" style="cursor:pointer"></span>
+                    <img src="<spring:theme code="backImageLight"/>" alt="" onclick="onPrevious()" style="cursor:pointer"></span>
                 </td>
                 <td><span class="header">
-                    <img src="<spring:theme code="forwardImage"/>" alt="" onclick="onNext(false)" style="cursor:pointer"></span>
+                    <img src="<spring:theme code="forwardImageLight"/>" alt="" onclick="onNext(false)" style="cursor:pointer"></span>
                 </td>
             </c:if>
 

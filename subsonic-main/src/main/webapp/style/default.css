@@ -8,17 +8,26 @@
  */
 
 /* The primary background color (light gray). */
-.bgcolor1, table.music tr:nth-of-type(even) {
-    background-color: #F9F9F9;
+.bgcolor1{
+    background-color: #bad7e3;
 }
 
+table.music tr:nth-of-type(even) {
+	background-color: #ccc;
+}
+table.music tr:nth-of-type(odd) {
+	background-color: #4aacd4;
+}
 /* The secondary background color (darker gray). */
-.bgcolor2, .ruleTableHeader, .log, table.music tr:nth-of-type(odd) {
-    background-color: #F1F1F1
+.bgcolor2{
+    background-color: #3284a8;
+}
+ .ruleTableHeader, .log{
+    background-color: #ccc;
 }
 
 .headerSelected {
-    border-bottom: 3px solid darkorange;
+    border-bottom: 3px solid #3284a8;
 }
 
 /* Put stuff here if you need to customize any of the frames. */
@@ -60,15 +69,20 @@ b, tr {
     color: #333333;
 }
 
-/* Link color */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #006699
+a:link, a:active, a:visited, a:link *, a:active *, a:visited *, td .forward a{
+    color: #666;
 }
-
+/* Link color */
+.topHeader a, .detail a, .forward a, .dense, .dense a, td .header a, #toggleRepeat, .bgcolor2 a, .playlistframe h2, .detail label, .light, td h2, #similarArtists a, #artistBio a, .detail{
+    color: #bad7e3;
+}
+.bgcolor1 a {
+	color: #666;
+}
 /* Link hover color */
 a:hover, a:hover * {
     text-decoration: underline;
-    color: #DD6900
+    //color: #DD6900
 }
 
 /* Color for warning messages. */
@@ -243,12 +257,19 @@ img {
 .coverart {
     background-color: white;
     color: #323232;
-    border-radius:2px;
+    border-radius:10px;
 }
 
-.coverart div a img{
+.albumThumb .coverart div a img{
 	width:160px;
 	height:160px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+
+.fit .albumThumb .coverart div a img{
+	width:300px;
+	height:300px;
 }
 
 .coverart .caption1 {
@@ -292,7 +313,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.5);
+    background: rgba(18, 92, 124, 1);
     border-radius: 6px;
 }
 
@@ -337,7 +358,7 @@ img {
 }
 
 .forward {
-    background-image:url("../icons/default_light/forward.png");
+    background-image:url("../icons/default_light/forward_light.png");
 }
 
 .albumComment {
