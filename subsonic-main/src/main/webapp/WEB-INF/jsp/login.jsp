@@ -42,7 +42,7 @@
         </tr>
             <tr>
                 <td></td>
-                <td align="left" class="detail"><a href="recover.view" class="light"><fmt:message key="login.recover"/></a></td>
+                <td align="left" class="detail"><a href="recover.view" style="color: #bad7e3"><fmt:message key="login.recover"/></a></td>
             </tr>
             
             <c:if test="${model.logout}">

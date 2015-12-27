@@ -95,11 +95,11 @@ public class UserChartController extends AbstractChartController {
         JFreeChart chart = ChartFactory.createBarChart(null, null, null, dataset, PlotOrientation.HORIZONTAL, false, false, false);
 
         CategoryPlot plot = chart.getCategoryPlot();
-        Paint background = new GradientPaint(0, 0, Color.lightGray, 0, IMAGE_MIN_HEIGHT, Color.white);
+        Paint background = new GradientPaint(0, 0, new Color(0xBAD7E3), 0, IMAGE_MIN_HEIGHT, new Color(0xBAD7E3));
         plot.setBackgroundPaint(background);
-        plot.setDomainGridlinePaint(Color.white);
+        plot.setDomainGridlinePaint(new Color(0xBAD7E3));
         plot.setDomainGridlinesVisible(true);
-        plot.setRangeGridlinePaint(Color.white);
+        plot.setRangeGridlinePaint(new Color(0xBAD7E3));
         plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_LEFT);
 
         LogarithmicAxis rangeAxis = new LogarithmicAxis(null);
@@ -113,8 +113,8 @@ public class UserChartController extends AbstractChartController {
 
         // Set up gradient paint for series.
         GradientPaint gp0 = new GradientPaint(
-                0.0f, 0.0f, Color.blue,
-                0.0f, 0.0f, new Color(0, 0, 64)
+                0.0f, 0.0f, new Color(0x3284A8),
+                0.0f, 0.0f, new Color(0x3284A8)
         );
         renderer.setSeriesPaint(0, gp0);
 

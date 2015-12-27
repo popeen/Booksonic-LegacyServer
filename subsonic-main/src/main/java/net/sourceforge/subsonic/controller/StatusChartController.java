@@ -113,11 +113,11 @@ public class StatusChartController extends AbstractChartController {
         XYPlot plot = (XYPlot) chart.getPlot();
 
         plot.setRangeAxisLocation(AxisLocation.BOTTOM_OR_RIGHT);
-        Paint background = new GradientPaint(0, 0, Color.lightGray, 0, IMAGE_HEIGHT, Color.white);
+        Paint background = new GradientPaint(0, 0, new Color(0xBAD7E3), 0, IMAGE_HEIGHT, new Color(0xBAD7E3));
         plot.setBackgroundPaint(background);
 
         XYItemRenderer renderer = plot.getRendererForDataset(dataset);
-        renderer.setSeriesPaint(0, Color.blue.darker());
+        renderer.setSeriesPaint(0, new Color(0x3284A8));
         renderer.setSeriesStroke(0, new BasicStroke(2f));
 
         // Set theme-specific colors.

@@ -73,7 +73,7 @@ a:link, a:active, a:visited, a:link *, a:active *, a:visited *, td .forward a{
     color: #666;
 }
 /* Link color */
-.topHeader a, .detail a, .forward a, .dense, .dense a, td .header a, #toggleRepeat, .bgcolor2 a, .playlistframe h2, .detail label, .light, td h2, #similarArtists a, #artistBio a, .detail{
+.topHeader a, .detail a, .forward a, .dense, .dense a, td .header a, #toggleRepeat, .bgcolor2 a, .playlistframe h2, .detail label, .light, td h2, #similarArtists a, #artistBio a, .leftframe .detail{
     color: #bad7e3;
 }
 .bgcolor1 a {
