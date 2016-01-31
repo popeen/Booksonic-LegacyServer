@@ -53,7 +53,7 @@ public class Schema46 extends Schema {
                              "step3 varchar)");
 
             template.execute("insert into transcoding2(name, source_formats, target_format, step1) values('mp3 audio'," +
-                    "'ogg oga aac m4a flac wav wma aif aiff ape mpc shn', 'mp3', " +
+                    "'ogg oga aac m4a m4b flac wav wma aif aiff ape mpc shn', 'mp3', " +
                     "'ffmpeg -i %s -ab %bk -v 0 -f mp3 -')");
 
             template.execute("insert into transcoding2(name, source_formats, target_format, step1) values('flv/h264 video', " +

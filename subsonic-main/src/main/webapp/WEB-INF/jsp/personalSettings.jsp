@@ -45,19 +45,6 @@
         </tr>
 
         <tr>
-            <td><fmt:message key="personalsettings.theme"/></td>
-            <td>
-                <form:select path="themeIndex" cssStyle="width:15em">
-                    <form:option value="-1" label="${defaultTitle}"/>
-                    <c:forEach items="${command.themes}" var="theme" varStatus="loopStatus">
-                        <form:option value="${loopStatus.count - 1}" label="${theme.name}"/>
-                    </c:forEach>
-                </form:select>
-                <c:import url="helpToolTip.jsp"><c:param name="topic" value="theme"/></c:import>
-            </td>
-        </tr>
-
-        <tr>
             <td><fmt:message key="personalsettings.albumlist"/></td>
             <td>
                 <form:select path="albumListId" cssStyle="width:15em">

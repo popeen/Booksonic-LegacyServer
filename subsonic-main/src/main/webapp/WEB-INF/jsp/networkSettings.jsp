@@ -65,33 +65,6 @@
         </p>
     </div>
 
-    <p style="padding-top:1em"><form:checkbox id="urlRedirectionEnabled" path="urlRedirectionEnabled"
-                                              onclick="enableUrlRedirectionFields()"/>
-        <label for="urlRedirectionEnabled"><fmt:message key="networksettings.urlredirectionenabled"/></label>
-    </p>
-
-    <div style="padding-left:2em">
-
-        <p>
-            <form:radiobutton id="urlRedirectTypeNormal" path="urlRedirectType" value="NORMAL" onclick="enableUrlRedirectionFields()"/>
-            <label for="urlRedirectTypeNormal"><fmt:message key="networksettings.normalurl"/></label>
-            http://<form:input id="urlRedirectFrom" path="urlRedirectFrom" size="16" cssStyle="margin-left:0.25em"/>.subsonic.org
-        </p>
-
-        <p>
-            <form:radiobutton id="urlRedirectTypeCustom" path="urlRedirectType" value="CUSTOM" onclick="enableUrlRedirectionFields()"/>
-            <label for="urlRedirectTypeCustom"><fmt:message key="networksettings.customurl"/></label>
-            <form:input id="urlRedirectCustomUrl" path="urlRedirectCustomUrl" size="50" cssStyle="margin-left:0.5em"/>
-        </p>
-        <p class="detail">
-            <fmt:message key="networksettings.status"/>
-            <span id="urlRedirectionStatus" style="margin-left:0.25em"></span>
-            <span id="urlRedirectionTestStatus" style="margin-left:0.25em"></span>
-        </p>
-    </div>
-
-    <c:set var="licenseInfo" value="${command.licenseInfo}"/>
-    <%@ include file="licenseNotice.jsp" %>
 
     <p style="padding-top:1em">
         <input type="submit" value="<fmt:message key="common.save"/>" style="margin-right:0.3em">

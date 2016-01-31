@@ -88,10 +88,6 @@
             <div class="topHeader"><a href="starred.view?" target="main">${starred}</a></div>
         </td>
         <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="playlists.view?" target="main"><img src="<spring:theme code="playlistImageLight"/>" title="${playlists}" alt="${playlists}"></a>
-            <div class="topHeader"><a href="playlists.view?" target="main">${playlists}</a></div>
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
             <a href="podcastChannels.view?" target="main"><img src="<spring:theme code="podcastLargeImageLight"/>" title="${podcast}" alt="${podcast}"></a>
             <div class="topHeader"><a href="podcastChannels.view?" target="main">${podcast}</a></div>
         </td>

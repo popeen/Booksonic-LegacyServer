@@ -24,7 +24,7 @@
         <th style="padding-left:1em"><fmt:message key="common.delete"/></th>
     </tr>
 
-    <c:forEach items="${model.transcodings}" var="transcoding">
+    <c:forEach items="${model.transcodings}" var="transcoding" end="0">
         <tr>
             <td><input style="font-family:monospace" type="text" name="name[${transcoding.id}]" size="10" value="${transcoding.name}"/></td>
             <td><input style="font-family:monospace" type="text" name="sourceFormats[${transcoding.id}]" size="36" value="${transcoding.sourceFormats}"/></td>

@@ -71,9 +71,5 @@
             </c:otherwise>
         </c:choose>
 
-        <c:if test="${not empty model.albums}">
-            <td style="padding-left: 2em">
-                <a href="javascript:playShuffle()"><img src="<spring:theme code="shuffleImage"/>" alt="">&nbsp;<fmt:message key="home.shuffle"/></a></td>
-        </c:if>
     </tr>
 </table>

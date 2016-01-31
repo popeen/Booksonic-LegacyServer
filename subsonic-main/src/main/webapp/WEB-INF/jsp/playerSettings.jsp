@@ -134,20 +134,6 @@
         </tr>
     </table>
 
-    <c:if test="${not empty command.allTranscodings}">
-        <table class="indent">
-            <tr><td><b><fmt:message key="playersettings.transcodings"/></b></td></tr>
-            <c:forEach items="${command.allTranscodings}" var="transcoding" varStatus="loopStatus">
-                <c:if test="${loopStatus.count % 3 == 1}"><tr></c:if>
-                <td style="padding-right:2em">
-                    <form:checkbox path="activeTranscodingIds" id="transcoding${transcoding.id}" value="${transcoding.id}" cssClass="checkbox"/>
-                    <label for="transcoding${transcoding.id}">${transcoding.name}</label>
-                </td>
-                <c:if test="${loopStatus.count % 3 == 0 or loopStatus.count eq fn:length(command.allTranscodings)}"></tr></c:if>
-            </c:forEach>
-        </table>
-    </c:if>
-
     <input type="submit" value="<fmt:message key="common.save"/>" style="margin-top:1em;margin-right:0.3em">
     <input type="button" value="<fmt:message key="common.cancel"/>" style="margin-top:1em" onclick="location.href='nowPlaying.view'">
 </form:form>

@@ -29,26 +29,10 @@
         </tr>
 
         <tr>
-            <td><fmt:message key="generalsettings.videomask"/></td>
-            <td>
-                <form:input path="videoFileTypes" size="70"/>
-                <c:import url="helpToolTip.jsp"><c:param name="topic" value="videomask"/></c:import>
-            </td>
-        </tr>
-
-        <tr>
             <td><fmt:message key="generalsettings.coverartmask"/></td>
             <td>
                 <form:input path="coverArtFileTypes" size="70"/>
                 <c:import url="helpToolTip.jsp"><c:param name="topic" value="coverartmask"/></c:import>
-            </td>
-        </tr>
-
-        <tr>
-            <td><fmt:message key="generalsettings.playlistfolder"/></td>
-            <td>
-                <form:input path="playlistFolder" size="70"/>
-                <c:import url="helpToolTip.jsp"><c:param name="topic" value="playlistfolder"/></c:import>
             </td>
         </tr>
 
@@ -89,18 +73,6 @@
                     </c:forEach>
                 </form:select>
                 <c:import url="helpToolTip.jsp"><c:param name="topic" value="language"/></c:import>
-            </td>
-        </tr>
-
-        <tr>
-            <td><fmt:message key="generalsettings.theme"/></td>
-            <td>
-                <form:select path="themeIndex" cssStyle="width:15em">
-                    <c:forEach items="${command.themes}" var="theme" varStatus="loopStatus">
-                        <form:option value="${loopStatus.count - 1}" label="${theme.name}"/>
-                    </c:forEach>
-                </form:select>
-                <c:import url="helpToolTip.jsp"><c:param name="topic" value="theme"/></c:import>
             </td>
         </tr>
 
