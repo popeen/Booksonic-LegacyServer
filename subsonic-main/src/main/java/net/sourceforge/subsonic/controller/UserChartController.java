@@ -36,6 +36,7 @@ import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.web.servlet.ModelAndView;
@@ -92,9 +93,11 @@ public class UserChartController extends AbstractChartController {
     }
 
     private JFreeChart createChart(CategoryDataset dataset, HttpServletRequest request) {
-        JFreeChart chart = ChartFactory.createBarChart(null, null, null, dataset, PlotOrientation.HORIZONTAL, false, false, false);
+        
+    	JFreeChart chart = ChartFactory.createBarChart(null, null, null, dataset, PlotOrientation.HORIZONTAL, false, false, false);
 
         CategoryPlot plot = chart.getCategoryPlot();
+        ((BarRenderer) plot.getRenderer()).setBarPainter(new StandardBarPainter());
         Paint background = new GradientPaint(0, 0, new Color(0xBAD7E3), 0, IMAGE_MIN_HEIGHT, new Color(0xBAD7E3));
         plot.setBackgroundPaint(background);
         plot.setDomainGridlinePaint(new Color(0xBAD7E3));
@@ -110,7 +113,10 @@ public class UserChartController extends AbstractChartController {
         // Disable bar outlines.
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
         renderer.setDrawBarOutline(false);
-
+        
+        // Disable bar shadows
+        renderer.setShadowVisible(false);
+        
         // Set up gradient paint for series.
         GradientPaint gp0 = new GradientPaint(
                 0.0f, 0.0f, new Color(0x3284A8),
