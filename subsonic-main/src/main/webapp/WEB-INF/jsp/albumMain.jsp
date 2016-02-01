@@ -278,7 +278,7 @@
 
 <c:forEach items="${model.files}" var="song" varStatus="loopStatus" end="0">
 	<%--@elvariable id="song" type="net.sourceforge.subsonic.domain.MediaFile"--%>
-	<div style="background: #ccc; padding: 5px;">${fn:escapeXml(song.description)}<br/><b>Narrated by:</b> ${fn:escapeXml(song.narrator)}</div>
+	<div style="background: #6dc1e3; color: #424242; padding: 5px;">${fn:escapeXml(song.description)}<br/><b><fmt:message key="main.narrated"/>:</b> ${fn:escapeXml(song.narrator)}</div>
 </c:forEach>
 
 <table cellpadding="0" style="width:100%;padding-top: 0.3em;padding-bottom: 1em">
