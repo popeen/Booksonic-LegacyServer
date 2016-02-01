@@ -198,7 +198,6 @@
             <c:if test="${model.user.streamRole}">
                 <c:if test="${needSep}">|</c:if>
                 <span class="header"><a href="javascript:playAll()"><fmt:message key="main.playall"/></a></span> |
-                <span class="header"><a href="javascript:playRandom()"><fmt:message key="main.playrandom"/></a></span> |
                 <span class="header"><a href="javascript:addAll()"><fmt:message key="main.addall"/></a></span>
                 <c:set var="needSep" value="true"/>
             </c:if>
@@ -251,25 +250,9 @@
             <sub:param name="search" value="\"${model.album}\""/>
             <sub:param name="go" value="Go"/>
         </sub:url>
-        <sub:url value="allmusic.view" var="allmusicUrl">
-            <sub:param name="album" value="${model.album}"/>
-        </sub:url>
-        <sub:url value="http://www.last.fm/search" var="lastFmUrl" encoding="UTF-8">
-            <sub:param name="q" value="\"${model.artist}\" \"${model.album}\""/>
-            <sub:param name="type" value="album"/>
-        </sub:url>
+       
         <span class="header"><fmt:message key="top.search"/> <a target="_blank" href="${googleUrl}">Google</a></span> |
-        <span class="header"><a target="_blank" href="${wikipediaUrl}">Wikipedia</a></span> |
-        <span class="header"><a target="_blank" href="${allmusicUrl}">allmusic</a></span> |
-        <span class="header"><a target="_blank" href="${lastFmUrl}">Last.fm</a></span> |
-        <span class="header">
-            <fmt:message key="main.playcount"><fmt:param value="${model.dir.playCount}"/></fmt:message>
-            <c:if test="${not empty model.dir.lastPlayed}">
-                <fmt:message key="main.lastplayed">
-                    <fmt:param><fmt:formatDate type="date" dateStyle="long" value="${model.dir.lastPlayed}"/></fmt:param>
-                </fmt:message>
-            </c:if>
-        </span>
+        <span class="header"><a target="_blank" href="${wikipediaUrl}">Wikipedia</a></span>
 
     </c:if>
 </div>
@@ -393,25 +376,6 @@
                 </c:import>
             </div>
         </td>
-        <c:if test="${model.showAd}">
-            <td style="vertical-align:top;width:160px" rowspan="3">
-                <h2 style="padding-bottom: 1em">Subsonic Premium</h2>
-                <p style="font-size: 90%">
-                    Upgrade to Subsonic Premium and get:
-                </p>
-                <div style="font-size: 90%;padding-bottom: 1em">
-                    <p><a href="http://subsonic.org/pages/apps.jsp" target="_blank">Apps</a> for Android, iPhone, Windows Phone ++.</p>
-                    <p>Video streaming.</p>
-                    <p>Chromecast and Sonos support.</p>
-                    <p>DLNA/UPnP support</p>
-                    <p>Share on Facebook, Twitter, Google+</p>
-                    <p>No ads.</p>
-                    <p>Your personal server address: <em>you</em>.subsonic.org</p>
-                    <p>Podcast receiver.</p>
-                </div>
-                <p class="forward" style="white-space: nowrap"><a href="http://subsonic.org/pages/premium.jsp" target="_blank">Get Subsonic Premium</a></p>
-            </td>
-        </c:if>
     </tr>
 
     <tr>
@@ -426,7 +390,6 @@
                 <c:if test="${model.user.shareRole}">
                     <option id="share">&nbsp;&nbsp;<fmt:message key="main.more.share"/></option>
                 </c:if>
-                <option id="appendPlaylist">&nbsp;&nbsp;<fmt:message key="playlist.append"/></option>
             </select>
         </td>
     </tr>
