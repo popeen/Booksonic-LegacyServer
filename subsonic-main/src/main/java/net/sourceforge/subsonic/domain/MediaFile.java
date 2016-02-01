@@ -19,6 +19,11 @@
 package net.sourceforge.subsonic.domain;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 
@@ -105,10 +110,30 @@ public class MediaFile {
         this.present = present;
         this.version = version;
     }
-
+    private String readFile(String path, Charset encoding) throws IOException {
+       byte[] encoded = Files.readAllBytes(Paths.get(path));
+       return new String(encoded, encoding);
+    }		
+    
     public MediaFile() {
     }
+    
+    public String getDescription(){
+    	try{
+    		return readFile(path.substring(0,path.lastIndexOf(File.separator))+File.separator+"desc.txt", StandardCharsets.UTF_8);
+    	}catch(Exception e){
+    		return "No description availiable";
+    	}
+    }
 
+	public String getNarrator(){
+		try{
+			return readFile(path.substring(0,path.lastIndexOf(File.separator))+File.separator+"reader.txt", StandardCharsets.UTF_8);
+		}catch(Exception e){
+			return "Unknown";
+		}
+	}
+    
     public int getId() {
         return id;
     }
