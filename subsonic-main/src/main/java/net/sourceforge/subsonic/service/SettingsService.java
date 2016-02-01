@@ -209,9 +209,9 @@ public class SettingsService {
     private static final String DEFAULT_MEDIA_LIBRARY_STATISTICS = "0 0 0 0 0";
     private static final String DEFAULT_TRIAL_EXPIRES = null;
     private static final boolean DEFAULT_DLNA_ENABLED = false;
-    private static final String DEFAULT_DLNA_SERVER_NAME = "Subsonic";
+    private static final String DEFAULT_DLNA_SERVER_NAME = "Booksonic";
     private static final boolean DEFAULT_SONOS_ENABLED = false;
-    private static final String DEFAULT_SONOS_SERVICE_NAME = "Subsonic";
+    private static final String DEFAULT_SONOS_SERVICE_NAME = "Booksonic";
     private static final int DEFAULT_SONOS_SERVICE_ID = 242;
 
     // Array of obsolete keys.  Used to clean property file.
