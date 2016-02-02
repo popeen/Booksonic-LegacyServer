@@ -18,6 +18,9 @@
  */
 package net.sourceforge.subsonic.controller;
 
+import static org.springframework.web.bind.ServletRequestUtils.getStringParameter;
+
+import java.io.File;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Date;
@@ -41,10 +44,9 @@ import org.subsonic.restapi.ObjectFactory;
 import org.subsonic.restapi.Response;
 import org.subsonic.restapi.ResponseStatus;
 
+import net.kakadua.KakaduaUtil;
 import net.sourceforge.subsonic.Logger;
 import net.sourceforge.subsonic.util.StringUtil;
-
-import static org.springframework.web.bind.ServletRequestUtils.getStringParameter;
 
 /**
  * @author Sindre Mehus
@@ -99,12 +101,28 @@ public class JAXBWriter {
     public String getRestProtocolVersion() {
         return restProtocolVersion;
     }
-
+    
+    public void updateVersionsFile(){
+        String current = "1.0.beta3";
+        String versionCheck = KakaduaUtil.http_get_contents("http://booksonic.org/versioncheck.php?server&v="+current);
+        KakaduaUtil.file_write("versionCheck", versionCheck);
+    }
+    
     public Response createResponse(boolean ok) {
         Response response = new ObjectFactory().createResponse();
         response.setStatus(ok ? ResponseStatus.OK : ResponseStatus.FAILED);
         response.setVersion(restProtocolVersion);
-        response.setBooksonic("true");
+       File versionsFile = new File("versions");
+        if(!versionsFile.exists()){
+        	updateVersionsFile();
+        }
+        if(versionsFile.lastModified() < System.currentTimeMillis()-3600000){
+        	updateVersionsFile();
+        }
+        String versionCheck = "up_to_date";
+        versionCheck = KakaduaUtil.file_read("versionCheck");
+        
+        response.setBooksonic(versionCheck.replace("\n", ""));
         return response;
     }
 

@@ -209,6 +209,12 @@ public class RESTController extends MultiActionController {
         Response res = createResponse();
         jaxbWriter.writeResponse(request, response, res);
     }
+    
+    @SuppressWarnings("UnusedDeclaration")
+    public void version(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	Response res = createResponse();
+    	jaxbWriter.writeResponse(request, response, res);
+    }
 
     @SuppressWarnings("UnusedDeclaration")
     public void getLicense(HttpServletRequest request, HttpServletResponse response) throws Exception {
