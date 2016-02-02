@@ -1,5 +1,8 @@
 # subsonic.nsi
 
+#Should hopefully avoid false detection by Avast!
+SetCompressor /SOLID lzma
+
 !include "WordFunc.nsh"
 !include "MUI.nsh"
 
