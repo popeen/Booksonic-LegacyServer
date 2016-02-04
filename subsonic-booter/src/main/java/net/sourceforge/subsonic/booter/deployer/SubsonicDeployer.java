@@ -29,7 +29,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
  * <li><code>subsonic.port</code> - The port Subsonic will listen to.  Default 4040.</li>
  * <li><code>subsonic.httpsPort</code> - The port Subsonic will listen to for HTTPS.  Default 0, which disables HTTPS.</li>
  * <li><code>booksonic.war</code> - Subsonic WAR file, or exploded directory.  Default "booksonic.war".</li>
- * <li><code>subsonic.createLinkFile</code> - If set to "true", a Subsonic.url file is created in the working directory.</li>
+ * <li><code>subsonic.createLinkFile</code> - If set to "true", a booksonic.url file is created in the working directory.</li>
  * <li><code>subsonic.ssl.keystore</code> - Path to an alternate SSL keystore.</li>
  * <li><code>subsonic.ssl.password</code> - Password of the alternate SSL keystore.</li>
  * </ul>
@@ -69,13 +69,13 @@ public class SubsonicDeployer implements SubsonicDeployerService {
         if ("true".equals(System.getProperty("subsonic.createLinkFile"))) {
             Writer writer = null;
             try {
-                writer = new FileWriter("subsonic.url");
+                writer = new FileWriter("booksonic.url");
                 writer.append("[InternetShortcut]");
                 writer.append(System.getProperty("line.separator"));
                 writer.append("URL=").append(getUrl());
                 writer.flush();
             } catch (Throwable x) {
-                System.err.println("Failed to create subsonic.url.");
+                System.err.println("Failed to create booksonic.url.");
                 x.printStackTrace();
             } finally {
                 if (writer != null) {

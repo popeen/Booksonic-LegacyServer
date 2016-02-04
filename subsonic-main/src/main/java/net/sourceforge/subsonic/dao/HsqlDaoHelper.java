@@ -109,7 +109,7 @@ public class HsqlDaoHelper implements DaoHelper {
         File subsonicHome = SettingsService.getSubsonicHome();
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.hsqldb.jdbcDriver");
-        ds.setUrl("jdbc:hsqldb:file:" + subsonicHome.getPath() + "/db/subsonic");
+        ds.setUrl("jdbc:hsqldb:file:" + subsonicHome.getPath() + "/db/booksonic");
         ds.setUsername("sa");
         ds.setPassword("");
 

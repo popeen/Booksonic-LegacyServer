@@ -190,7 +190,7 @@
                     proper authentication.  To use your own certificate you must put it in a Java keystore, then specify the
                     following Java system properties: <strong>subsonic.ssl.keystore</strong> (path to an alternate SSL keystore), and
                     <strong>subsonic.ssl.password</strong> (password of the alternate SSL keystore). On Windows, you can set these system
-                    properties in <strong>C:\Program Files (x86)\Subsonic\subsonic-service.exe.vmoptions</strong>. On Mac, you can
+                    properties in <strong>C:\Program Files (x86)\Subsonic\booksonic-service.exe.vmoptions</strong>. On Mac, you can
                     add them to <strong>/Applications/Subsonic.app/Contents/Info.plist</strong>.
                 </p>
             </section>

@@ -121,7 +121,7 @@ ${JAVA} -Xmx${SUBSONIC_MAX_MEMORY}m \
   -Dsubsonic.defaultPlaylistFolder=${SUBSONIC_DEFAULT_PLAYLIST_FOLDER} \
   -Djava.awt.headless=true \
   -verbose:gc \
-  -jar subsonic-booter-jar-with-dependencies.jar > ${LOG} 2>&1 &
+  -jar booksonic-booter-jar-with-dependencies.jar > ${LOG} 2>&1 &
 
 # Write pid to pidfile if it is defined.
 if [ $SUBSONIC_PIDFILE ]; then

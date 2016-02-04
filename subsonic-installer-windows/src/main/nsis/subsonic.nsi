@@ -51,8 +51,8 @@ Section "Subsonic"
   # Install for all users
   SetShellVarContext "all"
 
-  # Take backup of existing subsonic-service.exe.vmoptions
-  CopyFiles /SILENT $INSTDIR\subsonic-service.exe.vmoptions $TEMP\subsonic-service.exe.vmoptions
+  # Take backup of existing booksonic-service.exe.vmoptions
+  CopyFiles /SILENT $INSTDIR\booksonic-service.exe.vmoptions $TEMP\booksonic-service.exe.vmoptions
 
   # Silently uninstall existing version.
   ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
@@ -69,13 +69,13 @@ Section "Subsonic"
   SetOutPath $INSTDIR
 
   # Write files.
-  File ..\..\..\target\subsonic-agent.exe
-  File ..\..\..\target\subsonic-agent.exe.vmoptions
-  File ..\..\..\target\subsonic-agent-elevated.exe
-  File ..\..\..\target\subsonic-agent-elevated.exe.vmoptions
-  File ..\..\..\target\subsonic-service.exe
-  File ..\..\..\target\subsonic-service.exe.vmoptions
-  File ..\..\..\..\subsonic-booter\target\subsonic-booter-jar-with-dependencies.jar
+  File ..\..\..\target\booksonic-agent.exe
+  File ..\..\..\target\booksonic-agent.exe.vmoptions
+  File ..\..\..\target\booksonic-agent-elevated.exe
+  File ..\..\..\target\booksonic-agent-elevated.exe.vmoptions
+  File ..\..\..\target\booksonic-service.exe
+  File ..\..\..\target\booksonic-service.exe.vmoptions
+  File ..\..\..\..\subsonic-booter\target\booksonic-booter-jar-with-dependencies.jar
   File ..\..\..\..\subsonic-main\README.TXT
   File ..\..\..\..\subsonic-main\LICENSE.TXT
   File "..\..\..\..\subsonic-main\Getting Started.url"
@@ -93,9 +93,9 @@ Section "Subsonic"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic" "NoRepair" 1
   WriteUninstaller "uninstall.exe"
 
-  # Restore subsonic-service.exe.vmoptions
-  CopyFiles /SILENT  $TEMP\subsonic-service.exe.vmoptions $INSTDIR\subsonic-service.exe.vmoptions
-  Delete $TEMP\subsonic-service.exe.vmoptions
+  # Restore booksonic-service.exe.vmoptions
+  CopyFiles /SILENT  $TEMP\booksonic-service.exe.vmoptions $INSTDIR\booksonic-service.exe.vmoptions
+  Delete $TEMP\booksonic-service.exe.vmoptions
 
   # Write transcoding pack files.
   SetOutPath "c:\booksonic\transcode"
@@ -105,19 +105,19 @@ Section "Subsonic"
   # (Requires NSIS plugin found on http://nsis.sourceforge.net/NSIS_Simple_Firewall_Plugin to be installed
   # as NSIS_HOME/Plugins/SimpleFC.dll)
 
-  SimpleFC::AdvAddRule "Booksonic Service (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Booksonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Booksonic Service (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Booksonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Booksonic Agent (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Booksonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Booksonic Agent (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Booksonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Booksonic Agent Elevated (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Booksonic Agent Elevated (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Service (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\booksonic-service.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Service (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\booksonic-service.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\booksonic-agent.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\booksonic-agent.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent Elevated (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\booksonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent Elevated (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\booksonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
 
   # Install and start service.
-  ExecWait '"$INSTDIR\subsonic-service.exe" -install'
-  ExecWait '"$INSTDIR\subsonic-service.exe" -start'
+  ExecWait '"$INSTDIR\booksonic-service.exe" -install'
+  ExecWait '"$INSTDIR\booksonic-service.exe" -start'
 
   # Start agent.
-  Exec '"$INSTDIR\subsonic-agent-elevated.exe" -balloon'
+  Exec '"$INSTDIR\booksonic-agent-elevated.exe" -balloon'
 
 SectionEnd
 
@@ -125,14 +125,14 @@ SectionEnd
 Section "Start Menu Shortcuts"
 
   CreateDirectory "$SMPROGRAMS\Booksonic"
-  CreateShortCut "$SMPROGRAMS\Booksonic\Open Subsonic.lnk"          "$INSTDIR\subsonic.url"         ""         "$INSTDIR\subsonic-agent.exe"  0
-  CreateShortCut "$SMPROGRAMS\Booksonic\Subsonic Tray Icon.lnk"     "$INSTDIR\subsonic-agent.exe"   "-balloon" "$INSTDIR\subsonic-agent.exe"  0
-  CreateShortCut "$SMPROGRAMS\Booksonic\Start Subsonic Service.lnk" "$INSTDIR\subsonic-service.exe" "-start"   "$INSTDIR\subsonic-service.exe"  0
-  CreateShortCut "$SMPROGRAMS\Booksonic\Stop Subsonic Service.lnk"  "$INSTDIR\subsonic-service.exe" "-stop"    "$INSTDIR\subsonic-service.exe"  0
-  CreateShortCut "$SMPROGRAMS\Booksonic\Uninstall Subsonic.lnk"     "$INSTDIR\uninstall.exe"        ""         "$INSTDIR\uninstall.exe" 0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Open Booksonic.lnk"          "$INSTDIR\booksonic.url"         ""         "$INSTDIR\booksonic-agent.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Booksonic Tray Icon.lnk"     "$INSTDIR\booksonic-agent.exe"   "-balloon" "$INSTDIR\booksonic-agent.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Start Booksonic Service.lnk" "$INSTDIR\booksonic-service.exe" "-start"   "$INSTDIR\booksonic-service.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Stop Booksonic Service.lnk"  "$INSTDIR\booksonic-service.exe" "-stop"    "$INSTDIR\booksonic-service.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Uninstall Booksonic.lnk"     "$INSTDIR\uninstall.exe"        ""         "$INSTDIR\uninstall.exe" 0
   CreateShortCut "$SMPROGRAMS\Booksonic\Getting Started.lnk"        "$INSTDIR\Getting Started.html" ""         "$INSTDIR\Getting Started.html" 0
 
-  CreateShortCut "$SMSTARTUP\Booksonic.lnk"                         "$INSTDIR\subsonic-agent.exe"   ""         "$INSTDIR\subsonic-agent.exe"  0
+  CreateShortCut "$SMSTARTUP\Booksonic.lnk"                         "$INSTDIR\booksonic-agent.exe"   ""         "$INSTDIR\booksonic-agent.exe"  0
 
 SectionEnd
 
@@ -145,14 +145,14 @@ Section "Uninstall"
   SetShellVarContext "all"
 
   # Stop and uninstall service if present.
-  ExecWait '"$INSTDIR\subsonic-service.exe" -stop'
-  ExecWait '"$INSTDIR\subsonic-service.exe" -uninstall'
+  ExecWait '"$INSTDIR\booksonic-service.exe" -stop'
+  ExecWait '"$INSTDIR\booksonic-service.exe" -uninstall'
 
   # Stop agent by killing it.
   # (Requires NSIS plugin found on http://nsis.sourceforge.net/Processes_plug-in to be installed
   # as NSIS_HOME/Plugins/Processes.dll)
-  Processes::KillProcess "subsonic-agent"
-  Processes::KillProcess "subsonic-agent-elevated"
+  Processes::KillProcess "booksonic-agent"
+  Processes::KillProcess "booksonic-agent-elevated"
   Processes::KillProcess "ffmpeg"
 
   # Remove registry keys
@@ -167,15 +167,15 @@ Section "Uninstall"
   Delete "$INSTDIR\Getting Started.url"
   Delete "$INSTDIR\LICENSE.TXT"
   Delete "$INSTDIR\README.TXT"
-  Delete "$INSTDIR\subsonic.url"
+  Delete "$INSTDIR\booksonic.url"
   Delete "$INSTDIR\booksonic.war"
-  Delete "$INSTDIR\subsonic-agent.exe"
-  Delete "$INSTDIR\subsonic-agent.exe.vmoptions"
-  Delete "$INSTDIR\subsonic-agent-elevated.exe"
-  Delete "$INSTDIR\subsonic-agent-elevated.exe.vmoptions"
-  Delete "$INSTDIR\subsonic-booter-jar-with-dependencies.jar"
-  Delete "$INSTDIR\subsonic-service.exe"
-  Delete "$INSTDIR\subsonic-service.exe.vmoptions"
+  Delete "$INSTDIR\booksonic-agent.exe"
+  Delete "$INSTDIR\booksonic-agent.exe.vmoptions"
+  Delete "$INSTDIR\booksonic-agent-elevated.exe"
+  Delete "$INSTDIR\booksonic-agent-elevated.exe.vmoptions"
+  Delete "$INSTDIR\booksonic-booter-jar-with-dependencies.jar"
+  Delete "$INSTDIR\booksonic-service.exe"
+  Delete "$INSTDIR\booksonic-service.exe.vmoptions"
   Delete "$INSTDIR\uninstall.exe"
   Delete "$INSTDIR\version.txt"
   RMDir /r "$INSTDIR\log"

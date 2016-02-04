@@ -85,7 +85,7 @@ public class SubsonicAgent {
     }
 
     private String getServiceStatus() throws Exception {
-        Process process = Runtime.getRuntime().exec("subsonic-service.exe -status");
+        Process process = Runtime.getRuntime().exec("booksonic-service.exe -status");
         return IOUtils.toString(process.getInputStream());
     }
 
@@ -95,7 +95,7 @@ public class SubsonicAgent {
 
     public void startOrStopService(boolean start) {
         try {
-            String cmd = "subsonic-service.exe " + (start ? "-start" : "-stop");
+            String cmd = "booksonic-service.exe " + (start ? "-start" : "-stop");
             System.err.println("Executing: " + cmd);
 
             Runtime.getRuntime().exec(cmd);
@@ -114,7 +114,7 @@ public class SubsonicAgent {
                 List<String> command = new ArrayList<String>();
                 command.add("cmd");
                 command.add("/c");
-                command.add("subsonic-agent-elevated.exe");
+                command.add("booksonic-agent-elevated.exe");
                 command.addAll(Arrays.asList(args));
 
                 ProcessBuilder builder = new ProcessBuilder();

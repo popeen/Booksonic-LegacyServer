@@ -60,7 +60,7 @@
                                                     mainclassname="net.sourceforge.subsonic.booter.Main">
                                             <runtime dir="${env.JAVA_HOME}"/>
                                             <classpath dir="..">
-                                                <include name="subsonic-booter/target/subsonic-booter-jar-with-dependencies.jar"/>
+                                                <include name="subsonic-booter/target/booksonic-booter-jar-with-dependencies.jar"/>
                                                 <include name="subsonic-main/target/booksonic.war"/>
                                             </classpath>
                                             <option value="-Dbooksonic.war=$APP_ROOT/Contents/Java/booksonic.war"/>
