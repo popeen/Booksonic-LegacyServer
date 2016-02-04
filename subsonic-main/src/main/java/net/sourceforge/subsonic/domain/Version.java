@@ -35,7 +35,7 @@ public class Version implements Comparable<Version> {
      * @param version A string of the format "1.27", "1.27.2" or "1.27.beta3".
      */
     public Version(String version) {
-        String[] s = version.split("\\.");
+        String[] s = version.replace(".release", "").split("\\.");
         major = Integer.valueOf(s[0]);
         minor = Integer.valueOf(s[1]);
 
