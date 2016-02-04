@@ -3,7 +3,7 @@
 ==========================================================
 
 This is a collection of free audio codecs for Windows.
-To be installed in c:\subsonic\transcode
+To be installed in c:\booksonic\transcode
 
 See http://subsonic.org for details.
 

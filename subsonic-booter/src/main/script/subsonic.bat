@@ -1,7 +1,7 @@
 @echo off
 
 REM  The directory where Subsonic will create files. Make sure it is writable.
-set SUBSONIC_HOME=c:\subsonic
+set SUBSONIC_HOME=c:\booksonic
 
 REM  The host name or IP address on which to bind Subsonic. Only relevant if you have
 REM  multiple network interfaces and want to make Subsonic available on only one of them.

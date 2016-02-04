@@ -48,8 +48,8 @@ public class SubsonicDeployer implements SubsonicDeployerService {
     private static final int HEADER_BUFFER_SIZE = 64 * 1024;
 
     // Subsonic home directory.
-    private static final File SUBSONIC_HOME_WINDOWS = new File("c:/subsonic");
-    private static final File SUBSONIC_HOME_OTHER = new File("/var/subsonic");
+    private static final File SUBSONIC_HOME_WINDOWS = new File("c:/booksonic");
+    private static final File SUBSONIC_HOME_OTHER = new File("/var/booksonic");
 
     private Throwable exception;
     private File subsonicHome;

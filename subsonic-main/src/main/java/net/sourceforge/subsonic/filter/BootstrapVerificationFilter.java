@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * This filter is executed very early in the filter chain. It verifies that
- * the Subsonic home directory (c:\subsonic or /var/subsonic) exists and
+ * the Subsonic home directory (c:\booksonic or /var/booksonic) exists and
  * is writable. If not, a proper error message is given to the user.
  * <p/>
  * (The Subsonic home directory is usually created automatically, but a common

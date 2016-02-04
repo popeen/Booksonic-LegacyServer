@@ -12,19 +12,19 @@ SetCompressor /SOLID lzma
 Name "Booksonic"
 
 # The default installation directory
-InstallDir $PROGRAMFILES\Subsonic
+InstallDir $PROGRAMFILES\Booksonic
 
 # Registry key to check for directory (so if you install again, it will
 # overwrite the old one automatically)
-InstallDirRegKey HKLM "Software\Subsonic" "Install_Dir"
+InstallDirRegKey HKLM "Software\Booksonic" "Install_Dir"
 
 #--------------------------------
 #Interface Configuration
 
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\orange.bmp"
-!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Getting Started.html"
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "View Getting Started document"
+!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Getting Started.url"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "View Getting Started tutorial"
 
 #--------------------------------
 # Pages
@@ -58,12 +58,12 @@ Section "Subsonic"
   ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
 
   # Remove previous Jetty temp directory.
-  RMDir /r "c:\subsonic\jetty"
+  RMDir /r "c:\booksonic\jetty"
 
   # Backup database.
-  RMDir /r "c:\subsonic\db.backup"
-  CreateDirectory "c:\subsonic\db.backup"
-  CopyFiles /SILENT "c:\subsonic\db\*" "c:\subsonic\db.backup"
+  RMDir /r "c:\booksonic\db.backup"
+  CreateDirectory "c:\booksonic\db.backup"
+  CopyFiles /SILENT "c:\booksonic\db\*" "c:\booksonic\db.backup"
 
   # Set output path to the installation directory.
   SetOutPath $INSTDIR
@@ -78,19 +78,19 @@ Section "Subsonic"
   File ..\..\..\..\subsonic-booter\target\subsonic-booter-jar-with-dependencies.jar
   File ..\..\..\..\subsonic-main\README.TXT
   File ..\..\..\..\subsonic-main\LICENSE.TXT
-  File "..\..\..\..\subsonic-main\Getting Started.html"
+  File "..\..\..\..\subsonic-main\Getting Started.url"
   File ..\..\..\..\subsonic-main\target\subsonic.war
   File ..\..\..\..\subsonic-main\target\classes\version.txt
   File ..\..\..\..\subsonic-main\target\classes\build_number.txt
 
   # Write the installation path into the registry
-  WriteRegStr HKLM SOFTWARE\Subsonic "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM SOFTWARE\Booksonic "Install_Dir" "$INSTDIR"
 
   # Write the uninstall keys for Windows
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Subsonic" "DisplayName" "Subsonic"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Subsonic" "UninstallString" '"$INSTDIR\uninstall.exe"'
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Subsonic" "NoModify" 1
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Subsonic" "NoRepair" 1
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic" "DisplayName" "Booksonic"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic" "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic" "NoRepair" 1
   WriteUninstaller "uninstall.exe"
 
   # Restore subsonic-service.exe.vmoptions
@@ -98,19 +98,19 @@ Section "Subsonic"
   Delete $TEMP\subsonic-service.exe.vmoptions
 
   # Write transcoding pack files.
-  SetOutPath "c:\subsonic\transcode"
+  SetOutPath "c:\booksonic\transcode"
   File ..\..\..\..\subsonic-transcode\windows\*.*
 
   # Add Windows Firewall exception.
   # (Requires NSIS plugin found on http://nsis.sourceforge.net/NSIS_Simple_Firewall_Plugin to be installed
   # as NSIS_HOME/Plugins/SimpleFC.dll)
 
-  SimpleFC::AdvAddRule "Subsonic Service (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Subsonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Subsonic Service (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Subsonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Subsonic Agent (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Subsonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Subsonic Agent (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Subsonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Subsonic Agent Elevated (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Subsonic" "" "" "" ""
-  SimpleFC::AdvAddRule "Subsonic Agent Elevated (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Subsonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Service (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Service (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-service.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent Elevated (TCP)" "" "6" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
+  SimpleFC::AdvAddRule "Booksonic Agent Elevated (UDP)" "" "17" "1" "1" "7" "1" "$INSTDIR\subsonic-agent-elevated.exe" "" "" "Booksonic" "" "" "" ""
 
   # Install and start service.
   ExecWait '"$INSTDIR\subsonic-service.exe" -install'
@@ -124,15 +124,15 @@ SectionEnd
 
 Section "Start Menu Shortcuts"
 
-  CreateDirectory "$SMPROGRAMS\Subsonic"
-  CreateShortCut "$SMPROGRAMS\Subsonic\Open Subsonic.lnk"          "$INSTDIR\subsonic.url"         ""         "$INSTDIR\subsonic-agent.exe"  0
-  CreateShortCut "$SMPROGRAMS\Subsonic\Subsonic Tray Icon.lnk"     "$INSTDIR\subsonic-agent.exe"   "-balloon" "$INSTDIR\subsonic-agent.exe"  0
-  CreateShortCut "$SMPROGRAMS\Subsonic\Start Subsonic Service.lnk" "$INSTDIR\subsonic-service.exe" "-start"   "$INSTDIR\subsonic-service.exe"  0
-  CreateShortCut "$SMPROGRAMS\Subsonic\Stop Subsonic Service.lnk"  "$INSTDIR\subsonic-service.exe" "-stop"    "$INSTDIR\subsonic-service.exe"  0
-  CreateShortCut "$SMPROGRAMS\Subsonic\Uninstall Subsonic.lnk"     "$INSTDIR\uninstall.exe"        ""         "$INSTDIR\uninstall.exe" 0
-  CreateShortCut "$SMPROGRAMS\Subsonic\Getting Started.lnk"        "$INSTDIR\Getting Started.html" ""         "$INSTDIR\Getting Started.html" 0
+  CreateDirectory "$SMPROGRAMS\Booksonic"
+  CreateShortCut "$SMPROGRAMS\Booksonic\Open Subsonic.lnk"          "$INSTDIR\subsonic.url"         ""         "$INSTDIR\subsonic-agent.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Subsonic Tray Icon.lnk"     "$INSTDIR\subsonic-agent.exe"   "-balloon" "$INSTDIR\subsonic-agent.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Start Subsonic Service.lnk" "$INSTDIR\subsonic-service.exe" "-start"   "$INSTDIR\subsonic-service.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Stop Subsonic Service.lnk"  "$INSTDIR\subsonic-service.exe" "-stop"    "$INSTDIR\subsonic-service.exe"  0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Uninstall Subsonic.lnk"     "$INSTDIR\uninstall.exe"        ""         "$INSTDIR\uninstall.exe" 0
+  CreateShortCut "$SMPROGRAMS\Booksonic\Getting Started.lnk"        "$INSTDIR\Getting Started.html" ""         "$INSTDIR\Getting Started.html" 0
 
-  CreateShortCut "$SMSTARTUP\Subsonic.lnk"                         "$INSTDIR\subsonic-agent.exe"   ""         "$INSTDIR\subsonic-agent.exe"  0
+  CreateShortCut "$SMSTARTUP\Booksonic.lnk"                         "$INSTDIR\subsonic-agent.exe"   ""         "$INSTDIR\subsonic-agent.exe"  0
 
 SectionEnd
 
@@ -156,15 +156,15 @@ Section "Uninstall"
   Processes::KillProcess "ffmpeg"
 
   # Remove registry keys
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Subsonic"
-  DeleteRegKey HKLM SOFTWARE\Subsonic
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Booksonic"
+  DeleteRegKey HKLM SOFTWARE\Booksonic
 
   # Remove files.
-  Delete "$SMSTARTUP\Subsonic.lnk"
-  RMDir /r "$SMPROGRAMS\Subsonic"
+  Delete "$SMSTARTUP\Booksonic.lnk"
+  RMDir /r "$SMPROGRAMS\Booksonic"
   Delete "$INSTDIR\build_number.txt"
   Delete "$INSTDIR\elevate.exe"
-  Delete "$INSTDIR\Getting Started.html"
+  Delete "$INSTDIR\Getting Started.url"
   Delete "$INSTDIR\LICENSE.TXT"
   Delete "$INSTDIR\README.TXT"
   Delete "$INSTDIR\subsonic.url"
@@ -184,12 +184,12 @@ Section "Uninstall"
   # Remove Windows Firewall exception.
   # (Requires NSIS plugin found on http://nsis.sourceforge.net/NSIS_Simple_Firewall_Plugin to be installed
   # as NSIS_HOME/Plugins/SimpleFC.dll)
-  SimpleFC::AdvRemoveRule "Subsonic Service (TCP)"
-  SimpleFC::AdvRemoveRule "Subsonic Service (UDP)"
-  SimpleFC::AdvRemoveRule "Subsonic Agent (TCP)"
-  SimpleFC::AdvRemoveRule "Subsonic Agent (UDP)"
-  SimpleFC::AdvRemoveRule "Subsonic Agent Elevated (TCP)"
-  SimpleFC::AdvRemoveRule "Subsonic Agent Elevated (UDP)"
+  SimpleFC::AdvRemoveRule "Booksonic Service (TCP)"
+  SimpleFC::AdvRemoveRule "Booksonic Service (UDP)"
+  SimpleFC::AdvRemoveRule "Booksonic Agent (TCP)"
+  SimpleFC::AdvRemoveRule "Booksonic Agent (UDP)"
+  SimpleFC::AdvRemoveRule "Booksonic Agent Elevated (TCP)"
+  SimpleFC::AdvRemoveRule "Booksonic Agent Elevated (UDP)"
 
 SectionEnd
 

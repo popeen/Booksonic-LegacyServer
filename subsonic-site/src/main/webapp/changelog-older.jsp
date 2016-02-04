@@ -943,7 +943,7 @@
     </li>
     <li><strong>New:</strong> Nicer layout and graphics.</li>
     <li><strong>New:</strong> Added option to download playlists, both current and previously saved ones.</li>
-    <li><strong>New:</strong> Now logs to c:/subsonic/subsonic.log (Windows) or /var/subsonic/subsonic.log
+    <li><strong>New:</strong> Now logs to c:/subsonic/subsonic.log (Windows) or /var/booksonic/subsonic.log
         (other platforms).
     </li>
     <li><strong>New:</strong> Support symbolic links on Unix.</li>
@@ -1004,7 +1004,7 @@
         as a hint to the player. </li>
     <li><strong>New:</strong> Display media library statistics.</li>
     <li><strong>New:</strong> New location for preferences, search index and database (c:\subsonic or
-        /var/subsonic).
+        /var/booksonic).
     </li>
     <li><strong>Bugfix:</strong> Improved parsing of MP3 tags. Avoid funny characters in artist, album and
         song title.

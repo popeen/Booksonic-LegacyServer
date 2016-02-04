@@ -142,7 +142,7 @@
 
         <h4>Troubleshooting</h4>
         <p>
-            Check the logs in <strong>/var/subsonic</strong>.
+            Check the logs in <strong>/var/booksonic</strong>.
         </p>
 
     </section>
@@ -182,7 +182,7 @@
 
         <h4>Troubleshooting</h4>
         <p>
-            Check the logs in <strong>/var/subsonic</strong>.
+            Check the logs in <strong>/var/booksonic</strong>.
         </p>
     </section>
 
@@ -195,7 +195,7 @@
         </p>
         <ul>
             <li>Unpack <strong>subsonic-x.x-standalone.tar.gz</strong> to <strong>SUBSONIC_HOME/standalone</strong>.
-                <strong>SUBSONIC_HOME</strong> is typically <strong>c:\subsonic</strong> on Windows, and <strong>/var/subsonic</strong> on Unix-based operating systems.</li>
+                <strong>SUBSONIC_HOME</strong> is typically <strong>c:\booksonic</strong> on Windows, and <strong>/var/booksonic</strong> on Unix-based operating systems.</li>
             <li>Optionally configure the startup script <strong>SUBSONIC_HOME/standalone/subsonic.sh</strong></li>
             <li>Execute the startup script. (Typically you will configure your operating system to execute the script automatically at start-up.)</li>
             <li>Open the Subsonic web page. The default address is <a href="http://localhost:4040">http://localhost:4040</a>.</li>
@@ -232,8 +232,8 @@
         <ul>
             <li> If you installed Tomcat as a Windows Service, you can start and stop it from the service manager: <strong>Control Panel &gt; Administrative Tools &gt; Services</strong>.</li>
             <li><strong>TOMCAT_HOME</strong> refers to the directory in which you installed Tomcat. On Windows this is normally <strong>C:\Program Files\Apache Software Foundation\Tomcat 5.5</strong></li>
-            <li>On Linux, Subsonic keeps its files in <strong>/var/subsonic</strong>. Depending on your configuration, Tomcat may not be permitted to create this directory, in which case
-                you have to create it manually: <strong>mkdir /var/subsonic; chown tomcat:tomcat /var/subsonic</strong></li>
+            <li>On Linux, Subsonic keeps its files in <strong>/var/booksonic</strong>. Depending on your configuration, Tomcat may not be permitted to create this directory, in which case
+                you have to create it manually: <strong>mkdir /var/booksonic; chown tomcat:tomcat /var/booksonic</strong></li>
         </ul>
 
         <p><b>Troubleshooting</b></p>
@@ -244,7 +244,7 @@
             <li>Restart Tomcat.</li>
             <li>Reinstall Subsonic.</li>
             <li>Upgrade to the latest Tomcat version (at least if you're using Tomcat 5.0 or earlier).</li>
-            <li>Look for errors in the Subsonic log, <strong>c:\subsonic\subsonic.log</strong> or <strong>/var/subsonic/subsonic.log</strong>.</li>
+            <li>Look for errors in the Subsonic log, <strong>c:\booksonic\subsonic.log</strong> or <strong>/var/booksonic/subsonic.log</strong>.</li>
             <li>Look for errors in the Tomcat logs, <strong>TOMCAT_HOME/logs</strong>.</li>
         </ul>
     </section>

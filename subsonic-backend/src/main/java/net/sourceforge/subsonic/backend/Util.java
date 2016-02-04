@@ -17,7 +17,7 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 public class Util {
 
-    private static final File BACKEND_HOME = new File("/var/subsonic-backend");
+    private static final File BACKEND_HOME = new File("/var/booksonic-backend");
     private static final Logger LOG = Logger.getLogger(Util.class);
 
     private Util() {

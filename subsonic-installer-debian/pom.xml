@@ -44,8 +44,8 @@
                                         <copy file="../subsonic-booter/src/main/script/subsonic.sh" todir="${project.build.directory}/deb/usr/share/subsonic"/>
                                         <copy file="../subsonic-booter/target/subsonic-booter-jar-with-dependencies.jar" todir="${project.build.directory}/deb/usr/share/subsonic"/>
                                         <copy file="../subsonic-main/target/subsonic.war" todir="${project.build.directory}/deb/usr/share/subsonic"/>
-                                        <copy file="../subsonic-transcode/linux/ffmpeg" todir="${project.build.directory}/deb/var/subsonic/transcode"/>
-                                        <copy file="../subsonic-transcode/linux/lame" todir="${project.build.directory}/deb/var/subsonic/transcode"/>
+                                        <copy file="../subsonic-transcode/linux/ffmpeg" todir="${project.build.directory}/deb/var/booksonic/transcode"/>
+                                        <copy file="../subsonic-transcode/linux/lame" todir="${project.build.directory}/deb/var/booksonic/transcode"/>
 
                                         <exec executable="chmod">
                                             <arg value="oug+x"/>
@@ -55,8 +55,8 @@
                                             <arg value="${project.build.directory}/deb/DEBIAN/postrm"/>
                                             <arg value="${project.build.directory}/deb/usr/share/subsonic/subsonic.sh"/>
                                             <arg value="${project.build.directory}/deb/etc/init.d/subsonic"/>
-                                            <arg value="${project.build.directory}/deb/var/subsonic/transcode/ffmpeg"/>
-                                            <arg value="${project.build.directory}/deb/var/subsonic/transcode/lame"/>
+                                            <arg value="${project.build.directory}/deb/var/booksonic/transcode/ffmpeg"/>
+                                            <arg value="${project.build.directory}/deb/var/booksonic/transcode/lame"/>
                                         </exec>
                                         <exec executable="sleep">
                                             <arg value="2"/>

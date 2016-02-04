@@ -754,7 +754,7 @@ Show total playlist duration.
 Remove player dynamic ip property?
 Upgrade to Spring Security.
 Bundle with open-source UPnP app?
-Uninstaller should optionally delete c:\subsonic
+Uninstaller should optionally delete c:\booksonic
 Nicer popup for lyrics and online help.
 Add option for one player per user http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1255
 Verify that LastModified works for avatars.
@@ -983,7 +983,7 @@ ln -s /var/lib/tomcat/download webapps/download
 ll webapps/
 rm -rf work logs/*
 systemctl start tomcat
-tail -f /var/subsonic-backend/subsonic-backend.log
+tail -f /var/booksonic-backend/subsonic-backend.log
 
 Update demo.subsonic.org (192.157.241.116)
 ------------------------------------------
@@ -996,7 +996,7 @@ rm webapps
 ln -s webapps-2015-08-17 webapps
 ll webapps/
 service tomcat6 start
-tail -f /var/subsonic/subsonic.log
+tail -f /var/booksonic/subsonic.log
 
 
 HOWTO: Enable remote JMX for JVisualVM

@@ -44,9 +44,9 @@
         The actual transcoding is done by third-party command line programs which are installed in:
     </p>
     <table>
-        <tr><td>Windows</td><td><strong>c:\subsonic\transcode</strong></td></tr>
+        <tr><td>Windows</td><td><strong>c:\booksonic\transcode</strong></td></tr>
         <tr><td>Mac</td><td><strong>/Library/Application Support/Subsonic/transcode</strong></td></tr>
-        <tr><td>Linux</td><td><strong>/var/subsonic/transcode</strong></td></tr>
+        <tr><td>Linux</td><td><strong>/var/booksonic/transcode</strong></td></tr>
     </table>
 
     <p>
@@ -93,7 +93,7 @@
 
     <h3>Troubleshooting</h3>
     <ul>
-        <li>Is the transcoder installed in <strong>c:\subsonic\transcode</strong> (or <strong>/var/subsonic/transcode</strong>)?</li>
+        <li>Is the transcoder installed in <strong>c:\booksonic\transcode</strong> (or <strong>/var/booksonic/transcode</strong>)?</li>
         <li>Is the transcoder activated for your player (in Settings &gt; Players)?</li>
         <li>Is the proper file extension added to the list of recognized file types (in Settings &gt; General)?</li>
         <li>If it still doesn't work, please check the Subsonic log.</li>

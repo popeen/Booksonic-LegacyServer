@@ -78,8 +78,8 @@ import net.sourceforge.subsonic.util.Util;
 public class SettingsService {
 
     // Subsonic home directory.
-    private static final File SUBSONIC_HOME_WINDOWS = new File("c:/subsonic");
-    private static final File SUBSONIC_HOME_OTHER = new File("/var/subsonic");
+    private static final File SUBSONIC_HOME_WINDOWS = new File("c:/booksonic");
+    private static final File SUBSONIC_HOME_OTHER = new File("/var/booksonic");
 
     // Number of free trial days.
     public static final long TRIAL_DAYS = 30L;

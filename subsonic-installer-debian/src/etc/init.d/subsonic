@@ -62,7 +62,7 @@ do_start()
 
     touch $PIDFILE
     chown $SUBSONIC_USER $PIDFILE
-    [ -e /var/subsonic ] && chown -R $SUBSONIC_USER /var/subsonic
+    [ -e /var/booksonic ] && chown -R $SUBSONIC_USER /var/booksonic
     [ -e /tmp/subsonic ] && chown -R $SUBSONIC_USER /tmp/subsonic
 
     start-stop-daemon --start -c $SUBSONIC_USER --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_ARGS || return 2

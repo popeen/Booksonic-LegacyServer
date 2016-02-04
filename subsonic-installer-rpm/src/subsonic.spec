@@ -25,8 +25,8 @@ Subsonic can be found at http://subsonic.org
 /usr/share/subsonic/subsonic.war
 %attr(755,root,root) /usr/share/subsonic/subsonic.sh
 %attr(755,root,root) /etc/init.d/subsonic
-%attr(755,root,root) /var/subsonic/transcode/ffmpeg
-%attr(755,root,root) /var/subsonic/transcode/lame
+%attr(755,root,root) /var/booksonic/transcode/ffmpeg
+%attr(755,root,root) /var/booksonic/transcode/lame
 %config(noreplace) /etc/sysconfig/subsonic
 
 %pre
@@ -36,19 +36,19 @@ if [ -e /etc/init.d/subsonic ]; then
 fi
 
 # Backup database.
-if [ -e /var/subsonic/db ]; then
-  rm -rf /var/subsonic/db.backup
-  cp -R /var/subsonic/db /var/subsonic/db.backup
+if [ -e /var/booksonic/db ]; then
+  rm -rf /var/booksonic/db.backup
+  cp -R /var/booksonic/db /var/booksonic/db.backup
 fi
 
 exit 0
 
 %post
 ln -sf /usr/share/subsonic/subsonic.sh /usr/bin/subsonic
-chmod 750 /var/subsonic
+chmod 750 /var/booksonic
 
 # Clear jetty cache.
-rm -rf /var/subsonic/jetty
+rm -rf /var/booksonic/jetty
 
 # For SELinux: Set security context
 chcon -t java_exec_t /etc/init.d/subsonic 2>/dev/null

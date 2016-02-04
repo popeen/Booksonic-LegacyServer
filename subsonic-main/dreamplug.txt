@@ -97,6 +97,6 @@ Setting up subsonic (4.4) ...
    /etc/rc3.d/S99subsonic -> ../init.d/subsonic
    /etc/rc4.d/S99subsonic -> ../init.d/subsonic
    /etc/rc5.d/S99subsonic -> ../init.d/subsonic
-Started Subsonic [PID 2596, /var/subsonic/subsonic_sh.log]
+Started Subsonic [PID 2596, /var/booksonic/subsonic_sh.log]
 
 http://192.168.0.100:4040

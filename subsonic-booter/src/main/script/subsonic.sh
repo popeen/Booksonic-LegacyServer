@@ -6,7 +6,7 @@
 # Author: Sindre Mehus
 ###################################################################################
 
-SUBSONIC_HOME=/var/subsonic
+SUBSONIC_HOME=/var/booksonic
 SUBSONIC_HOST=0.0.0.0
 SUBSONIC_PORT=4040
 SUBSONIC_HTTPS_PORT=0
@@ -23,7 +23,7 @@ usage() {
     echo "Usage: subsonic.sh [options]"
     echo "  --help               This small usage guide."
     echo "  --home=DIR           The directory where Subsonic will create files."
-    echo "                       Make sure it is writable. Default: /var/subsonic"
+    echo "                       Make sure it is writable. Default: /var/booksonic"
     echo "  --host=HOST          The host name or IP address on which to bind Subsonic."
     echo "                       Only relevant if you have multiple network interfaces and want"
     echo "                       to make Subsonic available on only one of them. The default value"

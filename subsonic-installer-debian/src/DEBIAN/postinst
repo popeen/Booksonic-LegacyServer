@@ -4,10 +4,10 @@ set -e
 
 ln -sf /usr/share/subsonic/subsonic.sh /usr/bin/subsonic
 
-chmod 750 /var/subsonic
+chmod 750 /var/booksonic
 
 # Clear jetty cache.
-rm -rf /var/subsonic/jetty
+rm -rf /var/booksonic/jetty
 
 # Configure Subsonic service.
 update-rc.d subsonic defaults 99

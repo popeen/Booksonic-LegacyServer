@@ -51,12 +51,12 @@ public final class Util {
     }
 
     public static String getDefaultMusicFolder() {
-        String def = isWindows() ? "c:\\music" : "/var/music";
+        String def = isWindows() ? "c:\\audiobooks" : "/var/audiobooks";
         return System.getProperty("subsonic.defaultMusicFolder", def);
     }
 
     public static String getDefaultPodcastFolder() {
-        String def = isWindows() ? "c:\\music\\Podcast" : "/var/music/Podcast";
+        String def = isWindows() ? "c:\\audiobooks\\Podcast" : "/var/audiobook/Podcast";
         return System.getProperty("subsonic.defaultPodcastFolder", def);
     }
 

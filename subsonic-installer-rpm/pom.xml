@@ -81,9 +81,9 @@
                                         <copy file="../subsonic-main/target/subsonic.war"
                                               todir="${project.build.directory}/rpm/buildroot/usr/share/subsonic"/>
                                         <copy file="../subsonic-transcode/linux/ffmpeg"
-                                              todir="${project.build.directory}/rpm/buildroot/var/subsonic/transcode"/>
+                                              todir="${project.build.directory}/rpm/buildroot/var/booksonic/transcode"/>
                                         <copy file="../subsonic-transcode/linux/lame"
-                                              todir="${project.build.directory}/rpm/buildroot/var/subsonic/transcode"/>
+                                              todir="${project.build.directory}/rpm/buildroot/var/booksonic/transcode"/>
 
                                         <exec executable="rpmbuild">
                                             <arg value="-bb"/>
