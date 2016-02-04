@@ -61,9 +61,9 @@
                                             <runtime dir="${env.JAVA_HOME}"/>
                                             <classpath dir="..">
                                                 <include name="subsonic-booter/target/subsonic-booter-jar-with-dependencies.jar"/>
-                                                <include name="subsonic-main/target/subsonic.war"/>
+                                                <include name="subsonic-main/target/booksonic.war"/>
                                             </classpath>
-                                            <option value="-Dsubsonic.war=$APP_ROOT/Contents/Java/subsonic.war"/>
+                                            <option value="-Dbooksonic.war=$APP_ROOT/Contents/Java/booksonic.war"/>
                                             <option value="-Dsubsonic.home=/Library/Application Support/Subsonic"/>
                                             <option value="-Dsubsonic.defaultMusicFolder=/Users/Shared/Music/iTunes/iTunes Media"/>
                                             <option value="-Dsubsonic.defaultPodcastFolder=/Users/Shared/Podcasts"/>

@@ -39,7 +39,7 @@ public class SettingsServiceTestCase extends TestCase {
     @Override
     protected void setUp() throws Exception {
         System.setProperty("subsonic.home", SUBSONIC_HOME.getPath());
-        new File(SUBSONIC_HOME, "subsonic.properties").delete();
+        new File(SUBSONIC_HOME, "booksonic.properties").delete();
         settingsService = new SettingsService();
     }
 

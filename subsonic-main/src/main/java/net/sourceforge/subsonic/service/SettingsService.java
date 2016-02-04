@@ -321,7 +321,7 @@ public class SettingsService {
     }
 
     private File getPropertyFile() {
-        return new File(getSubsonicHome(), "subsonic.properties");
+        return new File(getSubsonicHome(), "booksonic.properties");
     }
 
     /**

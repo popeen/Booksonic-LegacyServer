@@ -79,7 +79,7 @@ Section "Subsonic"
   File ..\..\..\..\subsonic-main\README.TXT
   File ..\..\..\..\subsonic-main\LICENSE.TXT
   File "..\..\..\..\subsonic-main\Getting Started.url"
-  File ..\..\..\..\subsonic-main\target\subsonic.war
+  File ..\..\..\..\subsonic-main\target\booksonic.war
   File ..\..\..\..\subsonic-main\target\classes\version.txt
   File ..\..\..\..\subsonic-main\target\classes\build_number.txt
 
@@ -168,7 +168,7 @@ Section "Uninstall"
   Delete "$INSTDIR\LICENSE.TXT"
   Delete "$INSTDIR\README.TXT"
   Delete "$INSTDIR\subsonic.url"
-  Delete "$INSTDIR\subsonic.war"
+  Delete "$INSTDIR\booksonic.war"
   Delete "$INSTDIR\subsonic-agent.exe"
   Delete "$INSTDIR\subsonic-agent.exe.vmoptions"
   Delete "$INSTDIR\subsonic-agent-elevated.exe"

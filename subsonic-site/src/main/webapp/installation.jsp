@@ -209,7 +209,7 @@
 
         <p>
             Use this option if you want to deploy Subsonic in an external server, such as Tomcat, Jetty, GlassFish or Geronimo. Subsonic comes
-            packaged as a standard Java web application, <strong>subsonic.war</strong>, which can be easily deployed in any compatible servlet container.
+            packaged as a standard Java web application, <strong>booksonic.war</strong>, which can be easily deployed in any compatible servlet container.
             The most commonly used server is Tomcat, and the rest of this section describes how to install or upgrade Subsonic on a Tomcat server.
         </p>
 
@@ -217,12 +217,12 @@
             <li>Stop Tomcat if it's running.</li>
             <li>Remove these files and directories if they exist:
                 <ul>
-                    <li><strong>TOMCAT_HOME/webapps/subsonic.war</strong></li>
+                    <li><strong>TOMCAT_HOME/webapps/booksonic.war</strong></li>
                     <li><strong>TOMCAT_HOME/webapps/subsonic</strong></li>
                     <li><strong>TOMCAT_HOME/work</strong></li>
                 </ul>
             </li>
-            <li>Copy the file <strong>subsonic.war</strong> to <strong>TOMCAT_HOME/webapps</strong>.</li>
+            <li>Copy the file <strong>booksonic.war</strong> to <strong>TOMCAT_HOME/webapps</strong>.</li>
             <li>Start Tomcat.</li>
             <li>Point your web browser to <a href="http://localhost/subsonic">http://localhost/subsonic</a> (or
                 <a href="http://localhost:8080/subsonic">http://localhost:8080/subsonic</a> if you installed Tomcat on port 8080.)</li>

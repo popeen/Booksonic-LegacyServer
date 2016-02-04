@@ -412,7 +412,7 @@
     </profiles>
 
     <build>
-        <finalName>subsonic</finalName>
+        <finalName>booksonic</finalName>
         <plugins>
 
             <plugin>

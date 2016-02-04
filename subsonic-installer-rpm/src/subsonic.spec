@@ -22,7 +22,7 @@ Subsonic can be found at http://subsonic.org
 %files
 %defattr(644,root,root,755)
 /usr/share/subsonic/subsonic-booter-jar-with-dependencies.jar
-/usr/share/subsonic/subsonic.war
+/usr/share/subsonic/booksonic.war
 %attr(755,root,root) /usr/share/subsonic/subsonic.sh
 %attr(755,root,root) /etc/init.d/subsonic
 %attr(755,root,root) /var/booksonic/transcode/ffmpeg

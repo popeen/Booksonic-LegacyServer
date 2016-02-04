@@ -988,7 +988,7 @@ tail -f /var/booksonic-backend/subsonic-backend.log
 Update demo.subsonic.org (192.157.241.116)
 ------------------------------------------
 mkdir /var/lib/tomcat6/webapps-2015-08-17/
-scp subsonic-main/target/subsonic.war root@demo.subsonic.org:/var/lib/tomcat6/webapps-2015-08-17/ROOT.war
+scp subsonic-main/target/booksonic.war root@demo.subsonic.org:/var/lib/tomcat6/webapps-2015-08-17/ROOT.war
 service tomcat6 stop
 cd /var/lib/tomcat6/
 rm -rf work/Catalina logs/*
@@ -1111,7 +1111,7 @@ NETGEAR ReadyNAS, Buffalo Linkstation, Linksys NSLU2 and any device running Free
 
 rsync -avP -e ssh music.demo/ sindremehus@www.subsonic.org:music.demo
 
--Dsubsonic.war=subsonic-main/target/subsonic -Dsubsonic.createLinkFile=true -Dsubsonic.windowsInstall=true -Dsubsonic.port=8080 -Dsubsonic.contextPath=/
+-Dbooksonic.war=subsonic-main/target/subsonic -Dsubsonic.createLinkFile=true -Dsubsonic.windowsInstall=true -Dsubsonic.port=8080 -Dsubsonic.contextPath=/
 
 GIMP
 ----

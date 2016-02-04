@@ -79,7 +79,7 @@
             Sonos music services are uniquely identified by a "SID" (a number between 240 and 253). By default, Subsonic uses
             SID 242. If you want to make multiple Subsonic servers on your local network available to Sonos, you have to
             assign a unique SID to each server. This setting is not available through the web interface, but you can add this
-            line to the subsonic.properties file (located in /var/booksonic, c:/subsonic or /Library/Application Support/Subsonic)
+            line to the booksonic.properties file (located in /var/booksonic, c:/subsonic or /Library/Application Support/Subsonic)
             to change it.
         </p>
         <p>

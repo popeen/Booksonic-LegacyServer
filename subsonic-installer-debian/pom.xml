@@ -43,7 +43,7 @@
 
                                         <copy file="../subsonic-booter/src/main/script/subsonic.sh" todir="${project.build.directory}/deb/usr/share/subsonic"/>
                                         <copy file="../subsonic-booter/target/subsonic-booter-jar-with-dependencies.jar" todir="${project.build.directory}/deb/usr/share/subsonic"/>
-                                        <copy file="../subsonic-main/target/subsonic.war" todir="${project.build.directory}/deb/usr/share/subsonic"/>
+                                        <copy file="../subsonic-main/target/booksonic.war" todir="${project.build.directory}/deb/usr/share/subsonic"/>
                                         <copy file="../subsonic-transcode/linux/ffmpeg" todir="${project.build.directory}/deb/var/booksonic/transcode"/>
                                         <copy file="../subsonic-transcode/linux/lame" todir="${project.build.directory}/deb/var/booksonic/transcode"/>
 
