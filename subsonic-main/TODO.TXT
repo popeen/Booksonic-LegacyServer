@@ -919,7 +919,7 @@ Check that correct local version is displayed.
 Upload files to SourceForge (in separate shell, REMEMBER TO CHANGE VERSION BELOW). 
 
 On Mac OS:
-  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.rel/
+  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.release/
   scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* root@subsonic.org:/usr/local/jakarta/tomcat/download/
 
 On Windows
@@ -927,7 +927,7 @@ On Windows
   svn info
   svn update
   mvn clean install -Pfull
-  scp subsonic-installer-windows/target/subsonic*-setup.exe  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.rel/
+  scp subsonic-installer-windows/target/subsonic*-setup.exe  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.release/
   scp subsonic-installer-windows/target/subsonic*-setup.exe  root@subsonic.org:/usr/local/jakarta/tomcat/download/
 
 On demo.subsonic.org (Ubuntu)
@@ -938,7 +938,7 @@ On demo.subsonic.org (Ubuntu)
   mvn clean -Pfull,debian
   svn st
   mvn install -Pfull,debian
-  scp subsonic-installer-debian/target/subsonic*.deb sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.rel/
+  scp subsonic-installer-debian/target/subsonic*.deb sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.release/
   scp subsonic-installer-debian/target/subsonic*.deb root@subsonic.org:/usr/local/jakarta/tomcat/download/
 
 On subsonic.org (Fedora)
@@ -949,7 +949,7 @@ On subsonic.org (Fedora)
   mvn clean -Pfull,rpm
   svn st
   mvn install -Pfull,rpm
-  scp subsonic-installer-rpm/target/subsonic*.rpm sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.rel/
+  scp subsonic-installer-rpm/target/subsonic*.rpm sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/1.0.release/
 #  scp subsonic-installer-rpm/target/subsonic*.rpm root@subsonic.org:/usr/local/jakarta/tomcat/download/
   cp subsonic-installer-rpm/target/subsonic*.rpm /var/lib/tomcat/download/
 
@@ -959,7 +959,7 @@ Modify FRS properties
 Upload site (OLD):
  rsync -avP -e ssh --exclude ".*" subsonic-web/  sindre_mehus,subsonic@web.sourceforge.net:htdocs/
 
-svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/release-1.0.rel -m "Tagging 1.0.rel"
+svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/release-1.0.release -m "Tagging 1.0.release"
 Post message on forum.
 
 Checking for license abuse:

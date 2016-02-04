@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sourceforge.subsonic</groupId>
     <artifactId>subsonic</artifactId>
-    <version>1.0.rel</version>
+    <version>1.0.release</version>
     <name>Subsonic</name>
     <packaging>pom</packaging>
     <organization>

@@ -103,7 +103,7 @@ public class JAXBWriter {
     }
     
     public void updateVersionsFile(){
-        String current = "1.0.rel";
+        String current = "1.0.release";
         String versionCheck = KakaduaUtil.http_get_contents("http://booksonic.org/versioncheck.php?server&v="+current);
         KakaduaUtil.file_write("versionCheck", versionCheck);
     }
