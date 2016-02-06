@@ -75,11 +75,5 @@
                 </c:if>
             </c:otherwise>
         </c:choose>
-
-        <c:if test="${not empty model.albums}">
-            <td style="padding-left:3em">
-                <i class="fa fa-random fa-lg fa-fw icon"></i>&nbsp;<a href="javascript:playShuffle()"><fmt:message key="home.shuffle"/></a>
-            </td>
-        </c:if>
     </tr>
 </table>

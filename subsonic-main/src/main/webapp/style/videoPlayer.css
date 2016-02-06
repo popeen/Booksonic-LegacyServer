@@ -35,7 +35,7 @@
 
 #play, #pause, #buffer {
     font-size: 24px;
-    color: #E65100;
+    color: #3184A5;
     margin-right: 12px;
 }
 
@@ -85,14 +85,14 @@
 }
 
 #cc-on, #cast-active {
-    color: #E65100;
+    color: #3184A5;
 }
 
 .ui-slider .ui-slider-handle {
     width: 12px;
     height: 12px;
     cursor: pointer;
-    background: #E65100;
+    background: #3184A5;
     display: none;
     border: none;
 }
@@ -103,7 +103,7 @@
 }
 
 .ui-slider-range-min {
-    background: #E65100;
+    background: #3184A5;
 }
 
 .ui-slider-handle:focus {

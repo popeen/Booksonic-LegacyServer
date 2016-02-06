@@ -98,7 +98,6 @@
         <span class="topHeader top-menu-item" onclick="showPage('artists.view')"><i class="fa fa-microphone fa-fw fa-lg icon"></i>&nbsp;${artists}</span>
         <span class="topHeader top-menu-item" onclick="showPage('nowPlaying.view')"><i class="fa fa-headphones fa-fw fa-lg icon"></i>&nbsp;${nowPlaying}</span>
         <span class="topHeader top-menu-item" onclick="showPage('starred.view')"><i class="fa fa-star fa-fw fa-lg icon"></i>&nbsp;${starred}</span>
-        <span class="topHeader top-menu-item" onclick="showPage('playlists.view')"><i class="fa fa-music fa-fw fa-lg icon"></i>&nbsp;${playlists}</span>
         <span class="topHeader top-menu-item" onclick="showPage('podcastChannels.view')"><i class="fa fa-rss fa-lg icon"></i>&nbsp;${podcast}</span>
 
         <span style="flex-grow:8"></span>

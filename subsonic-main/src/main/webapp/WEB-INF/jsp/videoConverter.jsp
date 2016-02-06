@@ -7,7 +7,7 @@
 
     <style type="text/css">
         .ui-progressbar-value {
-            background: #E65100;
+            background: #3184A5;
         }
     </style>
     <script type="text/javascript" src="<c:url value="/dwr/engine.js"/>"></script>

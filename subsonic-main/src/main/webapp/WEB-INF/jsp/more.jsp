@@ -47,86 +47,9 @@
 
 <h1><fmt:message key="more.title"/></h1>
 
-<c:if test="${model.user.streamRole}">
-    <h2 class="more-header"><i class="fa fa-random fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="more.random.title"/></h2>
-
-    <form method="post" action="randomPlayQueue.view?">
-        <table>
-            <tr>
-                <td><fmt:message key="more.random.text"/></td>
-                <td>
-                    <select name="size">
-                        <option value="10"><fmt:message key="more.random.songs"><fmt:param value="10"/></fmt:message></option>
-                        <option value="20" selected><fmt:message key="more.random.songs"><fmt:param value="20"/></fmt:message></option>
-                        <option value="30"><fmt:message key="more.random.songs"><fmt:param value="30"/></fmt:message></option>
-                        <option value="40"><fmt:message key="more.random.songs"><fmt:param value="40"/></fmt:message></option>
-                        <option value="50"><fmt:message key="more.random.songs"><fmt:param value="50"/></fmt:message></option>
-                    </select>
-                </td>
-                <td><fmt:message key="more.random.genre"/></td>
-                <td>
-                    <select name="genre">
-                        <option value="any"><fmt:message key="more.random.anygenre"/></option>
-                        <c:forEach items="${model.genres}" var="genre">
-                            <option value="${genre.name}"><str:truncateNicely upper="20">${genre.name} (${genre.songCount})</str:truncateNicely></option>
-                        </c:forEach>
-                    </select>
-                </td>
-                <td><fmt:message key="more.random.year"/></td>
-                <td>
-                    <select name="year">
-                        <option value="any"><fmt:message key="more.random.anyyear"/></option>
-
-                        <c:forEach begin="0" end="${model.currentYear - 2010}" var="yearOffset">
-                            <c:set var="year" value="${model.currentYear - yearOffset}"/>
-                            <option value="${year} ${year}">${year}</option>
-                        </c:forEach>
-
-                        <option value="2010 2015">2010 &ndash; 2015</option>
-                        <option value="2005 2010">2005 &ndash; 2010</option>
-                        <option value="2000 2005">2000 &ndash; 2005</option>
-                        <option value="1990 2000">1990 &ndash; 2000</option>
-                        <option value="1980 1990">1980 &ndash; 1990</option>
-                        <option value="1970 1980">1970 &ndash; 1980</option>
-                        <option value="1960 1970">1960 &ndash; 1970</option>
-                        <option value="1950 1960">1950 &ndash; 1960</option>
-                        <option value="0 1949">&lt; 1950</option>
-                    </select>
-                </td>
-                <td><fmt:message key="more.random.folder"/></td>
-                <td>
-                    <select name="musicFolderId">
-                        <option value="-1"><fmt:message key="more.random.anyfolder"/></option>
-                        <c:forEach items="${model.musicFolders}" var="musicFolder">
-                            <option value="${musicFolder.id}">${musicFolder.name}</option>
-                        </c:forEach>
-                    </select>
-                </td>
-                <td>
-                    <input type="submit" value="<fmt:message key="more.random.ok"/>">
-                </td>
-            </tr>
-            <c:if test="${not model.clientSidePlaylist}">
-                <tr>
-                    <td colspan="9">
-                        <input type="checkbox" name="autoRandom" id="autoRandom" class="checkbox"/>
-                        <label for="autoRandom"><fmt:message key="more.random.auto"/></label>
-                    </td>
-                </tr>
-            </c:if>
-        </table>
-    </form>
-</c:if>
-
-<a href="http://subsonic.org/pages/apps.jsp" target="_blank"><img alt="Apps" src="<c:url value="/icons/default_light/apps.png"/>" style="float: right;margin-left: 3em; margin-right: 3em"/></a>
-
 <h2 class="more-header"><i class="fa fa-android fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="more.apps.title"/></h2>
 
 <fmt:message key="more.booksonic.text"/>
-
-<a href="<c:url value="${model.jamstashUrl}"/>" target="_blank">
-    <img alt="Jamstash" src="<c:url value="/icons/default_light/jamstash.png"/>" style="float: right;margin-left: 3em; margin-right: 3em"/>
-</a>
 
 <h2 class="more-header"><i class="fa fa-html5 fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="more.jamstash.title"/></h2>
 <fmt:message key="more.jamstash.text"><fmt:param>${model.jamstashUrl}</fmt:param></fmt:message>

@@ -20,7 +20,7 @@
     <style type="text/css">
         .ui-slider .ui-slider-handle {
             width: 12px; height: 12px; cursor: pointer;
-            background: #E65100;
+            background: #3184A5;
             display:none;
             border:none;
         }
@@ -29,16 +29,16 @@
             border:none;
         }
         .ui-slider-range-min {
-            background: #E65100;
+            background: #3184A5;
         }
         .ui-slider-handle:focus {
             outline:none;
         }
         #startButton, #stopButton {
-            cursor:pointer; font-size:30px; color:#E65100
+            cursor:pointer; font-size:30px; color:#3184A5
         }
         #bufferButton {
-            font-size:30px; color:#E65100
+            font-size:30px; color:#3184A5
         }
         #previousButton, #nextButton {
             cursor:pointer; font-size:18px; padding:10px; margin-left:10px; margin-right:10px
@@ -899,45 +899,12 @@
 
         <c:if test="${model.player.web or model.player.jukebox or model.player.external}">
             <td style="white-space:nowrap;"><span class="header"><a href="javascript:onClear()"><fmt:message key="playlist.clear"/></a></span> |</td>
-            <td style="white-space:nowrap;"><span class="header"><a href="javascript:onShuffle()"><fmt:message key="playlist.shuffle"/></a></span> |</td>
-            <td style="white-space:nowrap;"><span class="header"><a href="javascript:onToggleRepeat()"><span id="toggleRepeat"><fmt:message key="playlist.repeat_on"/></span></a></span>  |</td>
             <td style="white-space:nowrap;"><span class="header"><a href="javascript:onUndo()"><fmt:message key="playlist.undo"/></a></span>  |</td>
         </c:if>
 
         <c:if test="${model.user.settingsRole}">
             <td style="white-space:nowrap;"><span class="header"><a href="playerSettings.view?id=${model.player.id}" target="main"><fmt:message key="playlist.settings"/></a></span>  |</td>
         </c:if>
-
-        <c:if test="${model.player.web or model.player.jukebox or model.player.external}">
-            <td style="white-space:nowrap;"><select id="moreActions" onchange="actionSelected(this.options[selectedIndex].id)">
-                <option id="top" selected="selected"><fmt:message key="playlist.more"/></option>
-                <optgroup label="<fmt:message key="playlist.more.playlist"/>">
-                    <option id="savePlayQueue"><fmt:message key="playlist.saveplayqueue"/></option>
-                    <option id="loadPlayQueue"><fmt:message key="playlist.loadplayqueue"/></option>
-                    <option id="savePlaylist"><fmt:message key="playlist.save"/></option>
-                    <c:if test="${model.user.downloadRole}">
-                        <option id="downloadPlaylist"><fmt:message key="common.download"/></option>
-                    </c:if>
-                    <c:if test="${model.user.shareRole}">
-                        <option id="sharePlaylist"><fmt:message key="main.more.share"/></option>
-                    </c:if>
-                    <option id="sortByTrack"><fmt:message key="playlist.more.sortbytrack"/></option>
-                    <option id="sortByAlbum"><fmt:message key="playlist.more.sortbyalbum"/></option>
-                    <option id="sortByArtist"><fmt:message key="playlist.more.sortbyartist"/></option>
-                </optgroup>
-                <optgroup label="<fmt:message key="playlist.more.selection"/>">
-                    <option id="selectAll"><fmt:message key="playlist.more.selectall"/></option>
-                    <option id="selectNone"><fmt:message key="playlist.more.selectnone"/></option>
-                    <option id="removeSelected"><fmt:message key="playlist.remove"/></option>
-                    <c:if test="${model.user.downloadRole}">
-                        <option id="download"><fmt:message key="common.download"/></option>
-                    </c:if>
-                    <option id="appendPlaylist"><fmt:message key="playlist.append"/></option>
-                </optgroup>
-            </select>
-            </td>
-        </c:if>
-
     </tr></table>
 
 <div style="height:100px"></div>

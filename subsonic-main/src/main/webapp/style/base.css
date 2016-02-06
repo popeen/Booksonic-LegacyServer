@@ -18,7 +18,7 @@
 }
 
 .headerSelected {
-    border-bottom: 3px solid #E65100;
+    border-bottom: 3px solid #3184A5;
 }
 
 /* Background color for form controls (use default). */
@@ -56,7 +56,7 @@ a:hover, a:hover * {
 
 /* Color for warning messages. */
 .warning {
-    color: #E65100;
+    color: #3184A5;
 }
 
 /* Simple dark border. */

@@ -21,9 +21,16 @@
 }
 
 .topframe {
-    background-color: #E65100;
+    background-color: #3184A5;
     color: white;
 }
 .topframe .icon {
     color: white;
+}
+
+#upper{
+	-webkit-box-shadow: 0 2px 2px 0px #999; 
+	-moz-box-shadow: 0 2px 2px 0px #999; 
+	box-shadow: 0 2px 2px 0px #999; 
+	z-index:1;
 }

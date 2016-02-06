@@ -17,7 +17,7 @@
         #playButton {
             cursor: pointer;
             font-size:24px;
-            color:#E65100;
+            color:#3184A5;
             margin-left:1.0em;
             margin-right:0.5em;
         }
@@ -307,7 +307,7 @@
 
 <c:forEach items="${model.files}" var="song" varStatus="loopStatus" end="0">
 	<%--@elvariable id="song" type="net.sourceforge.subsonic.domain.MediaFile"--%>
-	<div style="background: #6dc1e3; color: #424242; padding: 5px;">${fn:escapeXml(song.description)}<br/><b><fmt:message key="main.narrated"/>:</b> ${fn:escapeXml(song.narrator)}</div>
+	<div style="background: #F5F5F5; color: #424242; padding: 5px;">${fn:escapeXml(song.description)}<br/><b><fmt:message key="main.narrated"/>:</b> ${fn:escapeXml(song.narrator)}</div>
 </c:forEach>
 
 <table cellpadding="0" style="width:100%;padding-top: 0.3em;padding-bottom: 1em">
