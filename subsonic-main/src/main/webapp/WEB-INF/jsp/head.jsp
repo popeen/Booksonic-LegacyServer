@@ -1,5 +1,4 @@
 <%@ include file="include.jsp" %>
-´
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="styleSheet"><spring:theme code="styleSheet"/></c:set>
 <link rel="icon" type="image/png" href="<c:url value="/icons/favicon.png"/>"/>
