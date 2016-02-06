@@ -19,22 +19,26 @@
 package net.sourceforge.subsonic.controller;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.ParameterizableViewController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import net.sourceforge.subsonic.domain.MediaFile;
+import net.sourceforge.subsonic.domain.Player;
 import net.sourceforge.subsonic.domain.User;
 import net.sourceforge.subsonic.service.MediaFileService;
 import net.sourceforge.subsonic.service.PlayerService;
 import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
+import net.sourceforge.subsonic.service.VideoConversionService;
+import net.sourceforge.subsonic.service.metadata.MetaData;
 import net.sourceforge.subsonic.util.StringUtil;
 
 /**
@@ -44,60 +48,82 @@ import net.sourceforge.subsonic.util.StringUtil;
  */
 public class VideoPlayerController extends ParameterizableViewController {
 
+    @Deprecated
     public static final int DEFAULT_BIT_RATE = 2000;
-    public static final int[] BIT_RATES = {200, 300, 400, 500, 700, 1000, 1200, 1500, 2000, 3000, 5000};
 
     private MediaFileService mediaFileService;
     private SettingsService settingsService;
     private PlayerService playerService;
     private SecurityService securityService;
+    private VideoConversionService videoConversionService;
+    private CaptionsController captionsController;
 
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        int id = ServletRequestUtils.getRequiredIntParameter(request, "id");
+        MediaFile file = mediaFileService.getMediaFile(id);
+
+        if (!isStreamable(file)) {
+            return new ModelAndView(new RedirectView("videoConverter.view?id=" + id));
+        }
 
         User user = securityService.getCurrentUser(request);
         Map<String, Object> map = new HashMap<String, Object>();
-        int id = ServletRequestUtils.getRequiredIntParameter(request, "id");
-        MediaFile file = mediaFileService.getMediaFile(id);
+        Integer position = ServletRequestUtils.getIntParameter(request, "position");
         mediaFileService.populateStarredDate(file, user.getUsername());
 
         Integer duration = file.getDurationSeconds();
-        String playerId = playerService.getPlayer(request, response).getId();
+        Player player = playerService.getPlayer(request, response);
         String url = request.getRequestURL().toString();
-        String streamUrl = url.replaceFirst("/videoPlayer.view.*", "/stream?id=" + file.getId() + "&player=" + playerId);
-        String coverArtUrl = url.replaceFirst("/videoPlayer.view.*", "/coverArt.view?id=" + file.getId());
+        String streamUrl = url.replaceFirst("/videoPlayer.view.*", "/stream?id=" + file.getId() + "&auth=" + file.getHash() + "&player=" + player.getId() + "&format=raw");
+        String coverArtUrl = url.replaceFirst("/videoPlayer.view.*", "/coverArt.view?id=" + file.getId() + "&auth=" + file.getHash());
+        String captionsUrl = url.replaceFirst("/videoPlayer.view.*", "/captions.view?id=" + file.getId() + "&auth=" + file.getHash());
 
         // Rewrite URLs in case we're behind a proxy.
         if (settingsService.isRewriteUrlEnabled()) {
             String referer = request.getHeader("referer");
             streamUrl = StringUtil.rewriteUrl(streamUrl, referer);
             coverArtUrl = StringUtil.rewriteUrl(coverArtUrl, referer);
+            captionsUrl = StringUtil.rewriteUrl(captionsUrl, referer);
         }
 
         String remoteStreamUrl = settingsService.rewriteRemoteUrl(streamUrl);
         String remoteCoverArtUrl = settingsService.rewriteRemoteUrl(coverArtUrl);
+        String remoteCaptionsUrl = settingsService.rewriteRemoteUrl(captionsUrl);
 
         map.put("video", file);
-        map.put("streamUrl", streamUrl);
+        map.put("hasCaptions", captionsController.findCaptionsVideo(file) != null);
         map.put("remoteStreamUrl", remoteStreamUrl);
         map.put("remoteCoverArtUrl", remoteCoverArtUrl);
+        map.put("remoteCaptionsUrl", remoteCaptionsUrl);
         map.put("duration", duration);
-        map.put("bitRates", BIT_RATES);
-        map.put("defaultBitRate", DEFAULT_BIT_RATE);
+        map.put("position", position);
         map.put("licenseInfo", settingsService.getLicenseInfo());
         map.put("user", user);
+        map.put("player", player);
 
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
     }
 
-    public static Map<String, Integer> createSkipOffsets(int durationSeconds) {
-        LinkedHashMap<String, Integer> result = new LinkedHashMap<String, Integer>();
-        for (int i = 0; i < durationSeconds; i += 60) {
-            result.put(StringUtil.formatDuration(i), i);
+    private boolean isStreamable(MediaFile file) {
+        if (!StringUtils.equalsIgnoreCase("mp4", file.getFormat())) {
+            return false;
         }
-        return result;
+
+        // Only h264/aac/mp3 codecs are generally supported.
+        MetaData metaData = videoConversionService.getVideoMetaData(file);
+        if (metaData == null) {
+            return true;
+        }
+        if (!metaData.getVideoTracks().isEmpty() && !metaData.getVideoTracks().get(0).isStreamable()) {
+            return false;
+        }
+        if (!metaData.getAudioTracks().isEmpty() && !metaData.getAudioTracks().get(0).isStreamable()) {
+            return false;
+        }
+        return true;
     }
 
     public void setMediaFileService(MediaFileService mediaFileService) {
@@ -114,5 +140,13 @@ public class VideoPlayerController extends ParameterizableViewController {
 
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
+    }
+
+    public void setCaptionsController(CaptionsController captionsController) {
+        this.captionsController = captionsController;
+    }
+
+    public void setVideoConversionService(VideoConversionService videoConversionService) {
+        this.videoConversionService = videoConversionService;
     }
 }

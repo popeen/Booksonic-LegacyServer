@@ -26,7 +26,8 @@
         <li>Only US 99c (give it a try!)</li>
     </ul>
 
-    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ghenry22.substream2"><img alt="" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png"/></a></span>
+    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.ghenry22.substream2">
+        <img alt="" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" style="width:169px; height:50px"/></a></span>
     <span class="image" style="padding-left: 20px"><a target="_blank" href="https://itunes.apple.com/us/app/substreamer/id1012991665?ls=1&mt=8"><img alt="" src="inc/img/available_on_appstore.png"/></a></span>
 
 </section>

@@ -1,3 +1,4 @@
+<<<<<<< .mine
 TODO IN 5.3
 ------------
 Review forum comments.
@@ -1133,3 +1134,2357 @@ To make it work on subsonic.org:
 - Install libffi for Centos
 - Extract libjnidispatch.so from jna-3.2.5 and put it in /usr/local/crashplan
 - Remote UI: http://support.crashplan.com/doku.php/how_to/configure_a_headless_client
+||||||| .r4570
+TODO IN 5.3
+------------
+Review forum comments.
+New server:
+  subsonic.canaca.com: 66.49.215.227
+  backup: forum -> subsonic.org
+
+Support ID3 lyrics
+  https://mail.google.com/mail/ca/u/0/#inbox/150960f1fc7133ac
+Google Chart API
+
+Site: Provide static download link to latest.
+Forum: add favicon file
+Support media folder types (Music vs Video)
+  https://mail.google.com/mail/ca/u/0/#inbox/14e801e8820f0616
+Interface binding for DLNA server part
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14f4cafdc00a3660
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=15944&p=68658
+Site: Update list of apps
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14f395ddbae11289
+Shares shouldn't work if license expired
+Improve custom hostname support
+  Validate url
+  Test with context path, including chromecast
+  Test with https
+Open/close playqueue broken in Chrome 44
+Port-forward https port also
+Outdated SSL
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14ef975868d1aaa5
+Test with Windows 10
+Status and log should only be available for admin.
+Problem with updating "deep" folders?
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14ee79c0a22dc5ed
+Integrate with iTunes playlists
+Remember visibility of left.jsp?
+Make logout float right
+Check jwplayer in external player
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14ec51aec7f9f483
+Change chromecast background.
+Custom Sonos texts for starring.
+Upgrade sonos wsdl.
+  AbstractMedia.summary
+  AbstractMedia.isFavorite
+  AbstractMedia.displayType
+  MediaCollection.containsFavorite
+  ExtendedMetadata.relatedPlay
+Sonos: artist bio
+Test out sonos display types.
+Test out jwplayer html5.
+Test other html5 apps.
+Kernel notification of disk changes.
+Case insensitive ldap.
+Private domain share.
+NAS support
+
+Test html5 audio when transcoding
+  Use custom progress bar, with time offset parameter instead of ranges
+  But this wouldn't work for non-transcoded tracks...
+Experimental: html5 player
+Backend: Is license email sent when extending?
+Disable scroll bar in top.jsp?
+HLS audio stutter
+  Try audio-only stream
+Auto-playlist: starred songs
+Highest rated: separate my vs global rating
+Inifinite scroll on home page
+reCAPTCHA v2
+Add integration to other audio systems than Sonos
+Podcast channel image in Sonos
+Site: Change hero image
+
+When scaling images, don't distort aspect rate.
+Sonos: Shuffle play per folder
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=15169&p=67927#p67927
+Backend: Does redirection work if license is expired?
+Fail to play videos in music folder root
+Logout icon causes scrollbars
+  https://mail.google.com/mail/ca/u/0/#inbox/14d85e8983c0da3a
+Open video in popup
+Site: Make "Features" more prominent, use image. "View all features"
+Check that ssh from demo works
+Add scrubber for drag n drop
+Artwork issues
+  https://mail.google.com/mail/ca/u/0/?pli=1#inbox/14bfee1e60021c46
+Doesn't work on 32-bit OS X.
+  https://mail.google.com/mail/ca/u/0/?pli=1#inbox/14bfd2220da4091e
+Movie metadata
+
+Integrate MySQL and audio ad support
+  After 6 months
+  Make premium features
+
+Promote Sonos (65k limit)
+"Recommended" album list (based on previous listening and similar artists)
+  Calculate async?
+New player controls
+  Keyboard shortcuts (media buttons / space / arrows, ..)
+  Remove "External player" feature?
+  Remove "Player has dynamic IP address"?
+  Remove "Control player automatically"?
+  Fix bug with multiple current track images.
+  Support with web player / cast / jukebox
+  Create screen mocks
+  Use html5 audio
+  "Previous" button should restart current song
+
+Bundle release notes
+Move media statistics to About page.
+Fade out text in auto cover art
+More space in left.jsp
+Edit/delete artist info.
+Make separate category for videos in search.
+  Create search index for videos
+Show video preview in Starred
+"Add to playlist" submenu
+  http://behigh.github.io/bootstrap_dropdowns_enhancement/
+Lazy create upnp
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=14873&p=65539#p65539
+Support tags/labels
+  https://mail.google.com/mail/ca/u/0/#inbox/14a187fb3cb4f0f5
+IntelliJ plugin
+Improve uploader
+FAQ: Mention Lollipop/Java 6 SSL incompatibility
+OAuth
+Avoid scrolling album/artist title
+Artist cover art collage (or use last.fm api)
+Subtitle support
+  https://trac.ffmpeg.org/wiki/HowToBurnSubtitlesIntoVideo
+  http://support.jwplayer.com/customer/portal/articles/1407438-adding-closed-captions
+  http://support.jwplayer.com/customer/portal/articles/1404037-migrating-from-jw5-to-jw6
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=14665
+Patch to enable init.d script to handle 0 byte PIDFILE
+  https://mail.google.com/mail/ca/u/0/?zx=fu6g1tfaa3i0#inbox/1492f9f3e57dd8ee
+Show song play count?
+DB: Delete redirection where trial is false and license holder is null.
+Instant search
+  - test other browsers
+  - test remote
+Sort folders using locale-specific collation.
+Don't differentiate between albums and dirs when sorting?
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=14727&p=64555#p64555
+Sort genres alphabetically?
+Keep Playlists Regardless if Media Found
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=14737
+Shows extra "|" in movie dir.
+
+Cast
+  Initial volume, both local and remote.
+  (Remote) skipping doesn't always work
+  Autoplay locally?
+  Proper handling of EOM
+
+Nicer desktop notification icon on windows.
+Help icon.
+Button backgrounds.
+Remove lame?
+Consider scrobble when calculating "now playing".
+  https://mail.google.com/mail/ca/u/0/#inbox/13f532a5e871a675
+Test aac playback in jwplayer.  Use provider "video" if necessary.
+Use javascript embedding of jwplayer everywhere?
+LyricsService error with special characters
+  https://mail.google.com/mail/ca/u/0/?ui=2#inbox/1449b103acad6d60
+Problem with Content-Range for transcoded audio
+  https://mail.google.com/mail/ca/u/0/?ui=2#inbox/1447f4b647387e8b
+
+Upgrade to servlet 3.0?
+Upgrade Jetty?
+Update ffmpeg
+  Use mpeg4?
+  https://mail.google.com/mail/u/0/#inbox/142d1b52c5c53ff1
+  Or HandBrake, https://trac.handbrake.fr/wiki/CLIGuide
+  Support ISO
+
+Review Madsonic features
+  https://mail.google.com/mail/ca/u/0/?ui=2&shva=1#inbox/1437cc0dc4ec9a3d
+Replace paging with dynamic album fetching (like Google image search) in home.jsp
+Gzip REST / Jetty
+  https://mail.google.com/mail/u/0/?shva=1#inbox/14332aa25d587135
+  Jetty GzipFilter? Remember it should work on Tomcat etc as well.
+Monitoring with JavaMelody
+Requests unscaled image when clicking on thumb.
+Problem with web ui becoming unresponsive (toggling between jukebox and web player? subsonic.org unresponsive?)
+
+Selection in play queue is automatically cleared if no current playing.
+  Happens if switching to jukebox, then back to web player.
+
+Make font work when offline
+  https://github.com/typekit/webfontloader
+Support playlist sharing.
+  Back button should go back to playlist.
+album year/genre should update if songs have changed (same as song count)
+Update Norwegian translation
+
+Backend
+  Send email 7 days after subscription expires.
+  Mention that purchased subscription time is added to existing.
+
+Can't play videos from left.jsp?
+Single songs in left.jsp have wrong v align.
+
+Publish on Mac app store
+Dont use <div/>
+REST video subtitle support
+  https://sites.google.com/site/mxvpen/api
+Recently added broken
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=11955&p=55889#p55889
+https port 8080 redirect to 8443 (jetty?)
+REST: Add getSongs
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/13e240db8f93072b
+Clean up podcasts in demo
+Improve video support
+  http://forum.subsonic.org/forum/viewtopic.php?f=8&t=11254
+  https://sourceforge.net/p/subsonic/feature-requests/15/
+
+other
+  reconsider sourceforge
+
+UPnP/DLNA
+
+Skifta (3450) - Can browse and play music.
+Windows Media Player (3450) - Visible, but can't browse
+Samsung tv, new (3450) - Can browse and play music, haven't tested video
+Samsung tv, old (3450) - Can browse, but can't play music.
+PS3 (3450) - Can browse albums
+
+  DAAP support.
+    https://mail.google.com/mail/u/0/?tab=cm#inbox/13a4690309e4d779
+    http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=976
+
+Try to reproduce playlist import problem
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/139e96f97e7c9b09
+Something wrong with matching players/users in Now Playing.
+  https://mail.google.com/mail/?tab=cm#inbox/137dcaaddeba0936
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/139e96f97e7c9b09
+S1000 Data file size limit is reached in statement
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=9998&start=75#p44643 (sent email Sep 7)
+Prefill minisub
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/1394bd52aaaf4969
+FLAC crashes Flash in Firefox (with server on Linux).
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=10027&p=44673#p44673
+
+Postponed:
+  - Add "Force rescan" option.
+  - Rename to play queue in Settings > Player.
+  - Show message if no songs are selected when doing add to playlist.
+  - Encourage users to save email addresses, also for admin.  Explain why.
+  - Update apps to include PlayBook version.
+  - Clicking play button on a video podcast doesn't work.
+
+Replace usage of dwr.util and prototype with jquery.
+Handle albums without artist. Don't create them?
+Test getPlaylist vs old-style IDs.
+Fix broken REST scrobbling, as reported by Ben.
+JWPlayer subtitle plugin
+  http://forum.subsonic.org/forum/viewtopic.php?t=5708
+
+-
+
+Evaluate HTML5.
+Extend demo music, and add video.
+Support ISO files.
+wtv support   http://forum.subsonic.org/forum/viewtopic.php?f=2&t=7668
+Add "-map_meta_data 0:0" to transcoding?
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=3270&p=34114#p34114
+Test with IE 9
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=8295&p=33672#p33672
+Don't hardcode c:/subsonic in windows installer.
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=8213
+Audio problems on Linux.
+  https://mail.google.com/mail/?ui=2&shva=1#inbox/133318f313c0ffbd
+Coniq:
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=8042
+subcl:
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=7897
+Better video quality when sharing
+  http://forum.subsonic.org/forum/viewtopic.php?f=8&t=7646
+Support custom domain name in sharing (Settings > Advanced)
+Rename "offsetSeconds" to "timeOffset" in StreamController, and update API doc.
+Add "byteOffset" parameter as well.
+Add rating attributes to <directory> in getMusicDirectory.
+REST: add method to get everything in search index (binary, compressed)?
+
+Stream from devices
+  https://mail.google.com/mail/?shva=1#inbox/13352f77f870eba1
+Go through tracker.
+Recursive getFolders API method?
+  https://Smail.google.com/mail/?shva=1#inbox/13090cd32a9922bd
+Show lyrics in tags.
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1700
+Hide log for non-admin users?
+Add "append" parameter to createPlaylist REST method. (or create appendPlaylist method)
+Handle non-square cover art
+  https://mail.google.com/a/activeobjects.no/#inbox/12debb505054d33a
+Cover arts not always aligned in grid
+  https://mail.google.com/a/activeobjects.no/#inbox/12defd71c5d9e916
+Upgrade ffmpeg and support wtv.
+AdMob
+Show library statistics for video.
+Playing only first three seconds of podcast
+  http://mail.google.com/a/activeobjects.no/#inbox/12e341aeae9535eb
+GPU-accellerated ffmpeg
+  https://mail.google.com/a/activeobjects.no/#inbox/12f50fffffd6fecf
+Sencha Touch
+Subsonic for Boxee
+Linux locale issue
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=22386#22386
+
+DONE IN ANDROID 4.2
+--------------------
+Don't show passwords in settings.
+
+TODO IN ANDROID 4.2
+--------------------
+Fix lint errors
+Wrong cache location in Android 5?
+SSL problems with Android 5?
+  https://mail.google.com/mail/ca/u/0/?zx=fu6g1tfaa3i0#inbox/1493402cdb7393f1
+"Exit" button not always working?
+  https://mail.google.com/mail/ca/u/0/#inbox/148b913b924e6218
+android client will not shuffle offline content immediately after switching to offline mode
+  https://mail.google.com/mail/ca/u/0/?zx=czl1dhi5aac3#inbox/148372910b0669b8
+Password shown in clear text
+  https://mail.google.com/mail/ca/u/0/?zx=czl1dhi5aac3#inbox/1485aae9b208349f
+Pause instead of ducking
+  https://mail.google.com/mail/ca/u/0/#inbox/148911d28b1805b4
+BT metadata support
+  Don't duck etc when in jukebox mode.
+  http://developer.android.com/reference/android/media/RemoteControlClient.html
+  https://github.com/grimpy/Botifier/blob/master/src/com/github/grimpy/botifier/BotifierManager.java
+
+Disable RC if connected to Bluetooth.
+  https://mail.google.com/mail/ca/u/0/#inbox/1446ffa5fca92812
+Subsonic Android Not Pausing for Google Voice Typing
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/142be82a12741b2ba
+Make older version available. Debug problem with connection errors:
+  https://mail.google.com/mail/ca/u/0/?ui=2&shva=1#inbox/1428e52284bfc9d2
+Make it easier to add server URL.
+Support add to playlist
+Star status not updated in DownloadActivity.
+Slow song switching?
+  https://mail.google.com/mail/u/0/#inbox/1424e3567ded0b6d
+
+Amazon free app of the day
+  https://mail.google.com/mail/ca/u/0/#inbox/1422d6f137c63319
+Skipping problem solved in Dsub.
+Review context menu visibility.
+Make com.android.music.metachanged work.
+
+Add more EQ options
+Google Cast
+  https://developers.google.com/cast/
+  https://developers.google.com/cast/cast_2nd-screen_app_tutorial
+
+Problem with shuffle + offline
+  https://mail.google.com/mail/ca/u/0/#inbox/13b6b172df46f25d
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/13f324a7ec6654c8
+RC volume
+  https://mail.google.com/mail/ca/u/0/#inbox/13b3fe25a8b5d8ee
+Podcast support
+Audio focus
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/13a5993b0b420581
+Create new screenshots.
+Add option to delete file. (Rename to "Remove from playlist").
+Add to playlist
+Test on Android 2 and 3.
+  Notification icon too big and bright.
+
+Review patches for AVRCP and lockscreen controls
+  https://sourceforge.net/p/subsonic/patches/9/
+
+Widget
+Use GridView to show albums.
+
+Subphonic
+  http://forum.subsonic.org/forum/viewtopic.php?f=5&t=9864
+HLS video.
+Update artist list in background.
+
+Sleep timer.
+Maintain track order for offline files.
+Check for lingering .partial files.
+  https://mail.google.com/mail/?ui=2&shva=1#inbox/134082ca4244da22
+Don't pause on incoming call if RC.
+Change generic album art.
+In ICS, doesn't pause when disconnected from Bluetooth.
+Bug if switching to RC and back for a song that is currently downloading.
+Add OFL button.
+Handle togglig OFL and RC.
+Include German translation.
+  https://mail.google.com/mail/?shva=1#inbox/133a4277174786c7
+Google TV?
+Test BlackBerry runtime
+Android 4.0: Support Audio remote controls
+  http://developer.android.com/reference/android/media/RemoteControlClient.html
+Handle files in root folder.
+EQ resets when switching between online/offline.
+  https://mail.google.com/mail/?shva=1#inbox/131e7e98173f0c97
+Don't stop playback when switching between online/offline.
+
+Screen reader support for play, pause, etc
+Fix other crashes.
+In-app purchase.
+Graphic accelerate.
+Make Pin work if completefile exists, also if not online.
+Support API level > 10.  Show title bar if Honeycomb?
+Sharing support.
+Podcast support.
+Offline shuffle play broken.
+Test: New setting: "Wi-Fi streaming only"
+New Pin/unpin icons.
+
+Enable honeycomb actionbar
+Access other music on phone.
+  Make it possible to select multiple root folders.
+  Browse structure?
+  android.intent.action.PICK
+  "Save offline media in"  /sdcard/subsonic/music
+  "Also show media in" /sdcard/Music
+  Make sure to create folder when changed.
+  Rename "Select server" to "Media source".
+    Server 1
+    Server 2
+    Server 3
+    Offline media
+Does repeat button work in landscape mode?
+DownloadServiceImpl: ignore a mysterious MediaPlayer error
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12eff38d39be7a3c
+Error when using foo:3030 as server url.
+Avoid more than one instance.
+Use new intents in widget.
+Reset shuffle play buffer when changing server.
+Long-click:
+  Long-click artist -> Play random
+  Lyrics
+  Use popup for voice search?
+  Test voice search.
+  Simplify code in SelectAlbumActivity?
+Improve horizontal layout, move tab buttons to the right.
+Shuffle play turned back on when rotating phone. (onNewIntent?)
+Better handling of full SD card.
+Unnecessary initial pause when starting partially downloaded songs.
+Reuse AlbumViews (in EntryAdapter)
+Cooler button in slider (polished steel)
+Nicer icon for music library.
+
+Skipping problem
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=15260#15260
+Disk-full patch from Chad
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12b7985fd3a052ac
+Improve behaviour when SD card is mounted.
+Detect Bluetooth disconnect
+  android.bluetooth.intent.action.HEADSET_STATE_CHANGED
+  android.bluetooth.intent.HEADSET_STATE
+  android.bluetooth.headset.action.STATE_CHANGED
+Test "Save on phone" in offline mode.
+Bookmark location in long files.
+Save coverart when caching music. (and reuse it rather than doing http)
+  Remove logic from MediaStoreService.
+  Go through caching logic.
+  File load/save should be done in CachedMusicService.
+Fix crashes
+Optionally hide music from other players (.nomedia)
+Long-click download
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=2651&start=105
+ogg support
+  https://mail.google.com/a/activeobjects.no/?tab=cm#inbox/129f7959b2353a3d
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=10101
+Cover art download doesn't cancel properly.
+Extend playlist menu (Clear, Save...)
+Skipping broken when downloading file.
+Crashes if plugging in usb while downloading.
+Only retry if network error.
+Select music folder in server settings. (Including "All").
+Use combination of progress bar and slide bar.
+Bluetooth and audio button control support.
+Max bitrate settings: Differentiate between 3G and non-3G
+Add icons to server popup.
+Album art border, ala wimp
+Reuse list item views in SelectAlbumActivity?
+Colors: http://www.androidtapp.com/opentable/
+
+VIDEO
+-----
+Hide timeOffset if duration unknown.
+Longer buffer (bufferlength flashvar)
+Hide slider.
+Add .divx
+Select inital bitrate based on network type.
+Buy new JW license
+
+
+Amahi
+Add link to ReadyNAS add-on
+  http://www.readynas.com/forum/viewtopic.php?f=48&t=45661
+Initial delay when playing in JW Player.
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=5560
+Rename "mask" to "file types". (And change implementation to handle missing periods.)
+Subsonic Premium
+Singleton jukebox (at least in REST)
+  https://mail.google.com/a/activeobjects.no/#inbox/12d9a0b7bd4858af
+Flowplayer
+  http://flowplayer.org/plugins/streaming/pseudostreaming.html
+jSub
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=4479
+Maven 3
+Investigate mapped network drives.
+Show recommended songs, based on last.fm
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3211
+  https://mail.google.com/a/activeobjects.no/#inbox/12ddbfe26940f6cc
+Run Subsonic on Dreamplug
+  http://www.globalscaletechnologies.com/p-41-dreamplug-devkit.aspx
+  Invoice: https://www.globalscaletechnologies.com/receipt.aspx?ordernumber=113837
+Suggestions from Gary:
+1) Many users suggest, and I concur, that making the drop down for the number of albums displayed, “sticky” so that it
+   remembers your last selection.  Many users ask how to change the default from 10.
+
+2) Auto update of album art.  This seems to be declining in interest, but was an issue a while ago.  Not a problem for me
+   personally, but I do visit sites that are missing quite a bit of artwork.  I know, and use a 3rd party program to do
+   library updates, but I’m sure there are many users who would like to see an auto select for missing album art.
+
+3) Folder permissions for users.  This has been pretty big recently.  I know I use public and private sites to segregate
+   material, but I too could eliminate one site if I could control which users had access to which folders.
+
+4) Personal suggestion – make Internet TV/Radio section in the left hand column collapsible.  Maybe not a bad idea for
+   the letter sections as well.
+
+5) Photo Album section.  This would make SS the complete home media front end if it could handle a photo library,
+   perhaps with slideshow capability.
+
+html multiple file upload.
+Build ffmpeg for x86 on Mac
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12cb55940868506d
+  ./configure --disable-shared --disable-mmx --arch=x86_64
+  ./configure --arch=ppc --enable-altivec --extra-cflags="-arch ppc" --extra-ldflags="-arch ppc" --enable-cross-compile --target-os=darwin
+According to Petter, overriding SUBSONIC_HOME doesn't work in Debian.
+Estimate content-length for transcoded/downsampled files.
+Complete getjar registration.
+Test non-ascii transcoding on linux.
+For transcoded files, display both source and target formats in gui.
+REST method supporting "Play random", or shuffle for a sub-tree
+Disable scrobbling while downloading; Add new scrobble command?
+Select wrong player when clicking "Settings" in playlist frame.
+Upgrade DWR to 3.0rc2 when in becomes available (to make it work with Tomcat 7)
+Keyboard shortcuts.
+HTML5/iPad
+  http://code.google.com/p/subtunes/
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3310
+
+Add REST method to add license key.
+Subsonic Premium
+Add one-liner intro in web page, a la http://www.rogueamoeba.com/nicecast/
+  o No monthly fees, no uploading, no syncing
+Change icons all around.
+Add trialExpires to REST API.
+Change font in logo?
+Add "append" parameter to createPlaylist REST method.
+Modify port number and memory on Mac.
+Make port 4040 the default on Windows installations not 80
+Write tip in Google group about subsonic.org redirect optimization.
+Update Getting Started, http://docs.google.com/Doc?docid=0ASOhs01fcWMXZGY2eDc0amZfMzJnZDUyaHJocw&hl=en
+Create translation tool for backend.
+Downsample command used for non-mp3.
+New screenshots for themes.
+Go thru About page.
+Change documentation of subsonic_home.  Use popup?
+
+Make maven build from root work.
+Java silent installation: http://java.sun.com/javase/6/webnotes/install/jre/silent.html
+WiX: https://sourceforge.net/projects/wix/
+Add track count REST.
+Fix bug with executor in networkservice.
+Disable ads first 30 days?
+Show status in getting started.
+Test lyrics with non-ascii.
+Global option to disable chat.  Admin should be able to remove individual messages.
+Scrobbling broken for transcoded songs? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=2316
+Bug: Double-scrobbling when transcoding.
+Restart BasicPlayer for each song in playlist. http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=6225
+
+ANDROID
+-----------------------
+Android: Fix bugs reported by Market.
+Android: Suggest switching to offline mode if network error.
+Android: Make offline mode more visible.
+Android: Reorder playlist
+Android: Queue Next + Queue Last
+Swipe album art to go to prev/next track.
+Seeking fails when playing partial file.  seekTo() should test if playing from partial.
+Only show fullscreen when applicable.
+Create Norwegian translation.
+Use IOUtils, StringUtils.
+List of bugs/requests from cwilliams:  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=7854
+Use CancellableTask in BackgroundTask. Check for isCancelled in loops.
+Improve design of DownloadFile.getCompleteFile() etc.
+Remember position for podcasts.
+Use Droid-Fu?
+Android: Long-click on song list.
+Android: Option to auto-sync certain directories or playlists.
+Android: Option to tag certain directories as favorite.
+Fix encoding problems in Subsonic Demo files.
+Must resolve content type in StreamController, even if "suffix" is not given.
+
+VIDEO
+-----
+Air Video
+  http://www.inmethod.com/air-video/index.html
+  http://lifehacker.com/5473128/air-video-streams-your-videos-to-your-iphone-with-minimal-effort-is-incredible
+  http://www.inmethod.com/forum/posts/list/60/34.page
+http://rob.opendot.cl/index.php/useful-stuff/ffmpeg-x264-encoding-guide/
+Create separate "Video folder" definition?
+Be able to select stretching type.
+Fix window popup.
+Database support.
+Use provider=video for playing back AAC/M4A. Don't set duration if unknown.
+Add "transcodedFormat" to PlaylistService.
+Don't transcode aac/m4a by default.
+Test playback on Android.
+c:/subsonic-dev/transcode/ffmpeg.exe -i in.avi -vcodec libx264 -fpre libx264-normal.ffpreset out.mp4
+Copy x264 preset files to HOME or something.
+Encode audio as mp3?
+Manually put videos in transcoding queue?
+JWPlayer popup, http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=9147
+http://developer.longtailvideo.com/trac/wiki/Player5Formats
+http://developer.android.com/guide/appendix/media-formats.html
+http://www.pldx.com/blog.php/2009/06/encoding-h264-with-ffmpeg/
+Don't set duration to zero.
+Set proper size.
+ffmpeg flv transcoding.
+When adding a transcoding with default=true, enable it for all players.
+Don't audioscrobble videos.
+Test new JW Player on Mac and Linux.  Also with Flash plugin 9.0
+mp4 tag parser https://contributions.coremedia.com/isobox4j
+
+BACKLOG
+==========================
+Show song title in Browser Title Bar, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3304
+Next to Lyrics link, add "Share" link with permalink? (link.subsonic.org/iksj)
+auto-detect links in chat.
+Chat broken on Safari
+Add "Copy settings from user" option.
+Improve menus in web pages.  Make sub menus.
+Add FLAC>WAV transcoding
+Add "Add random" to main.view and "Add to playlist" in more.view
+Use signed requests against Amazon.
+http://www.jthink.net/jaudiotagger/index.jsp
+Exclusion filter (*.svn, *.log, *.pun)
+Select music folder / playlist folder in Windows installer.
+Add links to Facebook group from home page and Help page.
+Bad performance, low bandwidth.
+Avoid underlined image links in menu bar (FF, Chrome)
+Nightly build.
+Write installation note on how to setup internet access.
+Mention Amahi in web pages.
+Contact Amahi
+Run agent as admin in Windows 7. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1479
+Does subsonic_exclude.txt work for indexing? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1965
+User registration.  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1931
+Further search improvements, e.g., "search all". http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1839
+Improve year range in random playlist generator.  Maybe provide to and from fields.
+Improve Midnight Fun theme.
+Google Image Search or Yahoo search
+Automatically enable/disable "Notify me about new versions" option when new users are created.
+Show who's online.
+Error when path contains "&amp;" http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1921
+Simplify Media.  How does it avoid opening ports in router?
+Integration with Spotify/Despotify/Jotify.
+Create Jing screencast.
+Specify upload directory per user. Option to delete files?  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1710
+Coverflow, http://imageflow.finnrudolph.de/, http://sockso.pu-gh.com
+Problems with player resolution for guest users when behind proxy. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1815&postdays=0&postorder=asc&start=0
+Use SoundManager 2 to implement inline song preview.
+Somehow indicate player type in playlist.
+Make contiuous random mode work in jukebox mode.
+Use reverse ajax for Now Playing?
+Recover/reset forgotten password. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1654
+IE 8 error. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1869
+Enable auto-random mode for jukebox.
+Reduce jukebox logging.
+Validate transitional dtd.
+Profile for bottlenecks
+Selected music folder not remembered.
+Now playing broken?
+"grep -v" in subsonic.sh
+Updates to subsonic.sh  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1634
+Podcast broken? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=120
+Bug when adding new tracks to playlist,  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1543
+Refactor SearchService.getRandomSongs()?
+Problem when streaming 2gb+ files, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1538
+Change default cover image.
+Read .txt and .nfo for artist/album reviews. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1587
+Change LAME download url.
+PHPBB authentication. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1857
+Ignore files/directories by name (e.g., ".svn"), FilenameUtils.wildcardMatch(), http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=831
+Jetty download performance, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1712
+Add to Ubuntu repo.
+Podcast : Playing Direct from URL, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1667
+iPod/iPhone support.
+   http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1200
+   http://www.alloysoft.com/
+   http://developer.apple.com/webapps
+   http://developer.apple.com/internet/webcontent/bestwebdev.html
+Artist/Album level comments, ability to read from txt file, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1587
+"External player" problem described by ghjames in http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=3866
+"Sign up" feature.
+Introduce "Default transcoding bitrate" instead of hardcoding it to 128 kbps.
+Message system (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=24)
+http://mojo.codehaus.org/jspc/jspc-maven-plugin/usage.html
+NoCache for login.view?
+Optionally hide media library statistics.
+Remember number of albums to show in home.jsp.  Either persistent or per session.
+Remove RipServer support.
+More > Random playlist doesn't autostart in Flash player.
+Log when people log in.
+Precompile JSPs in Jetty mode. http://www.j2eegeek.com/blog/2004/05/03/a-different-twist-on-pre-compiling-jsps/
+Show name of currently playing song in Flash player.
+Upgrade to latest JW player?
+Wrong duration in transcoded wma. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1461&start=15
+Create Linux package installer.
+"Remember me" broken with LDAP auth?
+Selected podcasts not cleared when deleting.
+top.view cached erronously?
+Fix layout in player settings.
+Implement Slim protocol.
+Tag editing breaks embedded cover art. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1305
+Double-write tag info? http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=2245
+Error with new LAME version?  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=3339
+Sort albums by year. (And show year). getCoverArt() should be made non-recursive. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1075
+Support FLV.
+Support AVI etc?
+Add Show/Hide Video?
+Minimize/maximize playlist frame.
+Create support for default player type per user.
+Show active users. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1387
+Option to specify extensions not to be included when downloading directories.
+Playlist drag'n drop
+"Featured" albums. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1388
+http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1407
+Avoid logging of DWR stuff. Add logging from Subsonic service.
+Create tutorial of how to build from source.
+Set multiple icons when using Java 6(?)
+Show who played a track last. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1404
+Support "play more random songs" if web player.
+After logon, go to originally requested page.
+Fix broken SSL, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1301
+Simplify URL rewriting. Always use relative links if that works.
+Log error if podcast delete file doesn't succeed.
+Podcast duplicate files. nrk_verdt_aa_vite_2008-0820-1203_24459.mp3 + nrk_verdt_aa_vite_2008-0820-1203_244590.mp3
+User/music folder authorization.
+Show percent complete for translations.  In web page at least.
+Improve getting started.
+Look at maven release plugin.
+last.fm problem. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1278
+Show total playlist duration.
+Remove player dynamic ip property?
+Upgrade to Spring Security.
+Bundle with open-source UPnP app?
+Uninstaller should optionally delete c:\subsonic
+Nicer popup for lyrics and online help.
+Add option for one player per user http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1255
+Verify that LastModified works for avatars.
+Create per-channel podcast settings. At least enable/disable.
+Should make it possible to retrieve avatars without reading the binary column.
+Per-song rating.
+Use filter for subsonic version in site xml's.
+Add download/upload speedometer.
+Implement LastModified in main.jsp (Must test on FF).  Must add timestamp on music_file_info. Problem with cover art scheme.
+Party mode: Go into random mode if the playlist is finished.
+Retag track number in podcasts. http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=2003
+Make background image repeat in x-direction?
+Use YUI menus: http://developer.yahoo.com/yui/menu/
+Spacing in home.jsp
+Use em instead of pt when padding.
+Random radio mode (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=964)
+Option for unlimited download/upload if on LAN.  Remember to support proxies.
+Integrate with Amazon mp3.
+Caching bug, selected music folder.  At least in IE and FF.
+RejectedExecutionHandler handling in ThreadPoolExecutor constructor.
+Precompile JSPs for Dekoh. Separate modules "subsonic-precompiled-jetty" and "subsonic-precompiled-dekoh".
+Fix javascript error in playlist in IE.
+Display the sub folder count next to the artist folder (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=905)
+Facebook integration
+Show/Hide Podcast channel description (e.g., Java Posse)
+Show mini coverarts "Next/Prev Album".
+Add check for admin rights in installer.
+Add "play count" to Podcasts.
+ASX (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=638)
+Make it possible to cancel/resume Podcast downloads. ("Cancel selected")
+Select all in textfield for settings image url (and other textfields?)
+Remove stream status after end of playlist is reached.
+Ajax-ify Amazon pages.
+Wrong progress for http://atvs.vg.no/script/podcast.php?category_id=7
+Resumable Podcast downloads.
+"Random" very slow when no music folders.
+Test if dwr javascripts are cached in browser (especially for "now playing")
+Better IE support in playlist checkbox stuff. Instead of disabling (which isn't supported in IE, set font color to gray).
+Test playlist checkbox stuff, in particular download auth.
+Move "logout" under search search field.
+Reformat all java code.
+Check out non-Latin ID3 problem (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=527)
+Track titles that begin with numbers (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=170) (For instance "13 humler")
+Fault-tolerant transcoding FLAC>MP3 (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=545)
+Drag'n'drop in playlist.
+Fix description in Freshmeat.
+ID3 problems (http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=952#952)
+Make sure podcast works with playlist names with non-latin chars.
+Test Google Web Toolkit?
+Show next/prev 100 hits.
+Create checkbox and combobox menu in main.jsp.
+FLAC > OGG audioscrobbling problem (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=597)
+Support MUSICBRAINZ_TRACKID (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=597)
+Check out http://www.javazoom.net/jlgui/jnlp_configurator.jsp
+Check out asx/asf: http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=638
+Make podcast work in iTunes.
+Longer cache expiry period for images.
+RSS feed for newest content.
+Web proxy support (for audioscrobbler, amazon etc)?
+Missing refresh when changing from no cover art.
+Resolve problem with MetaData NullPointerException. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=112
+Don't show empty statistics.
+AJAX error dialog from Dave.
+Remove "user" column from status.jsp?
+Sometimes a song is started twice. Two m3u's sent?
+Profiling (http://www.yourkit.com/)
+Invalidate browser cache when changing cover art image.
+http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=94
+Mails from Dave (IP change problem).
+Why is Player.id a String, not an Integer?
+Upload broken in IE.
+Upload popup?
+Add transcoder for cell phone etc.  aacPlus.
+Seeking.
+Display running time, as well as elapsed time for current song.
+Playback buttons.  Stop, play, pause, resume, next, previous.
+Create "Electron Blue" theme (http://www.msn.com/) Startour?
+Use cookie.setPath()?
+      cookie.setPath(request.getContextPath());
+Use AJAX to change random albums on home page, one at a time.
+Implement pure AJAX version of playlist.jsp.
+Check Javascript error on IE.
+Photo support?
+User-based folder access
+Replace methods in my StringUtil with corresponding in Spring.
+Batch download of cover arts.
+Use Rico for rounded edges. http://openrico.org
+Use cewolf?
+Use dialog popup for online help.
+Make another theme with smaller fonts.
+Make fancy css background for playlist toolbar.
+Use CSS overflow: auto for scrolling in playlist?
+Use Spring StringUtils.cleanPath()?
+Option to show exception details in error log.
+Quick link to "#" doesn't work.
+Should receive feedback when changing passwords, creating users etc.
+java.io.FileNotFoundException: C:\music\The Alan Parsons Project\The Best of The Alan Parsons Project\folder.jpg (Access is denied)
+Use HTML 4.01, validate all pages.
+Create taglib for help popup.
+Make it work on Java Application Server 8.1.  (web.xml element order)
+Make it work on Geronimo.
+Drop ResourceBundle_en.
+Upload quota per user.
+Support reverse proxies.  Send url as parameter. (<a href="javascript:document.location.href='foo.jsp?referrer=' + document.location.href">Trykk her</a>)
+Support forward proxies.
+Hvis spilleren har "Auto-control enabled" skrudd av, så vises det en ny knapp "Stream" i playlista som kan brukes for å få m3u-en.
+Replace use of arrays with type-safe collections.
+"Mini" interface for phones, pda's etc.
+Longer log file. Option to not display DEBUG lines in help.jsp.
+Kant rundt hele vinduet, som i forum.
+Always show playlist menu.
+Let number of columns be dynamic in home page.
+Performance monitoring.
+Use MusicFile.isAlbum()
+Simplify new/random in SearchService.
+If the album-name contains an apostrof ( ' ), then I get an error when I search for cover-art
+Provide links to podcast, settings, help, message board, wishlist on home page.
+Check that multi-discs are not included in random and newest albums.  Change implementation of isAlbum.
+Integrate Windows Media Player in web page.
+Fetch current version asynchronously.
+UPnP
+Register at myprogs.net
+Link to Pandora (http://blog.pandora.com/faq/index.html#92)
+Check Jinzora features. http://www.jinzora.com/pages.php?pn=developers&sub=changelog
+Add Cancel button to Save Playlist.
+Håndtere galt format samt manglende filer i playlister.
+Håndtere playere med navn som ikke er iht httpurl.
+Rydd opp i http-parameternavn.
+Gjøre sidene XHTML-kompatibel.
+Validaton of index specification.
+Make playlist loading more robust.  (Fails on url's, for instance.)
+Make PDA skin.
+Bug: Going back adds songs to playlist multiple times.
+Quiz
+Emulator 3G-telefon
+XHTML Mobile Profile
+Add mp3-player as applet.
+Parse tags for wma etc.
+No SHOUTcast if playlist is empty.
+i18n of enums.
+http://www.freeware-guide.com/dir/audio/streaming.html -> Registrert 10. mai 2005
+Option to create structure based on tags.
+Zip and unzip fails with accented characters.  Use commons vfs, or some other lib.
+Log when zipping individual files.
+Add online help to search index update.
+Vis "lignende" album.
+
+HOW TO RELEASE
+===============================
+MAKE SURE YOU'RE ON TRUNK
+Update version number in pom.xml, version.html, MultiController.java, download.jsp
+Update changelog.jsp
+Commit
+svn up
+mvn clean -P full
+mvn install -P full
+cd subsonic-assembly; mvn assembly:assembly; cd ..
+cd subsonic-backend;  mvn clean install; cd ..
+Deploy
+Check that correct local version is displayed.
+
+Upload files to SourceForge (in separate shell, REMEMBER TO CHANGE VERSION BELOW). 
+
+On Mac OS:
+  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/5.3/
+  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* root@subsonic.org:/var/lib/tomcat/download/
+
+On Windows
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean install -Pfull
+  scp subsonic-installer-windows/target/subsonic*-setup.exe  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/5.3/
+  scp subsonic-installer-windows/target/subsonic*-setup.exe  root@subsonic.org:/var/lib/tomcat/download/
+
+On demo.subsonic.org (Ubuntu)
+  cd subsonic
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean -Pfull,debian
+  svn st
+  mvn install -Pfull,debian
+  scp subsonic-installer-debian/target/subsonic*.deb sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/5.3/
+  scp subsonic-installer-debian/target/subsonic*.deb root@subsonic.org:/var/lib/tomcat/download/
+
+On subsonic.org (Fedora)
+  cd subsonic
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean -Pfull,rpm
+  svn st
+  mvn install -Pfull,rpm
+  scp subsonic-installer-rpm/target/subsonic*.rpm sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/5.3/
+#  scp subsonic-installer-rpm/target/subsonic*.rpm root@subsonic.org:/usr/local/jakarta/tomcat/download/
+  cp subsonic-installer-rpm/target/subsonic*.rpm /var/lib/tomcat/download/
+
+Modify FRS properties
+  https://sourceforge.net/projects/subsonic/files/subsonic/
+
+Upload site (OLD):
+ rsync -avP -e ssh --exclude ".*" subsonic-web/  sindre_mehus,subsonic@web.sourceforge.net:htdocs/
+
+svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/release-5.3 -m "Tagging 5.3"
+Post message on forum.
+
+Checking for license abuse:
+select count(*) as n, license_holder from redirection
+where license_holder is not null and license_holder <> '' group by license_holder
+order by n desc
+
+Update subsonic.org
+-----------------------------------
+mkdir /var/lib/tomcat/webapps-2015-08-17/
+scp subsonic-backend/target/subsonic-backend-*.war root@subsonic.org:/var/lib/tomcat/webapps-2015-08-17/ROOT.war
+scp subsonic-site/target/pages.war root@subsonic.org:/var/lib/tomcat/webapps-2015-08-17/pages.war
+
+Checkpoint database (db.view)
+cd /var/lib/tomcat
+ps -elf | grep tomcat
+systemctl stop tomcat
+rm webapps
+ln -s webapps-2015-08-17 webapps
+ln -s /var/lib/tomcat/download webapps/download
+ll webapps/
+rm -rf work logs/*
+systemctl start tomcat
+tail -f /var/subsonic-backend/subsonic-backend.log
+
+Update demo.subsonic.org (192.157.241.116)
+------------------------------------------
+mkdir /var/lib/tomcat6/webapps-2015-08-17/
+scp subsonic-main/target/subsonic.war root@demo.subsonic.org:/var/lib/tomcat6/webapps-2015-08-17/ROOT.war
+service tomcat6 stop
+cd /var/lib/tomcat6/
+rm -rf work/Catalina logs/*
+rm webapps
+ln -s webapps-2015-08-17 webapps
+ll webapps/
+service tomcat6 start
+tail -f /var/subsonic/subsonic.log
+
+
+HOWTO: Enable remote JMX for JVisualVM
+--------------------------------------
+In subsonic.canaca.com:/usr/sbin/starttomcat, add
+        -Dcom.sun.management.jmxremote.port=1212
+        -Dcom.sun.management.jmxremote.ssl=false
+        -Dcom.sun.management.jmxremote.authenticate=true
+Create /usr/local/jdk/jre/lib/management/jmxremote.password, remember to make it root-readable only.
+
+subsonic.org backup / demo
+--------------------------
+BudgetVM 192.157.241.116
+service tomcat6 stop
+service tomcat6 start
+/etc/default/tomcat6  (memory settings)
+/etc/tomcat6
+/var/lib/tomcat6
+/usr/share/tomcat6
+
+
+HOW TO RELEASE TO ANDROID MARKET
+================================
+Update versionCode and versionName in build.gradle
+Commit
+cd subsonic-android
+./gradlew clean
+./gradlew assembleRelease
+### keytool -genkey -v -keystore subsonic.keystore -alias subsonic -keyalg RSA -validity 100000 -dname "CN=Active Objects"
+### jarsigner -verbose -keystore subsonic.keystore -signedjar bin/subsonic.apk bin/SubsonicActivity-unsigned.apk subsonic
+Upload to market
+https://play.google.com/apps/publish
+https://developer.amazon.com/welcome.html
+Update
+    http://appoke.com
+    http://appslib.com/developers/index.html
+    https://myapps.developer.motorola.com/
+    https://slideme.org/application/subsonic
+    http://www.camangimarket.com/index.html
+svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk/subsonic-android svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/android-release-4.4 -m "Tagging Android 4.4"
+Create new directory in FRS
+  https://sourceforge.net/projects/subsonic/files/android/
+Upload files to SourceForge (REMEMBER TO CHANGE VERSION BELOW).
+  rsync -avP -e ssh subsonic-android/subsonic/build/apk/subsonic-release.apk  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/android/4.4/subsonic-4.4.apk
+
+HOW TO RELEASE BLACKBERRY
+===============================
+Comment out <uses-permission android:name="android.permission.BLUETOOTH"/>
+Build release APK.
+Comment in <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+cd c:/progs/blackberry.tools.SDK/bin
+apk2bar.bat subsonic-release.apk "c:\Program Files (x86)\Android\android-sdk" -a "Subsonic AS"
+batchbar-signer.bat subsonic-release.bar client-certificate-1980825.p12 <password> <password>
+
+Your applications must target BlackBerry PlayBook OS 2.0 (or later) or BlackBerry 10 OS for them to be considered for approval.
+
+
+HOW TO RELEASE TRANSCODING PACK
+===============================
+Create transcode_windows.zip and release it in SourceForge FRS.
+  rsync -avP -e ssh transcoding-windows-1.1.zip  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/transcoding/1.1/
+
+HOW TO CREATE subsonic.keystore
+================================
+keytool -genkey -v -keystore subsonic.keystore -alias subsonic -storepass subsonic -keyalg RSA -validity 100000 -dname "CN=subsonic.org, O=Subsonic"
+keytool -list -v -keystore subsonic.keystore -storepass subsonic
+
+wget -S  --tries=1 'http://localhost:8080/rest/stream.view?u=admin&p=admin&v=1.6&c=android&id=2f55736572732f73696e6472652f4d757369632f44696d6d7520426f726769722f41627261686164616272612f3036202d2052697475616c6973742e6d7033&maxBitRate=96'
+
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=get' -O -
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=start' -O -
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=status' -O -
+
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=add&id=683a5c6d757369632e6576656e5c4169725c54616c6b69652057616c6b6965202d20323030345c3032202d2043686572727920426c6f73736f6d204769726c2e6d7033&id=683a5c6d757369632e6576656e5c4169725c54616c6b69652057616c6b6965202d20323030345c3039202d2042696f6c6f676963616c2e6d7033' -O -
+wget 'http://localhost:8080/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=add&id=2f55736572732f73696e6472652f4d757369632f44696d6d7520426f726769722f41627261686164616272612f3035202d2044696d6d7520426f726769722e6d7033' -O -
+
+MISCELLANEOUS
+=============
+Photos: http://www.123rf.com
+http://www.famfamfam.com/lab/icons/silk/previews/index_abc.png
+http://iconfactory.com/freeware
+openclipart.org
+http://pixelresort.com
+http://lbaumann.com/
+tango.freedesktop.org
+http://www.nero.com/eng/nero-aac-codec.html
+http://kickyoutube.com/
+http://www.schillmania.com/projects/soundmanager2/
+http://code.google.com/p/mobbler/
+
+IBAN number: NO7297223688407
+SWIFT code: DNBANOKK
+
+My address:
+Sindre Mehus
+Saturnveien 9
+0492 Oslo
+Norway
+
+Bank address:
+DNB
+0021 Oslo
+Norway
+
+RipNAS, http://www.ripnas.com/
+QNAP
+Netgear ReadyNAS, http://www.readynas.com/
+http://www.synology.com/enu/support/3rd-party_application_integration.php
+SqueezeCenter can run on a number of NAS devices, such as QNAP TS-101, Synology Diskstation,
+NETGEAR ReadyNAS, Buffalo Linkstation, Linksys NSLU2 and any device running FreeNAS software.
+
+rsync -avP -e ssh music.demo/ sindremehus@www.subsonic.org:music.demo
+
+-Dsubsonic.war=subsonic-main/target/subsonic -Dsubsonic.createLinkFile=true -Dsubsonic.windowsInstall=true -Dsubsonic.port=8080 -Dsubsonic.contextPath=/
+
+GIMP
+----
+Creating xxx_focused.png
+Farger > Farg > Kulør 34, Metning 97, Lysverdi -50
+
+Creating xxx_pressed.png
+Use brush: radius 23, spisser 2, hardhet 0.95, sideforhold 1.0, vinkel 0.0, mellomrom 1.0
+Use color: #ff8200
+
+Getting started, yellow marker
+Use brush: circle fuzzy 17, transparency 67.3
+Use color: #ffe200
+
+CrashPlan
+---------
+To make it work on subsonic.org:
+- Put jre in /usr/local/crashplan/jre (copy from forum.subsonic.org)
+- Install libffi for Centos
+- Extract libjnidispatch.so from jna-3.2.5 and put it in /usr/local/crashplan
+- Remote UI: http://support.crashplan.com/doku.php/how_to/configure_a_headless_client
+=======
+TODO IN 6.0
+------------
+Site: Links to xsd broken.
+Podcast:
+  Doesn't play on demo.subsonic.org
+  Title doesn't show
+
+Playcount and "last played" not updated.
+
+Rename "Save/Load play queue" to "Save/Load bookmark"?
+   http://forum.subsonic.org/forum/viewtopic.php?f=3&t=16368&sid=f893f69cd8b78513d949b968a84c1db9&p=70040#p70040
+Remove "Podcast" from shortcuts.
+
+Update recommended transcoding settings on web.
+Create hover effect in top and left.
+REST authentication not supported for LDAP users.
+  https://mail.google.com/mail/ca/u/0/#inbox/14fc35534d00d8e4
+  https://sourceforge.net/p/subsonic/bugs/158/
+
+ID3 lyrics
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=12595
+HTML5 player?
+  http://forum.subsonic.org/forum/viewtopic.php?f=6&t=16239&p=69649
+  Test stream role
+  Simplify code for update current song
+  Fix bug when having same song twice in play queue
+  Show buffering spinner in cast mode.
+  Cast background image
+  Jukebox: Doesn't update when clearing.
+Ellipsise buttons in left.jsp
+Make it simple to star currently playing song.
+createShare.jsp using path for back button
+Update dsub in apps page
+
+Add Play button to playlist
+Add "Add" and "Play random" to playlist menu
+Add second level playlist menu (with share, edit, delete, ...)
+
+Make proper Back buttons.
+Add Beta Beats
+  https://mail.google.com/mail/u/1/?tab=cm#inbox/15222fd6c2682067
+Video
+  Wrong aspect rate in video preview image.
+  Some videos doesn't start in Firefox (e.g., House of cards)
+    castPlayer.localPlayer.play(true).pause(true).play(true)
+    Hide playQueue?
+
+Scrubbing works poorly in IE.
+
+Conversion
+  REST support
+  Link to logfile if error?
+  Show conversion queue?
+
+Don't transcode m4a?
+Create simple webapp with responsive design
+  Bootstrap?
+  https://mail.google.com/mail/ca/u/0/#inbox/152945938b13b9c5
+Test UPnP video streaming.  Ensure non-conversion
+Site: Add video
+Site: Update screenshots
+Demo: Add video
+Jukebox mute: Add REST support
+Improve Subsonic logo
+Table in artists.jsp crashes with index.
+Ugly dropdown in firefox
+
+Add icon to buttons (start radio etc)
+Use Bootstrap?
+  http://fortawesome.github.io/Font-Awesome/examples/#bootstrap
+Review scanning algorithm. Always visit children?
+REST: Artist image url?
+Sonos: Star button missing on ipad
+Don't queue following songs when playing from search results / starred songs.
+  https://mail.google.com/mail/ca/u/0/?zx=nmcjqt3dyrzj#inbox/15169f6c8b06cc1b
+Remove Thumper?
+  https://mail.google.com/mail/ca/u/0/?zx=nmcjqt3dyrzj#inbox/151634428b1feffc
+
+Last.fm song matching and playlists
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=16126
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=15926
+Status and log should only be available for admin.
+
+Content length of FLAC transcoded to WAV incorrect
+  http://sourceforge.net/p/subsonic/bugs/121/
+New server:
+  subsonic.canaca.com: 66.49.215.227
+  backup: forum -> subsonic.org
+
+Site: Update SubStreamer
+  https://mail.google.com/mail/ca/u/0/#inbox/1505f8232760c3bf
+Support ID3 lyrics
+  https://mail.google.com/mail/ca/u/0/#inbox/150960f1fc7133ac
+Google Chart API
+
+Site: Provide static download link to latest.
+Forum: add favicon file
+Support media folder types (Music vs Video)
+  https://mail.google.com/mail/ca/u/0/#inbox/14e801e8820f0616
+Interface binding for DLNA server part
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14f4cafdc00a3660
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=15944&p=68658
+Site: Update list of apps
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14f395ddbae11289
+Shares shouldn't work if license expired
+Improve custom hostname support
+  Validate url
+  Test with context path, including chromecast
+  Test with https
+Open/close playqueue broken in Chrome 44
+Port-forward https port also
+Outdated SSL
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14ef975868d1aaa5
+Test with Windows 10
+Problem with updating "deep" folders?
+  https://mail.google.com/mail/ca/u/0/?zx=8dc6yomg8opi#inbox/14ee79c0a22dc5ed
+Integrate with iTunes playlists
+Remember visibility of left.jsp?
+Change chromecast background.
+Upgrade sonos wsdl.
+  AbstractMedia.summary
+  AbstractMedia.isFavorite
+  AbstractMedia.displayType
+  MediaCollection.containsFavorite
+  ExtendedMetadata.relatedPlay
+Sonos: artist bio
+Test out sonos display types.
+Test out jwplayer html5.
+Test other html5 apps.
+Kernel notification of disk changes.
+Case insensitive ldap.
+Private domain share.
+NAS support
+
+Test html5 audio when transcoding
+  Use custom progress bar, with time offset parameter instead of ranges
+  But this wouldn't work for non-transcoded tracks...
+Experimental: html5 player
+Backend: Is license email sent when extending?
+Disable scroll bar in top.jsp?
+HLS audio stutter
+  Try audio-only stream
+Auto-playlist: starred songs
+Highest rated: separate my vs global rating
+Inifinite scroll on home page
+reCAPTCHA v2
+Add integration to other audio systems than Sonos
+Podcast channel image in Sonos
+Site: Change hero image
+
+When scaling images, don't distort aspect rate.
+Sonos: Shuffle play per folder
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=15169&p=67927#p67927
+Backend: Does redirection work if license is expired?
+Fail to play videos in music folder root
+Logout icon causes scrollbars
+  https://mail.google.com/mail/ca/u/0/#inbox/14d85e8983c0da3a
+Open video in popup
+Site: Make "Features" more prominent, use image. "View all features"
+Check that ssh from demo works
+Add scrubber for drag n drop
+Artwork issues
+  https://mail.google.com/mail/ca/u/0/?pli=1#inbox/14bfee1e60021c46
+Doesn't work on 32-bit OS X.
+  https://mail.google.com/mail/ca/u/0/?pli=1#inbox/14bfd2220da4091e
+Movie metadata
+
+Integrate MySQL and audio ad support
+  After 6 months
+  Make premium features
+
+Promote Sonos (65k limit)
+"Recommended" album list (based on previous listening and similar artists)
+  Calculate async?
+New player controls
+  Keyboard shortcuts (media buttons / space / arrows, ..)
+  Remove "External player" feature?
+  Remove "Player has dynamic IP address"?
+  Remove "Control player automatically"?
+  Fix bug with multiple current track images.
+  Support with web player / cast / jukebox
+  Create screen mocks
+  Use html5 audio
+  "Previous" button should restart current song
+  Links from artist/song name
+    Similar in right.view
+Bundle release notes
+Move media statistics to About page.
+Fade out text in auto cover art
+More space in left.jsp
+Edit/delete artist info.
+Make separate category for videos in search.
+  Create search index for videos
+Show video preview in Starred
+"Add to playlist" submenu
+  http://behigh.github.io/bootstrap_dropdowns_enhancement/
+Lazy create upnp
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=14873&p=65539#p65539
+Support tags/labels
+  https://mail.google.com/mail/ca/u/0/#inbox/14a187fb3cb4f0f5
+IntelliJ plugin
+Improve uploader
+FAQ: Mention Lollipop/Java 6 SSL incompatibility
+OAuth
+Avoid scrolling album/artist title
+Artist cover art collage (or use last.fm api)
+Subtitle support
+  https://trac.ffmpeg.org/wiki/HowToBurnSubtitlesIntoVideo
+  http://support.jwplayer.com/customer/portal/articles/1407438-adding-closed-captions
+  http://support.jwplayer.com/customer/portal/articles/1404037-migrating-from-jw5-to-jw6
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=14665
+Patch to enable init.d script to handle 0 byte PIDFILE
+  https://mail.google.com/mail/ca/u/0/?zx=fu6g1tfaa3i0#inbox/1492f9f3e57dd8ee
+Show song play count?
+DB: Delete redirection where trial is false and license holder is null.
+Instant search
+  - test other browsers
+  - test remote
+Sort folders using locale-specific collation.
+Don't differentiate between albums and dirs when sorting?
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=14727&p=64555#p64555
+Sort genres alphabetically?
+Keep Playlists Regardless if Media Found
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=14737
+Shows extra "|" in movie dir.
+
+Cast
+  Initial volume, both local and remote.
+  (Remote) skipping doesn't always work
+  Autoplay locally?
+  Proper handling of EOM
+
+Nicer desktop notification icon on windows.
+Help icon.
+Button backgrounds.
+Remove lame?
+Consider scrobble when calculating "now playing".
+  https://mail.google.com/mail/ca/u/0/#inbox/13f532a5e871a675
+Test aac playback in jwplayer.  Use provider "video" if necessary.
+Use javascript embedding of jwplayer everywhere?
+LyricsService error with special characters
+  https://mail.google.com/mail/ca/u/0/?ui=2#inbox/1449b103acad6d60
+Problem with Content-Range for transcoded audio
+  https://mail.google.com/mail/ca/u/0/?ui=2#inbox/1447f4b647387e8b
+
+Upgrade to servlet 3.0?
+Upgrade Jetty?
+Update ffmpeg
+  Use mpeg4?
+  https://mail.google.com/mail/u/0/#inbox/142d1b52c5c53ff1
+  Or HandBrake, https://trac.handbrake.fr/wiki/CLIGuide
+  Support ISO
+
+Review Madsonic features
+  https://mail.google.com/mail/ca/u/0/?ui=2&shva=1#inbox/1437cc0dc4ec9a3d
+Replace paging with dynamic album fetching (like Google image search) in home.jsp
+Gzip REST / Jetty
+  https://mail.google.com/mail/u/0/?shva=1#inbox/14332aa25d587135
+  Jetty GzipFilter? Remember it should work on Tomcat etc as well.
+Monitoring with JavaMelody
+Requests unscaled image when clicking on thumb.
+Problem with web ui becoming unresponsive (toggling between jukebox and web player? subsonic.org unresponsive?)
+
+Selection in play queue is automatically cleared if no current playing.
+  Happens if switching to jukebox, then back to web player.
+
+Make font work when offline
+  https://github.com/typekit/webfontloader
+Support playlist sharing.
+  Back button should go back to playlist.
+album year/genre should update if songs have changed (same as song count)
+Update Norwegian translation
+
+Backend
+  Send email 7 days after subscription expires.
+  Mention that purchased subscription time is added to existing.
+
+Can't play videos from left.jsp?
+Single songs in left.jsp have wrong v align.
+
+Publish on Mac app store
+Dont use <div/>
+REST video subtitle support
+  https://sites.google.com/site/mxvpen/api
+Recently added broken
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=11955&p=55889#p55889
+https port 8080 redirect to 8443 (jetty?)
+REST: Add getSongs
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/13e240db8f93072b
+Clean up podcasts in demo
+Improve video support
+  http://forum.subsonic.org/forum/viewtopic.php?f=8&t=11254
+  https://sourceforge.net/p/subsonic/feature-requests/15/
+
+other
+  reconsider sourceforge
+
+UPnP/DLNA
+
+Skifta (3450) - Can browse and play music.
+Windows Media Player (3450) - Visible, but can't browse
+Samsung tv, new (3450) - Can browse and play music, haven't tested video
+Samsung tv, old (3450) - Can browse, but can't play music.
+PS3 (3450) - Can browse albums
+
+  DAAP support.
+    https://mail.google.com/mail/u/0/?tab=cm#inbox/13a4690309e4d779
+    http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=976
+
+Try to reproduce playlist import problem
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/139e96f97e7c9b09
+Something wrong with matching players/users in Now Playing.
+  https://mail.google.com/mail/?tab=cm#inbox/137dcaaddeba0936
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/139e96f97e7c9b09
+S1000 Data file size limit is reached in statement
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=9998&start=75#p44643 (sent email Sep 7)
+Prefill minisub
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/1394bd52aaaf4969
+FLAC crashes Flash in Firefox (with server on Linux).
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=10027&p=44673#p44673
+
+Postponed:
+  - Add "Force rescan" option.
+  - Rename to play queue in Settings > Player.
+  - Show message if no songs are selected when doing add to playlist.
+  - Encourage users to save email addresses, also for admin.  Explain why.
+  - Update apps to include PlayBook version.
+  - Clicking play button on a video podcast doesn't work.
+
+Replace usage of dwr.util and prototype with jquery.
+Handle albums without artist. Don't create them?
+Test getPlaylist vs old-style IDs.
+Fix broken REST scrobbling, as reported by Ben.
+JWPlayer subtitle plugin
+  http://forum.subsonic.org/forum/viewtopic.php?t=5708
+
+-
+
+Evaluate HTML5.
+Extend demo music, and add video.
+Support ISO files.
+wtv support   http://forum.subsonic.org/forum/viewtopic.php?f=2&t=7668
+Add "-map_meta_data 0:0" to transcoding?
+  http://forum.subsonic.org/forum/viewtopic.php?f=3&t=3270&p=34114#p34114
+Test with IE 9
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=8295&p=33672#p33672
+Don't hardcode c:/subsonic in windows installer.
+  http://forum.subsonic.org/forum/viewtopic.php?f=2&t=8213
+Audio problems on Linux.
+  https://mail.google.com/mail/?ui=2&shva=1#inbox/133318f313c0ffbd
+Coniq:
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=8042
+subcl:
+  http://forum.subsonic.org/forum/viewtopic.php?f=4&t=7897
+Better video quality when sharing
+  http://forum.subsonic.org/forum/viewtopic.php?f=8&t=7646
+Support custom domain name in sharing (Settings > Advanced)
+Rename "offsetSeconds" to "timeOffset" in StreamController, and update API doc.
+Add "byteOffset" parameter as well.
+Add rating attributes to <directory> in getMusicDirectory.
+REST: add method to get everything in search index (binary, compressed)?
+
+Stream from devices
+  https://mail.google.com/mail/?shva=1#inbox/13352f77f870eba1
+Go through tracker.
+Recursive getFolders API method?
+  https://Smail.google.com/mail/?shva=1#inbox/13090cd32a9922bd
+Show lyrics in tags.
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1700
+Hide log for non-admin users?
+Add "append" parameter to createPlaylist REST method. (or create appendPlaylist method)
+Handle non-square cover art
+  https://mail.google.com/a/activeobjects.no/#inbox/12debb505054d33a
+Cover arts not always aligned in grid
+  https://mail.google.com/a/activeobjects.no/#inbox/12defd71c5d9e916
+Upgrade ffmpeg and support wtv.
+AdMob
+Show library statistics for video.
+Playing only first three seconds of podcast
+  http://mail.google.com/a/activeobjects.no/#inbox/12e341aeae9535eb
+GPU-accellerated ffmpeg
+  https://mail.google.com/a/activeobjects.no/#inbox/12f50fffffd6fecf
+Sencha Touch
+Subsonic for Boxee
+Linux locale issue
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=22386#22386
+
+DONE IN ANDROID 4.2
+--------------------
+Don't show passwords in settings.
+
+TODO IN ANDROID 4.2
+--------------------
+Fix lint errors
+Wrong cache location in Android 5?
+SSL problems with Android 5?
+  https://mail.google.com/mail/ca/u/0/?zx=fu6g1tfaa3i0#inbox/1493402cdb7393f1
+"Exit" button not always working?
+  https://mail.google.com/mail/ca/u/0/#inbox/148b913b924e6218
+android client will not shuffle offline content immediately after switching to offline mode
+  https://mail.google.com/mail/ca/u/0/?zx=czl1dhi5aac3#inbox/148372910b0669b8
+Password shown in clear text
+  https://mail.google.com/mail/ca/u/0/?zx=czl1dhi5aac3#inbox/1485aae9b208349f
+Pause instead of ducking
+  https://mail.google.com/mail/ca/u/0/#inbox/148911d28b1805b4
+BT metadata support
+  Don't duck etc when in jukebox mode.
+  http://developer.android.com/reference/android/media/RemoteControlClient.html
+  https://github.com/grimpy/Botifier/blob/master/src/com/github/grimpy/botifier/BotifierManager.java
+
+Disable RC if connected to Bluetooth.
+  https://mail.google.com/mail/ca/u/0/#inbox/1446ffa5fca92812
+Subsonic Android Not Pausing for Google Voice Typing
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/142be82a12741b2ba
+Make older version available. Debug problem with connection errors:
+  https://mail.google.com/mail/ca/u/0/?ui=2&shva=1#inbox/1428e52284bfc9d2
+Make it easier to add server URL.
+Support add to playlist
+Star status not updated in DownloadActivity.
+Slow song switching?
+  https://mail.google.com/mail/u/0/#inbox/1424e3567ded0b6d
+
+Amazon free app of the day
+  https://mail.google.com/mail/ca/u/0/#inbox/1422d6f137c63319
+Skipping problem solved in Dsub.
+Review context menu visibility.
+Make com.android.music.metachanged work.
+
+Add more EQ options
+Google Cast
+  https://developers.google.com/cast/
+  https://developers.google.com/cast/cast_2nd-screen_app_tutorial
+
+Problem with shuffle + offline
+  https://mail.google.com/mail/ca/u/0/#inbox/13b6b172df46f25d
+  https://mail.google.com/mail/u/0/?ui=2&shva=1#inbox/13f324a7ec6654c8
+RC volume
+  https://mail.google.com/mail/ca/u/0/#inbox/13b3fe25a8b5d8ee
+Podcast support
+Audio focus
+  https://mail.google.com/mail/u/0/?tab=cm#inbox/13a5993b0b420581
+Create new screenshots.
+Add option to delete file. (Rename to "Remove from playlist").
+Add to playlist
+Test on Android 2 and 3.
+  Notification icon too big and bright.
+
+Review patches for AVRCP and lockscreen controls
+  https://sourceforge.net/p/subsonic/patches/9/
+
+Widget
+Use GridView to show albums.
+
+Subphonic
+  http://forum.subsonic.org/forum/viewtopic.php?f=5&t=9864
+HLS video.
+Update artist list in background.
+
+Sleep timer.
+Maintain track order for offline files.
+Check for lingering .partial files.
+  https://mail.google.com/mail/?ui=2&shva=1#inbox/134082ca4244da22
+Don't pause on incoming call if RC.
+Change generic album art.
+In ICS, doesn't pause when disconnected from Bluetooth.
+Bug if switching to RC and back for a song that is currently downloading.
+Add OFL button.
+Handle togglig OFL and RC.
+Include German translation.
+  https://mail.google.com/mail/?shva=1#inbox/133a4277174786c7
+Google TV?
+Test BlackBerry runtime
+Android 4.0: Support Audio remote controls
+  http://developer.android.com/reference/android/media/RemoteControlClient.html
+Handle files in root folder.
+EQ resets when switching between online/offline.
+  https://mail.google.com/mail/?shva=1#inbox/131e7e98173f0c97
+Don't stop playback when switching between online/offline.
+
+Screen reader support for play, pause, etc
+Fix other crashes.
+In-app purchase.
+Graphic accelerate.
+Make Pin work if completefile exists, also if not online.
+Support API level > 10.  Show title bar if Honeycomb?
+Sharing support.
+Podcast support.
+Offline shuffle play broken.
+Test: New setting: "Wi-Fi streaming only"
+New Pin/unpin icons.
+
+Enable honeycomb actionbar
+Access other music on phone.
+  Make it possible to select multiple root folders.
+  Browse structure?
+  android.intent.action.PICK
+  "Save offline media in"  /sdcard/subsonic/music
+  "Also show media in" /sdcard/Music
+  Make sure to create folder when changed.
+  Rename "Select server" to "Media source".
+    Server 1
+    Server 2
+    Server 3
+    Offline media
+Does repeat button work in landscape mode?
+DownloadServiceImpl: ignore a mysterious MediaPlayer error
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12eff38d39be7a3c
+Error when using foo:3030 as server url.
+Avoid more than one instance.
+Use new intents in widget.
+Reset shuffle play buffer when changing server.
+Long-click:
+  Long-click artist -> Play random
+  Lyrics
+  Use popup for voice search?
+  Test voice search.
+  Simplify code in SelectAlbumActivity?
+Improve horizontal layout, move tab buttons to the right.
+Shuffle play turned back on when rotating phone. (onNewIntent?)
+Better handling of full SD card.
+Unnecessary initial pause when starting partially downloaded songs.
+Reuse AlbumViews (in EntryAdapter)
+Cooler button in slider (polished steel)
+Nicer icon for music library.
+
+Skipping problem
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=15260#15260
+Disk-full patch from Chad
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12b7985fd3a052ac
+Improve behaviour when SD card is mounted.
+Detect Bluetooth disconnect
+  android.bluetooth.intent.action.HEADSET_STATE_CHANGED
+  android.bluetooth.intent.HEADSET_STATE
+  android.bluetooth.headset.action.STATE_CHANGED
+Test "Save on phone" in offline mode.
+Bookmark location in long files.
+Save coverart when caching music. (and reuse it rather than doing http)
+  Remove logic from MediaStoreService.
+  Go through caching logic.
+  File load/save should be done in CachedMusicService.
+Fix crashes
+Optionally hide music from other players (.nomedia)
+Long-click download
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=2651&start=105
+ogg support
+  https://mail.google.com/a/activeobjects.no/?tab=cm#inbox/129f7959b2353a3d
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=10101
+Cover art download doesn't cancel properly.
+Extend playlist menu (Clear, Save...)
+Skipping broken when downloading file.
+Crashes if plugging in usb while downloading.
+Only retry if network error.
+Select music folder in server settings. (Including "All").
+Use combination of progress bar and slide bar.
+Bluetooth and audio button control support.
+Max bitrate settings: Differentiate between 3G and non-3G
+Add icons to server popup.
+Album art border, ala wimp
+Reuse list item views in SelectAlbumActivity?
+Colors: http://www.androidtapp.com/opentable/
+
+VIDEO
+-----
+Hide timeOffset if duration unknown.
+Longer buffer (bufferlength flashvar)
+Hide slider.
+Add .divx
+Select inital bitrate based on network type.
+Buy new JW license
+
+
+Amahi
+Add link to ReadyNAS add-on
+  http://www.readynas.com/forum/viewtopic.php?f=48&t=45661
+Initial delay when playing in JW Player.
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=5560
+Rename "mask" to "file types". (And change implementation to handle missing periods.)
+Subsonic Premium
+Singleton jukebox (at least in REST)
+  https://mail.google.com/a/activeobjects.no/#inbox/12d9a0b7bd4858af
+Flowplayer
+  http://flowplayer.org/plugins/streaming/pseudostreaming.html
+jSub
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=4479
+Maven 3
+Investigate mapped network drives.
+Show recommended songs, based on last.fm
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3211
+  https://mail.google.com/a/activeobjects.no/#inbox/12ddbfe26940f6cc
+Run Subsonic on Dreamplug
+  http://www.globalscaletechnologies.com/p-41-dreamplug-devkit.aspx
+  Invoice: https://www.globalscaletechnologies.com/receipt.aspx?ordernumber=113837
+Suggestions from Gary:
+1) Many users suggest, and I concur, that making the drop down for the number of albums displayed, “sticky” so that it
+   remembers your last selection.  Many users ask how to change the default from 10.
+
+2) Auto update of album art.  This seems to be declining in interest, but was an issue a while ago.  Not a problem for me
+   personally, but I do visit sites that are missing quite a bit of artwork.  I know, and use a 3rd party program to do
+   library updates, but I’m sure there are many users who would like to see an auto select for missing album art.
+
+3) Folder permissions for users.  This has been pretty big recently.  I know I use public and private sites to segregate
+   material, but I too could eliminate one site if I could control which users had access to which folders.
+
+4) Personal suggestion – make Internet TV/Radio section in the left hand column collapsible.  Maybe not a bad idea for
+   the letter sections as well.
+
+5) Photo Album section.  This would make SS the complete home media front end if it could handle a photo library,
+   perhaps with slideshow capability.
+
+html multiple file upload.
+Build ffmpeg for x86 on Mac
+  https://mail.google.com/a/activeobjects.no/?ui=2#inbox/12cb55940868506d
+  ./configure --disable-shared --disable-mmx --arch=x86_64
+  ./configure --arch=ppc --enable-altivec --extra-cflags="-arch ppc" --extra-ldflags="-arch ppc" --enable-cross-compile --target-os=darwin
+According to Petter, overriding SUBSONIC_HOME doesn't work in Debian.
+Estimate content-length for transcoded/downsampled files.
+Complete getjar registration.
+Test non-ascii transcoding on linux.
+For transcoded files, display both source and target formats in gui.
+REST method supporting "Play random", or shuffle for a sub-tree
+Disable scrobbling while downloading; Add new scrobble command?
+Select wrong player when clicking "Settings" in playlist frame.
+Upgrade DWR to 3.0rc2 when in becomes available (to make it work with Tomcat 7)
+Keyboard shortcuts.
+HTML5/iPad
+  http://code.google.com/p/subtunes/
+  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3310
+
+Add REST method to add license key.
+Subsonic Premium
+Add one-liner intro in web page, a la http://www.rogueamoeba.com/nicecast/
+  o No monthly fees, no uploading, no syncing
+Change icons all around.
+Add trialExpires to REST API.
+Change font in logo?
+Add "append" parameter to createPlaylist REST method.
+Modify port number and memory on Mac.
+Make port 4040 the default on Windows installations not 80
+Write tip in Google group about subsonic.org redirect optimization.
+Update Getting Started, http://docs.google.com/Doc?docid=0ASOhs01fcWMXZGY2eDc0amZfMzJnZDUyaHJocw&hl=en
+Create translation tool for backend.
+Downsample command used for non-mp3.
+New screenshots for themes.
+Go thru About page.
+Change documentation of subsonic_home.  Use popup?
+
+Make maven build from root work.
+Java silent installation: http://java.sun.com/javase/6/webnotes/install/jre/silent.html
+WiX: https://sourceforge.net/projects/wix/
+Add track count REST.
+Fix bug with executor in networkservice.
+Disable ads first 30 days?
+Show status in getting started.
+Test lyrics with non-ascii.
+Global option to disable chat.  Admin should be able to remove individual messages.
+Scrobbling broken for transcoded songs? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=2316
+Bug: Double-scrobbling when transcoding.
+Restart BasicPlayer for each song in playlist. http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=6225
+
+ANDROID
+-----------------------
+Android: Fix bugs reported by Market.
+Android: Suggest switching to offline mode if network error.
+Android: Make offline mode more visible.
+Android: Reorder playlist
+Android: Queue Next + Queue Last
+Swipe album art to go to prev/next track.
+Seeking fails when playing partial file.  seekTo() should test if playing from partial.
+Only show fullscreen when applicable.
+Create Norwegian translation.
+Use IOUtils, StringUtils.
+List of bugs/requests from cwilliams:  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=7854
+Use CancellableTask in BackgroundTask. Check for isCancelled in loops.
+Improve design of DownloadFile.getCompleteFile() etc.
+Remember position for podcasts.
+Use Droid-Fu?
+Android: Long-click on song list.
+Android: Option to auto-sync certain directories or playlists.
+Android: Option to tag certain directories as favorite.
+Fix encoding problems in Subsonic Demo files.
+Must resolve content type in StreamController, even if "suffix" is not given.
+
+VIDEO
+-----
+Air Video
+  http://www.inmethod.com/air-video/index.html
+  http://lifehacker.com/5473128/air-video-streams-your-videos-to-your-iphone-with-minimal-effort-is-incredible
+  http://www.inmethod.com/forum/posts/list/60/34.page
+http://rob.opendot.cl/index.php/useful-stuff/ffmpeg-x264-encoding-guide/
+Create separate "Video folder" definition?
+Be able to select stretching type.
+Fix window popup.
+Database support.
+Use provider=video for playing back AAC/M4A. Don't set duration if unknown.
+Add "transcodedFormat" to PlaylistService.
+Don't transcode aac/m4a by default.
+Test playback on Android.
+c:/subsonic-dev/transcode/ffmpeg.exe -i in.avi -vcodec libx264 -fpre libx264-normal.ffpreset out.mp4
+Copy x264 preset files to HOME or something.
+Encode audio as mp3?
+Manually put videos in transcoding queue?
+JWPlayer popup, http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=9147
+http://developer.longtailvideo.com/trac/wiki/Player5Formats
+http://developer.android.com/guide/appendix/media-formats.html
+http://www.pldx.com/blog.php/2009/06/encoding-h264-with-ffmpeg/
+Don't set duration to zero.
+Set proper size.
+ffmpeg flv transcoding.
+When adding a transcoding with default=true, enable it for all players.
+Don't audioscrobble videos.
+Test new JW Player on Mac and Linux.  Also with Flash plugin 9.0
+mp4 tag parser https://contributions.coremedia.com/isobox4j
+
+BACKLOG
+==========================
+Show song title in Browser Title Bar, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=3304
+Next to Lyrics link, add "Share" link with permalink? (link.subsonic.org/iksj)
+auto-detect links in chat.
+Chat broken on Safari
+Add "Copy settings from user" option.
+Improve menus in web pages.  Make sub menus.
+Add FLAC>WAV transcoding
+Add "Add random" to main.view and "Add to playlist" in more.view
+Use signed requests against Amazon.
+http://www.jthink.net/jaudiotagger/index.jsp
+Exclusion filter (*.svn, *.log, *.pun)
+Select music folder / playlist folder in Windows installer.
+Add links to Facebook group from home page and Help page.
+Bad performance, low bandwidth.
+Avoid underlined image links in menu bar (FF, Chrome)
+Nightly build.
+Write installation note on how to setup internet access.
+Mention Amahi in web pages.
+Contact Amahi
+Run agent as admin in Windows 7. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1479
+Does subsonic_exclude.txt work for indexing? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1965
+User registration.  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1931
+Further search improvements, e.g., "search all". http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1839
+Improve year range in random playlist generator.  Maybe provide to and from fields.
+Improve Midnight Fun theme.
+Google Image Search or Yahoo search
+Automatically enable/disable "Notify me about new versions" option when new users are created.
+Show who's online.
+Error when path contains "&amp;" http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1921
+Simplify Media.  How does it avoid opening ports in router?
+Integration with Spotify/Despotify/Jotify.
+Create Jing screencast.
+Specify upload directory per user. Option to delete files?  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1710
+Coverflow, http://imageflow.finnrudolph.de/, http://sockso.pu-gh.com
+Problems with player resolution for guest users when behind proxy. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1815&postdays=0&postorder=asc&start=0
+Use SoundManager 2 to implement inline song preview.
+Somehow indicate player type in playlist.
+Make contiuous random mode work in jukebox mode.
+Use reverse ajax for Now Playing?
+Recover/reset forgotten password. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1654
+IE 8 error. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1869
+Enable auto-random mode for jukebox.
+Reduce jukebox logging.
+Validate transitional dtd.
+Profile for bottlenecks
+Selected music folder not remembered.
+Now playing broken?
+"grep -v" in subsonic.sh
+Updates to subsonic.sh  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1634
+Podcast broken? http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=120
+Bug when adding new tracks to playlist,  http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1543
+Refactor SearchService.getRandomSongs()?
+Problem when streaming 2gb+ files, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1538
+Change default cover image.
+Read .txt and .nfo for artist/album reviews. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1587
+Change LAME download url.
+PHPBB authentication. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1857
+Ignore files/directories by name (e.g., ".svn"), FilenameUtils.wildcardMatch(), http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=831
+Jetty download performance, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1712
+Add to Ubuntu repo.
+Podcast : Playing Direct from URL, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1667
+iPod/iPhone support.
+   http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1200
+   http://www.alloysoft.com/
+   http://developer.apple.com/webapps
+   http://developer.apple.com/internet/webcontent/bestwebdev.html
+Artist/Album level comments, ability to read from txt file, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1587
+"External player" problem described by ghjames in http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=3866
+"Sign up" feature.
+Introduce "Default transcoding bitrate" instead of hardcoding it to 128 kbps.
+Message system (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=24)
+http://mojo.codehaus.org/jspc/jspc-maven-plugin/usage.html
+NoCache for login.view?
+Optionally hide media library statistics.
+Remember number of albums to show in home.jsp.  Either persistent or per session.
+Remove RipServer support.
+More > Random playlist doesn't autostart in Flash player.
+Log when people log in.
+Precompile JSPs in Jetty mode. http://www.j2eegeek.com/blog/2004/05/03/a-different-twist-on-pre-compiling-jsps/
+Show name of currently playing song in Flash player.
+Upgrade to latest JW player?
+Wrong duration in transcoded wma. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1461&start=15
+Create Linux package installer.
+"Remember me" broken with LDAP auth?
+Selected podcasts not cleared when deleting.
+top.view cached erronously?
+Fix layout in player settings.
+Implement Slim protocol.
+Tag editing breaks embedded cover art. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1305
+Double-write tag info? http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=2245
+Error with new LAME version?  http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=3339
+Sort albums by year. (And show year). getCoverArt() should be made non-recursive. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1075
+Support FLV.
+Support AVI etc?
+Add Show/Hide Video?
+Minimize/maximize playlist frame.
+Create support for default player type per user.
+Show active users. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1387
+Option to specify extensions not to be included when downloading directories.
+Playlist drag'n drop
+"Featured" albums. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1388
+http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1407
+Avoid logging of DWR stuff. Add logging from Subsonic service.
+Create tutorial of how to build from source.
+Set multiple icons when using Java 6(?)
+Show who played a track last. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1404
+Support "play more random songs" if web player.
+After logon, go to originally requested page.
+Fix broken SSL, http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1301
+Simplify URL rewriting. Always use relative links if that works.
+Log error if podcast delete file doesn't succeed.
+Podcast duplicate files. nrk_verdt_aa_vite_2008-0820-1203_24459.mp3 + nrk_verdt_aa_vite_2008-0820-1203_244590.mp3
+User/music folder authorization.
+Show percent complete for translations.  In web page at least.
+Improve getting started.
+Look at maven release plugin.
+last.fm problem. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1278
+Show total playlist duration.
+Remove player dynamic ip property?
+Upgrade to Spring Security.
+Bundle with open-source UPnP app?
+Uninstaller should optionally delete c:\subsonic
+Nicer popup for lyrics and online help.
+Add option for one player per user http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=1255
+Verify that LastModified works for avatars.
+Create per-channel podcast settings. At least enable/disable.
+Should make it possible to retrieve avatars without reading the binary column.
+Per-song rating.
+Use filter for subsonic version in site xml's.
+Add download/upload speedometer.
+Implement LastModified in main.jsp (Must test on FF).  Must add timestamp on music_file_info. Problem with cover art scheme.
+Party mode: Go into random mode if the playlist is finished.
+Retag track number in podcasts. http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=2003
+Make background image repeat in x-direction?
+Use YUI menus: http://developer.yahoo.com/yui/menu/
+Spacing in home.jsp
+Use em instead of pt when padding.
+Random radio mode (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=964)
+Option for unlimited download/upload if on LAN.  Remember to support proxies.
+Integrate with Amazon mp3.
+Caching bug, selected music folder.  At least in IE and FF.
+RejectedExecutionHandler handling in ThreadPoolExecutor constructor.
+Precompile JSPs for Dekoh. Separate modules "subsonic-precompiled-jetty" and "subsonic-precompiled-dekoh".
+Fix javascript error in playlist in IE.
+Display the sub folder count next to the artist folder (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=905)
+Facebook integration
+Show/Hide Podcast channel description (e.g., Java Posse)
+Show mini coverarts "Next/Prev Album".
+Add check for admin rights in installer.
+Add "play count" to Podcasts.
+ASX (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=638)
+Make it possible to cancel/resume Podcast downloads. ("Cancel selected")
+Select all in textfield for settings image url (and other textfields?)
+Remove stream status after end of playlist is reached.
+Ajax-ify Amazon pages.
+Wrong progress for http://atvs.vg.no/script/podcast.php?category_id=7
+Resumable Podcast downloads.
+"Random" very slow when no music folders.
+Test if dwr javascripts are cached in browser (especially for "now playing")
+Better IE support in playlist checkbox stuff. Instead of disabling (which isn't supported in IE, set font color to gray).
+Test playlist checkbox stuff, in particular download auth.
+Move "logout" under search search field.
+Reformat all java code.
+Check out non-Latin ID3 problem (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=527)
+Track titles that begin with numbers (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=170) (For instance "13 humler")
+Fault-tolerant transcoding FLAC>MP3 (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=545)
+Drag'n'drop in playlist.
+Fix description in Freshmeat.
+ID3 problems (http://www.activeobjects.no/subsonic/forum/viewtopic.php?p=952#952)
+Make sure podcast works with playlist names with non-latin chars.
+Test Google Web Toolkit?
+Show next/prev 100 hits.
+Create checkbox and combobox menu in main.jsp.
+FLAC > OGG audioscrobbling problem (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=597)
+Support MUSICBRAINZ_TRACKID (http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=597)
+Check out http://www.javazoom.net/jlgui/jnlp_configurator.jsp
+Check out asx/asf: http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=638
+Make podcast work in iTunes.
+Longer cache expiry period for images.
+RSS feed for newest content.
+Web proxy support (for audioscrobbler, amazon etc)?
+Missing refresh when changing from no cover art.
+Resolve problem with MetaData NullPointerException. http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=112
+Don't show empty statistics.
+AJAX error dialog from Dave.
+Remove "user" column from status.jsp?
+Sometimes a song is started twice. Two m3u's sent?
+Profiling (http://www.yourkit.com/)
+Invalidate browser cache when changing cover art image.
+http://www.activeobjects.no/subsonic/forum/viewtopic.php?t=94
+Mails from Dave (IP change problem).
+Why is Player.id a String, not an Integer?
+Upload broken in IE.
+Upload popup?
+Add transcoder for cell phone etc.  aacPlus.
+Seeking.
+Display running time, as well as elapsed time for current song.
+Playback buttons.  Stop, play, pause, resume, next, previous.
+Create "Electron Blue" theme (http://www.msn.com/) Startour?
+Use cookie.setPath()?
+      cookie.setPath(request.getContextPath());
+Use AJAX to change random albums on home page, one at a time.
+Implement pure AJAX version of playlist.jsp.
+Check Javascript error on IE.
+Photo support?
+User-based folder access
+Replace methods in my StringUtil with corresponding in Spring.
+Batch download of cover arts.
+Use Rico for rounded edges. http://openrico.org
+Use cewolf?
+Use dialog popup for online help.
+Make another theme with smaller fonts.
+Make fancy css background for playlist toolbar.
+Use CSS overflow: auto for scrolling in playlist?
+Use Spring StringUtils.cleanPath()?
+Option to show exception details in error log.
+Quick link to "#" doesn't work.
+Should receive feedback when changing passwords, creating users etc.
+java.io.FileNotFoundException: C:\music\The Alan Parsons Project\The Best of The Alan Parsons Project\folder.jpg (Access is denied)
+Use HTML 4.01, validate all pages.
+Create taglib for help popup.
+Make it work on Java Application Server 8.1.  (web.xml element order)
+Make it work on Geronimo.
+Drop ResourceBundle_en.
+Upload quota per user.
+Support reverse proxies.  Send url as parameter. (<a href="javascript:document.location.href='foo.jsp?referrer=' + document.location.href">Trykk her</a>)
+Support forward proxies.
+Hvis spilleren har "Auto-control enabled" skrudd av, så vises det en ny knapp "Stream" i playlista som kan brukes for å få m3u-en.
+Replace use of arrays with type-safe collections.
+"Mini" interface for phones, pda's etc.
+Longer log file. Option to not display DEBUG lines in help.jsp.
+Kant rundt hele vinduet, som i forum.
+Always show playlist menu.
+Let number of columns be dynamic in home page.
+Performance monitoring.
+Use MusicFile.isAlbum()
+Simplify new/random in SearchService.
+If the album-name contains an apostrof ( ' ), then I get an error when I search for cover-art
+Provide links to podcast, settings, help, message board, wishlist on home page.
+Check that multi-discs are not included in random and newest albums.  Change implementation of isAlbum.
+Integrate Windows Media Player in web page.
+Fetch current version asynchronously.
+UPnP
+Register at myprogs.net
+Link to Pandora (http://blog.pandora.com/faq/index.html#92)
+Check Jinzora features. http://www.jinzora.com/pages.php?pn=developers&sub=changelog
+Add Cancel button to Save Playlist.
+Håndtere galt format samt manglende filer i playlister.
+Håndtere playere med navn som ikke er iht httpurl.
+Rydd opp i http-parameternavn.
+Gjøre sidene XHTML-kompatibel.
+Validaton of index specification.
+Make playlist loading more robust.  (Fails on url's, for instance.)
+Make PDA skin.
+Bug: Going back adds songs to playlist multiple times.
+Quiz
+Emulator 3G-telefon
+XHTML Mobile Profile
+Add mp3-player as applet.
+Parse tags for wma etc.
+No SHOUTcast if playlist is empty.
+i18n of enums.
+http://www.freeware-guide.com/dir/audio/streaming.html -> Registrert 10. mai 2005
+Option to create structure based on tags.
+Zip and unzip fails with accented characters.  Use commons vfs, or some other lib.
+Log when zipping individual files.
+Add online help to search index update.
+Vis "lignende" album.
+
+HOW TO RELEASE
+===============================
+MAKE SURE YOU'RE ON TRUNK
+Update version number in pom.xml, version.html, MultiController.java, download.jsp
+Update changelog.jsp
+Commit
+svn up
+mvn clean -P full
+mvn install -P full
+cd subsonic-assembly; mvn assembly:assembly; cd ..
+cd subsonic-backend;  mvn clean install; cd ..
+Deploy
+Check that correct local version is displayed.
+
+Upload files to SourceForge (in separate shell, REMEMBER TO CHANGE VERSION BELOW). 
+
+On Mac OS:
+  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/6.0.beta1/
+  scp subsonic-installer-mac/target/subsonic-*.pkg subsonic-assembly/target/subsonic* root@subsonic.org:/var/lib/tomcat/download/
+
+On Windows
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean install -Pfull
+  scp subsonic-installer-windows/target/subsonic*-setup.exe  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/6.0.beta1/
+  scp subsonic-installer-windows/target/subsonic*-setup.exe  root@subsonic.org:/var/lib/tomcat/download/
+
+On demo.subsonic.org (Ubuntu)
+  cd subsonic
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean -Pfull,debian
+  svn st
+  mvn install -Pfull,debian
+  scp subsonic-installer-debian/target/subsonic*.deb sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/6.0.beta1/
+  scp subsonic-installer-debian/target/subsonic*.deb root@subsonic.org:/var/lib/tomcat/download/
+
+On subsonic.org (Fedora)
+  cd subsonic
+  # Verify that we're on trunk
+  svn info
+  svn update
+  mvn clean -Pfull,rpm
+  svn st
+  mvn install -Pfull,rpm
+  scp subsonic-installer-rpm/target/subsonic*.rpm sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/subsonic/6.0.beta1/
+#  scp subsonic-installer-rpm/target/subsonic*.rpm root@subsonic.org:/usr/local/jakarta/tomcat/download/
+  cp subsonic-installer-rpm/target/subsonic*.rpm /var/lib/tomcat/download/
+
+Modify FRS properties
+  https://sourceforge.net/projects/subsonic/files/subsonic/
+
+Upload site (OLD):
+ rsync -avP -e ssh --exclude ".*" subsonic-web/  sindre_mehus,subsonic@web.sourceforge.net:htdocs/
+
+svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/release-6.0.beta1 -m "Tagging 6.0.beta1"
+Post message on forum.
+
+Checking for license abuse:
+select count(*) as n, license_holder from redirection
+where license_holder is not null and license_holder <> '' group by license_holder
+order by n desc
+
+Update subsonic.org
+-----------------------------------
+mkdir /var/lib/tomcat/webapps-2016-02-05/
+scp subsonic-backend/target/subsonic-backend-*.war root@subsonic.org:/var/lib/tomcat/webapps-2016-02-05/ROOT.war
+scp subsonic-site/target/pages.war root@subsonic.org:/var/lib/tomcat/webapps-2016-02-05/pages.war
+
+cd /var/lib/tomcat
+chown -R tomcat:tomcat webapps-2016-02-05
+Checkpoint database (db.view)
+ps -elf | grep tomcat
+systemctl stop tomcat
+rm webapps
+ln -s webapps-2016-02-05 webapps
+ln -s /var/lib/tomcat/download webapps/download
+ll webapps/
+rm -rf work logs/*
+systemctl start tomcat
+tail -f /var/subsonic-backend/subsonic-backend.log
+
+Update demo.subsonic.org (192.157.241.116)
+------------------------------------------
+mkdir /var/lib/tomcat6/webapps-2016-02-05/
+scp subsonic-main/target/subsonic.war root@demo.subsonic.org:/var/lib/tomcat6/webapps-2016-02-05/ROOT.war
+service tomcat6 stop
+cd /var/lib/tomcat6/
+rm -rf work/Catalina logs/*
+rm webapps
+ln -s webapps-2016-02-05 webapps
+ll webapps/
+service tomcat6 start
+tail -f /var/subsonic/subsonic.log
+
+
+HOWTO: Enable remote JMX for JVisualVM
+--------------------------------------
+In subsonic.canaca.com:/usr/sbin/starttomcat, add
+        -Dcom.sun.management.jmxremote.port=1212
+        -Dcom.sun.management.jmxremote.ssl=false
+        -Dcom.sun.management.jmxremote.authenticate=true
+Create /usr/local/jdk/jre/lib/management/jmxremote.password, remember to make it root-readable only.
+
+subsonic.org backup / demo
+--------------------------
+BudgetVM 192.157.241.116
+service tomcat6 stop
+service tomcat6 start
+/etc/default/tomcat6  (memory settings)
+/etc/tomcat6
+/var/lib/tomcat6
+/usr/share/tomcat6
+
+
+HOW TO RELEASE TO ANDROID MARKET
+================================
+Update versionCode and versionName in build.gradle
+Commit
+cd subsonic-android
+./gradlew clean
+./gradlew assembleRelease
+### keytool -genkey -v -keystore subsonic.keystore -alias subsonic -keyalg RSA -validity 100000 -dname "CN=Active Objects"
+### jarsigner -verbose -keystore subsonic.keystore -signedjar bin/subsonic.apk bin/SubsonicActivity-unsigned.apk subsonic
+Upload to market
+https://play.google.com/apps/publish
+https://developer.amazon.com/welcome.html
+Update
+    http://appoke.com
+    http://appslib.com/developers/index.html
+    https://myapps.developer.motorola.com/
+    https://slideme.org/application/subsonic
+    http://www.camangimarket.com/index.html
+svn copy svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/trunk/subsonic-android svn+ssh://sindre_mehus@svn.code.sf.net/p/subsonic/code/tags/android-release-4.4 -m "Tagging Android 4.4"
+Create new directory in FRS
+  https://sourceforge.net/projects/subsonic/files/android/
+Upload files to SourceForge (REMEMBER TO CHANGE VERSION BELOW).
+  rsync -avP -e ssh subsonic-android/subsonic/build/apk/subsonic-release.apk  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/android/4.4/subsonic-4.4.apk
+
+HOW TO RELEASE BLACKBERRY
+===============================
+Comment out <uses-permission android:name="android.permission.BLUETOOTH"/>
+Build release APK.
+Comment in <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+cd c:/progs/blackberry.tools.SDK/bin
+apk2bar.bat subsonic-release.apk "c:\Program Files (x86)\Android\android-sdk" -a "Subsonic AS"
+batchbar-signer.bat subsonic-release.bar client-certificate-1980825.p12 <password> <password>
+
+Your applications must target BlackBerry PlayBook OS 2.0 (or later) or BlackBerry 10 OS for them to be considered for approval.
+
+
+HOW TO RELEASE TRANSCODING PACK
+===============================
+Create transcode_windows.zip and release it in SourceForge FRS.
+  rsync -avP -e ssh transcoding-windows-1.1.zip  sindre_mehus,subsonic@frs.sourceforge.net:/home/frs/project/s/su/subsonic/transcoding/1.1/
+
+HOW TO CREATE subsonic.keystore
+================================
+keytool -genkey -v -keystore subsonic.keystore -alias subsonic -storepass subsonic -keyalg RSA -validity 100000 -dname "CN=subsonic.org, O=Subsonic"
+keytool -list -v -keystore subsonic.keystore -storepass subsonic
+
+wget -S  --tries=1 'http://localhost:8080/rest/stream.view?u=admin&p=admin&v=1.6&c=android&id=2f55736572732f73696e6472652f4d757369632f44696d6d7520426f726769722f41627261686164616272612f3036202d2052697475616c6973742e6d7033&maxBitRate=96'
+
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=get' -O -
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=start' -O -
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=status' -O -
+
+wget 'http://localhost:4040/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=add&id=683a5c6d757369632e6576656e5c4169725c54616c6b69652057616c6b6965202d20323030345c3032202d2043686572727920426c6f73736f6d204769726c2e6d7033&id=683a5c6d757369632e6576656e5c4169725c54616c6b69652057616c6b6965202d20323030345c3039202d2042696f6c6f676963616c2e6d7033' -O -
+wget 'http://localhost:8080/rest/jukeboxControl.view?u=admin&p=admin&v=1.6&c=android&action=add&id=2f55736572732f73696e6472652f4d757369632f44696d6d7520426f726769722f41627261686164616272612f3035202d2044696d6d7520426f726769722e6d7033' -O -
+
+MISCELLANEOUS
+=============
+Photos: http://www.123rf.com
+http://www.famfamfam.com/lab/icons/silk/previews/index_abc.png
+http://iconfactory.com/freeware
+openclipart.org
+http://pixelresort.com
+http://lbaumann.com/
+tango.freedesktop.org
+http://www.nero.com/eng/nero-aac-codec.html
+http://kickyoutube.com/
+http://www.schillmania.com/projects/soundmanager2/
+http://code.google.com/p/mobbler/
+
+IBAN number: NO7297223688407
+SWIFT code: DNBANOKK
+
+My address:
+Sindre Mehus
+Saturnveien 9
+0492 Oslo
+Norway
+
+Bank address:
+DNB
+0021 Oslo
+Norway
+
+RipNAS, http://www.ripnas.com/
+QNAP
+Netgear ReadyNAS, http://www.readynas.com/
+http://www.synology.com/enu/support/3rd-party_application_integration.php
+SqueezeCenter can run on a number of NAS devices, such as QNAP TS-101, Synology Diskstation,
+NETGEAR ReadyNAS, Buffalo Linkstation, Linksys NSLU2 and any device running FreeNAS software.
+
+rsync -avP -e ssh music.demo/ sindremehus@www.subsonic.org:music.demo
+
+-Dsubsonic.war=subsonic-main/target/subsonic -Dsubsonic.createLinkFile=true -Dsubsonic.windowsInstall=true -Dsubsonic.port=8080 -Dsubsonic.contextPath=/
+
+GIMP
+----
+Creating xxx_focused.png
+Farger > Farg > Kulør 34, Metning 97, Lysverdi -50
+
+Creating xxx_pressed.png
+Use brush: radius 23, spisser 2, hardhet 0.95, sideforhold 1.0, vinkel 0.0, mellomrom 1.0
+Use color: #ff8200
+
+Getting started, yellow marker
+Use brush: circle fuzzy 17, transparency 67.3
+Use color: #ffe200
+
+CrashPlan
+---------
+To make it work on subsonic.org:
+- Put jre in /usr/local/crashplan/jre (copy from forum.subsonic.org)
+- Install libffi for Centos
+- Extract libjnidispatch.so from jna-3.2.5 and put it in /usr/local/crashplan
+- Remote UI: http://support.crashplan.com/doku.php/how_to/configure_a_headless_client
+>>>>>>> .r4682

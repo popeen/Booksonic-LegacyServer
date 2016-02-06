@@ -16,6 +16,31 @@
 
 <section class="box">
 
+    <a name="6.0.beta1"><h3>Subsonic 6.0.beta1 - Feb 05, 2016</h3></a>
+    <ul>
+        <li><strong>New:</strong> Completely overhauled user interface.</li>
+        <li><strong>New:</strong> HTML5 audio and video playback.</li>
+        <li><strong>New:</strong> Integrated video converter for converting to streamable MP4 format. Selectable audio track.</li>
+        <li><strong>New:</strong> Video subtitles, also on Chromecast. Supports SRT and VTT formats.</li>
+        <li><strong>New:</strong> Keyboard shortcuts (press "?" to get started).</li>
+        <li><strong>New:</strong> New "Index" page replaces artist list in left frame.</li>
+        <li><strong>New:</strong> Artist thumbnail image and album notes (from Last.fm).</li>
+        <li><strong>New:</strong> Show album year, song count, genre and duration</li>
+        <li><strong>New:</strong> Show personal rather than average rating.</li>
+        <li><strong>Sonos:</strong> Star/unstar tracks.</li>
+        <li><strong>Sonos:</strong> Artist bio and album notes.</li>
+        <li><strong>Sonos:</strong> Improved radio feature.</li>
+        <li><strong>Sonos:</strong> Artist top songs.</li>
+        <li><strong>Sonos:</strong> Nicer presentation on Android and iOS controllers.</li>
+        <li><strong>Sonos:</strong> Show artist image, if cached.</li>
+        <li><strong>REST:</strong> Added getAlbumInfo and getAlbumInfo2.</li>
+        <li><strong>REST:</strong> Added playCount.</li>
+        <li><strong>REST:</strong> Added musicFolderId parameter to getArtists.</li>
+        <li><strong>Bugfix:</strong> Reimplemented cover art search using Last.fm.</li>
+        <li><strong>Bugfix:</strong> Ensure changed cover art is displayed.</li>
+        <li><strong>Security:</strong> Authenticate stream endpoints with tokens.</li>
+    </ul>
+
     <a name="5.3"><h3>Subsonic 5.3 - Oct 25, 2015</h3></a>
     <ul>
         <li><strong>New:</strong> Show sidebar by default. Remember state across sessions.</li>

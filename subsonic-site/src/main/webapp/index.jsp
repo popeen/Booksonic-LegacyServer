@@ -81,7 +81,7 @@
 
         <div class="6u 12u(2)">
             <section class="box special">
-                <span class="image featured"><img src="inc/img/video.png" alt="" /></span>
+                <span class="image featured"><img src="inc/img/screenshot-1.png" alt="" style="background:#808080; background:linear-gradient(#808080, #353535)"/></span>
                 <h3>Packed with features</h3>
                 <p>Podcast receiver, Chromecast, Sonos, jukebox mode, on-the-fly downsampling and conversion,
                     multiple frontends, highly customizable, full support for tags, lyrics and album art, DLNA,
@@ -125,7 +125,8 @@
                     </ul>
             </div>
             <div class="6u 12u(3)">
-                <span class="image right"><a href="inc/img/screenshot.png"><img src="inc/img/screenshot.png" alt="" style="max-width:100%"/></a></span>
+                <span class="image right"><a href="inc/img/screenshot-2.png"><img src="inc/img/screenshot-2.png" class="dropshadow" alt=""
+                                                                                  style="max-width:100%"/></a></span>
             </div>
         </div>
 

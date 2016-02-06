@@ -44,7 +44,6 @@ import net.sourceforge.subsonic.domain.Player;
 import net.sourceforge.subsonic.domain.PodcastEpisode;
 import net.sourceforge.subsonic.domain.PodcastStatus;
 import net.sourceforge.subsonic.domain.SavedPlayQueue;
-import net.sourceforge.subsonic.domain.UrlRedirectType;
 import net.sourceforge.subsonic.domain.UserSettings;
 import net.sourceforge.subsonic.service.JukeboxService;
 import net.sourceforge.subsonic.service.LastFmService;
@@ -360,7 +359,7 @@ public class PlayQueueService {
                                                                                 selectedMusicFolder == null ? null : selectedMusicFolder.getId());
         List<MediaFile> albums;
         if ("highest".equals(albumListType)) {
-            albums = ratingService.getHighestRatedAlbums(offset, count, musicFolders);
+            albums = ratingService.getHighestRatedAlbumsForUser(offset, count, username, musicFolders);
         } else if ("frequent".equals(albumListType)) {
             albums = mediaFileService.getMostFrequentlyPlayedAlbums(offset, count, musicFolders);
         } else if ("recent".equals(albumListType)) {
@@ -601,8 +600,12 @@ public class PlayQueueService {
         return convert(request, player, false);
     }
 
-    public void setGain(float gain) {
+    public void setJukeboxGain(float gain) {
         jukeboxService.setGain(gain);
+    }
+
+    public void setJukeboxMute(boolean mute) {
+        jukeboxService.setMute(mute);
     }
 
     private PlayQueueInfo convert(HttpServletRequest request, Player player, boolean serverSidePlaylist) throws Exception {
@@ -627,8 +630,8 @@ public class PlayQueueService {
         for (MediaFile file : playQueue.getFiles()) {
 
             String albumUrl = url.replaceFirst("/dwr/.*", "/main.view?id=" + file.getId());
-            String streamUrl = url.replaceFirst("/dwr/.*", "/stream?player=" + player.getId() + "&id=" + file.getId());
-            String coverArtUrl = url.replaceFirst("/dwr/.*", "/coverArt.view?id=" + file.getId());
+            String streamUrl = url.replaceFirst("/dwr/.*", "/stream?player=" + player.getId() + "&id=" + file.getId() + "&auth=" + file.getHash());
+            String coverArtUrl = url.replaceFirst("/dwr/.*", "/coverArt.view?id=" + file.getId() + "&auth=" + file.getHash());
 
             // Rewrite URLs in case we're behind a proxy.
             if (settingsService.isRewriteUrlEnabled()) {
@@ -643,15 +646,15 @@ public class PlayQueueService {
             String format = formatFormat(player, file);
             String username = securityService.getCurrentUsername(request);
             boolean starred = mediaFileService.getMediaFileStarredDate(file.getId(), username) != null;
-            entries.add(new PlayQueueInfo.Entry(file.getId(), file.getTrackNumber(), file.getTitle(), file.getArtist(),
+            entries.add(new PlayQueueInfo.Entry(file.getId(), file.getHash(), file.getTrackNumber(), file.getTitle(), file.getArtist(),
                     file.getAlbumName(), file.getGenre(), file.getYear(), formatBitRate(file),
                     file.getDurationSeconds(), file.getDurationString(), format, formatContentType(format),
                     formatFileSize(file.getFileSize(), locale), starred, albumUrl, streamUrl, remoteStreamUrl,
                     coverArtUrl, remoteCoverArtUrl));
         }
         boolean isStopEnabled = playQueue.getStatus() == PlayQueue.Status.PLAYING && !player.isExternalWithPlaylist();
-        float gain = jukeboxService.getGain();
-        return new PlayQueueInfo(entries, isStopEnabled, playQueue.isRepeatEnabled(), serverSidePlaylist, gain);
+        return new PlayQueueInfo(entries, isStopEnabled, playQueue.isRepeatEnabled(), serverSidePlaylist,
+                                 jukeboxService.getGain(), jukeboxService.isMute());
     }
 
     private String formatFileSize(Long fileSize, Locale locale) {

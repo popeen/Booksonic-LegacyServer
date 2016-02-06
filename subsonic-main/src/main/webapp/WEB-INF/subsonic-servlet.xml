@@ -6,6 +6,12 @@
 
     <bean id="leftController" class="net.sourceforge.subsonic.controller.LeftController">
         <property name="viewName" value="left"/>
+        <property name="securityService" ref="securityService"/>
+        <property name="settingsService" ref="settingsService"/>
+    </bean>
+    <bean id="artistsController" class="net.sourceforge.subsonic.controller.ArtistsController">
+        <property name="viewName" value="artists"/>
+        <property name="mediaFileService" ref="mediaFileService"/>
         <property name="mediaScannerService" ref="mediaScannerService"/>
         <property name="securityService" ref="securityService"/>
         <property name="settingsService" ref="settingsService"/>
@@ -57,6 +63,7 @@
         <property name="versionService" ref="versionService"/>
         <property name="settingsService" ref="settingsService"/>
         <property name="securityService" ref="securityService"/>
+        <property name="mediaScannerService" ref="mediaScannerService"/>
     </bean>
     <bean id="moreController" class="net.sourceforge.subsonic.controller.MoreController">
         <property name="viewName" value="more"/>
@@ -289,8 +296,13 @@
         <property name="settingsService" ref="settingsService"/>
         <property name="playlistService" ref="playlistService"/>
         <property name="podcastService" ref="podcastService"/>
+        <property name="securityService" ref="securityService"/>
         <property name="artistDao" ref="artistDao"/>
         <property name="albumDao" ref="albumDao"/>
+    </bean>
+    <bean id="captionsController" class="net.sourceforge.subsonic.controller.CaptionsController">
+        <property name="mediaFileService" ref="mediaFileService"/>
+        <property name="securityService" ref="securityService"/>
     </bean>
     <bean id="avatarController" class="net.sourceforge.subsonic.controller.AvatarController">
         <property name="settingsService" ref="settingsService"/>
@@ -329,6 +341,15 @@
         <property name="settingsService" ref="settingsService"/>
         <property name="playerService" ref="playerService"/>
         <property name="securityService" ref="securityService"/>
+        <property name="videoConversionService" ref="videoConversionService"/>
+        <property name="captionsController" ref="captionsController"/>
+    </bean>
+    <bean id="videoConverterController" class="net.sourceforge.subsonic.controller.VideoConverterController">
+        <property name="viewName" value="videoConverter"/>
+        <property name="mediaFileService" ref="mediaFileService"/>
+        <property name="securityService" ref="securityService"/>
+        <property name="videoConversionService" ref="videoConversionService"/>
+        <property name="settingsService" ref="settingsService"/>
     </bean>
     <bean id="externalPlayerController" class="net.sourceforge.subsonic.controller.ExternalPlayerController">
         <property name="viewName" value="externalPlayer"/>
@@ -336,6 +357,7 @@
         <property name="settingsService" ref="settingsService"/>
         <property name="playerService" ref="playerService"/>
         <property name="shareService" ref="shareService"/>
+        <property name="transcodingService" ref="transcodingService"/>
     </bean>
     <bean id="downloadController" class="net.sourceforge.subsonic.controller.DownloadController">
         <property name="playerService" ref="playerService"/>
@@ -397,7 +419,7 @@
         <property name="coverArtController" ref="coverArtController"/>
         <property name="avatarController" ref="avatarController"/>
         <property name="userSettingsController" ref="userSettingsController"/>
-        <property name="leftController" ref="leftController"/>
+        <property name="artistsController" ref="artistsController"/>
     </bean>
     <bean id="dbController" class="net.sourceforge.subsonic.controller.DBController">
         <property name="viewName" value="db"/>
@@ -421,6 +443,7 @@
                 <prop key="/playlists.view">playlistsController</prop>
                 <prop key="/help.view">helpController</prop>
                 <prop key="/lyrics.view">lyricsController</prop>
+                <prop key="/artists.view">artistsController</prop>
                 <prop key="/left.view">leftController</prop>
                 <prop key="/right.view">rightController</prop>
                 <prop key="/status.view">statusController</prop>
@@ -441,6 +464,7 @@
                 <prop key="/gettingStarted.view">multiController</prop>
                 <prop key="/index.view">multiController</prop>
                 <prop key="/videoPlayer.view">videoPlayerController</prop>
+                <prop key="/videoConverter.view">videoConverterController</prop>
                 <prop key="/nowPlaying.view">nowPlayingController</prop>
                 <prop key="/starred.view">starredController</prop>
                 <prop key="/search.view">searchController</prop>
@@ -466,6 +490,7 @@
                 <prop key="/editTags.view">editTagsController</prop>
                 <prop key="/playQueue.view">playQueueController</prop>
                 <prop key="/coverArt.view">coverArtController</prop>
+                <prop key="/captions.view">captionsController</prop>
                 <prop key="/avatar.view">avatarController</prop>
                 <prop key="/proxy.view">proxyController</prop>
                 <prop key="/statusChart.view">statusChartController</prop>

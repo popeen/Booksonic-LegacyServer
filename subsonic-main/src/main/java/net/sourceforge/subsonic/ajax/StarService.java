@@ -39,6 +39,14 @@ public class StarService {
     private SecurityService securityService;
     private MediaFileDao mediaFileDao;
 
+    public void star(int id, boolean star) {
+        if (star) {
+            star(id);
+        } else {
+            unstar(id);
+        }
+    }
+
     public void star(int id) {
         mediaFileDao.starMediaFile(id, getUser());
     }

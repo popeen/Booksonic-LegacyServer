@@ -23,7 +23,7 @@
                         var shared = $("#newShared").is(":checked");
                         $("#name").text(name);
                         $("#comment").text(comment);
-                        playlistService.updatePlaylist(playlist.id, name, comment, shared, function (playlistInfo){playlistCallback(playlistInfo); top.left.updatePlaylists()});
+                        playlistService.updatePlaylist(playlist.id, name, comment, shared, function (playlistInfo){playlistCallback(playlistInfo)});
                     },
                     "<fmt:message key="common.cancel"/>": function() {
                         $(this).dialog("close");
@@ -34,7 +34,7 @@
                 buttons: {
                     "<fmt:message key="common.delete"/>": function() {
                         $(this).dialog("close");
-                        playlistService.deletePlaylist(playlist.id, function (){top.left.updatePlaylists(); location = "playlists.view";});
+                        playlistService.deletePlaylist(playlist.id, function (){location.href = "playlists.view";});
                     },
                     "<fmt:message key="common.cancel"/>": function() {
                         $(this).dialog("close");
@@ -105,11 +105,7 @@
                 var song  = songs[i];
                 var id = i + 1;
                 dwr.util.cloneNode("pattern", { idSuffix:id });
-                if (song.starred) {
-                    $("#starSong" + id).attr("src", "<spring:theme code='ratingOnImage'/>");
-                } else {
-                    $("#starSong" + id).attr("src", "<spring:theme code='ratingOffImage'/>");
-                }
+                $("#starSong" + id).addClass(song.starred ? "fa-star starred" : "fa-star-o");
                 if (!song.present) {
                     $("#missing" + id).show();
                 }
@@ -146,7 +142,7 @@
             playlistService.toggleStar(playlist.id, index, playlistCallback);
         }
         function onRemove(index) {
-            playlistService.remove(playlist.id, index, function (playlistInfo){playlistCallback(playlistInfo); top.left.updatePlaylists()});
+            playlistService.remove(playlist.id, index, function (playlistInfo){playlistCallback(playlistInfo)});
         }
         function onRearrange(indexes) {
             playlistService.rearrange(playlist.id, indexes, playlistCallback);
@@ -182,9 +178,9 @@
 </c:import>
 </div>
 
-<h1><a href="playlists.view"><fmt:message key="left.playlists"/></a> &raquo; <span id="name">${fn:escapeXml(model.playlist.name)}</span></h1>
+<h1><a href="playlists.view"><fmt:message key="left.playlists"/></a> &nbsp;&bull;&nbsp; <span id="name">${fn:escapeXml(model.playlist.name)}</span></h1>
 <h2>
-    <span class="header"><a href="javascript:void(0)" onclick="onPlayAll();"><fmt:message key="common.play"/></a></span>
+    <span class="header" style="padding-left:0"><a href="javascript:void(0)" onclick="onPlayAll();"><fmt:message key="common.play"/></a></span>
 
     <c:if test="${model.user.downloadRole}">
         <c:url value="download.view" var="downloadUrl"><c:param name="playlist" value="${model.playlist.id}"/></c:url>
@@ -227,18 +223,17 @@
     <tbody id="playlistBody">
     <tr id="pattern" style="display:none;margin:0;padding:0;border:0">
         <td class="fit">
-            <img id="starSong" onclick="onStar(this.id.substring(8) - 1)" src="<spring:theme code="ratingOffImage"/>"
-                 style="cursor:pointer" alt="" title=""></td>
+            <i id="starSong" class="fa clickable" onclick="onStar(this.id.substring(8) - 1)"></i>
+        </td>
         <td class="fit">
-            <img id="play" src="<spring:theme code="playImage"/>" alt="<fmt:message key="common.play"/>" title="<fmt:message key="common.play"/>"
-                 style="padding-right:0.1em;cursor:pointer" onclick="onPlay(this.id.substring(4) - 1)"></td>
+            <i id="play" class="fa fa-play clickable icon" onclick="onPlay(this.id.substring(4) - 1)" title="<fmt:message key="common.play"/>"></i>
+        </td>
         <td class="fit">
-            <img id="add" src="<spring:theme code="addImage"/>" alt="<fmt:message key="common.add"/>" title="<fmt:message key="common.add"/>"
-                 style="padding-right:0.1em;cursor:pointer" onclick="onAdd(this.id.substring(3) - 1)"></td>
+            <i id="add" class="fa fa-plus clickable icon" onclick="onAdd(this.id.substring(3) - 1)" title="<fmt:message key="common.add"/>"></i>
+        </td>
         <td class="fit" style="padding-right:30px">
-            <img id="addNext" src="<spring:theme code="addNextImage"/>" alt="<fmt:message key="main.addnext"/>" title="<fmt:message key="main.addnext"/>"
-                 style="padding-right:0.1em;cursor:pointer" onclick="onAddNext(this.id.substring(7) - 1)"></td>
-
+            <i id="addNext" class="fa fa-arrow-right clickable icon" onclick="onAddNext(this.id.substring(7) - 1)" title="<fmt:message key="main.addnext"/>"></i>
+        </td>
         <td class="fit rightalign"><span id="index">1</span></td>
         <td class="fit"><span id="missing" class="playlist-missing"><fmt:message key="playlist.missing"/></span></td>
         <td class="truncate"><span id="title" class="songTitle">Title</span></td>
@@ -248,8 +243,8 @@
 
         <c:if test="${model.editAllowed}">
             <td class="fit">
-                <img id="removeSong" onclick="onRemove(this.id.substring(10) - 1)" src="<spring:theme code="removeImage"/>"
-                     style="cursor:pointer" alt="<fmt:message key="playlist.remove"/>" title="<fmt:message key="playlist.remove"/>"></td>
+                <i id="removeSong" class="fa fa-remove clickable icon" onclick="onRemove(this.id.substring(10) - 1)" title="<fmt:message key="playlist.remove"/>"></i>
+            </td>
         </c:if>
     </tr>
     </tbody>

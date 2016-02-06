@@ -3,170 +3,32 @@
 <html><head>
     <%@ include file="head.jsp" %>
     <%@ include file="jquery.jsp" %>
-    <script type="text/javascript" src="<c:url value="/script/scripts-2.0.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/dwr/engine.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/dwr/interface/playlistService.js"/>"></script>
-    <script type="text/javascript" language="javascript">
-
-        var playlists;
-
-        function init() {
-            dwr.engine.setErrorHandler(null);
-            updatePlaylists();
-
-            var mainLocation = top.main.location.href;
-            if (${model.musicFolderChanged}) {
-                if (mainLocation.indexOf("/home.view") != -1) {
-                    top.main.location.href = mainLocation;
-                }
-            }
-        }
-
-        function updatePlaylists() {
-            playlistService.getReadablePlaylists(playlistCallback);
-        }
-
-        function createEmptyPlaylist() {
-            showAllPlaylists();
-            playlistService.createEmptyPlaylist(playlistCallback);
-        }
-
-        function showAllPlaylists() {
-            $('#playlistOverflow').show('blind');
-            $('#showAllPlaylists').hide('blind');
-        }
-
-        function playlistCallback(playlists) {
-            this.playlists = playlists;
-
-            $("#playlists").empty();
-            $("#playlistOverflow").empty();
-            for (var i = 0; i < playlists.length; i++) {
-                var playlist = playlists[i];
-                var overflow = i > 9;
-                $("<p class='dense'><a target='main' href='playlist.view?id=" +
-                        playlist.id + "'>" + escapeHtml(playlist.name) + "&nbsp;(" + playlist.fileCount + ")</a></p>").appendTo(overflow ? "#playlistOverflow" : "#playlists");
-            }
-
-            if (playlists.length > 10 && !$('#playlistOverflow').is(":visible")) {
-                $('#showAllPlaylists').show();
-            }
-        }
-    </script>
 </head>
 
-<body class="bgcolor2 leftframe" onload="init()">
+<body class="bgcolor2 leftframe">
 <a name="top"></a>
 
-<div style="padding-bottom:1.5em">
-    <a href="help.view?" target="main"><img src="<spring:theme code="logoImageLight"/>" title="<fmt:message key="top.help"/>" alt=""></a>
+<div style="padding-top:1em; padding-bottom:2.5em">
+    <a href="help.view" target="main"><img src="<spring:theme code="logoImage"/>" title="<fmt:message key="top.help"/>" alt=""></a>
 </div>
 
-<c:if test="${fn:length(model.musicFolders) > 1}">
-    <div style="padding-bottom:1.0em">
-    <select name="musicFolderId" style="width:100%" onchange="location='left.view?musicFolderId=' + options[selectedIndex].value;">
-            <option value="-1"><fmt:message key="left.allfolders"/></option>
-            <c:forEach items="${model.musicFolders}" var="musicFolder">
-                <option ${model.selectedMusicFolder.id == musicFolder.id ? "selected" : ""} value="${musicFolder.id}">${fn:escapeXml(musicFolder.name)}</option>
-            </c:forEach>
-        </select>
+<div style="padding-bottom:1em" class="topHeader">
+    <fmt:message key="top.logout" var="logout"><fmt:param value="${model.user.username}"/></fmt:message>
+    <i class="fa fa-sign-out fa-lg fa-fw icon"></i>&nbsp;<a href="j_acegi_logout" target="_top">${fn:escapeXml(logout)}</a>
+</div>
+
+<c:if test="${model.user.settingsRole}">
+    <div style="padding-bottom:1em" class="topHeader">
+        <i class="fa fa-cog fa-lg fa-fw icon"></i>&nbsp;<a href="settings.view" target="main"><fmt:message key="top.settings"/></a>
     </div>
 </c:if>
 
-<div style="margin-bottom:0.5em;padding-left: 2px" class="bgcolor1">
-    <c:forEach items="${model.indexes}" var="index">
-        <a href="#${index.index}" accesskey="${index.index}">${index.index}</a>
-    </c:forEach>
+<div style="padding-bottom:1em" class="topHeader">
+    <i class="fa fa-plus-square fa-lg fa-fw icon"></i>&nbsp;<a href="more.view" target="main"><fmt:message key="top.more"/></a>
 </div>
 
-<div style="padding-bottom:0.5em">
-    <div class="forward">
-        <c:choose>
-            <c:when test="${model.scanning}">
-                <a href="left.view"><fmt:message key="common.refresh"/></a>
-            </c:when>
-            <c:otherwise>
-                <a href="left.view?refresh=true"><fmt:message key="common.refresh"/></a>
-            </c:otherwise>
-        </c:choose>
-    </div>
+<div style="padding-bottom:1em" class="topHeader">
+    <i class="fa fa-info-circle fa-lg fa-fw icon"></i>&nbsp;<a href="help.view" target="main"><fmt:message key="help.title"><fmt:param value="${model.brand}"/></fmt:message></a>
 </div>
-
-<c:if test="${not empty model.shortcuts}">
-    <h2 class="bgcolor1" style="padding-left: 2px"><fmt:message key="left.shortcut"/></h2>
-    <c:forEach items="${model.shortcuts}" var="shortcut">
-        <p class="dense" style="padding-left:2px">
-            <sub:url value="main.view" var="mainUrl">
-                <sub:param name="id" value="${shortcut.id}"/>
-            </sub:url>
-            <a target="main" href="${mainUrl}">${fn:escapeXml(shortcut.name)}</a>
-        </p>
-    </c:forEach>
-</c:if>
-
-<c:forEach items="${model.indexedArtists}" var="entry">
-    <table class="bgcolor1" style="width:100%;padding:0;margin:1em 0 0 0;border:0">
-        <tr style="padding:0;margin:0;border:0">
-            <th style="text-align:left;padding:0;margin:0;border:0"><a name="${fn:escapeXml(entry.key.index)}"></a>
-                <h2 style="padding:0;margin:0;border:0">${fn:escapeXml(entry.key.index)}</h2>
-            </th>
-            <th style="text-align:right;">
-                <a href="#top"><img src="<spring:theme code="upImage"/>" alt=""></a>
-            </th>
-        </tr>
-    </table>
-
-    <c:forEach items="${entry.value}" var="artist">
-        <p class="dense" style="padding-left:2px">
-            <span title="${artist.name}">
-                <sub:url value="main.view" var="mainUrl">
-                    <c:forEach items="${artist.mediaFiles}" var="mediaFile">
-                        <sub:param name="id" value="${mediaFile.id}"/>
-                    </c:forEach>
-                </sub:url>
-                <a target="main" href="${mainUrl}"><str:truncateNicely upper="${35}">${fn:escapeXml(artist.name)}</str:truncateNicely></a>
-            </span>
-        </p>
-    </c:forEach>
-</c:forEach>
-
-<div style="padding-top:1em"></div>
-
-<c:forEach items="${model.singleSongs}" var="song">
-    <p class="dense" style="padding-left:2px">
-        <span class="songTitle" title="${fn:escapeXml(song.title)}">
-            <c:import url="playButtons.jsp">
-                <c:param name="id" value="${song.id}"/>
-                <c:param name="playEnabled" value="${model.user.streamRole and not model.partyMode}"/>
-                <c:param name="addEnabled" value="${model.user.streamRole}"/>
-                <c:param name="downloadEnabled" value="${model.user.downloadRole and not model.partyMode}"/>
-                <c:param name="video" value="${song.video and model.player.web}"/>
-            </c:import>
-            <str:truncateNicely upper="${35}">${fn:escapeXml(song.title)}</str:truncateNicely>
-        </span>
-    </p>
-</c:forEach>
-
-<c:if test="${model.statistics.songCount gt 0}">
-    <div class="detail" style="padding-top: 0.6em; padding-left: 2px">
-        <fmt:message key="left.statistics">
-            <fmt:param value="${model.statistics.artistCount}"/>
-            <fmt:param value="${model.statistics.albumCount}"/>
-            <fmt:param value="${model.statistics.songCount}"/>
-            <fmt:param value="${model.bytes}"/>
-            <fmt:param value="${model.hours}"/>
-        </fmt:message>
-    </div>
-</c:if>
-
-<div style="height:5em"></div>
-
-
-<div class="bgcolor2" style="opacity: 1.0; clear: both; position: fixed; bottom: 0; right: 0; left: 0;
-      padding: 0.25em 0.75em 0.25em 0.75em; border-top:1px solid black; max-width: 850px;">
-    <c:forEach items="${model.indexes}" var="index">
-        <a href="#${index.index}">${index.index}</a>
-    </c:forEach>
-</div>
-
-</body></html>
+</body>
+</html>

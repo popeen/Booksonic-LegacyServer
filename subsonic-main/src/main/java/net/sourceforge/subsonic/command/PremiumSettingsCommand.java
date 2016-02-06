@@ -31,7 +31,6 @@ import net.sourceforge.subsonic.domain.User;
  */
 public class PremiumSettingsCommand {
 
-    private String path;
     private String brand;
     private LicenseInfo licenseInfo;
     private String licenseCode;
@@ -39,14 +38,6 @@ public class PremiumSettingsCommand {
     private boolean submissionError;
     private User user;
     private boolean toast;
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     public String getBrand() {
         return brand;

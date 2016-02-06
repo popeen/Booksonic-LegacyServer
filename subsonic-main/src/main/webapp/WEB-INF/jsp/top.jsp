@@ -11,7 +11,15 @@
         var previousQuery = "";
         var instantSearchTimeout;
 
-        function triggerInstantSearch() {
+        function showPage(url) {
+            parent.frames.main.location.href = url;
+        }
+
+        function triggerInstantSearch(event) {
+            if (event.keyCode == 27) { // Escape key
+                $("#query").blur();
+                return;
+            }
             if (instantSearchTimeout) {
                 window.clearTimeout(instantSearchTimeout);
             }
@@ -26,113 +34,80 @@
             }
         }
 
-        function showLeftFrame() {
-            $("#show-left-frame").hide();
-            $("#hide-left-frame").show();
-            toggleLeftFrame(230);
-            multiService.setShowSideBar(true);
+        function toggleSideBar(show) {
+            $("#hide-side-bar").toggle(show);
+            $("#show-side-bar").toggle(!show);
+            parent.toggleSideBar(show);
+            multiService.setShowSideBar(show);
         }
 
-        function hideLeftFrame() {
-            $("#hide-left-frame").hide();
-            $("#show-left-frame").show();
-            toggleLeftFrame(0);
-            multiService.setShowSideBar(false);
+        function keyboardShortcut(action, param) {
+            if (action == "toggleSideBar") {
+                if ($("#show-side-bar").is(":visible")) {
+                    $("#show-side-bar").click();
+                } else if ($("#hide-side-bar").is(":visible")) {
+                    $("#hide-side-bar").click();
+                }
+            } else if (action == "showHome") {
+                showPage("home.view");
+            } else if (action == "showIndex") {
+                showPage(param ? "artists.view#" + param : "artists.view");
+            } else if (action == "showPlaylists") {
+                showPage("playlists.view");
+            } else if (action == "showPodcasts") {
+                showPage("podcastChannels.view");
+            } else if (action == "showSettings") {
+                showPage("settings.view");
+            } else if (action == "showStarred") {
+                showPage("starred.view");
+            } else if (action == "showMore") {
+                showPage(param ? "more.view#" + param : "more.view");
+            } else if (action == "showAbout") {
+                showPage("help.view");
+            } else if (action == "search") {
+                $("#query").focus().select();
+            }
         }
 
-        function toggleLeftFrame(width) {
-            <%-- Disable animation in Chrome. It stopped working in Chrome 44. --%>
-            var duration = navigator.userAgent.indexOf("Chrome") != -1 ? 0 : 400;
-
-            $("#dummy-animation-target").stop();
-            $("#dummy-animation-target").animate({"max-width": width}, {
-                step: function (now, fx) {
-                    top.document.getElementById("mainFrameset").cols = now + ",*";
-                },
-                duration: duration
-            });
-        }
     </script>
+
+    <style type="text/css">
+        .top-menu-item {
+            margin-right: 2em;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+    </style>
 </head>
 
-<body class="bgcolor2 topframe" style="margin:0.4em 1em 0 1em;">
-
-<span id="dummy-animation-target" style="max-width:0;display: none"></span>
-
+<body class="bgcolor2 topframe" style="margin:10px 10px 0 20px;white-space:nowrap">
 <fmt:message key="top.home" var="home"/>
+<fmt:message key="top.artists" var="artists"/>
 <fmt:message key="top.now_playing" var="nowPlaying"/>
 <fmt:message key="top.starred" var="starred"/>
 <fmt:message key="left.playlists" var="playlists"/>
-<fmt:message key="top.settings" var="settings"/>
 <fmt:message key="top.podcast" var="podcast"/>
-<fmt:message key="top.more" var="more"/>
 <fmt:message key="top.help" var="help"/>
 <fmt:message key="top.search" var="search"/>
 
-<table style="margin:0;padding-top:5px">
-    <tr>
-        <td style="padding-right:4.5em;">
-            <img id="show-left-frame" src="<spring:theme code="viewAsListImageLight"/>" onclick="showLeftFrame()" alt="" style="display:${model.showSideBar ? 'none' : 'inline'};cursor:pointer">
-            <img id="hide-left-frame" src="<spring:theme code="viewAsListImageLight"/>" onclick="hideLeftFrame()" alt="" style="display:${model.showSideBar ? 'inline' : 'none'};cursor:pointer">
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="home.view?" target="main"><img src="<spring:theme code="homeImageLight"/>" title="${home}" alt="${home}"></a>
-            <div class="topHeader"><a href="home.view?" target="main">${home}</a></div>
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="nowPlaying.view?" target="main"><img src="<spring:theme code="nowPlayingImageLight"/>" title="${nowPlaying}" alt="${nowPlaying}"></a>
-            <div class="topHeader"><a href="nowPlaying.view?" target="main">${nowPlaying}</a></div>
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="starred.view?" target="main"><img src="<spring:theme code="starredImageLight"/>" title="${starred}" alt="${starred}"></a>
-            <div class="topHeader"><a href="starred.view?" target="main">${starred}</a></div>
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="podcastChannels.view?" target="main"><img src="<spring:theme code="podcastLargeImageLight"/>" title="${podcast}" alt="${podcast}"></a>
-            <div class="topHeader"><a href="podcastChannels.view?" target="main">${podcast}</a></div>
-        </td>
-        <c:if test="${model.user.settingsRole}">
-            <td style="min-width:4em;padding-right:2em;text-align: center">
-                <a href="settings.view?" target="main"><img src="<spring:theme code="settingsImageLight"/>" title="${settings}" alt="${settings}"></a>
-                <div class="topHeader"><a href="settings.view?" target="main">${settings}</a></div>
-            </td>
-        </c:if>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="more.view?" target="main"><img src="<spring:theme code="moreImageLight"/>" title="${more}" alt="${more}"></a>
-            <div class="topHeader"><a href="more.view?" target="main">${more}</a></div>
-        </td>
-        <td style="min-width:4em;padding-right:2em;text-align: center">
-            <a href="help.view?" target="main"><img src="<spring:theme code="helpImageLight"/>" title="${help}" alt="${help}"></a>
-            <div class="topHeader"><a href="help.view?" target="main">${help}</a></div>
-        </td>
+<form method="post" action="search.view" target="main" name="searchForm">
+    <div style="display:flex; align-items:center">
+        <span id="show-side-bar" class="topHeader top-menu-item" style="display:${model.showSideBar ? 'none' : 'inline'}; margin-right:3em" onclick="toggleSideBar(true)"><i class="fa fa-bars fa-lg icon"></i></span>
+        <span id="hide-side-bar" class="topHeader top-menu-item" style="display:${model.showSideBar ? 'inline' : 'none'}; margin-right:3em" onclick="toggleSideBar(false)"><i class="fa fa-bars fa-lg icon"></i></span>
+        <span class="topHeader top-menu-item" onclick="showPage('home.view')"><i class="fa fa-home fa-fw fa-lg icon"></i>&nbsp;${home}</span>
+        <span class="topHeader top-menu-item" onclick="showPage('artists.view')"><i class="fa fa-microphone fa-fw fa-lg icon"></i>&nbsp;${artists}</span>
+        <span class="topHeader top-menu-item" onclick="showPage('nowPlaying.view')"><i class="fa fa-headphones fa-fw fa-lg icon"></i>&nbsp;${nowPlaying}</span>
+        <span class="topHeader top-menu-item" onclick="showPage('starred.view')"><i class="fa fa-star fa-fw fa-lg icon"></i>&nbsp;${starred}</span>
+        <span class="topHeader top-menu-item" onclick="showPage('playlists.view')"><i class="fa fa-music fa-fw fa-lg icon"></i>&nbsp;${playlists}</span>
+        <span class="topHeader top-menu-item" onclick="showPage('podcastChannels.view')"><i class="fa fa-rss fa-lg icon"></i>&nbsp;${podcast}</span>
 
-        <td style="padding-left:1em">
-            <form method="post" action="search.view" target="main" name="searchForm">
-                <td><input type="text" name="query" id="query" size="28" placeholder="${search}" onclick="select();"
-                           onkeyup="triggerInstantSearch();"></td>
-                <td><a href="javascript:document.searchForm.submit()"><img src="<spring:theme code="searchImageLight"/>" alt="${search}" title="${search}"></a></td>
-            </form>
-        </td>
+        <span style="flex-grow:8"></span>
 
-        <td style="padding-left:15pt;padding-right:5pt;vertical-align: middle;width: 100%;text-align: center">
+        <input type="text" name="query" id="query" size="20" placeholder="${search}" onclick="select();" onkeyup="triggerInstantSearch(event);"
+               style="flex-grow:8; margin-left:1em;margin-right:0.5em">
+        <i class="fa fa-search icon clickable" onclick="document.searchForm.submit()"></i>
+    </div>
 
-            <c:if test="${model.showAvatar}">
-            <sub:url value="avatar.view" var="avatarUrl">
-                <sub:param name="username" value="${model.user.username}"/>
-            </sub:url>
-                <div style="padding-bottom: 4px">
-                    <c:if test="${model.user.settingsRole}"><a href="personalSettings.view" target="main"></c:if>
-                        <img src="${avatarUrl}" alt="" width="30" height="30">
-                        <c:if test="${model.user.settingsRole}"></a></c:if>
-                </div>
-            </c:if>
-
-            <div class="detail">
-                <fmt:message key="top.logout" var="logout"><fmt:param value="${model.user.username}"/></fmt:message>
-                <a href="j_acegi_logout" target="_top">${fn:escapeXml(logout)}</a>
-            </div>
-        </td>
-
-    </tr></table>
+</form>
 
 </body></html>

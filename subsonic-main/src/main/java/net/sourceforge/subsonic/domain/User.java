@@ -47,6 +47,7 @@ public class User {
     private boolean isStreamRole;
     private boolean isJukeboxRole;
     private boolean isShareRole;
+    private boolean isVideoConversionRole;
 
     public User(String username, String password, String email, boolean ldapAuthenticated,
                 long bytesStreamed, long bytesDownloaded, long bytesUploaded) {
@@ -203,9 +204,17 @@ public class User {
         isShareRole = shareRole;
     }
 
+    public void setVideoConversionRole(boolean videoConversionRole) {
+        isVideoConversionRole = videoConversionRole;
+    }
+
+    public boolean isVideoConversionRole() {
+        return isVideoConversionRole;
+    }
+
     @Override
     public String toString() {
-        StringBuffer result = new StringBuffer(username);
+        StringBuilder result = new StringBuilder(username);
 
         if (isAdminRole) {
             result.append(" [admin]");
@@ -239,6 +248,9 @@ public class User {
         }
         if (isShareRole) {
             result.append(" [share]");
+        }
+        if (isVideoConversionRole) {
+            result.append(" [video_conversion]");
         }
 
         return result.toString();

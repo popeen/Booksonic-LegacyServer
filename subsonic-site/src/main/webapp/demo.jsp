@@ -40,8 +40,7 @@
 
     <section class="box">
         <span class="image featured"><img src="inc/img/demo.jpg" alt="" /></span>
-        <p> Not all Subsonic's features are available in the demo version. For instance, application settings can not be viewed
-            or changed, and video streaming is not available.</p>
+        <p> Not all Subsonic's features are available in the demo version. For instance, application settings can not be viewed or changed.</p>
 
         <p>All the music in the demo is free, and courtesy of <a href="http://www.jamendo.com/" target="_blank">Jamendo</a> and the respective artists.</p>
     </section>

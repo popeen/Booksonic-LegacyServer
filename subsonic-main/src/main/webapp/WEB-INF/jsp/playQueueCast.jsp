@@ -2,13 +2,15 @@
 (function () {
     'use strict';
 
-    var CastPlayer = function () {
+    var CastPlayer = function (init) {
 
         this.castSession = null;
         this.mediaSession = null;
         this.volume = 1.0;
 
-        this.initializeCastPlayer();
+        if (init) {
+            this.initializeCastPlayer();
+        }
     };
 
     CastPlayer.prototype.initializeCastPlayer = function () {
@@ -81,10 +83,10 @@
     };
 
     CastPlayer.prototype.setCastControlsVisible = function (visible) {
-        $("#flashPlayer").toggle(!visible);
-        $("#castPlayer").toggle(visible);
         $("#castOff").toggle(visible);
         $("#castOn").toggle(!visible);
+        $("#progress").toggle(!visible);
+        $("#progress-and-duration").toggle(!visible);
     };
 
     /**
@@ -115,7 +117,7 @@
      */
     CastPlayer.prototype.onStopAppSuccess = function (message) {
         console.log(message);
-        this.currentMediaSession = null;
+        this.mediaSession = null;
         this.syncControls();
     };
 
@@ -128,8 +130,9 @@
         this.castSession = s;
 
         var position = -1;
-        if (jwplayer().getState() == "PLAYING") {
-            position = jwplayer().getPosition();
+        if (jwPlayer && jwPlayer.getState() == "playing") {
+            position = jwPlayer.getPosition();
+            jwPlayer.stop();
         }
 
         this.setCastControlsVisible(true);
@@ -183,6 +186,7 @@
         this.log("new media session ID:" + this.mediaSession.mediaSessionId + ' (' + how + ')');
         this.log(ms);
         this.mediaSession.addUpdateListener(this.onMediaStatusUpdate.bind(this));
+        this.syncControls();
     };
 
     /**
@@ -210,8 +214,8 @@
         }
         this.mediaSession.play(null, this.mediaCommandSuccessCallback.bind(this, "playing started for " + this.mediaSession.sessionId),
                 this.onError.bind(this));
-        $("#castPlay").hide();
-        $("#castPause").show();
+        $("#startButton").hide();
+        $("#stopButton").show();
     };
 
     CastPlayer.prototype.pauseCast = function () {
@@ -220,8 +224,8 @@
         }
         this.mediaSession.pause(null, this.mediaCommandSuccessCallback.bind(this, "paused " + this.mediaSession.sessionId),
                 this.onError.bind(this));
-        $("#castPlay").show();
-        $("#castPause").hide();
+        $("#startButton").show();
+        $("#stopButton").hide();
     };
 
     /**
@@ -232,26 +236,15 @@
     CastPlayer.prototype.setCastVolume = function (level, mute) {
         if (!this.castSession)
             return;
-
-        if (!mute) {
-            this.castSession.setReceiverVolumeLevel(level, this.mediaCommandSuccessCallback.bind(this, 'media set-volume done'),
-                    this.onError.bind(this));
-            this.volume = level;
-        }
-        else {
-            this.castSession.setReceiverMuted(true, this.mediaCommandSuccessCallback.bind(this, 'media set-volume done'),
-                    this.onError.bind(this));
-        }
-        $("#castMuteOn").toggle(!mute);
-        $("#castMuteOff").toggle(mute);
+        this.castSession.setReceiverVolumeLevel(level, this.mediaCommandSuccessCallback.bind(this, 'media set-volume done'),
+                this.onError.bind(this));
+        this.castSession.setReceiverMuted(mute, this.mediaCommandSuccessCallback.bind(this, 'media set-volume done'),
+                this.onError.bind(this));
+        this.volume = level;
     };
 
-    CastPlayer.prototype.castMuteOn = function () {
-        this.setCastVolume(this.volume, true);
-    };
-
-    CastPlayer.prototype.castMuteOff = function () {
-        this.setCastVolume(this.volume, false);
+    CastPlayer.prototype.castMute = function (mute) {
+        this.setCastVolume(this.volume, mute);
     };
 
     /**
@@ -266,14 +259,17 @@
         if (this.castSession && this.castSession.receiver.volume) {
             this.volume = this.castSession.receiver.volume.level;
             var muted = this.castSession.receiver.volume.muted;
-            $("#castMuteOn").toggle(!muted);
-            $("#castMuteOff").toggle(muted);
-            document.getElementById("castVolume").value = this.volume * 100;
+            $("#muteOn").toggle(!muted);
+            $("#muteOff").toggle(muted);
+            $("#volume").slider("option", "value", Math.round(this.volume * 100));
         }
 
-        var playing = this.mediaSession && this.mediaSession.playerState === chrome.cast.media.PlayerState.PLAYING;
-        $("#castPause").toggle(playing);
-        $("#castPlay").toggle(!playing);
+        var playing = this.mediaSession != null && (this.mediaSession.playerState === chrome.cast.media.PlayerState.PLAYING);
+        var buffering = this.mediaSession != null && (this.mediaSession.playerState === chrome.cast.media.PlayerState.BUFFERING);
+        $("#stopButton").toggle(playing && !buffering);
+        $("#startButton").toggle(!playing && !buffering);
+        $("#bufferButton").toggle(buffering);
+        $(".fa-circle-o-notch").toggleClass("fa-spin", playing);
     };
 
     CastPlayer.prototype.log = function (message) {

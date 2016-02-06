@@ -52,6 +52,7 @@ import net.sourceforge.subsonic.dao.schema.hsql.Schema50;
 import net.sourceforge.subsonic.dao.schema.hsql.Schema51;
 import net.sourceforge.subsonic.dao.schema.hsql.Schema52;
 import net.sourceforge.subsonic.dao.schema.hsql.Schema53;
+import net.sourceforge.subsonic.dao.schema.hsql.Schema60;
 import net.sourceforge.subsonic.service.SettingsService;
 
 /**
@@ -67,7 +68,7 @@ public class HsqlDaoHelper implements DaoHelper {
                                 new Schema30(), new Schema31(), new Schema32(), new Schema33(), new Schema34(),
                                 new Schema35(), new Schema36(), new Schema37(), new Schema38(), new Schema40(),
                                 new Schema43(), new Schema45(), new Schema46(), new Schema47(), new Schema49(),
-                                new Schema50(), new Schema51(), new Schema52(), new Schema53()};
+                                new Schema50(), new Schema51(), new Schema52(), new Schema53(), new Schema60()};
     private DataSource dataSource;
     private static boolean shutdownHookAdded;
 

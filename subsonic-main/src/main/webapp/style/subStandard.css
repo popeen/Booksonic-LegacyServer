@@ -7,7 +7,7 @@
  * Heading icons are part of the TWG Retina Icon pack created by Alex Shutin (http://blog.twg.ca/2010/11/retina-display-icon-set/twg_retina_icons/) and are slightly altered by author.
 */
 
-@import "default.css";
+@import "base.css";
 
 
 /* Theme colour.*/
@@ -17,7 +17,7 @@
 
 
 /* Text colour used for h1, h2, b, tr, details and albumcomments. */
-h1, h2, b, tr, .detail, .albumComment {
+h1, h2, b, tr, .detail, .albumComment, .icon {
     color: #FFFFFF;
 }
 
@@ -57,18 +57,6 @@ table {
 /* Forward image. */
 .forward {
     background-image:url( "../icons/subStandard/forward.png" );
-}
-
-/* Links. */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #FFFFFF;
-}
-
-/* Link hovers. */
-a:hover, a:hover * {
-    text-shadow: 0.1em 0.1em 0.2em grey;
-    text-decoration: none;
-    color: #FFDA23;
 }
 
 /* Warning messages. */

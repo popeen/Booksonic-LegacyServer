@@ -4,7 +4,7 @@
  * Author: Don Pearson
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background colour. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -22,7 +22,7 @@
 }
 
 /* The secondary foreground colour used for h1, details etc. */
-h1, .detail, .albumComment {
+h1, .detail, .albumComment, .icon {
     color: #333333;
 }
 
@@ -52,17 +52,6 @@ table {
 /* Forward image */
 .forward {
     background-image:url("../icons/midnightfun/midnightfun_forward.png");
-}
-
-/* Link colour */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #656569;
-}
-
-/* Link hover colour */
-a:hover, a:hover * {
-    text-decoration: underline;
-    color: #000000;
 }
 
 /* Colour for warning messages. */

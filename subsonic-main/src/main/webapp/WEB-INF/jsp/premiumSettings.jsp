@@ -13,16 +13,6 @@
     <c:param name="toast" value="${command.toast}"/>
 </c:import>
 
-<c:if test="${not empty command.path}">
-    <sub:url value="main.view" var="backUrl">
-        <sub:param name="path" value="${command.path}"/>
-    </sub:url>
-    <div class="back"><a href="${backUrl}">
-        <fmt:message key="common.back"/>
-    </a></div>
-    <br/>
-</c:if>
-
 <div style="width:50em; max-width:50em">
 
     <fmt:message key="premium.text"/>
@@ -42,7 +32,7 @@
                 <fmt:message key="premium.licensedto"><fmt:param value="${command.licenseInfo.licenseEmail}"/></fmt:message>
             </p>
             <c:if test="${command.user.adminRole}">
-                <div class="forward"><a href="premiumSettings.view?change"><fmt:message key="premium.forcechange"/></a></div>
+                <i class="fa fa-chevron-right icon"></i>&nbsp;<a href="premiumSettings.view?change"><fmt:message key="premium.forcechange"/></a>
             </c:if>
         </c:if>
     </c:if>
@@ -51,7 +41,7 @@
         <c:if test="${not empty command.licenseInfo.licenseExpires}">
             <p><b><fmt:message key="premium.licensedexpired"><fmt:param value="${expirationDate}"/></fmt:message></b></p>
         </c:if>
-        <p class="forward" style="font-size:1.2em;margin-left: 1em"><b><a href="http://subsonic.org/pages/premium.jsp" target="_blank">
+        <p style="font-size:1.2em;margin-left: 1em"><i class="fa fa-chevron-right icon"></i>&nbsp;<b><a href="http://subsonic.org/pages/premium.jsp" target="_blank">
             <fmt:message key="premium.getpremium"/>
             <c:if test="${command.licenseInfo.trialDaysLeft gt 0}">
                 &ndash; <fmt:message key="top.trialdaysleft"><fmt:param value="${command.licenseInfo.trialDaysLeft}"/></fmt:message>
@@ -63,7 +53,6 @@
 
     <c:if test="${not command.licenseInfo.licenseValid or command.forceChange or command.submissionError}">
         <form:form commandName="command" method="post" action="premiumSettings.view">
-            <form:hidden path="path"/>
             <table>
                 <tr>
                     <td><fmt:message key="premium.register.email"/></td>

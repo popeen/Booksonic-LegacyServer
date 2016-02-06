@@ -18,7 +18,6 @@
  */
 package net.sourceforge.subsonic.dao;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -39,10 +38,42 @@ import static net.sourceforge.subsonic.domain.MediaFile.MediaType.ALBUM;
 public class RatingDao extends AbstractDao {
 
     /**
+     * Returns paths for the highest rated albums for a given user.
+     *
+     * @param offset       Number of albums to skip.
+     * @param count        Maximum number of albums to return.
+     * @param username     The user name.
+     * @param musicFolders Only return albums in these folders.
+     * @return Paths for the highest rated albums.
+     */
+    public List<String> getHighestRatedAlbumsForUser(final int offset, final int count, final String username, final List<MusicFolder> musicFolders) {
+        if (count < 1 || musicFolders.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        Map<String, Object> args = new HashMap<String, Object>() {{
+            put("type", ALBUM.name());
+            put("username", username);
+            put("folders", MusicFolder.toPathList(musicFolders));
+            put("count", count);
+            put("offset", offset);
+        }};
+
+        String sql = "select user_rating.path from user_rating, media_file where " +
+                     "user_rating.username = :username and " +
+                     "user_rating.path = media_file.path and " +
+                     "media_file.present and " +
+                     "media_file.type = :type and " +
+                     "media_file.folder in (:folders) " +
+                     "order by rating desc limit :count offset :offset";
+        return namedQueryForStrings(sql, args);
+    }
+
+    /**
      * Returns paths for the highest rated albums.
      *
-     * @param offset      Number of albums to skip.
-     * @param count       Maximum number of albums to return.
+     * @param offset       Number of albums to skip.
+     * @param count        Maximum number of albums to return.
      * @param musicFolders Only return albums in these folders.
      * @return Paths for the highest rated albums.
      */
@@ -59,7 +90,7 @@ public class RatingDao extends AbstractDao {
         }};
 
         String sql = "select user_rating.path from user_rating, media_file " +
-                     "where user_rating.path=media_file.path and media_file.present and media_file.type = :type and media_file.folder in (:folders) " +
+                     "where user_rating.path = media_file.path and media_file.present and media_file.type = :type and media_file.folder in (:folders) " +
                      "group by path " +
                      "order by avg(rating) desc limit :count offset :offset";
         return namedQueryForStrings(sql, args);

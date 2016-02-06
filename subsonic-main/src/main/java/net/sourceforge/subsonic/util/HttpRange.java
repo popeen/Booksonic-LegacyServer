@@ -21,17 +21,20 @@ package net.sourceforge.subsonic.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.StringUtils;
 
 /**
  * @author Sindre Mehus
- * @version $Id: HttpRange.java 3864 2014-02-14 15:56:40Z sindre_mehus $
+ * @version $Id: HttpRange.java 4652 2016-01-30 10:24:38Z sindre_mehus $
  */
 public class HttpRange {
 
     private static final Pattern PATTERN = Pattern.compile("bytes=(\\d+)-(\\d*)");
-    private final Long firstBytePos;
+    private final long firstBytePos;
     private final Long lastBytePos;
+    private final Long totalLength;
 
     /**
      * Parses the given string as a HTTP header byte range.  See chapter 14.36.1 in RFC 2068
@@ -41,11 +44,12 @@ public class HttpRange {
      * are supported. The last-byte-pos is optional.
      *
      * @param range The range from the HTTP header, for instance "bytes=0-499" or "bytes=500-"
+     * @param totalLength The total length of the content, or {@code null} if unknown.
      * @return A range object (using inclusive values). If the last-byte-pos is not given, the end of
      *         the returned range is {@code null}. The method returns <code>null</code> if the syntax
      *         of the given range is not supported.
      */
-    public static HttpRange valueOf(String range) {
+    public static HttpRange of(String range, Long totalLength) {
         if (range == null) {
             return null;
         }
@@ -61,20 +65,43 @@ public class HttpRange {
             if (last != null && first > last) {
                 return null;
             }
-            return new HttpRange(first, last);
+            return new HttpRange(first, last, totalLength);
         }
         return null;
     }
 
-    public HttpRange(long firstBytePos, Long lastBytePos) {
+    public static HttpRange of(HttpServletRequest request, Long totalLength) {
+        return request == null ? null : of(request.getHeader("Range"), totalLength);
+    }
+
+    public static HttpRange of(HttpServletRequest request) {
+        return of(request, null);
+    }
+
+    public HttpRange(long firstBytePos, Long lastBytePos, Long totalLength) {
         this.firstBytePos = firstBytePos;
         this.lastBytePos = lastBytePos;
+        this.totalLength = totalLength;
+    }
+
+    public long getOffset() {
+        return getFirstBytePos();
+    }
+
+    public long getLength() {
+        if (isClosed()) {
+            return size();
+        }
+        if (totalLength == null) {
+            return -1;
+        }
+        return totalLength - getOffset();
     }
 
     /**
      * @return The first byte position (inclusive) in the range. Never {@code null}.
      */
-    public Long getFirstBytePos() {
+    public long getFirstBytePos() {
         return firstBytePos;
     }
 
@@ -89,7 +116,7 @@ public class HttpRange {
      * @return Whether this is a closed range (both first and last byte position specified).
      */
     public boolean isClosed() {
-        return firstBytePos != null && lastBytePos != null;
+        return lastBytePos != null;
     }
 
     /**

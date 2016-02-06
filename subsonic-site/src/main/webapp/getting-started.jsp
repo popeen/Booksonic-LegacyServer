@@ -45,7 +45,7 @@
                 </p>
 
                 <ul class="actions fit small">
-                    <li><a class="button small alt fit" href="#1">Setting up music folders</a></li>
+                    <li><a class="button small alt fit" href="#1">Setting up media folders</a></li>
                     <li><a class="button small alt fit" href="#2">Setting up remote access</a></li>
                     <li><a class="button small alt fit" href="#3">Registering your license key</a></li>
                     <li><a class="button small alt fit" href="#4">Using https</a></li>
@@ -55,14 +55,10 @@
 
             <a name="1"></a>
             <section class="box">
-                <h3>Setting up music folders</h3>
+                <h3>Setting up media folders</h3>
                 <p>
-                    <span class="image right"><a href="inc/img/gettingstarted/mediafolders.png"><img src="inc/img/gettingstarted/mediafolders.png" height="250" alt="" /></a></span>
-                    You must tell Subsonic where you keep your music and videos. Select <strong>Settings &gt; Media folders</strong> to add one or
-                    more folders.</p>
-
-                <p>Note that if you add more than one media folder, a list will appear on the left side of the screen where you can
-                    select the active folder.</p>
+                    <span class="image right"><a href="inc/img/gettingstarted/mediafolders.png"><img src="inc/img/gettingstarted/mediafolders.png" class="dropshadow" alt="" style="max-height:250px"/></a></span>
+                    You must tell Subsonic where you keep your music and videos. Select <strong>Settings &gt; Media folders</strong> to add folders.</p>
 
                 <p>Also note that Subsonic will organize your music according to how they are organized on your disk.
                     Unlike many other music applications, Subsonic does not organize the music according to the tag information
@@ -163,7 +159,8 @@
             <section class="box">
                 <h3>Registering your license key</h3>
                 <p>
-                    <span class="image right"><a href="inc/img/gettingstarted/license.png"><img src="inc/img/gettingstarted/license.png" alt="" height="200"/></a></span>
+                    <span class="image right"><a href="inc/img/gettingstarted/license.png"><img src="inc/img/gettingstarted/license.png" alt=""
+                                                                                                class="dropshadow" style="max-height:200px"/></a></span>
                     Most features in Subsonic are free, but some (like mobile phone streaming) require that you upgrade to
                     <a href="premium.jsp">Subsonic Premium</a> after the 30-day free trial. After you receive the license key
                     by email, you must register it on your server as follows:</p>

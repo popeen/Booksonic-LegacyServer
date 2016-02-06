@@ -57,6 +57,7 @@ public class JukeboxService implements AudioPlayer.Listener {
     private float gain = AudioPlayer.DEFAULT_GAIN;
     private int offset;
     private MediaFileService mediaFileService;
+    private boolean mute;
 
     /**
      * Updates the jukebox by starting or pausing playback on the local audio device.
@@ -110,7 +111,7 @@ public class JukeboxService implements AudioPlayer.Listener {
                     parameters.setTranscoding(new Transcoding(null, null, null, null, command, null, null, false));
                     in = transcodingService.getTranscodedInputStream(parameters);
                     audioPlayer = new AudioPlayer(in, this);
-                    audioPlayer.setGain(gain);
+                    audioPlayer.setGain(mute ? 0 : gain);
                     audioPlayer.play();
                     onSongStart(file);
                 }
@@ -137,6 +138,10 @@ public class JukeboxService implements AudioPlayer.Listener {
 
     public synchronized float getGain() {
         return gain;
+    }
+
+    public boolean isMute() {
+        return mute;
     }
 
     public synchronized int getPosition() {
@@ -177,8 +182,18 @@ public class JukeboxService implements AudioPlayer.Listener {
 
     public synchronized void setGain(float gain) {
         this.gain = gain;
+        if (gain > 0) {
+            mute = false;
+        }
         if (audioPlayer != null) {
             audioPlayer.setGain(gain);
+        }
+    }
+
+    public synchronized void setMute(boolean mute) {
+        this.mute = mute;
+        if (audioPlayer != null) {
+            audioPlayer.setGain(mute ? 0 : gain);
         }
     }
 

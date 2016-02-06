@@ -7,10 +7,7 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<h1>
-    <img src="<spring:theme code="shareImage"/>" alt="">
-    <span style="vertical-align: middle"><fmt:message key="share.title"/></span>
-</h1>
+<h1><i class="fa fa-share-alt fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="share.title"/></h1>
 
 <c:choose>
     <c:when test="${model.urlRedirectionEnabled}">
@@ -34,7 +31,7 @@
         </p>
     </c:when>
     <c:otherwise>
-        <p>
+        <p class="space-above">
             <fmt:message key="share.disabled"/>
         </p>
     </c:otherwise>
@@ -46,10 +43,10 @@
 <div style="padding-top:1em">
     <c:if test="${not empty model.dir}">
         <sub:url value="main.view" var="backUrl"><sub:param name="path" value="${model.dir.path}"/></sub:url>
-        <div class="back" style="float:left;padding-right:10pt"><a href="${backUrl}"><fmt:message key="common.back"/></a></div>
+        <span style="padding-right:2em"><i class="fa fa-chevron-left icon"></i>&nbsp;<a href="${backUrl}"><fmt:message key="common.back"/></a></span>
     </c:if>
     <c:if test="${model.user.settingsRole}">
-        <div class="forward" style="float:left"><a href="shareSettings.view"><fmt:message key="share.manage"/></a></div>
+    <i class="fa fa-cog icon"></i>&nbsp;<a href="shareSettings.view"><fmt:message key="share.manage"/>
     </c:if>
 </div>
 </body>

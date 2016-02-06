@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subsonic-response xmlns="http://subsonic.org/restapi" status="ok" version="1.14.0">
+    <albumInfo>
+        <notes>Surrender is the third album from The Chemical Brothers and was released on June 22, 1999. It features Noel Gallagher (Oasis),
+            Hope Sandoval (ex Mazzy Star) and Bernard Sumner (New Order) as guest vocalists. Leeds band The Sunshine Underground took their
+            name from the sixth track on the album. It was certified 2x Platinum by the BPI on September 30, 2005. The song 'Asleep from Day'
+            was used in a commercial for the French airline Air France. &lt;a target='_blank'
+            href=&quot;http://www.last.fm/music/The+Chemical+Brothers/Surrender&quot;>Read more on Last.fm&lt;/a>.</notes>
+        <musicBrainzId>a84b9fea-aee9-4e1f-b5a2-a5a23c673688</musicBrainzId>
+        <lastFmUrl>http://www.last.fm/music/The+Chemical+Brothers/Surrender</lastFmUrl>
+        <smallImageUrl>http://img2-ak.lst.fm/i/u/64s/1428ec66344849829440668951259baa.png</smallImageUrl>
+        <mediumImageUrl>http://img2-ak.lst.fm/i/u/174s/1428ec66344849829440668951259baa.png</mediumImageUrl>
+        <largeImageUrl>http://img2-ak.lst.fm/i/u/1428ec66344849829440668951259baa.png</largeImageUrl>
+    </albumInfo>
+</subsonic-response>

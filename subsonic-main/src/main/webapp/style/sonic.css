@@ -5,7 +5,7 @@
  *
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background colour. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -60,18 +60,6 @@ table {
 /* Forward image */
 .forward {
     background-image:url( "../icons/sonic/forward.png" );
-}
-
-
-/* Link colour */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #333333;
-}
-
-/* Link hover colour */
-a:hover, a:hover * {
-    text-decoration: underline;
-    color: #696969;
 }
 
 /* Colour for warning messages. */

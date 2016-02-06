@@ -104,6 +104,10 @@
                 <td><form:checkbox path="podcastRole" id="podcast" cssClass="checkbox"/></td>
                 <td><label for="podcast"><fmt:message key="usersettings.podcast"/></label></td>
             </tr>
+            <tr>
+                <td><form:checkbox path="videoConversionRole" id="videoConversion" cssClass="checkbox"/></td>
+                <td><label for="videoConversion"><fmt:message key="usersettings.videoconversion"/></label></td>
+            </tr>
         </table>
     </c:if>
 

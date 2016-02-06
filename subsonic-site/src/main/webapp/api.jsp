@@ -22,10 +22,6 @@
 <html>
 <%@ include file="head.jsp" %>
 
-<c:set var="stable" value="5.0"/>
-<c:set var="beta" value="5.1.beta2"/>
-<%-- Set to null if no beta is available.--%>
-
 <body>
 
 <c:import url="header.jsp"/>
@@ -262,21 +258,27 @@
         </thead>
         <tbody>
         <tr>
+            <td>6.0</td>
+            <td>
+                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-6.0.beta1/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.14.0</a>
+            </td>
+        </tr>
+        <tr>
             <td>5.3</td>
             <td>
-                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.3/subsonic-site/src/main/webapp/inc/api/subsonic-rest-api.xsd">1.13.0</a>
+                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.3/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.13.0</a>
             </td>
         </tr>
         <tr>
             <td>5.2</td>
             <td>
-                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.2/subsonic-site/src/main/webapp/inc/api/subsonic-rest-api.xsd">1.12.0</a>
+                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.2/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.12.0</a>
             </td>
         </tr>
         <tr>
             <td>5.1</td>
             <td>
-                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.1/subsonic-site/src/main/webapp/inc/api/subsonic-rest-api.xsd">1.11.0</a>
+                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-5.1/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.11.0</a>
             </td>
         </tr>
         <tr>
@@ -401,6 +403,8 @@
                 <code><a href="#getVideos">getVideos</a></code>
                 <code><a href="#getArtistInfo">getArtistInfo</a></code>
                 <code><a href="#getArtistInfo2">getArtistInfo2</a></code>
+                <code><a href="#getAlbumInfo">getAlbumInfo</a></code>
+                <code><a href="#getAlbumInfo2">getAlbumInfo2</a></code>
                 <code><a href="#getSimilarSongs">getSimilarSongs</a></code>
                 <code><a href="#getSimilarSongs2">getSimilarSongs2</a></code>
                 <code><a href="#getTopSongs">getTopSongs</a></code>
@@ -536,6 +540,8 @@
 <%@ include file="api-getVideos.jsp" %>
 <%@ include file="api-getArtistInfo.jsp" %>
 <%@ include file="api-getArtistInfo2.jsp" %>
+<%@ include file="api-getAlbumInfo.jsp" %>
+<%@ include file="api-getAlbumInfo2.jsp" %>
 <%@ include file="api-getSimilarSongs.jsp" %>
 <%@ include file="api-getSimilarSongs2.jsp" %>
 <%@ include file="api-getTopSongs.jsp" %>

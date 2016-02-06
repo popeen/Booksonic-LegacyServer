@@ -53,14 +53,17 @@
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.PlaylistInfo$Entry"/>
         <convert converter="bean" match="net.sourceforge.subsonic.domain.Playlist"/>
         <convert converter="bean" match="net.sourceforge.subsonic.domain.ArtistBio"/>
+        <convert converter="bean" match="net.sourceforge.subsonic.domain.LastFmCoverArt"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.UploadInfo"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.LyricsInfo"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.CoverArtInfo"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.ChatService$Message"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.ChatService$Messages"/>
-        <convert converter="bean" match="net.sourceforge.subsonic.ajax.SimilarArtist"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.ArtistInfo"/>
+        <convert converter="bean" match="net.sourceforge.subsonic.ajax.SimilarArtist"/>
         <convert converter="bean" match="net.sourceforge.subsonic.ajax.TopSong"/>
+        <convert converter="bean" match="net.sourceforge.subsonic.ajax.AlbumInfo"/>
+        <convert converter="bean" match="net.sourceforge.subsonic.ajax.VideoConversionStatus"/>
 
     </allow>
 </dwr>

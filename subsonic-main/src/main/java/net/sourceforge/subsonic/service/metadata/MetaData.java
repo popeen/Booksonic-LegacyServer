@@ -18,6 +18,13 @@
  */
 package net.sourceforge.subsonic.service.metadata;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
+
 /**
  * Contains meta-data (song title, artist, album etc) for a music file.
  * @author Sindre Mehus
@@ -37,6 +44,7 @@ public class MetaData {
     private Integer durationSeconds;
     private Integer width;
     private Integer height;
+    private final List<Track> tracks = new ArrayList<Track>(); // Only populated by FFmpegParser.
 
     public Integer getDiscNumber() {
         return discNumber;
@@ -140,5 +148,35 @@ public class MetaData {
 
     public void setHeight(Integer height) {
         this.height = height;
+    }
+
+    public void addTrack(Track track) {
+        tracks.add(track);
+    }
+
+    public List<Track> getTracks() {
+        return Collections.unmodifiableList(tracks);
+    }
+
+    public List<Track> getAudioTracks() {
+        return FluentIterable.from(getTracks())
+                             .filter(new Predicate<Track>() {
+                                 @Override
+                                 public boolean apply(Track input) {
+                                     return input.isAudio();
+                                 }
+                             })
+                             .toList();
+    }
+
+    public List<Track> getVideoTracks() {
+        return FluentIterable.from(getTracks())
+                             .filter(new Predicate<Track>() {
+                                 @Override
+                                 public boolean apply(Track input) {
+                                     return input.isVideo();
+                                 }
+                             })
+                             .toList();
     }
 }
