@@ -199,9 +199,6 @@
         <div class="ellipsis" style="flex-grow:1">
             <div class="ellipsis"><a class="now-playing-album-link" target="main"><b><span class="now-playing-title"></span></b></a></div>
             <div class="now-playing-artist ellipsis"></div>
-            <div class="now-playing-lyrics-container" style="margin-top:0.5em">
-                <i class='fa fa-microphone icon'></i>&nbsp;&nbsp;<a class="now-playing-lyrics clickable" onclick="return popupSize(this, 'lyrics', 500, 550)"><fmt:message key="main.lyrics"/></a>
-            </div>
             <div class="now-playing-when" style="margin-top:0.5em"></div>
         </div>
         <a class="now-playing-album-link" target="main"><img class="now-playing-coverart" style="height:60px; width:60px; margin-left:0.4em"></a>
