@@ -88,7 +88,7 @@ public class PlaylistService {
         }
     }
 
-    public List<Playlist> createEmptyPlaylist() {
+    public Playlist createEmptyPlaylist() {
         HttpServletRequest request = WebContextFactory.get().getHttpServletRequest();
         Locale locale = localeResolver.resolveLocale(request);
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, locale);
@@ -102,7 +102,7 @@ public class PlaylistService {
         playlist.setName(dateFormat.format(now));
 
         playlistService.createPlaylist(playlist);
-        return getReadablePlaylists();
+        return playlist;
     }
 
     public int createPlaylistForPlayQueue() {

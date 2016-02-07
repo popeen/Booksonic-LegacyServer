@@ -61,6 +61,7 @@ public class UserDao extends AbstractDao {
     private static final Integer ROLE_ID_SETTINGS = 9;
     private static final Integer ROLE_ID_JUKEBOX = 10;
     private static final Integer ROLE_ID_SHARE = 11;
+    private static final Integer ROLE_ID_VIDEO_CONVERSION = 12;
 
     private UserRowMapper userRowMapper = new UserRowMapper();
     private UserSettingsRowMapper userSettingsRowMapper = new UserSettingsRowMapper();
@@ -247,6 +248,8 @@ public class UserDao extends AbstractDao {
                     user.setJukeboxRole(true);
                 } else if (ROLE_ID_SHARE.equals(role)) {
                     user.setShareRole(true);
+                } else if (ROLE_ID_VIDEO_CONVERSION.equals(role)) {
+                    user.setVideoConversionRole(true);
                 } else {
                     LOG.warn("Unknown role: '" + role + '\'');
                 }
@@ -291,6 +294,9 @@ public class UserDao extends AbstractDao {
             }
             if (user.isShareRole()) {
                 getJdbcTemplate().update(sql, new Object[]{user.getUsername(), ROLE_ID_SHARE});
+            }
+            if (user.isVideoConversionRole()) {
+                getJdbcTemplate().update(sql, new Object[]{user.getUsername(), ROLE_ID_VIDEO_CONVERSION});
             }
         }
     }

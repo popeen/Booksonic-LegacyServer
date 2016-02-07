@@ -141,6 +141,7 @@ public class UserSettingsController extends SimpleFormController {
         user.setJukeboxRole(command.isJukeboxRole());
         user.setSettingsRole(command.isSettingsRole());
         user.setShareRole(command.isShareRole());
+        user.setVideoConversionRole(command.isVideoConversionRole());
 
         if (command.isPasswordChange()) {
             user.setPassword(command.getPassword());

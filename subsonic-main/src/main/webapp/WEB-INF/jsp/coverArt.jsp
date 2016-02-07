@@ -6,6 +6,7 @@ PARAMETERS
   albumId: ID of album.
   playlistId: ID of playlist.
   podcastChannelId: ID of podcast channel
+  auth: Authentication token
   coverArtSize: Height and width of cover art.
   caption1: Caption line 1
   caption2: Caption line 2
@@ -63,10 +64,14 @@ PARAMETERS
             <c:if test="${not empty param.playlistId}">
                 <c:param name="id" value="pl-${param.playlistId}"/>
             </c:if>
+            <c:if test="${not empty param.auth}">
+                <c:param name="auth" value="${param.auth}"/>
+            </c:if>
         </c:url>
 
         <c:url value="/coverArt.view" var="zoomCoverArtUrl">
             <c:param name="id" value="${param.albumId}"/>
+            <c:param name="auth" value="${param.auth}"/>
         </c:url>
 
         <div style="position: relative; width: 0; height: 0">
@@ -93,22 +98,13 @@ PARAMETERS
     </c:if>
 </div>
 
-<c:if test="${param.showChange or param.showZoom}">
+<c:if test="${param.showChange}">
     <div style="padding-top:6px;text-align:right">
-        <c:if test="${param.showChange}">
-            <c:url value="/changeCoverArt.view" var="changeCoverArtUrl">
-                <c:param name="id" value="${param.albumId}"/>
-            </c:url>
-            <a class="detail" href="${changeCoverArtUrl}"><fmt:message key="coverart.change"/></a>
-        </c:if>
-
-        <c:if test="${param.showZoom and param.showChange}">
-            |
-        </c:if>
-
-        <c:if test="${param.showZoom}">
-            <a class="detail" rel="zoom" title="${param.caption1}" href="${zoomCoverArtUrl}"><fmt:message key="coverart.zoom"/></a>
-        </c:if>
+        <c:url value="/changeCoverArt.view" var="changeCoverArtUrl">
+            <c:param name="id" value="${param.albumId}"/>
+        </c:url>
+        <i class="fa fa-edit icon clickable" onclick="location.href='${changeCoverArtUrl}'"
+           title="<fmt:message key="coverart.change"/>"></i>
     </div>
 </c:if>
 

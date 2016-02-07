@@ -84,7 +84,7 @@
                     <input type="hidden" name="hosted_button_id" value="SDHSJ5T5E2DC4">
                     <input type="hidden" name="lc" value="US">
                 </form>
-                <a onclick="document.subscriptionForm.submit()" class="button special icon fa-arrow-right">Continue to PayPal</a>
+                <a onclick="document.subscriptionForm.submit()" class="button special icon fa-paypal">Continue to PayPal</a>
             </section>
 
             <section>
@@ -116,7 +116,7 @@
                         </select>
                     </div>
                 </form>
-                <a onclick="document.paymentForm.submit()" class="button special icon fa-arrow-right">Continue to PayPal</a>
+                <a onclick="document.paymentForm.submit()" class="button special icon fa-paypal">Continue to PayPal</a>
             </section>
         </div>
 
@@ -135,7 +135,7 @@
                     <input type="hidden" name="hosted_button_id" value="RDHD4QKYSAYK8">
                     <input type="hidden" name="lc" value="US">
                 </form>
-                <a onclick="document.lifetimeForm.submit()" class="button special icon fa-arrow-right">Continue to PayPal</a>
+                <a onclick="document.lifetimeForm.submit()" class="button special icon fa-paypal">Continue to PayPal</a>
             </section>
 
             <section class="align-left">

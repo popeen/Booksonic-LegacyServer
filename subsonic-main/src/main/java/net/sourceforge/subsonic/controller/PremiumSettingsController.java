@@ -43,7 +43,6 @@ public class PremiumSettingsController extends SimpleFormController {
 
     protected Object formBackingObject(HttpServletRequest request) throws Exception {
         PremiumSettingsCommand command = new PremiumSettingsCommand();
-        command.setPath(request.getParameter("path"));
         command.setForceChange(request.getParameter("change") != null);
         command.setLicenseInfo(settingsService.getLicenseInfo());
         command.setBrand(settingsService.getBrand());

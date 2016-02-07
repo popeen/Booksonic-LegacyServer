@@ -19,6 +19,7 @@
 package net.sourceforge.subsonic.controller;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +27,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.ParameterizableViewController;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import net.sourceforge.subsonic.Logger;
+import net.sourceforge.subsonic.domain.MediaLibraryStatistics;
+import net.sourceforge.subsonic.service.MediaScannerService;
 import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
 import net.sourceforge.subsonic.service.VersionService;
+import net.sourceforge.subsonic.util.StringUtil;
 
 /**
  * Controller for the help page.
@@ -42,6 +47,7 @@ public class HelpController extends ParameterizableViewController {
     private VersionService versionService;
     private SettingsService settingsService;
     private SecurityService securityService;
+    private MediaScannerService mediaScannerService;
 
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -74,6 +80,17 @@ public class HelpController extends ParameterizableViewController {
         map.put("logEntries", Logger.getLatestLogEntries());
         map.put("logFile", Logger.getLogFile());
 
+        MediaLibraryStatistics statistics = mediaScannerService.getStatistics();
+        Locale locale = RequestContextUtils.getLocale(request);
+        if (statistics != null) {
+            map.put("statistics", statistics);
+            long bytes = statistics.getTotalLengthInBytes();
+            long hours = statistics.getTotalDurationInSeconds() / 3600L;
+            map.put("hours", hours);
+            map.put("bytes", StringUtil.formatBytes(bytes, locale));
+        }
+
+
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
@@ -89,5 +106,9 @@ public class HelpController extends ParameterizableViewController {
 
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
+    }
+
+    public void setMediaScannerService(MediaScannerService mediaScannerService) {
+        this.mediaScannerService = mediaScannerService;
     }
 }

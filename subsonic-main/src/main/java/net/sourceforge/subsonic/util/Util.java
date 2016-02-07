@@ -18,6 +18,8 @@
  */
 package net.sourceforge.subsonic.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -30,6 +32,8 @@ import java.util.Random;
 
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.common.io.ByteStreams;
 
 import net.sourceforge.subsonic.Logger;
 import net.sourceforge.subsonic.service.SettingsService;
@@ -198,5 +202,21 @@ public final class Util {
             result[i] = values.get(i);
         }
         return result;
+    }
+
+    public static void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            LOG.error("Sleep interrupted.", e);
+        }
+    }
+
+    public static InputStream sliceInputStream(InputStream in, HttpRange range) throws IOException {
+        if (range == null) {
+            return in;
+        }
+        ByteStreams.skipFully(in, range.getOffset());
+        return ByteStreams.limit(in, range.getLength());
     }
 }

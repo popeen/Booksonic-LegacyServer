@@ -39,16 +39,6 @@ h2, b, tr {
     color: #CFD1D6;
 }
 
-/* Link color */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #97D9FF
-}
-
-/* Link hover color */
-a:hover, a:hover * {
-    color: orange;
-}
-
 /* Scrollbar colors (supported on IE and Opera) */
 body {
     scrollbar-face-color: #00042E;

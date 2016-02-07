@@ -110,6 +110,12 @@
             <td>(Since <a href="#versions">1.8.0</a>) Whether the user is allowed to share files with anyone.</td>
         </tr>
         <tr>
+            <td><code>videoConversionRole</code></td>
+            <td>No</td>
+            <td>false</td>
+            <td>(Since <a href="#versions">1.15.0</a>) Whether the user is allowed to start video conversions.</td>
+        </tr>
+        <tr>
             <td><code>musicFolderId</code></td>
             <td>No</td>
             <td>All folders</td>

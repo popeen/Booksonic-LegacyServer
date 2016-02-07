@@ -4,7 +4,7 @@
  * Author: David D ddavis1@gmail.com
  */
 
-@import "default.css";
+@import "base.css";
 
 /* highlights to contrast with bgcolor2. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -17,7 +17,7 @@
 }
 
 /* The secondary foreground colour used for h1, details etc. */
-h1, .detail, .albumComment {
+h1, .detail, .albumComment, .icon {
     color: #000000;
 }
 
@@ -34,17 +34,6 @@ table {
 /* Main frame image & colour */
 .mainframe, .rightframe {
     background-color: #EEE;
-}
-
-/* Link colour */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #000000;
-}
-
-/* Link hover colour */
-a:hover, a:hover * {
-    text-decoration: underline;
-    color: #FFFFFF;
 }
 
 /* Colour for warning messages. */

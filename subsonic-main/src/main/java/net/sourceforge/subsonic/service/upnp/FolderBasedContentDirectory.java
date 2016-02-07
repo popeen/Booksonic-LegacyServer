@@ -51,7 +51,7 @@ import net.sourceforge.subsonic.util.Util;
 
 /**
  * @author Sindre Mehus
- * @version $Id: FolderBasedContentDirectory.java 4324 2015-01-19 20:22:14Z sindre_mehus $
+ * @version $Id: FolderBasedContentDirectory.java 4642 2016-01-23 16:05:18Z sindre_mehus $
  */
 public class FolderBasedContentDirectory extends SubsonicContentDirectory {
 
@@ -275,7 +275,7 @@ public class FolderBasedContentDirectory extends SubsonicContentDirectory {
     }
 
     private URI getAlbumArtUrl(MediaFile album) throws URISyntaxException {
-        return new URI(getBaseUrl() + "coverArt.view?id=" + album.getId() + "&size=" + CoverArtScheme.LARGE.getSize());
+        return new URI(getBaseUrl() + "coverArt.view?id=" + album.getId() + "&auth=" + album.getHash() + "&size=" + CoverArtScheme.LARGE.getSize());
     }
 
     public void setMediaFileService(MediaFileService mediaFileService) {

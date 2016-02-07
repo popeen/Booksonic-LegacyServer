@@ -4,7 +4,7 @@
  * Author: Sindre Mehus
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background color. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -17,7 +17,7 @@
 }
 
 /* The primary foreground color. */
-body {
+body, .icon {
     color: #DDDDDD;
 }
 
@@ -29,22 +29,6 @@ h1, .detail, .albumComment {
 /* Foreground color used for h2, bold and tr. */
 h2, b, tr {
     color: #DDDDDD;
-}
-
-/* Link color */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #BAD9F2
-}
-
-/* Link hover color */
-a:hover, a:hover * {
-    text-decoration: underline;
-    color: orange;
-}
-
-/* Color for warning messages. */
-.warning {
-    color: orange;
 }
 
 /* Simple border. */

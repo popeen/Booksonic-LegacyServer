@@ -113,14 +113,14 @@ public class NowPlayingService {
 
             String artist = mediaFile.getArtist();
             String title = mediaFile.getTitle();
-            String streamUrl = url.replaceFirst("/dwr/.*", "/stream?player=" + player.getId() + "&id=" + mediaFile.getId());
+            String streamUrl = url.replaceFirst("/dwr/.*", "/stream?player=" + player.getId() + "&id=" + mediaFile.getId() + "&auth=" + mediaFile.getHash());
             String albumUrl = url.replaceFirst("/dwr/.*", "/main.view?id=" + mediaFile.getId());
             String lyricsUrl = null;
             if (!mediaFile.isVideo()) {
                 lyricsUrl = url.replaceFirst("/dwr/.*", "/lyrics.view?artistUtf8Hex=" + StringUtil.utf8HexEncode(artist) +
                                                         "&songUtf8Hex=" + StringUtil.utf8HexEncode(title));
             }
-            String coverArtUrl = url.replaceFirst("/dwr/.*", "/coverArt.view?size=60&id=" + mediaFile.getId());
+            String coverArtUrl = url.replaceFirst("/dwr/.*", "/coverArt.view?size=60&id=" + mediaFile.getId() + "&auth=" + mediaFile.getHash());
 
             String avatarUrl = null;
             if (userSettings.getAvatarScheme() == AvatarScheme.SYSTEM) {
@@ -144,9 +144,6 @@ public class NowPlayingService {
             if (StringUtils.isNotBlank(player.getName())) {
                 username += "@" + player.getName();
             }
-            artist = StringUtil.toHtml(StringUtils.abbreviate(artist, 25));
-            title = StringUtil.toHtml(StringUtils.abbreviate(title, 25));
-            username = StringUtil.toHtml(StringUtils.abbreviate(username, 25));
 
             long minutesAgo = status.getMinutesAgo();
 

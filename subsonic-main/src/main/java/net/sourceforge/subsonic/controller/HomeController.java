@@ -81,6 +81,7 @@ public class HomeController extends ParameterizableViewController {
         }
 
         MusicFolder selectedMusicFolder = settingsService.getSelectedMusicFolder(user.getUsername());
+        List<MusicFolder> allMusicFolders = settingsService.getMusicFoldersForUser(user.getUsername());
         List<MusicFolder> musicFolders = settingsService.getMusicFoldersForUser(user.getUsername(),
                                                                                 selectedMusicFolder == null ? null : selectedMusicFolder.getId());
 
@@ -88,7 +89,7 @@ public class HomeController extends ParameterizableViewController {
         List<Album> albums = Collections.emptyList();
         switch (listType) {
             case HIGHEST:
-                albums = getHighestRated(listOffset, LIST_SIZE, musicFolders);
+                albums = getHighestRated(listOffset, LIST_SIZE, user.getUsername(), musicFolders);
                 break;
             case FREQUENT:
                 albums = getMostFrequent(listOffset, LIST_SIZE, musicFolders);
@@ -138,18 +139,19 @@ public class HomeController extends ParameterizableViewController {
         map.put("listSize", LIST_SIZE);
         map.put("coverArtSize", CoverArtScheme.MEDIUM.getSize());
         map.put("listOffset", listOffset);
-        map.put("musicFolder", selectedMusicFolder);
+        map.put("musicFolders", allMusicFolders);
+        map.put("selectedMusicFolder", selectedMusicFolder);
 
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
     }
 
-    private List<Album> getHighestRated(int offset, int count, List<MusicFolder> musicFolders) {
+    private List<Album> getHighestRated(int offset, int count, String username, List<MusicFolder> musicFolders) {
         List<Album> result = new ArrayList<Album>();
-        for (MediaFile mediaFile : ratingService.getHighestRatedAlbums(offset, count, musicFolders)) {
+        for (MediaFile mediaFile : ratingService.getHighestRatedAlbumsForUser(offset, count, username, musicFolders)) {
             Album album = createAlbum(mediaFile);
-            album.setRating((int) Math.round(ratingService.getAverageRating(mediaFile) * 10.0D));
+            album.setRating(ratingService.getRatingForUser(username, mediaFile) * 10);
             result.add(album);
         }
         return result;
@@ -243,6 +245,7 @@ public class HomeController extends ParameterizableViewController {
     private Album createAlbum(MediaFile file) {
         Album album = new Album();
         album.setId(file.getId());
+        album.setHash(file.getHash());
         album.setPath(file.getPath());
         album.setArtist(file.getArtist());
         album.setAlbumTitle(file.getAlbumName());
@@ -278,6 +281,8 @@ public class HomeController extends ParameterizableViewController {
      * Contains info for a single album.
      */
     public static class Album {
+        private int id;
+        private String hash;
         private String path;
         private String coverArtPath;
         private String artist;
@@ -286,7 +291,6 @@ public class HomeController extends ParameterizableViewController {
         private Date lastPlayed;
         private Integer playCount;
         private Integer rating;
-        private int id;
         private Integer year;
 
         public int getId() {
@@ -295,6 +299,14 @@ public class HomeController extends ParameterizableViewController {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getHash() {
+            return hash;
+        }
+
+        public void setHash(String hash) {
+            this.hash = hash;
         }
 
         public String getPath() {

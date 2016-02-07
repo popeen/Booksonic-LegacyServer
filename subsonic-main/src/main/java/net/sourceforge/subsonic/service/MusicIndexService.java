@@ -23,12 +23,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
@@ -170,9 +167,7 @@ public class MusicIndexService {
 
     private List<MusicIndex.SortableArtistWithMediaFiles> createSortableArtists(List<MusicFolder> folders, boolean refresh) throws IOException {
         String[] ignoredArticles = settingsService.getIgnoredArticlesAsArray();
-        String[] shortcuts = settingsService.getShortcutsAsArray();
         SortedMap<String, MusicIndex.SortableArtistWithMediaFiles> artistMap = new TreeMap<String, MusicIndex.SortableArtistWithMediaFiles>();
-        Set<String> shortcutSet = new HashSet<String>(Arrays.asList(shortcuts));
         Collator collator = createCollator();
 
         for (MusicFolder folder : folders) {
@@ -180,10 +175,6 @@ public class MusicIndexService {
             MediaFile root = mediaFileService.getMediaFile(folder.getPath(), !refresh);
             List<MediaFile> children = mediaFileService.getChildrenOf(root, false, true, true, !refresh);
             for (MediaFile child : children) {
-                if (shortcutSet.contains(child.getName())) {
-                    continue;
-                }
-
                 String sortableName = createSortableName(child.getName(), ignoredArticles);
                 MusicIndex.SortableArtistWithMediaFiles artist = artistMap.get(sortableName);
                 if (artist == null) {

@@ -23,7 +23,7 @@
     </c:when>
 </c:choose>
 
-<div class="back"><a href="more.view?"><fmt:message key="common.back"/></a></div>
+<i class="fa fa-chevron-left icon"></i>&nbsp;<a href="more.view?"><fmt:message key="common.back"/></a>
 </body></html>
 
 

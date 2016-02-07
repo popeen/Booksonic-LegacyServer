@@ -4,7 +4,7 @@
  * Author: Ralph Hill
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background color (light blue). */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -21,16 +21,6 @@
     background-repeat:no-repeat;
 	background-attachment:fixed;
     background-color: #FFFFFF
-}
-
-/* Link color */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #0076B6
-}
-
-/* Link hover color */
-a:hover, a:hover * {
-    color: orange
 }
 
 body {

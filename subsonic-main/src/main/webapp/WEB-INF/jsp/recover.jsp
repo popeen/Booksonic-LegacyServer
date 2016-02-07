@@ -34,7 +34,7 @@
                 <p style="padding-top: 1em" class="warning"><fmt:message key="${model.error}"/></p>
             </c:if>
 
-            <div class="back" style="margin-top: 1.5em"><a href="login.view"><fmt:message key="common.back"/></a></div>
+            <div style="margin-top: 1.5em"><i class="fa fa-chevron-left icon"></i>&nbsp;<a href="login.view"><fmt:message key="common.back"/></a></div>
 
         </div>
     </div>

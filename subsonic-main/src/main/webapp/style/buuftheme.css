@@ -12,7 +12,7 @@
  * BUUF artwork: Based on icons by Paul Davey aka Mattahan. All rights reserved.
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background colour, light gray. Images used to force background on left frame headings and playlist. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -27,7 +27,7 @@
 }
 
 /* Foreground colour used for h1, h2, b, tr, details and albumcomments. */
-h1, h2, b, tr, .detail, .albumComment {
+h1, h2, b, tr, body, .detail, .albumComment, .icon {
     color: #ffAE00;
 }
 

@@ -25,42 +25,26 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 
-import de.umass.lastfm.cache.Cache;
-import de.umass.lastfm.cache.ExpirationPolicy;
 import de.umass.lastfm.cache.FileSystemCache;
 
 /**
- * Based on {@link FileSystemCache}, but properly closes files and enforces
- * time-to-live (by ignoring HTTP header directives).
+ * Based on {@link FileSystemCache}, but properly closes files.
  *
  * @author Sindre Mehus
  * @version $Id$
  */
-public class LastFmCache extends Cache {
+public class LastFmCache extends FileSystemCache {
 
     private final File cacheDir;
-    private final long ttl;
 
-    public LastFmCache(File cacheDir, final long ttl) {
+    public LastFmCache(File cacheDir) {
+        super(cacheDir);
         this.cacheDir = cacheDir;
-        this.ttl = ttl;
-
-        setExpirationPolicy(new ExpirationPolicy() {
-            @Override
-            public long getExpirationTime(String method, Map<String, String> params) {
-                return ttl;
-            }
-        });
-    }
-
-    @Override
-    public boolean contains(String cacheEntryName) {
-        return getXmlFile(cacheEntryName).exists();
+        setExpirationPolicy(new LastFmExpirationPolicy());
     }
 
     @Override
@@ -77,12 +61,6 @@ public class LastFmCache extends Cache {
     }
 
     @Override
-    public void remove(String cacheEntryName) {
-        getXmlFile(cacheEntryName).delete();
-        getMetaFile(cacheEntryName).delete();
-    }
-
-    @Override
     public void store(String cacheEntryName, InputStream inputStream, long expirationDate) {
         createCache();
 
@@ -96,8 +74,7 @@ public class LastFmCache extends Cache {
             File metaFile = getMetaFile(cacheEntryName);
             Properties properties = new Properties();
 
-            // Note: Ignore the given expirationDate, since Last.fm sets it to just one day ahead.
-            properties.setProperty("expiration-date", Long.toString(getExpirationDate()));
+            properties.setProperty("expiration-date", String.valueOf(expirationDate));
 
             metaOut = new FileOutputStream(metaFile);
             properties.store(metaOut, null);
@@ -107,10 +84,6 @@ public class LastFmCache extends Cache {
             IOUtils.closeQuietly(xmlOut);
             IOUtils.closeQuietly(metaOut);
         }
-    }
-
-    private long getExpirationDate() {
-        return System.currentTimeMillis() + ttl;
     }
 
     private void createCache() {
@@ -139,13 +112,10 @@ public class LastFmCache extends Cache {
         }
     }
 
-    @Override
-    public void clear() {
-        for (File file : cacheDir.listFiles()) {
-            if (file.isFile()) {
-                file.delete();
-            }
-        }
+    public boolean isCached(String cacheEntryName) {
+        return getXmlFile(cacheEntryName).exists() &&
+               getMetaFile(cacheEntryName).exists() &&
+               !isExpired(cacheEntryName);
     }
 
     private File getXmlFile(String cacheEntryName) {

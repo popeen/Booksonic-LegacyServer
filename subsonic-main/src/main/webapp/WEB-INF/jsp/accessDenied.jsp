@@ -7,16 +7,13 @@
 
 <body class="mainframe bgcolor1">
 
-<h1>
-    <img src="<spring:theme code="errorImage"/>" alt=""/>
-    <span style="vertical-align: middle"><fmt:message key="accessDenied.title"/></span>
-</h1>
+<h1 style="padding-bottom:1em"><i class="fa fa-ban fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="accessDenied.title"/></h1>
 
 <p>
     <fmt:message key="accessDenied.text"/>
 </p>
 
-<div class="back"><a href="javascript:history.go(-1)"><fmt:message key="common.back"/></a></div>
+<i class="fa fa-chevron-left icon"></i>&nbsp;<a href="javascript:history.go(-1)"><fmt:message key="common.back"/></a>
 
 </body>
 </html>

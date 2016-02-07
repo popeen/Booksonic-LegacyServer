@@ -3,6 +3,9 @@
 <html><head>
     <%@ include file="head.jsp" %>
     <%@ include file="jquery.jsp" %>
+    <style type="text/css">
+        .starred-header {padding-top: 1em;}
+    </style>
     <script type="text/javascript" src="<c:url value="/script/scripts-2.0.js"/>"></script>
     <script type="text/javascript" src="<c:url value='/dwr/util.js'/>"></script>
     <script type="text/javascript" src="<c:url value="/dwr/engine.js"/>"></script>
@@ -23,8 +26,6 @@
 
         function onSavePlaylist() {
             playlistService.createPlaylistForStarredSongs(function (playlistId) {
-                top.left.updatePlaylists();
-                top.left.showAllPlaylists();
                 top.main.location.href = "playlist.view?id=" + playlistId;
                 $().toastmessage("showSuccessToast", "<fmt:message key="playlist.toast.saveasplaylist"/>");
             });
@@ -38,17 +39,14 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<h1>
-    <img src="<spring:theme code="starredImage"/>" alt="">
-    <span style="vertical-align: middle"><fmt:message key="starred.title"/></span>
-</h1>
+<h1><i class="fa fa-star fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="starred.title"/></h1>
 
 <c:if test="${empty model.artists and empty model.albums and empty model.songs}">
     <p style="padding-top: 1em"><em><fmt:message key="starred.empty"/></em></p>
 </c:if>
 
 <c:if test="${not empty model.albums}">
-    <h2><fmt:message key="search.hits.albums"/></h2>
+    <h2 class="starred-header"><fmt:message key="search.hits.albums"/></h2>
 
 <div style="padding-top:0.5em">
     <c:forEach items="${model.albums}" var="album" varStatus="loopStatus">
@@ -67,6 +65,7 @@
         <div class="albumThumb">
             <c:import url="coverArt.jsp">
                 <c:param name="albumId" value="${album.id}"/>
+                <c:param name="auth" value="${album.hash}"/>
                 <c:param name="caption1" value="${albumTitle}"/>
                 <c:param name="caption2" value="${fn:escapeXml(album.artist)}"/>
                 <c:param name="captionCount" value="2"/>
@@ -80,7 +79,7 @@
 </div>
 
 <c:if test="${not empty model.artists}">
-    <h2><fmt:message key="search.hits.artists"/></h2>
+    <h2 class="starred-header"><fmt:message key="search.hits.artists"/></h2>
     <table class="music indent">
         <c:forEach items="${model.artists}" var="artist">
 
@@ -106,7 +105,7 @@
 </c:if>
 
 <c:if test="${not empty model.songs}">
-    <h2><fmt:message key="search.hits.songs"/></h2>
+    <h2 class="starred-header"><fmt:message key="search.hits.songs"/></h2>
     <table class="music indent">
         <c:forEach items="${model.songs}" var="song">
 
@@ -141,18 +140,14 @@
         </c:forEach>
     </table>
 
-    <div class="forward" style="float:left;padding-right:1.5em">
-        <a href="javascript:noop()" onclick="onSavePlaylist()"><fmt:message key="playlist.save"/></a>
-    </div>
-    <div class="forward" style="float: left">
-        <a href="javascript:noop()" onclick="onPlayAll()"><fmt:message key="main.playall"/></a>
-    </div>
-    <div style="clear: both"></div>
+    <div style="padding-top:0.6em"></div>
+    <i class="fa fa-save fa-lg fa-fw icon"></i>&nbsp;&nbsp;<a href="javascript:noop()" onclick="onSavePlaylist()"><fmt:message key="playlist.save"/></a>
+    <i style="padding-left:3em" class="fa fa-play fa-lg fa-fw icon"></i>&nbsp;&nbsp;<a href="javascript:noop()" onclick="onPlayAll()"><fmt:message key="main.playall"/></a>
 
 </c:if>
 
 <c:if test="${not empty model.videos}">
-    <h2><fmt:message key="search.hits.videos"/></h2>
+    <h2 class="starred-header"><fmt:message key="search.hits.videos"/></h2>
     <table class="music indent">
         <c:forEach items="${model.videos}" var="video">
 
@@ -177,5 +172,7 @@
         </c:forEach>
     </table>
 </c:if>
+
+<div style="padding-top:2em"></div>
 
 </body></html>

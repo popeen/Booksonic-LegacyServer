@@ -79,9 +79,8 @@
     </p>
 </div>
 
-<hr/>
-<p style="text-align:center">
-    <a href="javascript:self.close()">[<fmt:message key="common.close"/>]</a>
+<p style="text-align:center;padding-top:1em">
+    <input type="button" value="<fmt:message key="common.close"/>" style="" onclick="self.close()"/>
 </p>
 
 </body>

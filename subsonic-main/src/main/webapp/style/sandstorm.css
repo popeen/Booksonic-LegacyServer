@@ -4,7 +4,7 @@
  * Author: Sindre Mehus
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background color. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -14,17 +14,6 @@
 /* The secondary background color. */
 .bgcolor2, .ruleTableHeader, .log, table.music tr:nth-of-type(odd)  {
     background-color: #CCCC99
-}
-
-/* Link color */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #057368
-}
-
-/* Link hover color */
-a:hover, a:hover * {
-    text-decoration: underline;
-    color: #DD6900
 }
 
 /* Scrollbar colors (supported on IE and Opera) */

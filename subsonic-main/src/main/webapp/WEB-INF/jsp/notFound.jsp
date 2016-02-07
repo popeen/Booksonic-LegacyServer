@@ -7,15 +7,12 @@
 
 <body class="mainframe bgcolor1">
 
-<h1>
-    <img src="<spring:theme code="errorImage"/>" alt=""/>
-    <span style="vertical-align: middle"><fmt:message key="notFound.title"/></span>
-</h1>
+<h1 style="padding-bottom:1em"><i class="fa fa-ban fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="notFound.title"/></h1>
 
 <fmt:message key="notFound.text"/>
 
-<div class="forward" style="float:left;padding-right:10pt"><a href="javascript:top.location.reload(true)"><fmt:message key="notFound.reload"/></a></div>
-<div class="forward" style="float:left"><a href="musicFolderSettings.view"><fmt:message key="notFound.scan"/></a></div>
+<i class="fa fa-chevron-right icon"></i>&nbsp;<a href="javascript:top.location.reload(true)"><fmt:message key="notFound.reload"/></a>
+<i class="fa fa-chevron-right icon" style="padding-left:2em"></i>&nbsp;<a href="musicFolderSettings.view"><fmt:message key="notFound.scan"/></a>
 
 </body>
 </html>

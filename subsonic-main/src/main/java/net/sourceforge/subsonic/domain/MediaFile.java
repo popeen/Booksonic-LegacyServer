@@ -150,6 +150,10 @@ public class MediaFile {
         this.path = path;
     }
 
+    public String getHash() {
+        return String.valueOf(Math.abs(path.hashCode()));
+    }
+
     public String getFolder() {
         return folder;
     }

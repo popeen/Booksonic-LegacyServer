@@ -42,6 +42,7 @@ public class UserSettingsCommand {
     private boolean isJukeboxRole;
     private boolean isSettingsRole;
     private boolean isShareRole;
+    private boolean isVideoConversionRole;
 
     private List<User> users;
     private boolean isAdmin;
@@ -149,6 +150,14 @@ public class UserSettingsCommand {
 
     public void setShareRole(boolean shareRole) {
         isShareRole = shareRole;
+    }
+
+    public boolean isVideoConversionRole() {
+        return isVideoConversionRole;
+    }
+
+    public void setVideoConversionRole(boolean videoConversionRole) {
+        isVideoConversionRole = videoConversionRole;
     }
 
     public List<User> getUsers() {
@@ -295,6 +304,7 @@ public class UserSettingsCommand {
         isJukeboxRole = user != null && user.isJukeboxRole();
         isSettingsRole = user != null && user.isSettingsRole();
         isShareRole = user != null && user.isShareRole();
+        isVideoConversionRole = user != null && user.isVideoConversionRole();
         isLdapAuthenticated = user != null && user.isLdapAuthenticated();
     }
 

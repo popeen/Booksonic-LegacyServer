@@ -22,4 +22,34 @@
         </Match>
     </PresentationMap>
 
+    <PresentationMap type="NowPlayingRatings" trackEnabled="true" programEnabled="true">
+        <Match propname="isStarred" value="0">
+            <!-- the track is unstarred; the action is to star -->
+            <Ratings>
+                <Rating Id="1" AutoSkip="NEVER" OnSuccessStringId="STAR_SUCCESS" StringId="STAR">
+                    <Icon Controller="acr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-52x52.png?format=raw" />
+                    <Icon Controller="acr-hdpi" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-80x80.png?format=raw" />
+                    <Icon Controller="icr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-52x52.png?format=raw" />
+                    <Icon Controller="pcdcr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-52x52.png?format=raw" />
+                    <Icon Controller="macdcr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-52x52.png?format=raw" />
+                    <Icon Controller="cr200" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-unselected-66x66.png?format=raw" />
+                    <Icon Controller="universal" LastModified="00:00:00 14 Nov 2015" Uri="http://sonos-img.ws.sonos.com/star-unselected.svg" />
+                </Rating>
+            </Ratings>
+        </Match>
+        <Match propname="isStarred" value="1">
+            <!-- the track is starred; the action is to unstar -->
+            <Ratings>
+                <Rating Id="0" AutoSkip="NEVER" OnSuccessStringId="UNSTAR_SUCCESS" StringId="UNSTAR">
+                    <Icon Controller="acr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-52x52.png?format=raw" />
+                    <Icon Controller="acr-hdpi" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-80x80.png?format=raw" />
+                    <Icon Controller="icr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-52x52.png?format=raw" />
+                    <Icon Controller="pcdcr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-52x52.png?format=raw" />
+                    <Icon Controller="macdcr" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-52x52.png?format=raw" />
+                    <Icon Controller="cr200" LastModified="00:00:00 14 Nov 2015" Uri="https://sourceforge.net/p/subsonic/code/HEAD/tree/trunk/subsonic-main/src/main/resources/net/sourceforge/subsonic/service/sonos/star-selected-66x66.png?format=raw" />
+                    <Icon Controller="universal" LastModified="00:00:00 14 Nov 2015" Uri="http://sonos-img.ws.sonos.com/star-selected.svg" />
+                </Rating>
+            </Ratings>
+        </Match>
+    </PresentationMap>
 </Presentation>

@@ -108,8 +108,8 @@
                     <li><b>Secure Endpoint URL</b> &ndash; http://<b>SUBSONIC_IP</b>:4040/ws/Sonos?ip=<b>SUBSONIC_IP</b></li>
                     <li><b>Polling Interval</b> &ndash; 1200</li>
                     <li><b>Authentication</b> &ndash; Session ID</li>
-                    <li><b>Strings Table</b> &ndash; Version: 5, URI: http://<b>SUBSONIC_IP</b>:4040/sonos/strings.xml</li>
-                    <li><b>Presentation Map</b> &ndash; Version: 1, URI: http://<b>SUBSONIC_IP</b>:4040/sonos/presentationMap.xml</li>
+                    <li><b>Strings Table</b> &ndash; Version: 6, URI: http://<b>SUBSONIC_IP</b>:4040/sonos/strings.xml</li>
+                    <li><b>Presentation Map</b> &ndash; Version: 2, URI: http://<b>SUBSONIC_IP</b>:4040/sonos/presentationMap.xml</li>
                     <li><b>Container Type</b> &ndash; Music Service</li>
                     <li><b>Capabilities</b> &ndash; Search, Favorites, User Content Playlists, Extended Metadata</li>
                 </ul>

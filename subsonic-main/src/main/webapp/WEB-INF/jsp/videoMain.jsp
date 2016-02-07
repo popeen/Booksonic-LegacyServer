@@ -1,23 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="iso-8859-1"%>
-<%--
-  ~ This file is part of Subsonic.
-  ~
-  ~  Subsonic is free software: you can redistribute it and/or modify
-  ~  it under the terms of the GNU General Public License as published by
-  ~  the Free Software Foundation, either version 3 of the License, or
-  ~  (at your option) any later version.
-  ~
-  ~  Subsonic is distributed in the hope that it will be useful,
-  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~  GNU General Public License for more details.
-  ~
-  ~  You should have received a copy of the GNU General Public License
-  ~  along with Subsonic.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  ~  Copyright 2014 (C) Sindre Mehus
-  --%>
-
 <%--@elvariable id="model" type="java.util.Map"--%>
 
 <html><head>
@@ -27,25 +8,27 @@
     <script type="text/javascript">
         var image;
         var id;
+        var hash;
         var duration;
         var timer;
         var offset;
         var step;
         var size = 120;
 
-        function startPreview(img, id, duration) {
+        function startPreview(img, id, hash, duration) {
             stopPreview();
             image = $(img);
             step = Math.max(5, Math.round(duration / 50));
             offset = step;
             this.id = id;
+            this.hash = hash;
             this.duration = duration;
             updatePreview();
             timer = window.setInterval(updatePreview, 1000);
         }
 
         function updatePreview() {
-            image.attr("src", "coverArt.view?id=" + id + "&size=" + size + "&offset=" + offset);
+            image.attr("src", "coverArt.view?id=" + id + "&auth=" + hash + "&size=" + size + "&offset=" + offset);
             offset += step;
             if (offset > duration) {
                 stopPreview();
@@ -58,44 +41,54 @@
                 timer = null;
             }
             if (image != null) {
-                image.attr("src", "coverArt.view?id=" + id + "&size=" + size);
+                image.attr("src", "coverArt.view?id=" + id + "&auth=" + hash + "&size=" + size);
             }
         }
     </script>
 
     <style type="text/css">
-        .duration {
+        .video-duration, .video-format {
             position: absolute;
             bottom: 3px;
-            right: 3px;
             color: #d3d3d3;
             background-color: black;
             opacity: 0.8;
             padding-right:3px;
             padding-left:3px;
         }
+        .video-duration {
+            right: 3px;
+        }
+        .video-format {
+            left: 3px;
+        }
     </style>
 
 </head><body class="mainframe bgcolor1">
 
-<h1 style="float:left">
-    <span style="vertical-align: middle;">
+<div style="display:flex; align-items:center; padding-bottom:2em">
+
+    <h1 class="ellipsis" style="flex-grow:1">
         <c:forEach items="${model.ancestors}" var="ancestor">
             <sub:url value="main.view" var="ancestorUrl">
                 <sub:param name="id" value="${ancestor.id}"/>
             </sub:url>
-            <a href="${ancestorUrl}">${fn:escapeXml(ancestor.name)}</a> &raquo;
+            <a href="${ancestorUrl}">${fn:escapeXml(ancestor.name)}</a> &nbsp;&bull;&nbsp;
         </c:forEach>
         ${fn:escapeXml(model.dir.name)}
-    </span>
-</h1>
+    </h1>
 
-<%@ include file="viewSelector.jsp" %>
-<div style="clear:both;padding-bottom:2em"></div>
+    <div>
+        <%@ include file="viewSelector.jsp" %>
+    </div>
+</div>
 
 <table class="music">
     <c:forEach items="${model.subDirs}" var="subDir" varStatus="loopStatus">
-        <tr><td class="truncate" colspan="9"><a href="main.view?id=${subDir.id}" title="${fn:escapeXml(subDir.name)}">${fn:escapeXml(subDir.name)}</a></td></tr>
+        <tr>
+            <td class="fit"><i class="fa fa-folder-open-o icon>"></i></td>
+            <td class="truncate" colspan="8"><a href="main.view?id=${subDir.id}" title="${fn:escapeXml(subDir.name)}">${fn:escapeXml(subDir.name)}</a></td>
+        </tr>
     </c:forEach>
     <c:if test="${model.viewAsList}">
         <c:forEach items="${model.files}" var="child">
@@ -131,6 +124,7 @@
         </c:url>
         <c:url value="/coverArt.view" var="coverArtUrl">
             <c:param name="id" value="${child.id}"/>
+            <c:param name="auth" value="${child.hash}"/>
             <c:param name="size" value="120"/>
         </c:url>
 
@@ -139,10 +133,11 @@
                 <div style="position:relative">
                     <div>
                         <a href="${videoUrl}"><img src="${coverArtUrl}" height="120" width="213" alt=""
-                                                   onmouseover="startPreview(this, ${child.id}, ${child.durationSeconds})"
+                                                   onmouseover="startPreview(this, ${child.id}, ${child.hash}, ${child.durationSeconds})"
                                                    onmouseout="stopPreview()"></a>
                     </div>
-                    <div class="detail duration">${child.durationString}</div>
+                    <div class="detail video-format">${child.format}</div>
+                    <div class="detail video-duration">${child.durationString}</div>
                 </div>
                 <div class="caption1" title="${fn:escapeXml(child.name)}"><a href="${videoUrl}" title="${fn:escapeXml(child.name)}">${fn:escapeXml(child.name)}</a></div>
             </div>

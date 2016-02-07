@@ -32,6 +32,7 @@
         <a target="_blank" href="https://play.google.com/store/apps/details?id=com.gloxandro.submuxic">Google Play</a>.
     </p>
 
-    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.gloxandro.submuxic"><img alt="" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png"/></a></span>
+    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.gloxandro.submuxic">
+        <img alt="" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" style="width:169px; height:50px"/></a></span>
 
 </section>

@@ -39,6 +39,7 @@ import net.sourceforge.subsonic.service.MediaFileService;
 import net.sourceforge.subsonic.service.PlayerService;
 import net.sourceforge.subsonic.service.SettingsService;
 import net.sourceforge.subsonic.service.ShareService;
+import net.sourceforge.subsonic.service.TranscodingService;
 
 /**
  * Controller for the page used to play shared music (Twitter, Facebook etc).
@@ -51,6 +52,7 @@ public class ExternalPlayerController extends ParameterizableViewController {
     private PlayerService playerService;
     private ShareService shareService;
     private MediaFileService mediaFileService;
+    private TranscodingService transcodingService;
 
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -79,7 +81,7 @@ public class ExternalPlayerController extends ParameterizableViewController {
         Player player = playerService.getGuestPlayer(request);
 
         map.put("share", share);
-        map.put("songs", getSongs(share, player.getUsername()));
+        map.put("entries", getEntries(share, player));
         map.put("redirectUrl", settingsService.getUrlRedirectUrl());
         map.put("player", player.getId());
 
@@ -88,23 +90,28 @@ public class ExternalPlayerController extends ParameterizableViewController {
         return result;
     }
 
-    private List<MediaFile> getSongs(Share share, String username) throws IOException {
-        List<MediaFile> result = new ArrayList<MediaFile>();
-
-        List<MusicFolder> musicFolders = settingsService.getMusicFoldersForUser(username);
+    private List<Entry> getEntries(Share share, Player player) throws IOException {
+        List<Entry> result = new ArrayList<Entry>();
+        List<MusicFolder> musicFolders = settingsService.getMusicFoldersForUser(player.getUsername());
 
         if (share != null) {
             for (MediaFile file : shareService.getSharedFiles(share.getId(), musicFolders)) {
                 if (file.getFile().exists()) {
                     if (file.isDirectory()) {
-                        result.addAll(mediaFileService.getChildrenOf(file, true, false, true));
+                        for (MediaFile child : mediaFileService.getChildrenOf(file, true, false, true)) {
+                            result.add(createEntry(child, player));
+                        }
                     } else {
-                        result.add(file);
+                        result.add(createEntry(file, player));
                     }
                 }
             }
         }
         return result;
+    }
+
+    private Entry createEntry(MediaFile file, Player player) {
+        return new Entry(file, transcodingService.getSuffix(player, file, null));
     }
 
     public void setSettingsService(SettingsService settingsService) {
@@ -121,5 +128,27 @@ public class ExternalPlayerController extends ParameterizableViewController {
 
     public void setMediaFileService(MediaFileService mediaFileService) {
         this.mediaFileService = mediaFileService;
+    }
+
+    public void setTranscodingService(TranscodingService transcodingService) {
+        this.transcodingService = transcodingService;
+    }
+
+    public static class Entry {
+        private final MediaFile file;
+        private final String format;
+
+        public Entry(MediaFile file, String format) {
+            this.file = file;
+            this.format = format;
+        }
+
+        public MediaFile getFile() {
+            return file;
+        }
+
+        public String getFormat() {
+            return format;
+        }
     }
 }

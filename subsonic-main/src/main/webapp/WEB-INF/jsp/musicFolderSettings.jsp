@@ -61,7 +61,7 @@
 
 </table>
 
-    <p class="forward"><a href="userSettings.view"><fmt:message key="musicfoldersettings.access"/></a></p>
+    <p><i class="fa fa-chevron-right icon"></i>&nbsp;<a href="userSettings.view"><fmt:message key="musicfoldersettings.access"/></a></p>
     <p class="detail" style="width:60%;white-space:normal;margin-top:-10px;">
         <fmt:message key="musicfoldersettings.access.description"/>
     </p>
@@ -89,7 +89,7 @@
         </span>
     </div>
 
-    <p class="forward"><a href="musicFolderSettings.view?scanNow"><fmt:message key="musicfoldersettings.scannow"/></a></p>
+    <p><i class="fa fa-chevron-right icon"></i>&nbsp;<a href="musicFolderSettings.view?scanNow"><fmt:message key="musicfoldersettings.scannow"/></a></p>
 
     <c:if test="${command.scanning}">
         <p style="width:60%"><b><fmt:message key="musicfoldersettings.nowscanning"/></b></p>
@@ -104,7 +104,7 @@
         <fmt:message key="musicfoldersettings.fastcache.description"/>
     </p>
 
-    <p class="forward"><a href="musicFolderSettings.view?expunge"><fmt:message key="musicfoldersettings.expunge"/></a></p>
+    <p><i class="fa fa-chevron-right icon"></i>&nbsp;<a href="musicFolderSettings.view?expunge"><fmt:message key="musicfoldersettings.expunge"/></a></p>
     <p class="detail" style="width:60%;white-space:normal;margin-top:-10px;">
         <fmt:message key="musicfoldersettings.expunge.description"/>
     </p>

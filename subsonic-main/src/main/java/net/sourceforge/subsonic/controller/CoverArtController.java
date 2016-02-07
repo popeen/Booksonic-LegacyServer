@@ -63,6 +63,7 @@ import net.sourceforge.subsonic.domain.VideoTranscodingSettings;
 import net.sourceforge.subsonic.service.MediaFileService;
 import net.sourceforge.subsonic.service.PlaylistService;
 import net.sourceforge.subsonic.service.PodcastService;
+import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
 import net.sourceforge.subsonic.service.TranscodingService;
 import net.sourceforge.subsonic.service.metadata.JaudiotaggerParser;
@@ -87,6 +88,7 @@ public class CoverArtController implements Controller, LastModified {
     private SettingsService settingsService;
     private PlaylistService playlistService;
     private PodcastService podcastService;
+    private SecurityService securityService;
     private ArtistDao artistDao;
     private AlbumDao albumDao;
     private Semaphore semaphore;
@@ -96,15 +98,17 @@ public class CoverArtController implements Controller, LastModified {
     }
 
     public long getLastModified(HttpServletRequest request) {
-        CoverArtRequest coverArtRequest = createCoverArtRequest(request);
-        long result = coverArtRequest.lastModified();
-//        LOG.info("getLastModified - " + coverArtRequest + ": " + new Date(result));
-        return result;
+        CoverArtRequest coverArtRequest = createCoverArtRequest(request, true);
+        return coverArtRequest == null ? -1 : coverArtRequest.lastModified();
     }
 
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return handleRequest(request, response, true);
+    }
 
-        CoverArtRequest coverArtRequest = createCoverArtRequest(request);
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response, boolean authenticate) throws Exception {
+
+        CoverArtRequest coverArtRequest = createCoverArtRequest(request, authenticate);
 //        LOG.info("handleRequest - " + coverArtRequest);
         Integer size = ServletRequestUtils.getIntParameter(request, "size");
 
@@ -135,7 +139,7 @@ public class CoverArtController implements Controller, LastModified {
         return null;
     }
 
-    private CoverArtRequest createCoverArtRequest(HttpServletRequest request) {
+    private CoverArtRequest createCoverArtRequest(HttpServletRequest request, boolean authenticate) {
         String id = request.getParameter("id");
         if (id == null) {
             return null;
@@ -151,9 +155,9 @@ public class CoverArtController implements Controller, LastModified {
             return createPlaylistCoverArtRequest(Integer.valueOf(id.replace(PLAYLIST_COVERART_PREFIX, "")));
         }
         if (id.startsWith(PODCAST_COVERART_PREFIX)) {
-            return createPodcastCoverArtRequest(Integer.valueOf(id.replace(PODCAST_COVERART_PREFIX, "")), request);
+            return createPodcastCoverArtRequest(Integer.valueOf(id.replace(PODCAST_COVERART_PREFIX, "")), request, false);
         }
-        return createMediaFileCoverArtRequest(Integer.valueOf(id), request);
+        return createMediaFileCoverArtRequest(Integer.valueOf(id), request, authenticate);
     }
 
     private CoverArtRequest createAlbumCoverArtRequest(int id) {
@@ -171,7 +175,7 @@ public class CoverArtController implements Controller, LastModified {
         return playlist == null ? null : new PlaylistCoverArtRequest(playlist);
     }
 
-    private CoverArtRequest createPodcastCoverArtRequest(int id, HttpServletRequest request) {
+    private CoverArtRequest createPodcastCoverArtRequest(int id, HttpServletRequest request, boolean authenticate) {
         PodcastChannel channel = podcastService.getChannel(id);
         if (channel == null) {
             return null;
@@ -179,16 +183,22 @@ public class CoverArtController implements Controller, LastModified {
         if (channel.getMediaFileId() == null) {
             return new PodcastCoverArtRequest(channel);
         }
-        return createMediaFileCoverArtRequest(channel.getMediaFileId(), request);
+        return createMediaFileCoverArtRequest(channel.getMediaFileId(), request, authenticate);
     }
 
-    private CoverArtRequest createMediaFileCoverArtRequest(int id, HttpServletRequest request) {
+    private CoverArtRequest createMediaFileCoverArtRequest(int id, HttpServletRequest request, boolean authenticate) {
         MediaFile mediaFile = mediaFileService.getMediaFile(id);
         if (mediaFile == null) {
             return null;
         }
+
+        if (authenticate && !securityService.isAuthenticated(mediaFile, request)) {
+            return null;
+        }
+
         if (mediaFile.isVideo()) {
-            int offset = ServletRequestUtils.getIntParameter(request, "offset", 60);
+            int defaultOffset = mediaFile.getDurationSeconds() == null ? 60 : mediaFile.getDurationSeconds() / 10;
+            int offset = ServletRequestUtils.getIntParameter(request, "offset", defaultOffset);
             return new VideoCoverArtRequest(mediaFile, offset);
         }
         return new MediaFileCoverArtRequest(mediaFile);
@@ -366,6 +376,10 @@ public class CoverArtController implements Controller, LastModified {
 
     public void setPodcastService(PodcastService podcastService) {
         this.podcastService = podcastService;
+    }
+
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
     }
 
     private abstract class CoverArtRequest {

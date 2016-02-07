@@ -42,6 +42,7 @@
         <li>Pause and lower playback when maps read directions.</li>
         <li>Drag and Drop to rearrange the now playing list.</li>
     </ul>
-    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=github.daneren2005.dsub"><img alt="" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png"/></a></span>
+    <span class="image"><a target="_blank" href="https://play.google.com/store/apps/details?id=github.daneren2005.dsub">
+        <img alt="" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" style="width:169px; height:50px"/></a></span>
 
 </section>

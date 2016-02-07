@@ -50,7 +50,7 @@ public abstract class SubsonicContentDirectory extends AbstractContentDirectoryS
 
     protected Res createResourceForSong(MediaFile song) {
         Player player = playerService.getGuestPlayer(null);
-        String url = getBaseUrl() + "stream?id=" + song.getId() + "&player=" + player.getId();
+        String url = getBaseUrl() + "stream?id=" + song.getId() + "&auth=" + song.getHash() + "&player=" + player.getId();
         if (song.isVideo()) {
             url += "&format=" + TranscodingService.FORMAT_RAW;
         }

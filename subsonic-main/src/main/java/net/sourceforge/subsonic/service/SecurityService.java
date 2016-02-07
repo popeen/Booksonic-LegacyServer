@@ -282,6 +282,14 @@ public class SecurityService implements UserDetailsService {
         return false;
     }
 
+    public boolean isAuthenticated(MediaFile mediaFile, HttpServletRequest request) {
+        boolean ok = mediaFile.getHash().equals(request.getParameter("auth"));
+        if (!ok) {
+            LOG.warn("Unauthenticated access attempt: " + mediaFile);
+        }
+        return ok;
+    }
+
     /**
      * Returns whether the given file is located in the given folder (or any of its sub-folders).
      * If the given file contains the expression ".." (indicating a reference to the parent directory),

@@ -8,7 +8,7 @@
  * Main theme icon part of itunes icon pack created by Michael Flarup (http://pixelresort.com)
  */
 
-@import "default.css";
+@import "base.css";
 
 /* The primary background colour, light gray. Images used to force background on left frame headings and playlist. */
 .bgcolor1, table.music tr:nth-of-type(even) {
@@ -23,7 +23,7 @@
 }
 
 /* Foreground colour used for h1, h2, b, tr, details and albumcomments. */
-h1, h2, b, tr, .detail, .albumComment {
+h1, h2, b, tr, .detail, .albumComment, .icon {
     color: #333333;
 }
 
@@ -59,17 +59,6 @@ table {
 /* Forward image */
 .forward {
     background-image:url( "../icons/coolandclean/forward.png" );
-}
-
-/* Link colour */
-a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
-    color: #656569;
-}
-
-/* Link hover colour */
-a:hover, a:hover * {
-    text-decoration: none;
-    color: #333333;
 }
 
 /* Colour for warning messages. */

@@ -567,6 +567,10 @@ public class MediaFileDao extends AbstractDao {
         update("checkpoint");
     }
 
+    public List<String> getArtistNames() {
+        return queryForStrings("select distinct artist from media_file where type=? and artist is not null", MediaType.DIRECTORY);
+    }
+
     private static class MediaFileMapper implements ParameterizedRowMapper<MediaFile> {
         public MediaFile mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new MediaFile(

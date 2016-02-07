@@ -2,9 +2,6 @@
 <%@ page import="java.io.PrintWriter, java.io.StringWriter"%>
 
 <html><head>
-    <!--[if lt IE 7.]>
-    <script defer type="text/javascript" src="script/pngfix.js"></script>
-    <![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="style/default.css" type="text/css"/>
 </head>

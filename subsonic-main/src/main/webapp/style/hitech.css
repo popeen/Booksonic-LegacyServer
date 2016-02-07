@@ -4,7 +4,7 @@
  * Author: Jeebs (Fisher Evans)
  */
 
-@import "default.css";
+@import "base.css";
 
 table {
 	color: #d2f1d5;
@@ -20,10 +20,6 @@ table {
     background-color: #090a09;
 }
 
-body.bgcolor2 {
-    border-bottom: 1px solid #272727;
-}
-
 .bgcolor2 {
 	background-image:url(../icons/hitech/bg.jpg);
 }
@@ -34,7 +30,7 @@ body {
 }
 
 /* The secondary foreground color used for h1, details etc. */
-h1, .detail, .albumComment {
+h1, .detail, .albumComment, .icon {
     color: #d2f1d5;
 }
 

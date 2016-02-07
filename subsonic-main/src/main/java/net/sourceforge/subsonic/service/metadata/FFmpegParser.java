@@ -41,6 +41,7 @@ import java.util.regex.Pattern;
 public class FFmpegParser extends MetaDataParser {
 
     private static final Logger LOG = Logger.getLogger(FFmpegParser.class);
+    private static final Pattern TRACK_PATTERN = Pattern.compile("Stream #0.(\\d+)(\\((.*?)\\))?: (.*?): (\\w+)");
     private static final Pattern DURATION_PATTERN = Pattern.compile("Duration: (\\d+):(\\d+):(\\d+).(\\d+)");
     private static final Pattern BITRATE_PATTERN = Pattern.compile("bitrate: (\\d+) kb/s");
     private static final Pattern DIMENSION_PATTERN = Pattern.compile("Video.*?, (\\d+)x(\\d+)");
@@ -73,10 +74,15 @@ public class FFmpegParser extends MetaDataParser {
             new InputStreamReaderThread(stdout, "ffmpeg", true).start();
 
             // Read everything from stderr.  It will contain text similar to:
-            // Input #0, avi, from 'foo.avi':
-            //   Duration: 00:00:33.90, start: 0.000000, bitrate: 2225 kb/s
-            //     Stream #0.0: Video: mpeg4, yuv420p, 352x240 [PAR 1:1 DAR 22:15], 29.97 fps, 29.97 tbr, 29.97 tbn, 30k tbc
-            //     Stream #0.1: Audio: pcm_s16le, 44100 Hz, 2 channels, s16, 1411 kb/s
+            // Input #0, matroska,webm, from 'Planes 2.mkv':
+            // Duration: 01:23:38.59, start: 0.000000, bitrate: 3196 kb/s
+            //     Stream #0:0(eng): Video: h264 (Constrained Baseline), yuv420p, 1280x720 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 1k tbn, 47.95 tbc (default)
+            //     Stream #0:1(eng): Audio: mp3, 44100 Hz, stereo, s16p, 128 kb/s (default)
+            //     Stream #0:2(eng): Subtitle: hdmv_pgs_subtitle (default)
+            //     Stream #0:3(dan): Audio: mp3, 44100 Hz, stereo, s16p, 128 kb/s (default)
+            //     Stream #0:4(fin): Audio: mp3, 44100 Hz, stereo, s16p, 128 kb/s (default)
+            //     Stream #0:5(nor): Audio: mp3, 44100 Hz, stereo, s16p, 128 kb/s (default)
+            //     Stream #0:6(swe): Audio: mp3, 44100 Hz, stereo, s16p, 128 kb/s (default)
             String[] lines = StringUtil.readLines(stderr);
 
             Integer width = null;
@@ -84,7 +90,16 @@ public class FFmpegParser extends MetaDataParser {
             Double par = 1.0;
             for (String line : lines) {
 
-                Matcher matcher = DURATION_PATTERN.matcher(line);
+                Matcher matcher = TRACK_PATTERN.matcher(line);
+                if (matcher.find()) {
+                    int id = Integer.parseInt(matcher.group(1));
+                    String type = matcher.group(4);
+                    String language = matcher.group(3);
+                    String codec = matcher.group(5);
+                    metaData.addTrack(new Track(id, type, language, codec));
+                }
+
+                matcher = DURATION_PATTERN.matcher(line);
                 if (matcher.find()) {
                     int hours = Integer.parseInt(matcher.group(1));
                     int minutes = Integer.parseInt(matcher.group(2));

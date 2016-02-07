@@ -66,6 +66,10 @@
         <property name="daoHelper" ref="daoHelper"/>
     </bean>
 
+    <bean id="videoConversionDao" class="net.sourceforge.subsonic.dao.VideoConversionDao">
+        <property name="daoHelper" ref="daoHelper"/>
+    </bean>
+
     <bean id="daoHelper" class="net.sourceforge.subsonic.dao.DaoHelperFactory" factory-method="create"/>
 
 
@@ -201,8 +205,16 @@
 
     <bean id="lastFmService" class="net.sourceforge.subsonic.service.LastFmService" init-method="init">
         <property name="mediaFileService" ref="mediaFileService"/>
+        <property name="settingsService" ref="settingsService"/>
         <property name="mediaFileDao" ref="mediaFileDao"/>
         <property name="artistDao" ref="artistDao"/>
+    </bean>
+
+    <bean id="videoConversionService" class="net.sourceforge.subsonic.service.VideoConversionService" init-method="init">
+        <property name="mediaFileService" ref="mediaFileService"/>
+        <property name="transcodingService" ref="transcodingService"/>
+        <property name="videoConversionDao" ref="videoConversionDao"/>
+        <property name="metaDataParserFactory" ref="metaDataParserFactory"/>
     </bean>
 
     <bean id="sonosService" class="net.sourceforge.subsonic.service.SonosService" init-method="init">
@@ -212,6 +224,7 @@
         <property name="settingsService" ref="settingsService"/>
         <property name="playlistService" ref="playlistService"/>
         <property name="upnpService" ref="upnpService"/>
+        <property name="lastFmService" ref="lastFmService"/>
     </bean>
 
     <bean id="metaDataParserFactory" class="net.sourceforge.subsonic.service.metadata.MetaDataParserFactory">
@@ -234,6 +247,7 @@
         <property name="settingsService" ref="settingsService"/>
         <property name="securityService" ref="securityService"/>
         <property name="lastFmService" ref="lastFmService"/>
+        <property name="videoConversionService" ref="videoConversionService"/>
     </bean>
 
     <bean id="ajaxNowPlayingService" class="net.sourceforge.subsonic.ajax.NowPlayingService">
@@ -274,6 +288,7 @@
     <bean id="ajaxCoverArtService" class="net.sourceforge.subsonic.ajax.CoverArtService">
         <property name="securityService" ref="securityService"/>
         <property name="mediaFileService" ref="mediaFileService"/>
+        <property name="lastFmService" ref="lastFmService"/>
     </bean>
 
     <bean id="ajaxStarService" class="net.sourceforge.subsonic.ajax.StarService">

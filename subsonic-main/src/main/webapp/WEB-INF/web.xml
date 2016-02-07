@@ -206,6 +206,10 @@
         <filter-name>NoCacheFilter</filter-name>
         <url-pattern>/home.view</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <url-pattern>/coverArt.view</url-pattern>
+    </filter-mapping>
 
     <filter>
         <filter-name>AcegiFilter</filter-name>

@@ -145,6 +145,7 @@ public class SettingsService {
     private static final String KEY_SONOS_ENABLED = "SonosEnabled";
     private static final String KEY_SONOS_SERVICE_NAME = "SonosServiceName";
     private static final String KEY_SONOS_SERVICE_ID = "SonosServiceId";
+    private static final String KEY_ARTIST_BIO_LAST_UPDATED = "ArtistBioLastUpdated";
 
     // Default values.
     private static final String DEFAULT_INDEX_STRING = "A B C D E F G H I J K L M N O P Q R S T U V W X-Z(XYZ)";
@@ -199,7 +200,7 @@ public class SettingsService {
     private static final int DEFAULT_HTTPS_PORT = 0;
     private static final boolean DEFAULT_URL_REDIRECTION_ENABLED = false;
     private static final UrlRedirectType DEFAULT_URL_REDIRECT_TYPE = UrlRedirectType.NORMAL;
-    private static final String DEFAULT_URL_REDIRECT_FROM = "yourname";
+    private static final String DEFAULT_URL_REDIRECT_FROM = "yourhostname";
     private static final String DEFAULT_URL_REDIRECT_CONTEXT_PATH = System.getProperty("subsonic.contextPath", "").replaceAll("/", "");
     private static final String DEFAULT_URL_REDIRECT_CUSTOM_URL = "http://";
     private static final String DEFAULT_SERVER_ID = null;
@@ -213,6 +214,7 @@ public class SettingsService {
     private static final boolean DEFAULT_SONOS_ENABLED = false;
     private static final String DEFAULT_SONOS_SERVICE_NAME = "Booksonic";
     private static final int DEFAULT_SONOS_SERVICE_ID = 242;
+    private static final long DEFAULT_ARTIST_BIO_LAST_UPDATED = 0L;
 
     // Array of obsolete keys.  Used to clean property file.
     private static final List<String> OBSOLETE_KEYS = Arrays.asList("PortForwardingPublicPort", "PortForwardingLocalPort",
@@ -306,7 +308,7 @@ public class SettingsService {
 
     public void save(boolean updateChangedDate) {
         if (updateChangedDate) {
-            setProperty(KEY_SETTINGS_CHANGED, String.valueOf(System.currentTimeMillis()));
+            setLong(KEY_SETTINGS_CHANGED, System.currentTimeMillis());
         }
 
         OutputStream out = null;
@@ -706,6 +708,7 @@ public class SettingsService {
     public String getJukeboxCommand() {
         return properties.getProperty(KEY_JUKEBOX_COMMAND, DEFAULT_JUKEBOX_COMMAND);
     }
+
     public String getVideoImageCommand() {
         return properties.getProperty(KEY_VIDEO_IMAGE_COMMAND, DEFAULT_VIDEO_IMAGE_COMMAND);
     }
@@ -819,7 +822,7 @@ public class SettingsService {
 
     public String getUrlRedirectUrl() {
         if (getUrlRedirectType() == UrlRedirectType.NORMAL) {
-            return "http://" + getUrlRedirectFrom() + ".subsonic.org";
+            return "http://" + getUrlRedirectFrom();
         }
         return StringUtils.removeEnd(getUrlRedirectCustomUrl(), "/");
     }
@@ -1252,7 +1255,7 @@ public class SettingsService {
         settings.setPartyModeEnabled(false);
         settings.setNowPlayingAllowed(true);
         settings.setAutoHidePlayQueue(true);
-        settings.setShowSideBar(true);
+        settings.setShowSideBar(false);
         settings.setShowArtistInfoEnabled(true);
         settings.setViewAsList(false);
         settings.setQueueFollowingSongs(true);
@@ -1365,6 +1368,14 @@ public class SettingsService {
 
     public void setSonosServiceId(int sonosServiceid) {
         setInt(KEY_SONOS_SERVICE_ID, sonosServiceid);
+    }
+
+    public long getArtistBioLastUpdated() {
+        return getLong(KEY_ARTIST_BIO_LAST_UPDATED, DEFAULT_ARTIST_BIO_LAST_UPDATED);
+    }
+
+    public void setArtistBioLastUpdated(long updated) {
+        setLong(KEY_ARTIST_BIO_LAST_UPDATED, updated);
     }
 
     public String getLocalIpAddress() {

@@ -30,10 +30,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
 
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
@@ -213,7 +218,35 @@ public class MediaFileService {
             result = new ArrayList<MediaFile>(set);
         }
 
+        result = filterConvertedVideos(result);
+
         return result;
+    }
+
+    private List<MediaFile> filterConvertedVideos(List<MediaFile> files) {
+        final Set<String> convertedFilenames = FluentIterable.from(files)
+                                                             .filter(new Predicate<MediaFile>() {
+                                                                 @Override
+                                                                 public boolean apply(MediaFile input) {
+                                                                     return input.isVideo() && input.getFile().getName().endsWith(".streamable.mp4");
+                                                                 }
+                                                             })
+                                                             .transform(new Function<MediaFile, String>() {
+                                                                 @Override
+                                                                 public String apply(MediaFile input) {
+                                                                     return input.getFile().getName();
+                                                                 }
+                                                             })
+                                                             .toSet();
+
+        return FluentIterable.from(files)
+                             .filter(new Predicate<MediaFile>() {
+                                 @Override
+                                 public boolean apply(MediaFile input) {
+                                     return !convertedFilenames.contains(FilenameUtils.getBaseName(input.getPath()) + ".streamable.mp4");
+                                 }
+                             })
+                             .toList();
     }
 
     /**
