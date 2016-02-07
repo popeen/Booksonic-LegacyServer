@@ -9,8 +9,6 @@
 
 <h1><i class="fa fa-share-alt fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="share.title"/></h1>
 
-<c:choose>
-    <c:when test="${model.urlRedirectionEnabled}">
         <fmt:message key="share.warning"/>
         <p>
             <a href="http://www.facebook.com/sharer.php?u=${model.playUrl}" target="_blank"><img src="<spring:theme code="shareFacebookImage"/>" alt=""></a>&nbsp;
@@ -29,13 +27,6 @@
                 <fmt:param>${model.playUrl}</fmt:param>
             </fmt:message>
         </p>
-    </c:when>
-    <c:otherwise>
-        <p class="space-above">
-            <fmt:message key="share.disabled"/>
-        </p>
-    </c:otherwise>
-</c:choose>
 
 <c:set var="licenseInfo" value="${model.licenseInfo}"/>
 <%@ include file="licenseNotice.jsp" %>
