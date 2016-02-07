@@ -200,7 +200,7 @@ public class SettingsService {
     private static final int DEFAULT_HTTPS_PORT = 0;
     private static final boolean DEFAULT_URL_REDIRECTION_ENABLED = false;
     private static final UrlRedirectType DEFAULT_URL_REDIRECT_TYPE = UrlRedirectType.NORMAL;
-    private static final String DEFAULT_URL_REDIRECT_FROM = "yourname";
+    private static final String DEFAULT_URL_REDIRECT_FROM = "yourhostname";
     private static final String DEFAULT_URL_REDIRECT_CONTEXT_PATH = System.getProperty("subsonic.contextPath", "").replaceAll("/", "");
     private static final String DEFAULT_URL_REDIRECT_CUSTOM_URL = "http://";
     private static final String DEFAULT_SERVER_ID = null;
@@ -822,7 +822,7 @@ public class SettingsService {
 
     public String getUrlRedirectUrl() {
         if (getUrlRedirectType() == UrlRedirectType.NORMAL) {
-            return "http://" + getUrlRedirectFrom() + ".subsonic.org";
+            return "http://" + getUrlRedirectFrom();
         }
         return StringUtils.removeEnd(getUrlRedirectCustomUrl(), "/");
     }

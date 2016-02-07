@@ -52,7 +52,7 @@
 <body class="bgcolor1 mainframe">
 
 <a name="top"></a>
-<h1 style="padding-bottom:1em"><i class="fa fa-microphone fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="top.artists"/></h1>
+<h1 style="padding-bottom:1em"><i class="fa fa-users fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="top.artists"/></h1>
 
 <div style="clear:both; position:fixed; top:0; right:0; padding:1.25em 0.75em 0.25em 0.75em; text-align:center">
     <div class="browse-index-shortcut"><i class="fa fa-arrow-up fa-fw icon clickable" onclick="location.href='#top'"></i></div>
