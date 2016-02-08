@@ -1,9 +1,21 @@
 package net.sourceforge.subsonic.booter.agent;
 
 import java.awt.Desktop;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.io.IOUtils;
 
@@ -18,6 +31,7 @@ import com.jgoodies.looks.plastic.PlasticXPLookAndFeel;
 
 import net.sourceforge.subsonic.booter.deployer.DeploymentStatus;
 import net.sourceforge.subsonic.booter.deployer.SubsonicDeployerService;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * Responsible for deploying the Subsonic web app in
@@ -41,6 +55,7 @@ public class SubsonicAgent {
         this.service = service;
         setLookAndFeel();
         trayController = new TrayController(this);
+        updateCheck();
         startPolling();
     }
 
@@ -56,7 +71,74 @@ public class SubsonicAgent {
             System.err.println("Failed to set look-and-feel.\n" + x);
         }
     }
+    
+    private void updateCheck(){
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
+        Runnable runnable = new Runnable() {
+            public void run() {
+                String date = new SimpleDateFormat("yy-MM-dd-HH").format(new Date());
+                
+                if(new SimpleDateFormat("mm").format(new Date()).equals("00")){
+                	String updated = ""; 
+                	try{ updated = KakaduaUtil.getStringFromFile("versionCheck"); }catch(Exception e){ updated = "error"; }
+	            	if(updated.contains("up_to_date_beta")){
+	            		try{ 
+	            			if(!KakaduaUtil.getStringFromFile("lastUpdateCheck").contains(date)){
+	            				startOrStopService(false);
+	            				KakaduaUtil.file_write("lastUpdateCheck", date);
+	            				String path = "new.war";
+	            				saveUrl(path, "https://github.com/popeen/Popeens-Subsonic/releases/download/1.1.Beta1/booksonic.war"); 
+	            				FileInputStream fis = new FileInputStream(new File(path));
+	            				String md5 = DigestUtils.md5Hex(fis);	            				
+	            				/*
+	            				 	Check if md5 match md5 file from github, otherwise download again, only try one more time
+	            				 	Download and md5 check booter as well
+	            				 	if both war and booter are correct
+	            				 		Delete old war and rename new to booksonic
+	            				 		Do the same for booter
+	            				 		Delete C:\booksonic\jetty
+	            				 	
+	            				 */
+            				 	startOrStopService(true);
+	            			}
+	            		}catch(Exception e){ JOptionPane.showMessageDialog(null, e.toString()); }
+	            	}else if(updated.contains("outdated_beta")){
+	
+	            	}else if(updated.contains("up_to_date")){
+	
+	            	}else if(updated.contains("outdated")){
+	
+	            	}
+                }
+            }
+        };
+        executor.scheduleWithFixedDelay(runnable, 0, POLL_INTERVAL_SERVICE_STATUS_SECONDS, TimeUnit.SECONDS);
+    
+    }
+    
+    public void saveUrl(final String filename, final String urlString)
+            throws MalformedURLException, IOException {
+        BufferedInputStream in = null;
+        FileOutputStream fout = null;
+        try {
+            in = new BufferedInputStream(new URL(urlString).openStream());
+            fout = new FileOutputStream(filename);
 
+            final byte data[] = new byte[1024];
+            int count;
+            while ((count = in.read(data, 0, 1024)) != -1) {
+                fout.write(data, 0, count);
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (fout != null) {
+                fout.close();
+            }
+        }
+    }
+    
     private void startPolling() {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
         Runnable runnable = new Runnable() {
