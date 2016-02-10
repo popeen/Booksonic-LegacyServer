@@ -766,8 +766,8 @@ public class RESTController extends MultiActionController {
         String reader = "";
 		try{
 			String fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); 
-			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
-			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); 
+			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")).replace("\r\n", "\n").replace("\r", "\n"); 
+			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")).replace("\r\n", "\n").replace("\r", "\n"); 
 		} catch(Exception e){}
 		
         Response res = createResponse();
