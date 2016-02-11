@@ -124,6 +124,7 @@ public class Schema47 extends Schema {
                     "created datetime not null," +
                     "last_scanned datetime not null," +
                     "present boolean not null," +
+                    "album varchar," +
                     "unique (artist, name))");
 
             template.execute("create index idx_album_artist_name on album(artist, name)");
@@ -133,8 +134,20 @@ public class Schema47 extends Schema {
 
             LOG.info("Database table 'album' was created successfully.");
         }
+        
+        if (!columnExists(template, "language", "album")) {
+            LOG.info("Database column 'album.language' not found.  Creating it.");
+            template.execute("alter table album add language varchar");
+        }
+        if (!columnExists(template, "description", "album")) {
+            LOG.info("Database column 'album.description' not found.  Creating it.");
+            template.execute("alter table album add description varchar");
+        }
+        if (!columnExists(template, "reader", "album")) {
+            LOG.info("Database column 'album.reader' not found.  Creating it.");
+            template.execute("alter table album add reader varchar");
+        }
 
-        // Added in 4.7.beta3
         if (!rowExists(template, "table_name='ALBUM' and column_name='NAME' and ordinal_position=1",
                 "information_schema.system_indexinfo")) {
             template.execute("create index idx_album_name on album(name)");

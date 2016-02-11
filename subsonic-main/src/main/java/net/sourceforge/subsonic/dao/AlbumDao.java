@@ -30,10 +30,12 @@ import org.apache.commons.lang.ObjectUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
+import net.kakadua.KakaduaUtil;
 import net.sourceforge.subsonic.domain.Album;
 import net.sourceforge.subsonic.domain.MediaFile;
 import net.sourceforge.subsonic.domain.MusicFolder;
 import net.sourceforge.subsonic.util.FileUtil;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Provides database services for albums.
@@ -43,7 +45,7 @@ import net.sourceforge.subsonic.util.FileUtil;
 public class AlbumDao extends AbstractDao {
 
     private static final String COLUMNS = "id, path, name, artist, song_count, duration_seconds, cover_art_path, " +
-                                          "year, genre, play_count, last_played, comment, created, last_scanned, present, folder_id";
+                                          "year, genre, play_count, last_played, comment, created, last_scanned, present, folder_id, language";
 
     private final RowMapper rowMapper = new AlbumMapper();
 
@@ -113,6 +115,13 @@ public class AlbumDao extends AbstractDao {
      * @param album The album to create/update.
      */
     public synchronized void createOrUpdateAlbum(Album album) {
+
+        String lang, desc, reader;
+        lang = desc = reader = "";
+        try{ lang = KakaduaUtil.getStringFromFile(album.getPath()+System.getProperty("file.separator")+"lang.txt"); }catch(Exception e){}
+        try{ desc = KakaduaUtil.getStringFromFile(album.getPath()+System.getProperty("file.separator")+"desc.txt"); }catch(Exception e){}
+        try{ reader = KakaduaUtil.getStringFromFile(album.getPath()+System.getProperty("file.separator")+"reader.txt"); }catch(Exception e){}
+        
         String sql = "update album set " +
                      "path=?," +
                      "song_count=?," +
@@ -126,19 +135,22 @@ public class AlbumDao extends AbstractDao {
                      "created=?," +
                      "last_scanned=?," +
                      "present=?, " +
-                     "folder_id=? " +
+                     "folder_id=?, " +
+                     "language=?, " +
+                     "description=?, " +
+                     "reader=? " +
                      "where artist=? and name=?";
-
+        
         int n = update(sql, album.getPath(), album.getSongCount(), album.getDurationSeconds(), album.getCoverArtPath(), album.getYear(),
                        album.getGenre(), album.getPlayCount(), album.getLastPlayed(), album.getComment(), album.getCreated(),
-                       album.getLastScanned(), album.isPresent(), album.getFolderId(), album.getArtist(), album.getName());
+                       album.getLastScanned(), album.isPresent(), album.getFolderId(), lang, desc, reader, album.getArtist(), album.getName());
 
         if (n == 0) {
 
             update("insert into album (" + COLUMNS + ") values (" + questionMarks(COLUMNS) + ")", null, album.getPath(),
                    album.getName(), album.getArtist(), album.getSongCount(), album.getDurationSeconds(),
                    album.getCoverArtPath(), album.getYear(), album.getGenre(), album.getPlayCount(), album.getLastPlayed(),
-                   album.getComment(), album.getCreated(), album.getLastScanned(), album.isPresent(), album.getFolderId());
+                   album.getComment(), album.getCreated(), album.getLastScanned(), album.isPresent(), album.getFolderId(), lang, desc, reader);
         }
 
         int id = queryForInt("select id from album where artist=? and name=?", null, album.getArtist(), album.getName());
