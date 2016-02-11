@@ -171,6 +171,7 @@
         <xs:attribute name="fullPath" type="xs:string" use="optional"/>     <!-- Added in Booksonic 1.0.0 -->
         <xs:attribute name="description" type="xs:string" use="optional"/> <!-- Added in Booksonic 1.0.0 -->
         <xs:attribute name="reader" type="xs:string" use="optional"/> <!-- Added in Booksonic 1.0.0 -->
+        <xs:attribute name="language" type="xs:string" use="optional"/> <!-- Added in Booksonic 1.0.0 -->
     </xs:complexType>
 
     <xs:complexType name="AlbumWithSongsID3">
@@ -202,6 +203,7 @@
         <xs:attribute name="playCount" type="xs:long" use="optional"/>  <!-- Added in 1.14.0 -->
         <xs:attribute name="description" type="xs:string" use="optional"/>  <!-- Added in Booksonic 1.0.0 -->
         <xs:attribute name="reader" type="xs:string" use="optional"/>  <!-- Added in Booksonic 1.0.0 -->
+        <xs:attribute name="language" type="xs:string" use="optional"/>  <!-- Added in Booksonic 1.0.0 -->
     </xs:complexType>
 
     <xs:complexType name="Child">

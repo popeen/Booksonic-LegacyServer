@@ -45,6 +45,7 @@ public class Album {
     private String fullPath;
     private String description;
     private String reader;
+    private String language;
 
     public Album() {
     }
@@ -221,4 +222,12 @@ public class Album {
     public String getReader() {
         return this.reader;
     }
+	
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
+	public String getLanguage() {
+		return this.language;
+	}
 }

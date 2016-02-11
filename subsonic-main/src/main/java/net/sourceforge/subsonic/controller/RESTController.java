@@ -764,15 +764,18 @@ public class RESTController extends MultiActionController {
         
         String desc = "noInfo";
         String reader = "";
-		try{
-			String fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); 
-			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")).replace("\r\n", "\n").replace("\r", "\n"); 
-			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")).replace("\r\n", "\n").replace("\r", "\n"); 
-		} catch(Exception e){}
+        String lang = "";
+        String fullPath = "";
+		try{ fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); }catch(Exception e){}
+		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
+		try{ reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
+		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
+		
 		
         Response res = createResponse();
         result.setDescription(desc);
         result.setReader(reader);
+        result.setLanguage(lang);
         res.setAlbum(result);
         jaxbWriter.writeResponse(request, response, res);
     }
@@ -810,13 +813,16 @@ public class RESTController extends MultiActionController {
 		
 		String desc = "noInfo";
 		String reader = "";
-		try{
-			String fullPath = FilenameUtils.getFullPath(dir.getPath()+System.getProperty("file.separator")); 
-			desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); 
-			reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); 
-		} catch(Exception e){}
+		String lang = "";
+		String fullPath = "";
+		try{ fullPath = FilenameUtils.getFullPath(dir.getPath()+System.getProperty("file.separator")); }catch(Exception e){}
+		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); }catch(Exception e){}
+		try{ reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); }catch(Exception e){}
+		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt")); }catch(Exception e){}
+
 		directory.setDescription(desc);
 		directory.setReader(reader);
+		directory.setLanguage(lang);
 
         if (dir.isAlbum()) {
             directory.setAverageRating(ratingService.getAverageRating(dir));

@@ -73,6 +73,9 @@ public class MediaFile {
     private Date childrenLastUpdated;
     private boolean present;
     private int version;
+    private String description;
+    private String reader;
+    private String language;
 
     public MediaFile(int id, String path, String folder, MediaType mediaType, String format, String title,
                      String albumName, String artist, String albumArtist, Integer discNumber, Integer trackNumber, Integer year, String genre, Integer bitRate,
@@ -499,4 +502,24 @@ public class MediaFile {
         DIRECTORY,
         ALBUM
     }
+
+    public void setDescription(String desc) {
+        this.description = desc;
+    }
+
+    public void setReader(String reader) {
+        this.reader = reader;
+    }
+
+    public String getReader() {
+        return this.reader;
+    }
+	
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
+	public String getLanguage() {
+		return this.language;
+	}
 }

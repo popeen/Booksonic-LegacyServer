@@ -90,6 +90,20 @@ public class Schema47 extends Schema {
 
             LOG.info("Database table 'media_file' was created successfully.");
         }
+        
+        if (!columnExists(template, "language", "media_file")) {
+            LOG.info("Database column 'media_file.language' not found.  Creating it.");
+            template.execute("alter table media_file add language varchar");
+        }
+        if (!columnExists(template, "description", "media_file")) {
+            LOG.info("Database column 'media_file.description' not found.  Creating it.");
+            template.execute("alter table media_file add description varchar");
+        }
+        if (!columnExists(template, "reader", "media_file")) {
+            LOG.info("Database column 'media_file.reader' not found.  Creating it.");
+            template.execute("alter table media_file add reader varchar");
+        }
+
 
         if (!tableExists(template, "artist")) {
             LOG.info("Database table 'artist' not found.  Creating it.");
