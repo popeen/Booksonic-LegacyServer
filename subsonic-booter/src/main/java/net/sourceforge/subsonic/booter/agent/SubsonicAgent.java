@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.xml.bind.DatatypeConverter;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import com.jgoodies.looks.plastic.PlasticXPLookAndFeel;
@@ -78,7 +79,7 @@ public class SubsonicAgent {
             public void run() {
                 String date = new SimpleDateFormat("yy-MM-dd-HH").format(new Date());
                 
-                if(new SimpleDateFormat("mm").format(new Date()).equals("00")){
+                if(new SimpleDateFormat("mm").format(new Date()).equals("35")){
                 	String updated = ""; 
                 	try{ updated = KakaduaUtil.getStringFromFile("versionCheck"); }catch(Exception e){ updated = "error"; }
 	            	if(updated.contains("up_to_date_beta")){
@@ -86,21 +87,28 @@ public class SubsonicAgent {
 	            			if(!KakaduaUtil.getStringFromFile("lastUpdateCheck").contains(date)){
 	            				startOrStopService(false);
 	            				KakaduaUtil.file_write("lastUpdateCheck", date);
-	            				String path = "new.war";
-	            				saveUrl(path, "https://github.com/popeen/Popeens-Subsonic/releases/download/1.1.Beta1/booksonic.war"); 
-	            				FileInputStream fis = new FileInputStream(new File(path));
-	            				String md5 = DigestUtils.md5Hex(fis);	            				
-	            				/*
-	            				 	Check if md5 match md5 file from github, otherwise download again, only try one more time
-	            				 	Download and md5 check booter as well
-	            				 	if both war and booter are correct
-	            				 		Delete old war and rename new to booksonic
-	            				 		Do the same for booter
-	            				 		Delete C:\booksonic\jetty
-	            				 	
-	            				 */
+	            					            				
+	            				String pathNewWar = "newWar.war";
+	            				String warMd5 = "7fc346348ad484fe36978bbd409a87f0";
+	            				String war = "https://github.com/popeen/Popeens-Subsonic/releases/download/1.1.Beta1/booksonic.war";
+	            					            				
+	            				saveUrl(pathNewWar, war); 
+	            				FileInputStream fis = new FileInputStream(new File(pathNewWar));    				
+	            				String downloadedWarMd5 = DigestUtils.md5Hex(fis);
+	            				fis.close();
+	            				
+	            				if(warMd5.equals(downloadedWarMd5)){
+	            					try {
+	            					    File oldWar = new File("booksonic.war");	            					    
+	            					    if(oldWar.delete()){
+	            					    	new File("newWar.war").renameTo(oldWar);
+	            					    	FileUtils.deleteDirectory(new File("C:\\booksonic\\jetty"));
+	            					    }
+	            					}catch(Exception e){}
+	            				}
             				 	startOrStopService(true);
 	            			}
+	            			
 	            		}catch(Exception e){ JOptionPane.showMessageDialog(null, e.toString()); }
 	            	}else if(updated.contains("outdated_beta")){
 	
