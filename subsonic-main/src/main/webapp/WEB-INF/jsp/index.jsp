@@ -15,7 +15,24 @@
 
         function setPlayQueueHeight(height) {
             $("#playQueue").stop();
-            $("#playQueue").animate({"height": height});
+            $("#playQueue").animate({"height": height}, {step: updateSize});
+        }
+
+        // Work-around for quirky iframe layout issue.
+        function updateSize(playQueueHeight) {
+            var w = $(window).width() - $("#left").width() - $("#right").width() - 1;
+            var h = $(window).height() - $("#upper").height() - playQueueHeight - 1;
+            $("#left").height(h);
+            $("#right").height(h);
+            $("#main").height(h);
+            $("#main").width(w);
+        }
+
+        function init() {
+            updateSize($("#playQueue").height());
+            $(window).resize(function () {
+                updateSize($("#playQueue").height());
+            });
         }
 
     </script>
@@ -35,19 +52,14 @@
             width: ${model.showRight ? 200 : 0}px;
         }
         #playQueue {
-            height: ${model.autoHidePlayQueue ? 95 : 250}px;
+            height: 95px;
             width:100%;
             border-top: 1px solid rgba(0, 0, 0, 0.1)
-        }
-
-        /* Ugly hack to make it work in IE */
-        @media all and (-ms-high-contrast:none) {
-            #left, #main, #right { height: 100% }
         }
     </style>
 </head>
 
-<body class="nospace">
+<body class="nospace" onload="init()">
 
 <div class="nospace" style="display:flex; flex-direction:column; width: 100%; height: 100%">
     <iframe src="top.view" id="upper" name="upper" class="nospace"></iframe>

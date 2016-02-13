@@ -19,6 +19,7 @@
 package net.sourceforge.subsonic.command;
 
 import net.sourceforge.subsonic.controller.*;
+import net.sourceforge.subsonic.domain.User;
 
 /**
  * Command used in {@link PasswordSettingsController}.
@@ -26,18 +27,18 @@ import net.sourceforge.subsonic.controller.*;
  * @author Sindre Mehus
  */
 public class PasswordSettingsCommand {
-    private String username;
+    private User user;
     private String password;
     private String confirmPassword;
     private boolean ldapAuthenticated;
     private boolean toast;
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getPassword() {

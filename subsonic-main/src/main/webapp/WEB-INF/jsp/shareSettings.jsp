@@ -7,11 +7,10 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="share"/>
-    <c:param name="toast" value="${model.toast}"/>
-    <c:param name="restricted" value="${not model.user.adminRole}"/>
-</c:import>
+<c:set var="category" value="share"/>
+<c:set var="toast" value="${model.toast}"/>
+<c:set var="user" value="${model.user}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form method="post" action="shareSettings.view">
 

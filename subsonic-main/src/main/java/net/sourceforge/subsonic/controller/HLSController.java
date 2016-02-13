@@ -91,7 +91,7 @@ public class HLSController implements Controller {
         List<Pair<Integer, Dimension>> bitRates = parseBitRates(request);
         PrintWriter writer = response.getWriter();
         if (bitRates.size() > 1) {
-            generateVariantPlaylist(request, id, player, bitRates, writer);
+            generateVariantPlaylist(request, mediaFile, player, bitRates, writer);
         } else {
             generateNormalPlaylist(request, mediaFile, player, bitRates.size() == 1 ? bitRates.get(0) : null, duration, writer);
         }
@@ -129,7 +129,7 @@ public class HLSController implements Controller {
         }
     }
 
-    private void generateVariantPlaylist(HttpServletRequest request, int id, Player player, List<Pair<Integer, Dimension>> bitRates, PrintWriter writer) {
+    private void generateVariantPlaylist(HttpServletRequest request, MediaFile file, Player player, List<Pair<Integer, Dimension>> bitRates, PrintWriter writer) {
         writer.println("#EXTM3U");
         writer.println("#EXT-X-VERSION:1");
 //        writer.println("#EXT-X-TARGETDURATION:" + SEGMENT_DURATION);
@@ -138,7 +138,7 @@ public class HLSController implements Controller {
         for (Pair<Integer, Dimension> bitRate : bitRates) {
             Integer kbps = bitRate.getFirst();
             writer.println("#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=" + kbps * 1000L);
-            writer.print(contextPath + "hls/hls.m3u8?id=" + id + "&player=" + player.getId() + "&bitRate=" + kbps);
+            writer.print(contextPath + "hls/hls.m3u8?id=" + file.getId() + "&auth=" + file.getHash() + "&player=" + player.getId() + "&bitRate=" + kbps);
             Dimension dimension = bitRate.getSecond();
             if (dimension != null) {
                 writer.print("@" + dimension.width + "x" + dimension.height);

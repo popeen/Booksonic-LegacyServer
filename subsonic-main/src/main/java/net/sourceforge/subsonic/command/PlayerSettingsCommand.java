@@ -26,6 +26,7 @@ import net.sourceforge.subsonic.domain.Player;
 import net.sourceforge.subsonic.domain.PlayerTechnology;
 import net.sourceforge.subsonic.domain.TranscodeScheme;
 import net.sourceforge.subsonic.domain.Transcoding;
+import net.sourceforge.subsonic.domain.User;
 
 /**
  * Command used in {@link PlayerSettingsController}.
@@ -49,7 +50,7 @@ public class PlayerSettingsCommand {
     private EnumHolder[] technologyHolders;
     private EnumHolder[] transcodeSchemeHolders;
     private Player[] players;
-    private boolean isAdmin;
+    private User user;
     private boolean isReloadNeeded;
 
     public String getPlayerId() {
@@ -188,12 +189,12 @@ public class PlayerSettingsCommand {
         this.players = players;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public User getUser() {
+        return user;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isReloadNeeded() {

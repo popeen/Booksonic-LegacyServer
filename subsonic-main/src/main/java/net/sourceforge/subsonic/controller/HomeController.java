@@ -70,26 +70,28 @@ public class HomeController extends ParameterizableViewController {
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         User user = securityService.getCurrentUser(request);
+        String username = user.getUsername();
+        UserSettings userSettings = settingsService.getUserSettings(username);
+
         if (user.isAdminRole() && settingsService.isGettingStartedEnabled()) {
             return new ModelAndView(new RedirectView("gettingStarted.view"));
         }
         int listOffset = getIntParameter(request, "listOffset", 0);
         AlbumListType listType = AlbumListType.fromId(getStringParameter(request, "listType"));
         if (listType == null) {
-            UserSettings userSettings = settingsService.getUserSettings(user.getUsername());
             listType = userSettings.getDefaultAlbumList();
         }
 
-        MusicFolder selectedMusicFolder = settingsService.getSelectedMusicFolder(user.getUsername());
-        List<MusicFolder> allMusicFolders = settingsService.getMusicFoldersForUser(user.getUsername());
-        List<MusicFolder> musicFolders = settingsService.getMusicFoldersForUser(user.getUsername(),
+        MusicFolder selectedMusicFolder = settingsService.getSelectedMusicFolder(username);
+        List<MusicFolder> allMusicFolders = settingsService.getMusicFoldersForUser(username);
+        List<MusicFolder> musicFolders = settingsService.getMusicFoldersForUser(username,
                                                                                 selectedMusicFolder == null ? null : selectedMusicFolder.getId());
 
         Map<String, Object> map = new HashMap<String, Object>();
         List<Album> albums = Collections.emptyList();
         switch (listType) {
             case HIGHEST:
-                albums = getHighestRated(listOffset, LIST_SIZE, user.getUsername(), musicFolders);
+                albums = getHighestRated(listOffset, LIST_SIZE, username, musicFolders);
                 break;
             case FREQUENT:
                 albums = getMostFrequent(listOffset, LIST_SIZE, musicFolders);
@@ -101,7 +103,7 @@ public class HomeController extends ParameterizableViewController {
                 albums = getNewest(listOffset, LIST_SIZE, musicFolders);
                 break;
             case STARRED:
-                albums = getStarred(listOffset, LIST_SIZE, user.getUsername(), musicFolders);
+                albums = getStarred(listOffset, LIST_SIZE, username, musicFolders);
                 break;
             case RANDOM:
                 albums = getRandom(LIST_SIZE, musicFolders);
@@ -141,6 +143,7 @@ public class HomeController extends ParameterizableViewController {
         map.put("listOffset", listOffset);
         map.put("musicFolders", allMusicFolders);
         map.put("selectedMusicFolder", selectedMusicFolder);
+        map.put("showIndexInSideBar", userSettings.isShowIndexInSideBar());
 
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);

@@ -7,11 +7,11 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="password"/>
-    <c:param name="toast" value="${command.toast}"/>
-    <c:param name="restricted" value="true"/>
-</c:import>
+
+<c:set var="category" value="password"/>
+<c:set var="user" value="${command.user}"/>
+<c:set var="toast" value="${command.toast}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <c:choose>
 
@@ -20,7 +20,7 @@
     </c:when>
 
     <c:otherwise>
-        <fmt:message key="passwordsettings.title" var="title"><fmt:param>${command.username}</fmt:param></fmt:message>
+        <fmt:message key="passwordsettings.title" var="title"><fmt:param>${command.user.username}</fmt:param></fmt:message>
         <h2>${fn:escapeXml(title)}</h2>
         <form:form method="post" action="passwordSettings.view" commandName="command">
             <table class="indent">

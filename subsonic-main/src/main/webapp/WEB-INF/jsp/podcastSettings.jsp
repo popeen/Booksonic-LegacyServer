@@ -7,10 +7,9 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="podcast"/>
-    <c:param name="toast" value="${command.toast}"/>
-</c:import>
+<c:set var="category" value="podcast"/>
+<c:set var="toast" value="${command.toast}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form:form commandName="command" action="podcastSettings.view" method="post">
 

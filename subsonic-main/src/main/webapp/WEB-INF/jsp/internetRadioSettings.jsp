@@ -6,10 +6,9 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="internetRadio"/>
-    <c:param name="toast" value="${model.reload}"/>
-</c:import>
+<c:set var="category" value="internetRadio"/>
+<c:set var="toast" value="${model.reload}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form method="post" action="internetRadioSettings.view">
 <table class="indent">

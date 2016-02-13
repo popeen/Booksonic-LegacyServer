@@ -58,6 +58,8 @@
                 showPage("podcastChannels.view");
             } else if (action == "showSettings") {
                 showPage("settings.view");
+            } else if (action == "showInternetRadio") {
+                showPage("internetRadio.view");
             } else if (action == "showStarred") {
                 showPage("starred.view");
             } else if (action == "showMore") {

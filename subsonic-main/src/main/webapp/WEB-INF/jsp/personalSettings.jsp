@@ -17,11 +17,10 @@
 <script type="text/javascript" src="<c:url value="/script/wz_tooltip.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/script/tip_balloon.js"/>"></script>
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="personal"/>
-    <c:param name="restricted" value="${not command.user.adminRole}"/>
-    <c:param name="toast" value="${command.reloadNeeded}"/>
-</c:import>
+<c:set var="category" value="personal"/>
+<c:set var="user" value="${command.user}"/>
+<c:set var="toast" value="${command.reloadNeeded}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <fmt:message key="personalsettings.title" var="title"><fmt:param>${command.user.username}</fmt:param></fmt:message>
 <h2>${fn:escapeXml(title)}</h2>
@@ -137,8 +136,8 @@
         <tr>
             <td><form:checkbox path="queueFollowingSongs" id="queueFollowingSongs" cssClass="checkbox"/></td>
             <td><label for="queueFollowingSongs"><fmt:message key="personalsettings.queuefollowingsongs"/></label></td>
-            <td></td>
-            <td></td>
+            <td style="padding-left:2em"><form:checkbox path="showIndexInSideBar" id="showIndexInSideBar" cssClass="checkbox"/></td>
+            <td><label for="showIndexInSideBar"><fmt:message key="personalsettings.showindexinsidebar"/></label></td>
             <td></td>
             <td></td>
         </tr>

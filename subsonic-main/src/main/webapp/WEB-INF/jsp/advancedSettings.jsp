@@ -16,10 +16,9 @@
 <script type="text/javascript" src="<c:url value="/script/wz_tooltip.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/script/tip_balloon.js"/>"></script>
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="advanced"/>
-    <c:param name="toast" value="${command.toast}"/>
-</c:import>
+<c:set var="category" value="advanced"/>
+<c:set var="toast" value="${command.toast}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form:form method="post" action="advancedSettings.view" commandName="command">
 

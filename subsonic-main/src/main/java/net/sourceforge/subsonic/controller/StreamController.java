@@ -272,6 +272,10 @@ public class StreamController implements Controller {
             length = range.getLength();
         }
 
+        if (range == null || range.getOffset() == 0) {
+            mediaFileService.incrementPlayCount(mediaFile);
+        }
+
         transferStatus.setFile(file);
         scrobble(mediaFile, player, false);
 

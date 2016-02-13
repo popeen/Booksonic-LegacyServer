@@ -37,14 +37,14 @@ public class PasswordSettingsController extends SimpleFormController {
     protected Object formBackingObject(HttpServletRequest request) throws Exception {
         PasswordSettingsCommand command = new PasswordSettingsCommand();
         User user = securityService.getCurrentUser(request);
-        command.setUsername(user.getUsername());
+        command.setUser(user);
         command.setLdapAuthenticated(user.isLdapAuthenticated());
         return command;
     }
 
     protected void doSubmitAction(Object comm) throws Exception {
         PasswordSettingsCommand command = (PasswordSettingsCommand) comm;
-        User user = securityService.getUserByName(command.getUsername());
+        User user = securityService.getUserByName(command.getUser().getUsername());
         user.setPassword(command.getPassword());
         securityService.updateUser(user);
 

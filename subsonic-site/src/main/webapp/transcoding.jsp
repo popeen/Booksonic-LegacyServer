@@ -60,7 +60,7 @@
     </p>
     <table>
         <tr><td>mp3 audio</td><td><strong>ffmpeg -i %s -map 0:0 -b:a %bk -v 0 -f mp3 -</strong></td></tr>
-        <tr><td>flv/h364 video</td><td><strong>ffmpeg -ss %o -i %s -async 1 -b %bk -s %wx%h -ar 44100 -ac 2 -v 0 -f flv -c:v libx264 -preset superfast -threads 0 -</strong></td></tr>
+        <tr><td>flv/h264 video</td><td><strong>ffmpeg -ss %o -i %s -async 1 -b %bk -s %wx%h -ar 44100 -ac 2 -v 0 -f flv -c:v libx264 -preset superfast -threads 0 -</strong></td></tr>
         <tr><td>mkv video</td><td><strong>ffmpeg -ss %o -i %s -c:v libx264 -preset superfast -b:v %bk -c:a libvorbis -f matroska -threads 0 -</strong></td></tr>
     </table>
 

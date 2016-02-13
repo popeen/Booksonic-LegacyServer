@@ -72,8 +72,6 @@ public class ArtistsController extends ParameterizableViewController {
      * as we don't need browser-side caching of artists.jsp.  This method is only used by RESTController.
      */
     public long getLastModified(HttpServletRequest request) {
-        saveSelectedMusicFolder(request);
-
         if (mediaScannerService.isScanning()) {
             return -1L;
         }
@@ -140,6 +138,7 @@ public class ArtistsController extends ParameterizableViewController {
         map.put("partyMode", userSettings.isPartyModeEnabled());
         map.put("organizeByFolderStructure", settingsService.isOrganizeByFolderStructure());
         map.put("visibility", userSettings.getMainVisibility());
+        map.put("showIndexInSideBar", userSettings.isShowIndexInSideBar());
         map.put("indexedArtists", musicFolderContent.getIndexedArtists());
         map.put("singleSongs", singleSongs);
         map.put("indexes", musicFolderContent.getIndexedArtists().keySet());
@@ -148,21 +147,6 @@ public class ArtistsController extends ParameterizableViewController {
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
-    }
-
-    private boolean saveSelectedMusicFolder(HttpServletRequest request) {
-        if (request.getParameter("musicFolderId") == null) {
-            return false;
-        }
-        int musicFolderId = Integer.parseInt(request.getParameter("musicFolderId"));
-
-        // Note: UserSettings.setChanged() is intentionally not called. This would break browser caching
-        // of the left frame.
-        UserSettings settings = settingsService.getUserSettings(securityService.getCurrentUsername(request));
-        settings.setSelectedMusicFolderId(musicFolderId);
-        settingsService.updateUserSettings(settings);
-
-        return true;
     }
 
     public void setMediaScannerService(MediaScannerService mediaScannerService) {

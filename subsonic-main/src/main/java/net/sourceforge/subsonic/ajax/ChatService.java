@@ -18,14 +18,6 @@
  */
 package net.sourceforge.subsonic.ajax;
 
-import net.sourceforge.subsonic.Logger;
-import net.sourceforge.subsonic.service.SecurityService;
-import net.sourceforge.subsonic.util.BoundedList;
-import org.apache.commons.lang.StringUtils;
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +28,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
+
+import net.sourceforge.subsonic.service.SecurityService;
+import net.sourceforge.subsonic.util.BoundedList;
+
 /**
  * Provides AJAX-enabled services for the chatting.
  * This class is used by the DWR framework (http://getahead.ltd.uk/dwr/).
@@ -44,15 +45,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class ChatService {
 
-    private static final Logger LOG = Logger.getLogger(ChatService.class);
-    private static final String CACHE_KEY = "1";
-    private static final int MAX_MESSAGES = 10;
+    private static final int MAX_MESSAGES = 100;
     private static final long TTL_MILLIS = 3L * 24L * 60L * 60L * 1000L; // 3 days.
 
     private final LinkedList<Message> messages = new BoundedList<Message>(MAX_MESSAGES);
-    private SecurityService securityService;
+    private final SecurityService securityService;
 
     private long revision = System.identityHashCode(this);
+
+    public ChatService(SecurityService securityService) {
+        this.securityService = securityService;
+    }
 
     /**
      * Invoked by Spring.
@@ -79,9 +82,10 @@ public class ChatService {
         }
     }
 
-    public synchronized void addMessage(String message) {
+    public synchronized Messages addMessage(String message) {
         WebContext webContext = WebContextFactory.get();
         doAddMessage(message, webContext.getHttpServletRequest());
+        return getMessages(0L);
     }
 
     public synchronized void doAddMessage(String message, HttpServletRequest request) {
@@ -94,9 +98,10 @@ public class ChatService {
         }
     }
 
-    public synchronized void clearMessages() {
+    public synchronized Messages clearMessages() {
         messages.clear();
         revision++;
+        return getMessages(0L);
     }
 
     /**
@@ -108,10 +113,6 @@ public class ChatService {
             return new Messages(new ArrayList<Message>(messages), this.revision);
         }
         return null;
-    }
-
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
     }
 
     public static class Messages implements Serializable {

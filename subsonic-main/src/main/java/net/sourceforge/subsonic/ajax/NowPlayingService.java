@@ -18,7 +18,6 @@
  */
 package net.sourceforge.subsonic.ajax;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,10 +50,18 @@ public class NowPlayingService {
 
     private static final Logger LOG = Logger.getLogger(NowPlayingService.class);
 
-    private PlayerService playerService;
-    private StatusService statusService;
-    private SettingsService settingsService;
-    private MediaScannerService mediaScannerService;
+    private final PlayerService playerService;
+    private final StatusService statusService;
+    private final SettingsService settingsService;
+    private final MediaScannerService mediaScannerService;
+
+    public NowPlayingService(PlayerService playerService, StatusService statusService, SettingsService settingsService,
+                             MediaScannerService mediaScannerService) {
+        this.playerService = playerService;
+        this.statusService = statusService;
+        this.settingsService = settingsService;
+        this.mediaScannerService = mediaScannerService;
+    }
 
     /**
      * Returns details about what the current player is playing.
@@ -153,21 +160,5 @@ public class NowPlayingService {
             }
         }
         return result;
-    }
-
-    public void setPlayerService(PlayerService playerService) {
-        this.playerService = playerService;
-    }
-
-    public void setStatusService(StatusService statusService) {
-        this.statusService = statusService;
-    }
-
-    public void setSettingsService(SettingsService settingsService) {
-        this.settingsService = settingsService;
-    }
-
-    public void setMediaScannerService(MediaScannerService mediaScannerService) {
-        this.mediaScannerService = mediaScannerService;
     }
 }

@@ -8,10 +8,9 @@
 <script type="text/javascript" src="<c:url value="/script/wz_tooltip.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/script/tip_balloon.js"/>"></script>
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="transcoding"/>
-    <c:param name="toast" value="${model.toast}"/>
-</c:import>
+<c:set var="category" value="transcoding"/>
+<c:set var="toast" value="${model.toast}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form method="post" action="transcodingSettings.view">
 <table class="indent">

@@ -59,6 +59,7 @@ public class PersonalSettingsCommand {
     private String lastFmUsername;
     private String lastFmPassword;
     private boolean isReloadNeeded;
+    private boolean showIndexInSideBar;
 
     public User getUser() {
         return user;
@@ -266,5 +267,13 @@ public class PersonalSettingsCommand {
 
     public void setQueueFollowingSongs(boolean queueFollowingSongs) {
         this.queueFollowingSongs = queueFollowingSongs;
+    }
+
+    public boolean isShowIndexInSideBar() {
+        return showIndexInSideBar;
+    }
+
+    public void setShowIndexInSideBar(boolean showIndexInSideBar) {
+        this.showIndexInSideBar = showIndexInSideBar;
     }
 }

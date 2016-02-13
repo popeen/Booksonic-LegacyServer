@@ -18,6 +18,7 @@
  */
 package net.sourceforge.subsonic.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,18 +49,31 @@ public class PlaylistsController extends ParameterizableViewController {
 
     private SecurityService securityService;
     private PlaylistService playlistService;
+    private SettingsService settingsService;
 
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
 
-        User user = securityService.getCurrentUser(request);
-        List<Playlist> playlists = playlistService.getReadablePlaylistsForUser(user.getUsername());
+        String username = securityService.getCurrentUsername(request);
+        List<Playlist> playlists = playlistService.getReadablePlaylistsForUser(username);
+        UserSettings userSettings = settingsService.getUserSettings(username);
 
         map.put("playlists", playlists);
+        map.put("viewAsList", isViewAsList(request, userSettings));
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
+    }
+
+    private boolean isViewAsList(HttpServletRequest request, UserSettings userSettings) {
+        boolean viewAsList = ServletRequestUtils.getBooleanParameter(request, "viewAsList", userSettings.isViewAsList());
+        if (viewAsList != userSettings.isViewAsList()) {
+            userSettings.setViewAsList(viewAsList);
+            userSettings.setChanged(new Date());
+            settingsService.updateUserSettings(userSettings);
+        }
+        return viewAsList;
     }
 
     public void setSecurityService(SecurityService securityService) {
@@ -68,5 +82,9 @@ public class PlaylistsController extends ParameterizableViewController {
 
     public void setPlaylistService(PlaylistService playlistService) {
         this.playlistService = playlistService;
+    }
+
+    public void setSettingsService(SettingsService settingsService) {
+        this.settingsService = settingsService;
     }
 }

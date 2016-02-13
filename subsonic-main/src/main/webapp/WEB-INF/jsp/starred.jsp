@@ -13,15 +13,9 @@
     <script type="text/javascript" src="<c:url value="/dwr/interface/playlistService.js"/>"></script>
     <script type="text/javascript" language="javascript">
 
-        function toggleStar(mediaFileId, imageId) {
-            if ($(imageId).attr("src").indexOf("<spring:theme code="ratingOnImage"/>") != -1) {
-                $(imageId).attr("src", "<spring:theme code="ratingOffImage"/>");
-                starService.unstar(mediaFileId);
-            }
-            else if ($(imageId).attr("src").indexOf("<spring:theme code="ratingOffImage"/>") != -1) {
-                $(imageId).attr("src", "<spring:theme code="ratingOnImage"/>");
-                starService.star(mediaFileId);
-            }
+        function toggleStar(mediaFileId, element) {
+            starService.star(mediaFileId, !$(element).hasClass("fa-star"));
+            $(element).toggleClass("fa-star fa-star-o starred");
         }
 
         function onSavePlaylist() {
@@ -39,7 +33,17 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<h1><i class="fa fa-star fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="starred.title"/></h1>
+<div style="display:flex; align-items:center">
+    <h1 style="flex-grow:1">
+        <i class="fa fa-star fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="starred.title"/>
+    </h1>
+    <div>
+        <c:import url="viewSelector.jsp">
+            <c:param name="changeViewUrl" value="starred.view?viewAsList=${not model.viewAsList}"/>
+            <c:param name="viewAsList" value="${model.viewAsList}"/>
+        </c:import>
+    </div>
+</div>
 
 <c:if test="${empty model.artists and empty model.albums and empty model.songs}">
     <p style="padding-top: 1em"><em><fmt:message key="starred.empty"/></em></p>
@@ -48,35 +52,58 @@
 <c:if test="${not empty model.albums}">
     <h2 class="starred-header"><fmt:message key="search.hits.albums"/></h2>
 
-<div style="padding-top:0.5em">
-    <c:forEach items="${model.albums}" var="album" varStatus="loopStatus">
+    <c:choose>
+        <c:when test="${model.viewAsList}">
+            <table class="music indent">
+                <c:forEach items="${model.albums}" var="album">
+                    <tr>
+                        <c:import url="playButtons.jsp">
+                            <c:param name="id" value="${album.id}"/>
+                            <c:param name="playEnabled" value="${model.user.streamRole and not model.partyModeEnabled}"/>
+                            <c:param name="addEnabled" value="${model.user.streamRole and not model.partyModeEnabled}"/>
+                            <c:param name="starEnabled" value="true"/>
+                            <c:param name="starred" value="${not empty album.starredDate}"/>
+                            <c:param name="asTable" value="true"/>
+                        </c:import>
+                        <td class="truncate"><a href="main.view?id=${album.id}" title="${fn:escapeXml(album.name)}">${fn:escapeXml(album.name)}</a></td>
+                        <td class="fit rightalign detail">${album.year}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:when>
 
-        <c:set var="albumTitle">
-            <c:choose>
-                <c:when test="${empty album.name}">
-                    <fmt:message key="common.unknown"/>
-                </c:when>
-                <c:otherwise>
-                    ${fn:escapeXml(album.name)}
-                </c:otherwise>
-            </c:choose>
-        </c:set>
+        <c:otherwise>
+            <div style="padding-top:0.5em">
+                <c:forEach items="${model.albums}" var="album" varStatus="loopStatus">
 
-        <div class="albumThumb">
-            <c:import url="coverArt.jsp">
-                <c:param name="albumId" value="${album.id}"/>
-                <c:param name="auth" value="${album.hash}"/>
-                <c:param name="caption1" value="${albumTitle}"/>
-                <c:param name="caption2" value="${fn:escapeXml(album.artist)}"/>
-                <c:param name="captionCount" value="2"/>
-                <c:param name="coverArtSize" value="${model.coverArtSize}"/>
-                <c:param name="showLink" value="true"/>
-                <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
-            </c:import>
-        </div>
-    </c:forEach>
-    </c:if>
-</div>
+                    <c:set var="albumTitle">
+                        <c:choose>
+                            <c:when test="${empty album.name}">
+                                <fmt:message key="common.unknown"/>
+                            </c:when>
+                            <c:otherwise>
+                                ${fn:escapeXml(album.name)}
+                            </c:otherwise>
+                        </c:choose>
+                    </c:set>
+
+                    <div class="albumThumb">
+                        <c:import url="coverArt.jsp">
+                            <c:param name="albumId" value="${album.id}"/>
+                            <c:param name="auth" value="${album.hash}"/>
+                            <c:param name="caption1" value="${albumTitle}"/>
+                            <c:param name="caption2" value="${fn:escapeXml(album.artist)}"/>
+                            <c:param name="captionCount" value="2"/>
+                            <c:param name="coverArtSize" value="${model.coverArtSize}"/>
+                            <c:param name="showLink" value="true"/>
+                            <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
+                        </c:import>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:otherwise>
+    </c:choose>
+</c:if>
 
 <c:if test="${not empty model.artists}">
     <h2 class="starred-header"><fmt:message key="search.hits.artists"/></h2>

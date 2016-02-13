@@ -8,6 +8,7 @@
         <property name="viewName" value="left"/>
         <property name="securityService" ref="securityService"/>
         <property name="settingsService" ref="settingsService"/>
+        <property name="musicIndexService" ref="musicIndexService"/>
     </bean>
     <bean id="artistsController" class="net.sourceforge.subsonic.controller.ArtistsController">
         <property name="viewName" value="artists"/>
@@ -47,6 +48,7 @@
         <property name="viewName" value="playlists"/>
         <property name="securityService" ref="securityService"/>
         <property name="playlistService" ref="playlistService"/>
+        <property name="settingsService" ref="settingsService"/>
     </bean>
     <bean id="importPlaylistController" class="net.sourceforge.subsonic.controller.ImportPlaylistController">
         <property name="viewName" value="importPlaylist"/>
@@ -96,6 +98,11 @@
         <property name="podcastService" ref="podcastService"/>
         <property name="securityService" ref="securityService"/>
         <property name="settingsService" ref="settingsService"/>
+    </bean>
+    <bean id="internetRadioController" class="net.sourceforge.subsonic.controller.InternetRadioController">
+        <property name="viewName" value="internetRadio"/>
+        <property name="settingsService" ref="settingsService"/>
+        <property name="securityService" ref="securityService"/>
     </bean>
     <bean id="podcastChannelController" class="net.sourceforge.subsonic.controller.PodcastChannelController">
         <property name="viewName" value="podcastChannel"/>
@@ -498,6 +505,7 @@
                 <prop key="/download.view">downloadController</prop>
                 <prop key="/db.view">dbController</prop>
                 <prop key="/test.view">multiController</prop>
+                <prop key="/internetRadio.view">internetRadioController</prop>
                 <prop key="/podcastChannels.view">podcastChannelsController</prop>
                 <prop key="/podcastChannel.view">podcastChannelController</prop>
                 <prop key="/podcastReceiverAdmin.view">podcastReceiverAdminController</prop>

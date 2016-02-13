@@ -36,6 +36,9 @@
         function changeMusicFolder(musicFolderId) {
             multiService.setSelectedMusicFolder(musicFolderId, function() {
                 location.href = "artists.view";
+                <c:if test="${model.showIndexInSideBar}">
+                top.left.location.href = top.left.location.href;
+                </c:if>
             });
         }
 

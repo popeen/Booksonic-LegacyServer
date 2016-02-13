@@ -74,5 +74,12 @@ public class Schema60 extends Schema {
                              "where u.username = ur.username and ur.role_id = 1");
             LOG.info("Role 'video_conversion' was created successfully.");
         }
+
+        if (!columnExists(template, "show_index_in_side_bar", "user_settings")) {
+            LOG.info("Database column 'user_settings.show_index_in_side_bar' not found.  Creating it.");
+            template.execute("alter table user_settings add show_index_in_side_bar boolean default false not null");
+            LOG.info("Database column 'user_settings.show_index_in_side_bar' was added successfully.");
+        }
+
     }
 }

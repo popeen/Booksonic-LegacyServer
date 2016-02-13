@@ -242,69 +242,69 @@
     <!-- AJAX services -->
 
     <bean id="ajaxMultiService" class="net.sourceforge.subsonic.ajax.MultiService">
-        <property name="networkService" ref="networkService"/>
-        <property name="mediaFileService" ref="mediaFileService"/>
-        <property name="settingsService" ref="settingsService"/>
-        <property name="securityService" ref="securityService"/>
-        <property name="lastFmService" ref="lastFmService"/>
-        <property name="videoConversionService" ref="videoConversionService"/>
+        <constructor-arg ref="networkService"/>
+        <constructor-arg ref="mediaFileService"/>
+        <constructor-arg ref="settingsService"/>
+        <constructor-arg ref="securityService"/>
+        <constructor-arg ref="lastFmService"/>
+        <constructor-arg ref="videoConversionService"/>
     </bean>
 
     <bean id="ajaxNowPlayingService" class="net.sourceforge.subsonic.ajax.NowPlayingService">
-        <property name="playerService" ref="playerService"/>
-        <property name="statusService" ref="statusService"/>
-        <property name="settingsService" ref="settingsService"/>
-        <property name="mediaScannerService" ref="mediaScannerService"/>
+        <constructor-arg ref="playerService"/>
+        <constructor-arg ref="statusService"/>
+        <constructor-arg ref="settingsService"/>
+        <constructor-arg ref="mediaScannerService"/>
     </bean>
 
     <bean id="ajaxPlayQueueService" class="net.sourceforge.subsonic.ajax.PlayQueueService">
-        <property name="playerService" ref="playerService"/>
-        <property name="playlistService" ref="playlistService"/>
-        <property name="mediaFileService" ref="mediaFileService"/>
-        <property name="lastFmService" ref="lastFmService"/>
-        <property name="mediaFileDao" ref="mediaFileDao"/>
-        <property name="playQueueDao" ref="playQueueDao"/>
-        <property name="jukeboxService" ref="jukeboxService"/>
-        <property name="transcodingService" ref="transcodingService"/>
-        <property name="settingsService" ref="settingsService"/>
-        <property name="searchService" ref="searchService"/>
-        <property name="ratingService" ref="ratingService"/>
-        <property name="securityService" ref="securityService"/>
-        <property name="podcastService" ref="podcastService"/>
+        <constructor-arg ref="playerService"/>
+        <constructor-arg ref="playlistService"/>
+        <constructor-arg ref="mediaFileService"/>
+        <constructor-arg ref="lastFmService"/>
+        <constructor-arg ref="mediaFileDao"/>
+        <constructor-arg ref="playQueueDao"/>
+        <constructor-arg ref="jukeboxService"/>
+        <constructor-arg ref="transcodingService"/>
+        <constructor-arg ref="settingsService"/>
+        <constructor-arg ref="searchService"/>
+        <constructor-arg ref="ratingService"/>
+        <constructor-arg ref="securityService"/>
+        <constructor-arg ref="podcastService"/>
     </bean>
 
     <bean id="ajaxPlaylistService" class="net.sourceforge.subsonic.ajax.PlaylistService">
-        <property name="playlistService" ref="playlistService"/>
-        <property name="securityService" ref="securityService"/>
-        <property name="settingsService" ref="settingsService"/>
-        <property name="mediaFileService" ref="mediaFileService"/>
-        <property name="playerService" ref="playerService"/>
-        <property name="mediaFileDao" ref="mediaFileDao"/>
-        <property name="localeResolver" ref="localeResolver"/>
+        <constructor-arg ref="playlistService"/>
+        <constructor-arg ref="securityService"/>
+        <constructor-arg ref="settingsService"/>
+        <constructor-arg ref="mediaFileService"/>
+        <constructor-arg ref="playerService"/>
+        <constructor-arg ref="mediaFileDao"/>
+        <constructor-arg ref="localeResolver"/>
     </bean>
 
     <bean id="ajaxLyricsService" class="net.sourceforge.subsonic.ajax.LyricsService"/>
 
     <bean id="ajaxCoverArtService" class="net.sourceforge.subsonic.ajax.CoverArtService">
-        <property name="securityService" ref="securityService"/>
-        <property name="mediaFileService" ref="mediaFileService"/>
-        <property name="lastFmService" ref="lastFmService"/>
+        <constructor-arg ref="securityService"/>
+        <constructor-arg ref="mediaFileService"/>
+        <constructor-arg ref="lastFmService"/>
     </bean>
 
     <bean id="ajaxStarService" class="net.sourceforge.subsonic.ajax.StarService">
-        <property name="securityService" ref="securityService"/>
-        <property name="mediaFileDao" ref="mediaFileDao"/>
+        <constructor-arg ref="securityService"/>
+        <constructor-arg ref="mediaFileDao"/>
     </bean>
 
     <bean id="ajaxTagService" class="net.sourceforge.subsonic.ajax.TagService">
-        <property name="mediaFileService" ref="mediaFileService"/>
-        <property name="metaDataParserFactory" ref="metaDataParserFactory"/>
+        <constructor-arg ref="mediaFileService"/>
+        <constructor-arg ref="metaDataParserFactory"/>
     </bean>
 
     <bean id="ajaxTransferService" class="net.sourceforge.subsonic.ajax.TransferService"/>
 
     <bean id="ajaxChatService" class="net.sourceforge.subsonic.ajax.ChatService" init-method="init">
-        <property name="securityService" ref="securityService"/>
+        <constructor-arg ref="securityService"/>
     </bean>
 
     <bean id="localeResolver" class="net.sourceforge.subsonic.i18n.SubsonicLocaleResolver">

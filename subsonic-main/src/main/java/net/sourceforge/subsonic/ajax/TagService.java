@@ -39,8 +39,13 @@ public class TagService {
 
     private static final Logger LOG = Logger.getLogger(TagService.class);
 
-    private MetaDataParserFactory metaDataParserFactory;
-    private MediaFileService mediaFileService;
+    private final MetaDataParserFactory metaDataParserFactory;
+    private final MediaFileService mediaFileService;
+
+    public TagService(MetaDataParserFactory metaDataParserFactory, MediaFileService mediaFileService) {
+        this.metaDataParserFactory = metaDataParserFactory;
+        this.mediaFileService = mediaFileService;
+    }
 
     /**
      * Updated tags for a given music file.
@@ -53,7 +58,7 @@ public class TagService {
      * @param year   The release year.
      * @param genre  The musical genre.
      * @return "UPDATED" if the new tags were updated, "SKIPPED" if no update was necessary.
-     *         Otherwise the error message is returned.
+     * Otherwise the error message is returned.
      */
     public String setTags(int id, String track, String artist, String album, String title, String year, String genre) {
 
@@ -92,11 +97,11 @@ public class TagService {
             }
 
             if (StringUtils.equals(artist, file.getArtist()) &&
-                    StringUtils.equals(album, file.getAlbumName()) &&
-                    StringUtils.equals(title, file.getTitle()) &&
-                    ObjectUtils.equals(yearNumber, file.getYear()) &&
-                    StringUtils.equals(genre, file.getGenre()) &&
-                    ObjectUtils.equals(trackNumber, file.getTrackNumber())) {
+                StringUtils.equals(album, file.getAlbumName()) &&
+                StringUtils.equals(title, file.getTitle()) &&
+                ObjectUtils.equals(yearNumber, file.getYear()) &&
+                StringUtils.equals(genre, file.getGenre()) &&
+                ObjectUtils.equals(trackNumber, file.getTrackNumber())) {
                 return "SKIPPED";
             }
 
@@ -118,13 +123,5 @@ public class TagService {
             LOG.warn("Failed to update tags for " + id, x);
             return x.getMessage();
         }
-    }
-
-    public void setMediaFileService(MediaFileService mediaFileService) {
-        this.mediaFileService = mediaFileService;
-    }
-
-    public void setMetaDataParserFactory(MetaDataParserFactory metaDataParserFactory) {
-        this.metaDataParserFactory = metaDataParserFactory;
     }
 }

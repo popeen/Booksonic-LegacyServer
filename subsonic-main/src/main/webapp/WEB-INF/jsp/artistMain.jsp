@@ -191,9 +191,11 @@
     </div>
 
     <div>
-        <%@ include file="viewSelector.jsp" %>
+        <c:import url="viewSelector.jsp">
+            <c:param name="changeViewUrl" value="main.view?id=${model.dir.id}&viewAsList=${not model.viewAsList}"/>
+            <c:param name="viewAsList" value="${model.viewAsList}"/>
+        </c:import>
     </div>
-
 </div>
 
 <div id="comment" class="albumComment"><sub:wiki text="${model.dir.comment}"/></div>

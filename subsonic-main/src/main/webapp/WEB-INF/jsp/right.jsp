@@ -95,13 +95,12 @@
         }
 
         function addMessage() {
-            chatService.addMessage($("#message").val());
+            chatService.addMessage($("#message").val(), getMessagesCallback);
             $("#message").val(null);
-            setTimeout("startGetMessagesTimer()", 500);
         }
+
         function clearMessages() {
-            chatService.clearMessages();
-            setTimeout("startGetMessagesTimer()", 500);
+            chatService.clearMessages(getMessagesCallback);
         }
 
         function getMessagesCallback(messages) {

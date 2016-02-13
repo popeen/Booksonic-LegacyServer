@@ -67,19 +67,38 @@ import net.sourceforge.subsonic.util.StringUtil;
 @SuppressWarnings("UnusedDeclaration")
 public class PlayQueueService {
 
-    private PlayerService playerService;
-    private JukeboxService jukeboxService;
-    private TranscodingService transcodingService;
-    private SettingsService settingsService;
-    private MediaFileService mediaFileService;
-    private LastFmService lastFmService;
-    private SecurityService securityService;
-    private SearchService searchService;
-    private RatingService ratingService;
-    private PodcastService podcastService;
-    private net.sourceforge.subsonic.service.PlaylistService playlistService;
-    private MediaFileDao mediaFileDao;
-    private PlayQueueDao playQueueDao;
+    private final PlayerService playerService;
+    private final JukeboxService jukeboxService;
+    private final TranscodingService transcodingService;
+    private final SettingsService settingsService;
+    private final MediaFileService mediaFileService;
+    private final LastFmService lastFmService;
+    private final SecurityService securityService;
+    private final SearchService searchService;
+    private final RatingService ratingService;
+    private final PodcastService podcastService;
+    private final net.sourceforge.subsonic.service.PlaylistService playlistService;
+    private final MediaFileDao mediaFileDao;
+    private final PlayQueueDao playQueueDao;
+
+    public PlayQueueService(PlayerService playerService, JukeboxService jukeboxService, TranscodingService transcodingService,
+                            SettingsService settingsService, MediaFileService mediaFileService, LastFmService lastFmService,
+                            SecurityService securityService, SearchService searchService, RatingService ratingService,
+                            PodcastService podcastService, PlaylistService playlistService, MediaFileDao mediaFileDao, PlayQueueDao playQueueDao) {
+        this.playerService = playerService;
+        this.jukeboxService = jukeboxService;
+        this.transcodingService = transcodingService;
+        this.settingsService = settingsService;
+        this.mediaFileService = mediaFileService;
+        this.lastFmService = lastFmService;
+        this.securityService = securityService;
+        this.searchService = searchService;
+        this.ratingService = ratingService;
+        this.podcastService = podcastService;
+        this.playlistService = playlistService;
+        this.mediaFileDao = mediaFileDao;
+        this.playQueueDao = playQueueDao;
+    }
 
     /**
      * Returns the play queue for the player of the current user.
@@ -456,7 +475,7 @@ public class PlayQueueService {
         player.getPlayQueue().setRandomSearchCriteria(null);
         return convert(request, player, false);
     }
-    
+
     public PlayQueueInfo doSet(HttpServletRequest request, HttpServletResponse response, int[] ids) throws Exception {
         Player player = getCurrentPlayer(request, response);
         PlayQueue playQueue = player.getPlayQueue();
@@ -647,10 +666,10 @@ public class PlayQueueService {
             String username = securityService.getCurrentUsername(request);
             boolean starred = mediaFileService.getMediaFileStarredDate(file.getId(), username) != null;
             entries.add(new PlayQueueInfo.Entry(file.getId(), file.getHash(), file.getTrackNumber(), file.getTitle(), file.getArtist(),
-                    file.getAlbumName(), file.getGenre(), file.getYear(), formatBitRate(file),
-                    file.getDurationSeconds(), file.getDurationString(), format, formatContentType(format),
-                    formatFileSize(file.getFileSize(), locale), starred, albumUrl, streamUrl, remoteStreamUrl,
-                    coverArtUrl, remoteCoverArtUrl));
+                                                file.getAlbumName(), file.getGenre(), file.getYear(), formatBitRate(file),
+                                                file.getDurationSeconds(), file.getDurationString(), file.getFormat(), format, formatContentType(format),
+                                                formatFileSize(file.getFileSize(), locale), starred, albumUrl, streamUrl, remoteStreamUrl,
+                                                coverArtUrl, remoteCoverArtUrl));
         }
         boolean isStopEnabled = playQueue.getStatus() == PlayQueue.Status.PLAYING && !player.isExternalWithPlaylist();
         return new PlayQueueInfo(entries, isStopEnabled, playQueue.isRepeatEnabled(), serverSidePlaylist,
@@ -684,57 +703,5 @@ public class PlayQueueService {
 
     private Player getCurrentPlayer(HttpServletRequest request, HttpServletResponse response) {
         return playerService.getPlayer(request, response);
-    }
-
-    public void setPlayerService(PlayerService playerService) {
-        this.playerService = playerService;
-    }
-
-    public void setMediaFileService(MediaFileService mediaFileService) {
-        this.mediaFileService = mediaFileService;
-    }
-
-    public void setLastFmService(LastFmService lastFmService) {
-        this.lastFmService = lastFmService;
-    }
-
-    public void setJukeboxService(JukeboxService jukeboxService) {
-        this.jukeboxService = jukeboxService;
-    }
-
-    public void setTranscodingService(TranscodingService transcodingService) {
-        this.transcodingService = transcodingService;
-    }
-
-    public void setSettingsService(SettingsService settingsService) {
-        this.settingsService = settingsService;
-    }
-
-    public void setSearchService(SearchService searchService) {
-        this.searchService = searchService;
-    }
-
-    public void setRatingService(RatingService ratingService) {
-        this.ratingService = ratingService;
-    }
-
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
-    }
-
-    public void setPodcastService(PodcastService podcastService) {
-        this.podcastService = podcastService;
-    }
-
-    public void setMediaFileDao(MediaFileDao mediaFileDao) {
-        this.mediaFileDao = mediaFileDao;
-    }
-
-    public void setPlayQueueDao(PlayQueueDao playQueueDao) {
-        this.playQueueDao = playQueueDao;
-    }
-
-    public void setPlaylistService(PlaylistService playlistService) {
-        this.playlistService = playlistService;
     }
 }

@@ -87,7 +87,7 @@ public class PlayerSettingsController extends SimpleFormController {
         command.setTranscodeSchemes(TranscodeScheme.values());
         command.setTechnologies(PlayerTechnology.values());
         command.setPlayers(players.toArray(new Player[players.size()]));
-        command.setAdmin(user.isAdminRole());
+        command.setUser(user);
 
         return command;
     }

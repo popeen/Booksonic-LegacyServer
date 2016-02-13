@@ -28,6 +28,8 @@ import net.sourceforge.subsonic.service.MediaFileService;
 import net.sourceforge.subsonic.service.PlayerService;
 import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
+
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.ParameterizableViewController;
 
@@ -35,6 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,9 +85,20 @@ public class StarredController extends ParameterizableViewController {
         map.put("albums", albums);
         map.put("songs", songs);
         map.put("videos", videos);
+        map.put("viewAsList", isViewAsList(request, userSettings));
         ModelAndView result = super.handleRequestInternal(request, response);
         result.addObject("model", map);
         return result;
+    }
+
+    private boolean isViewAsList(HttpServletRequest request, UserSettings userSettings) {
+        boolean viewAsList = ServletRequestUtils.getBooleanParameter(request, "viewAsList", userSettings.isViewAsList());
+        if (viewAsList != userSettings.isViewAsList()) {
+            userSettings.setViewAsList(viewAsList);
+            userSettings.setChanged(new Date());
+            settingsService.updateUserSettings(userSettings);
+        }
+        return viewAsList;
     }
 
     public void setSecurityService(SecurityService securityService) {

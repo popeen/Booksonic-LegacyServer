@@ -28,6 +28,9 @@
 
         function refresh() {
             top.main.location.href = top.main.location.href;
+            <c:if test="${model.showIndexInSideBar}">
+            top.left.location.href = top.left.location.href;
+            </c:if>
         }
 
         function playShuffle() {

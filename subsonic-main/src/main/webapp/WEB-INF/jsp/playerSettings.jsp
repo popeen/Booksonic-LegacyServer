@@ -10,11 +10,10 @@
 <script type="text/javascript" src="<c:url value="/script/wz_tooltip.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/script/tip_balloon.js"/>"></script>
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="player"/>
-    <c:param name="toast" value="${command.reloadNeeded}"/>
-    <c:param name="restricted" value="${not command.admin}"/>
-</c:import>
+<c:set var="category" value="player"/>
+<c:set var="toast" value="${command.reloadNeeded}"/>
+<c:set var="user" value="${command.user}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <fmt:message key="common.unknown" var="unknown"/>
 

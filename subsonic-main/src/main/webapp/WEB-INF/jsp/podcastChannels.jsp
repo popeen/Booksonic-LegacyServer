@@ -25,32 +25,56 @@
     <%@ include file="jquery.jsp" %>
 </head><body class="mainframe bgcolor1">
 
-<h1 style="padding-bottom: 1em">
-    <i class="fa fa-rss fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="podcastreceiver.title"/>
-</h1>
+<div style="display:flex; align-items:center; padding-bottom:2em">
+    <h1 style="flex-grow:1">
+        <i class="fa fa-rss fa-lg icon"></i>&nbsp;&nbsp;<fmt:message key="podcastreceiver.title"/>
+    </h1>
+    <div>
+        <c:import url="viewSelector.jsp">
+            <c:param name="changeViewUrl" value="podcastChannels.view?viewAsList=${not model.viewAsList}"/>
+            <c:param name="viewAsList" value="${model.viewAsList}"/>
+        </c:import>
+    </div>
+</div>
 
 <c:if test="${empty model.channels}">
     <p><em><fmt:message key="podcastreceiver.empty"/></em></p>
 </c:if>
 
-<c:forEach items="${model.channels}" var="channel" varStatus="loopStatus">
 
-    <c:set var="caption2">
-        <fmt:message key="podcastreceiver.episodes"><fmt:param value="${fn:length(channel.value)}"/></fmt:message>
-    </c:set>
-    <div class="albumThumb">
-        <c:import url="coverArt.jsp">
-            <c:param name="podcastChannelId" value="${channel.key.id}"/>
-            <c:param name="coverArtSize" value="200"/>
-            <c:param name="caption1" value="${fn:escapeXml(channel.key.title)}"/>
-            <c:param name="caption2" value="${caption2}"/>
-            <c:param name="captionCount" value="2"/>
-            <c:param name="showLink" value="true"/>
-            <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
-        </c:import>
-    </div>
+<c:choose>
+    <c:when test="${model.viewAsList}">
+        <table class="music" style="margin-bottom:2em">
+            <c:forEach items="${model.channels}" var="channel">
+                <tr>
+                    <td class="fit"><i class="fa fa-play clickable icon" onclick="top.playQueue.onPlayPodcastChannel(${channel.key.id})"></i></td>
+                    <td class="fit"><a href="podcastChannel.view?id=${channel.key.id}">${fn:escapeXml(channel.key.title)}</a></td>
+                    <td class="truncate detail">${fn:escapeXml(channel.key.description)}</td>
+                    <td class="fit rightalign detail"><fmt:message key="podcastreceiver.episodes"><fmt:param value="${fn:length(channel.value)}"/></fmt:message></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <c:forEach items="${model.channels}" var="channel" varStatus="loopStatus">
+            <c:set var="caption2">
+                <fmt:message key="podcastreceiver.episodes"><fmt:param value="${fn:length(channel.value)}"/></fmt:message>
+            </c:set>
+            <div class="albumThumb">
+                <c:import url="coverArt.jsp">
+                    <c:param name="podcastChannelId" value="${channel.key.id}"/>
+                    <c:param name="coverArtSize" value="200"/>
+                    <c:param name="caption1" value="${fn:escapeXml(channel.key.title)}"/>
+                    <c:param name="caption2" value="${caption2}"/>
+                    <c:param name="captionCount" value="2"/>
+                    <c:param name="showLink" value="true"/>
+                    <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
+                </c:import>
+            </div>
+        </c:forEach>
+    </c:otherwise>
+</c:choose>
 
-</c:forEach>
 
 <c:if test="${not empty model.newestEpisodes}">
     <h2 style="margin-top:1em"><fmt:message key="podcastreceiver.newestepisodes"/></h2>

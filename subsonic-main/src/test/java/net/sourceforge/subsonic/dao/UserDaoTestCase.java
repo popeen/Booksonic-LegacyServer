@@ -168,6 +168,7 @@ public class UserDaoTestCase extends DaoTestCaseBase {
         settings.setBetaVersionNotificationEnabled(true);
         settings.setSongNotificationEnabled(false);
         settings.setShowSideBar(true);
+        settings.setShowIndexInSideBar(true);
         settings.getMainVisibility().setBitRateVisible(true);
         settings.getPlaylistVisibility().setYearVisible(true);
         settings.setLastFmEnabled(true);

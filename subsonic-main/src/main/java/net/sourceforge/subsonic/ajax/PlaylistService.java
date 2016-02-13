@@ -18,6 +18,19 @@
  */
 package net.sourceforge.subsonic.ajax;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.directwebremoting.WebContextFactory;
+
 import net.sourceforge.subsonic.dao.MediaFileDao;
 import net.sourceforge.subsonic.domain.MediaFile;
 import net.sourceforge.subsonic.domain.MusicFolder;
@@ -28,17 +41,6 @@ import net.sourceforge.subsonic.service.MediaFileService;
 import net.sourceforge.subsonic.service.PlayerService;
 import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
-import org.directwebremoting.WebContextFactory;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Provides AJAX-enabled services for manipulating playlists.
@@ -48,13 +50,25 @@ import java.util.ResourceBundle;
  */
 public class PlaylistService {
 
-    private MediaFileService mediaFileService;
-    private SecurityService securityService;
-    private net.sourceforge.subsonic.service.PlaylistService playlistService;
-    private MediaFileDao mediaFileDao;
-    private SettingsService settingsService;
-    private PlayerService playerService;
-    private SubsonicLocaleResolver localeResolver;
+    private final MediaFileService mediaFileService;
+    private final SecurityService securityService;
+    private final net.sourceforge.subsonic.service.PlaylistService playlistService;
+    private final MediaFileDao mediaFileDao;
+    private final SettingsService settingsService;
+    private final PlayerService playerService;
+    private final SubsonicLocaleResolver localeResolver;
+
+    public PlaylistService(MediaFileService mediaFileService, SecurityService securityService,
+                           net.sourceforge.subsonic.service.PlaylistService playlistService, MediaFileDao mediaFileDao,
+                           SettingsService settingsService, PlayerService playerService, SubsonicLocaleResolver localeResolver) {
+        this.mediaFileService = mediaFileService;
+        this.securityService = securityService;
+        this.playlistService = playlistService;
+        this.mediaFileDao = mediaFileDao;
+        this.settingsService = settingsService;
+        this.playerService = playerService;
+        this.localeResolver = localeResolver;
+    }
 
     public List<Playlist> getReadablePlaylists() {
         HttpServletRequest request = WebContextFactory.get().getHttpServletRequest();
@@ -234,33 +248,5 @@ public class PlaylistService {
         playlist.setShared(shared);
         playlistService.updatePlaylist(playlist);
         return getPlaylist(id);
-    }
-
-    public void setPlaylistService(net.sourceforge.subsonic.service.PlaylistService playlistService) {
-        this.playlistService = playlistService;
-    }
-
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
-    }
-
-    public void setMediaFileService(MediaFileService mediaFileService) {
-        this.mediaFileService = mediaFileService;
-    }
-
-    public void setMediaFileDao(MediaFileDao mediaFileDao) {
-        this.mediaFileDao = mediaFileDao;
-    }
-
-    public void setSettingsService(SettingsService settingsService) {
-        this.settingsService = settingsService;
-    }
-
-    public void setPlayerService(PlayerService playerService) {
-        this.playerService = playerService;
-    }
-
-    public void setLocaleResolver(SubsonicLocaleResolver localeResolver) {
-        this.localeResolver = localeResolver;
     }
 }

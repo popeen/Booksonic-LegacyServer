@@ -5,8 +5,8 @@
 <head>
     <%@ include file="head.jsp" %>
     <%@ include file="jquery.jsp" %>
-    <script type="text/javascript" src="<c:url value="/dwr/interface/multiService.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/dwr/engine.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/dwr/interface/multiService.js"/>"></script>
     <script type="text/javascript" language="javascript">
 
         function init() {
@@ -41,10 +41,9 @@
 <script type="text/javascript" src="<c:url value="/script/wz_tooltip.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/script/tip_balloon.js"/>"></script>
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="network"/>
-    <c:param name="toast" value="${command.toast}"/>
-</c:import>
+<c:set var="category" value="network"/>
+<c:set var="toast" value="${command.toast}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <p style="padding-top:1em"><fmt:message key="networksettings.text"/></p>
 

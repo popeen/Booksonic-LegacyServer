@@ -130,9 +130,9 @@
         this.castSession = s;
 
         var position = -1;
-        if (jwPlayer && jwPlayer.getState() == "playing") {
-            position = jwPlayer.getPosition();
-            jwPlayer.stop();
+        if (localPlayer && !localPlayer.paused) {
+            position = Math.round(localPlayer.currentTime);
+            localPlayer.pause();
         }
 
         this.setCastControlsVisible(true);

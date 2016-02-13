@@ -23,6 +23,7 @@
     Mousetrap.bind('g p', function() { parent.frames.upper.keyboardShortcut("showPlaylists") });
     Mousetrap.bind('g o', function() { parent.frames.upper.keyboardShortcut("showPodcasts") });
     Mousetrap.bind('g s', function() { parent.frames.upper.keyboardShortcut("showSettings") });
+    Mousetrap.bind('g d', function() { parent.frames.upper.keyboardShortcut("showInternetRadio") });
     Mousetrap.bind('g t', function() { parent.frames.upper.keyboardShortcut("showStarred") });
     Mousetrap.bind('g r', function() { parent.frames.upper.keyboardShortcut("showMore") });
     Mousetrap.bind('g a', function() { parent.frames.upper.keyboardShortcut("showAbout") });

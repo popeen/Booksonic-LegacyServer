@@ -10,9 +10,9 @@
         #progressBar {width: 350px; height: 10px; border: 1px solid black; display:none;}
         #progressBarContent {width: 0; height: 10px; background: url("<c:url value="/icons/default_light/progress.png"/>") repeat;}
     </style>
-    <script type="text/javascript" src="<c:url value="/dwr/interface/transferService.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/dwr/engine.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/dwr/util.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/dwr/interface/transferService.js"/>"></script>
 
     <script type="text/javascript">
         function refreshProgress() {
@@ -93,11 +93,16 @@
     </tr>
     <tr>
         <td class="more-shortcut">&ndash;</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.volumedown"/></td>
-        <td class="more-shortcut">g <fmt:message key="more.keyboard.then"/> t</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.starred"/></td>
+        <td class="more-shortcut">g <fmt:message key="more.keyboard.then"/> d</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.radio"/></td>
         <td></td><td></td>
     </tr>
     <tr>
         <td class="more-shortcut">+</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.volumeup"/></td>
+        <td class="more-shortcut">g <fmt:message key="more.keyboard.then"/> t</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.starred"/></td>
+        <td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td>
         <td class="more-shortcut">g <fmt:message key="more.keyboard.then"/> r</td><td class="more-shortcut-descr"><fmt:message key="more.keyboard.more"/></td>
         <td></td><td></td>
     </tr>

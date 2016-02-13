@@ -112,6 +112,7 @@ public class PlayQueueInfo {
         private final String bitRate;
         private final Integer duration;
         private final String durationAsString;
+        private final String sourceFormat;
         private final String format;
         private final String contentType;
         private final String fileSize;
@@ -123,7 +124,7 @@ public class PlayQueueInfo {
         private final String remoteCoverArtUrl;
 
         public Entry(int id, String hash, Integer trackNumber, String title, String artist, String album, String genre, Integer year,
-                String bitRate, Integer duration, String durationAsString, String format, String contentType, String fileSize,
+                String bitRate, Integer duration, String durationAsString, String sourceFormat, String format, String contentType, String fileSize,
                 boolean starred, String albumUrl, String streamUrl, String remoteStreamUrl, String coverArtUrl, String remoteCoverArtUrl) {
             this.id = id;
             this.hash = hash;
@@ -136,6 +137,7 @@ public class PlayQueueInfo {
             this.bitRate = bitRate;
             this.duration = duration;
             this.durationAsString = durationAsString;
+            this.sourceFormat = sourceFormat;
             this.format = format;
             this.contentType = contentType;
             this.fileSize = fileSize;
@@ -189,6 +191,10 @@ public class PlayQueueInfo {
 
         public Integer getDuration() {
             return duration;
+        }
+
+        public String getSourceFormat() {
+            return sourceFormat;
         }
 
         public String getFormat() {

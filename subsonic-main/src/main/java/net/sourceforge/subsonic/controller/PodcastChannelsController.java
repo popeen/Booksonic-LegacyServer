@@ -18,6 +18,7 @@
  */
 package net.sourceforge.subsonic.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,11 +27,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.ParameterizableViewController;
 
 import net.sourceforge.subsonic.domain.PodcastChannel;
 import net.sourceforge.subsonic.domain.PodcastEpisode;
+import net.sourceforge.subsonic.domain.User;
+import net.sourceforge.subsonic.domain.UserSettings;
 import net.sourceforge.subsonic.service.PodcastService;
 import net.sourceforge.subsonic.service.SecurityService;
 import net.sourceforge.subsonic.service.SettingsService;
@@ -60,12 +64,26 @@ public class PodcastChannelsController extends ParameterizableViewController {
             channelMap.put(channel.getId(), channel);
         }
 
-        map.put("user", securityService.getCurrentUser(request));
+        User user = securityService.getCurrentUser(request);
+        UserSettings userSettings = settingsService.getUserSettings(user.getUsername());
+
+        map.put("user", user);
         map.put("channels", channels);
         map.put("channelMap", channelMap);
+        map.put("viewAsList", isViewAsList(request, userSettings));
         map.put("newestEpisodes", podcastService.getNewestEpisodes(10));
         map.put("licenseInfo", settingsService.getLicenseInfo());
         return result;
+    }
+
+    private boolean isViewAsList(HttpServletRequest request, UserSettings userSettings) {
+        boolean viewAsList = ServletRequestUtils.getBooleanParameter(request, "viewAsList", userSettings.isViewAsList());
+        if (viewAsList != userSettings.isViewAsList()) {
+            userSettings.setViewAsList(viewAsList);
+            userSettings.setChanged(new Date());
+            settingsService.updateUserSettings(userSettings);
+        }
+        return viewAsList;
     }
 
     public void setPodcastService(PodcastService podcastService) {

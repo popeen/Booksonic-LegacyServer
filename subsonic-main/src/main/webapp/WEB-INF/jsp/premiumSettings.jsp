@@ -7,11 +7,10 @@
 </head>
 <body class="mainframe bgcolor1">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="premium"/>
-    <c:param name="restricted" value="${not command.user.adminRole}"/>
-    <c:param name="toast" value="${command.toast}"/>
-</c:import>
+<c:set var="category" value="premium"/>
+<c:set var="toast" value="${command.toast}"/>
+<c:set var="user" value="${command.user}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <div style="width:50em; max-width:50em">
 

@@ -18,12 +18,12 @@
  */
 package net.sourceforge.subsonic.ajax;
 
-import net.sourceforge.subsonic.Logger;
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
+
 import net.sourceforge.subsonic.dao.MediaFileDao;
 import net.sourceforge.subsonic.domain.User;
 import net.sourceforge.subsonic.service.SecurityService;
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
 
 /**
  * Provides AJAX-enabled services for starring.
@@ -34,10 +34,13 @@ import org.directwebremoting.WebContextFactory;
  */
 public class StarService {
 
-    private static final Logger LOG = Logger.getLogger(StarService.class);
+    private final SecurityService securityService;
+    private final MediaFileDao mediaFileDao;
 
-    private SecurityService securityService;
-    private MediaFileDao mediaFileDao;
+    public StarService(SecurityService securityService, MediaFileDao mediaFileDao) {
+        this.securityService = securityService;
+        this.mediaFileDao = mediaFileDao;
+    }
 
     public void star(int id, boolean star) {
         if (star) {
@@ -59,13 +62,5 @@ public class StarService {
         WebContext webContext = WebContextFactory.get();
         User user = securityService.getCurrentUser(webContext.getHttpServletRequest());
         return user.getUsername();
-    }
-
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
-    }
-
-    public void setMediaFileDao(MediaFileDao mediaFileDao) {
-        this.mediaFileDao = mediaFileDao;
     }
 }

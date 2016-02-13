@@ -20,10 +20,9 @@
 </head>
 <body class="mainframe bgcolor1" onload="init()">
 
-<c:import url="settingsHeader.jsp">
-    <c:param name="cat" value="musicFolder"/>
-    <c:param name="toast" value="${command.reload}"/>
-</c:import>
+<c:set var="category" value="musicFolder"/>
+<c:set var="toast" value="${command.reload}"/>
+<%@ include file="settingsHeader.jsp" %>
 
 <form:form commandName="command" action="musicFolderSettings.view" method="post">
 
