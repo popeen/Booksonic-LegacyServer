@@ -55,7 +55,7 @@ do_start()
     touch $PIDFILE
     chown $SUBSONIC_USER $PIDFILE
     [ -e /var/booksonic ] && chown -R $SUBSONIC_USER /var/booksonic
-    [ -e /tmp/subsonic ] && chown -R $SUBSONIC_USER /tmp/subsonic
+    [ -e /tmp/booksonic ] && chown -R $SUBSONIC_USER /tmp/booksonic
 
     echo $"Starting $NAME ..."
     su -c "$DAEMON $DAEMON_ARGS" $SUBSONIC_USER

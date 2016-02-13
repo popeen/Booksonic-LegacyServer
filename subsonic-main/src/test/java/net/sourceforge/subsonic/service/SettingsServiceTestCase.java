@@ -32,7 +32,7 @@ import junit.framework.TestCase;
  */
 public class SettingsServiceTestCase extends TestCase {
 
-    private static final File SUBSONIC_HOME = new File("/tmp/subsonic");
+    private static final File SUBSONIC_HOME = new File("/tmp/booksonic");
 
     private SettingsService settingsService;
 
