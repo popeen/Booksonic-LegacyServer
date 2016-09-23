@@ -147,7 +147,7 @@ public class AlbumDao extends AbstractDao {
 
         if (n == 0) {
 
-            update("insert into album (" + COLUMNS + ") values (" + questionMarks(COLUMNS) + ")", null, album.getPath(),
+            update("insert into album (" + COLUMNS + ", description, reader) values (" + questionMarks(COLUMNS) + ", ?, ?)", null, album.getPath(),
                    album.getName(), album.getArtist(), album.getSongCount(), album.getDurationSeconds(),
                    album.getCoverArtPath(), album.getYear(), album.getGenre(), album.getPlayCount(), album.getLastPlayed(),
                    album.getComment(), album.getCreated(), album.getLastScanned(), album.isPresent(), album.getFolderId(), lang, desc, reader);
