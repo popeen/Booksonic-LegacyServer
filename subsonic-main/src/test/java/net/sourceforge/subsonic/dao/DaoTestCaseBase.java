@@ -61,7 +61,7 @@ public abstract class DaoTestCaseBase extends TestCase {
     }
 
     private static void deleteDatabase() {
-        File subsonicHome = new File("/tmp/booksonic");
+        File subsonicHome = new File("/var/booksonic");
         File dbHome = new File(subsonicHome, "db");
         System.setProperty("subsonic.home", subsonicHome.getPath());
 

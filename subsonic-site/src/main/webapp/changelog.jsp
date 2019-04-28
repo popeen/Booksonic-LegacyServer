@@ -16,7 +16,7 @@
 
 <section class="box">
 
-    <a name="1.1.beta1"><h3>Subsonic 1.1.beta1 - Feb 05, 2016</h3></a>
+    <a name="1.1.release"><h3>Subsonic 1.1.release - Feb 05, 2016</h3></a>
     <ul>
         <li><strong>New:</strong> Completely overhauled user interface.</li>
         <li><strong>New:</strong> HTML5 audio and video playback.</li>

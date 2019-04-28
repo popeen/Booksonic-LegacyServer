@@ -160,7 +160,7 @@ public class SettingsService {
     private static final String DEFAULT_WELCOME_SUBTITLE = null;
     private static final String DEFAULT_WELCOME_MESSAGE = "__Welcome to Booksonic!__\n" +
             "\\\\ \\\\\n" +
-            "Bookonic is a free, web-based media streamer, providing ubiquitous access to your audiobooks. \n" +
+            "Booksonic is a free, web-based media streamer, providing ubiquitous access to your audiobooks. \n" +
             "\\\\ \\\\\n" +
             "You can stream to multiple " +
             "players simultaneously, for instance to one player in your kitchen and another in your living room.\n" +

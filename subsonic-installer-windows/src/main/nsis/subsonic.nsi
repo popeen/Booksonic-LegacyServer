@@ -22,7 +22,7 @@ InstallDirRegKey HKLM "Software\Booksonic" "Install_Dir"
 #Interface Configuration
 
 !define MUI_HEADERIMAGE
-!define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\booksonic.bmp"
+!define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\nsis3-metro.bmp"
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Getting Started.url"
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "View Getting Started tutorial"
 

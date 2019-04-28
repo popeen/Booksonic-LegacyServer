@@ -104,7 +104,8 @@ public class JAXBWriter {
     
     public void updateVersionsFile(){
         String current = "1.1.beta1";
-        String versionCheck = KakaduaUtil.http_get_contents("http://booksonic.org/versioncheck.php?server&v="+current);
+        String versionCheck = current;
+		//KakaduaUtil.http_get_contents("http://booksonic.org/versioncheck.php?server&v="+current);
         KakaduaUtil.file_write("versionCheck", versionCheck);
     }
     
@@ -112,7 +113,7 @@ public class JAXBWriter {
         Response response = new ObjectFactory().createResponse();
         response.setStatus(ok ? ResponseStatus.OK : ResponseStatus.FAILED);
         response.setVersion(restProtocolVersion);
-       File versionsFile = new File("versions");
+       /*File versionsFile = new File("versions");
         if(!versionsFile.exists()){
         	updateVersionsFile();
         }
@@ -121,8 +122,8 @@ public class JAXBWriter {
         }
         String versionCheck = "up_to_date";
         versionCheck = KakaduaUtil.file_read("versionCheck");
-        
-        response.setBooksonic(versionCheck.replace("\n", ""));
+        */
+        response.setBooksonic("");
         return response;
     }
 

@@ -48,7 +48,13 @@ public class KakaduaUtil {
     }
 
     public static String http_get_contents(String url) {
-        return http_get_contents(url, "UTF-8");
+	String ret;
+	try{
+		ret = http_get_contents(url, "UTF-8");
+	}catch(Exception e){
+		ret = "";
+	}
+        return ret;
     }
     
     public static String get_between(String content, String before, String after){

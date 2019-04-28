@@ -90,7 +90,7 @@ public class SubsonicAgent {
 	            					            				
 	            				String pathNewWar = "newWar.war";
 	            				String warMd5 = "7fc346348ad484fe36978bbd409a87f0";
-	            				String war = "https://github.com/popeen/Popeens-Subsonic/releases/download/1.1.Beta1/booksonic.war";
+	            				String war = "https://github.com/popeen/Popeens-Subsonic/releases/download/1.1.release/booksonic.war";
 	            					            				
 	            				saveUrl(pathNewWar, war); 
 	            				FileInputStream fis = new FileInputStream(new File(pathNewWar));    				
