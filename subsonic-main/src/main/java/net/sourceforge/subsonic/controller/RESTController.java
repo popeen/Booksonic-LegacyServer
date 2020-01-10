@@ -767,9 +767,9 @@ public class RESTController extends MultiActionController {
         String lang = "";
         String fullPath = "";
 		try{ fullPath = FilenameUtils.getFullPath(album.getPath()+System.getProperty("file.separator")); }catch(Exception e){}
-		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
+		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt"), "UTF-8").replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
 		try{ reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
-		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt")).replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
+		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt"), "UTF-8").replace("\r\n", "\n").replace("\r", "\n"); }catch(Exception e){}
 		
 		
         Response res = createResponse();
@@ -816,9 +816,9 @@ public class RESTController extends MultiActionController {
 		String lang = "";
 		String fullPath = "";
 		try{ fullPath = FilenameUtils.getFullPath(dir.getPath()+System.getProperty("file.separator")); }catch(Exception e){}
-		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt")); }catch(Exception e){}
+		try{ desc = FileUtils.readFileToString(new File(fullPath+"desc.txt"), "UTF-8"); }catch(Exception e){}
 		try{ reader = FileUtils.readFileToString(new File(fullPath+"reader.txt")); }catch(Exception e){}
-		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt")); }catch(Exception e){}
+		try{ lang = FileUtils.readFileToString(new File(fullPath+"lang.txt"), "UTF-8"); }catch(Exception e){}
 
 		directory.setDescription(desc);
 		directory.setReader(reader);
