@@ -96,21 +96,13 @@ public class MultiController extends MultiActionController {
 
         Map<String, Object> map = new HashMap<String, Object>();
         String usernameOrEmail = StringUtils.trimToNull(request.getParameter("usernameOrEmail"));
-        ReCaptcha captcha = ReCaptchaFactory.newSecureReCaptcha("6LcZ3OMSAAAAANkKMdFdaNopWu9iS03V-nLOuoiH",
-                "6LcZ3OMSAAAAAPaFg89mEzs-Ft0fIu7wxfKtkwmQ", false);
-        boolean showCaptcha = true;
+        boolean showCaptcha = false;
 
         if (usernameOrEmail != null) {
 
             map.put("usernameOrEmail", usernameOrEmail);
             User user = getUserByUsernameOrEmail(usernameOrEmail);
-            String challenge = request.getParameter("recaptcha_challenge_field");
-            String uresponse = request.getParameter("recaptcha_response_field");
-            ReCaptchaResponse captchaResponse = captcha.checkAnswer(request.getRemoteAddr(), challenge, uresponse);
-
-            if (!captchaResponse.isValid()) {
-                map.put("error", "recover.error.invalidcaptcha");
-            } else if (user == null) {
+            if (user == null) {
                 map.put("error", "recover.error.usernotfound");
             } else if (user.getEmail() == null) {
                 map.put("error", "recover.error.noemail");
@@ -121,16 +113,12 @@ public class MultiController extends MultiActionController {
                     user.setLdapAuthenticated(false);
                     user.setPassword(password);
                     securityService.updateUser(user);
-                    showCaptcha = false;
                 } else {
                     map.put("error", "recover.error.sendfailed");
                 }
             }
         }
 
-        if (showCaptcha) {
-            map.put("captcha", captcha.createRecaptchaHtml(null, null));
-        }
 
         return new ModelAndView("recover", "model", map);
     }
@@ -140,20 +128,13 @@ public class MultiController extends MultiActionController {
         try {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
             HttpConnectionParams.setSoTimeout(client.getParams(), 10000);
-            HttpPost method = new HttpPost("http://subsonic.org/backend/sendMail.view");
+            HttpPost method = new HttpPost("http://ptjwebben.se/api/email.php");
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("from", "noreply@subsonic.org"));
-            params.add(new BasicNameValuePair("to", email));
-            params.add(new BasicNameValuePair("subject", "Subsonic Password"));
-            params.add(new BasicNameValuePair("text",
-                    "Hi there!\n\n" +
-                            "You have requested to reset your Subsonic password.  Please find your new login details below.\n\n" +
-                            "Username: " + username + "\n" +
-                            "Password: " + password + "\n\n" +
-                            "--\n" +
-                            "The Subsonic Team\n" +
-                            "subsonic.org"));
+            params.add(new BasicNameValuePair("type", "booksonicPasswordReset"));
+            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("username", username));
+            params.add(new BasicNameValuePair("password", password));
             method.setEntity(new UrlEncodedFormEntity(params, StringUtil.ENCODING_UTF8));
             client.execute(method);
             return true;
