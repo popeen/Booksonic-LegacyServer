@@ -260,7 +260,7 @@
         <tr>
             <td>6.0</td>
             <td>
-                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-1.1.release/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.14.0</a>
+                <a href="https://sourceforge.net/p/subsonic/code/HEAD/tree/tags/release-1.2.release/subsonic-rest-api/src/main/resources/subsonic-rest-api.xsd">1.14.0</a>
             </td>
         </tr>
         <tr>

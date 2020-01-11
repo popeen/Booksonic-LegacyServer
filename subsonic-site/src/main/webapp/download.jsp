@@ -23,7 +23,7 @@
 <%@ include file="head.jsp" %>
 
 <%-- Uncomment if beta is available.--%>
-<c:set var="beta" value="1.1.release"/>
+<c:set var="beta" value="1.2.release"/>
 <c:set var="stable" value="5.3"/>
 
 <body>

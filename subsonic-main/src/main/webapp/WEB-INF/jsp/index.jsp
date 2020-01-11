@@ -67,7 +67,6 @@
     <div style="display:flex; flex-grow:1">
         <iframe src="left.view" id="left" name="left" class="nospace"></iframe>
         <iframe src="home.view" id="main" name="main" allowfullscreen class="nospace"></iframe>
-        <iframe src="right.view" id="right" name="right" class="nospace"></iframe>
     </div>
 
     <iframe src="playQueue.view" id="playQueue" name="playQueue" class="nospace"></iframe>
