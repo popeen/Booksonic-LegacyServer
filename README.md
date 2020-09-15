@@ -2,7 +2,7 @@
 Booksonic Legacy Server
 ========
 
-**OBS:** This server is deprecated and will soon be replaced by [Booksonic Air](https://github.com/popeen/Booksonic-Air)
+**OBS:** This server is discontinued and has been replaced by [Booksonic Air](https://github.com/popeen/Booksonic-Air)
 
 
 What is Booksonic?
